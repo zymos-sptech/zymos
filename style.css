@@ -1,0 +1,55 @@
+.navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  padding: 22px 0;
+}
+
+.logo {
+  height: 42px;
+  width: 115px;
+}
+
+nav,
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-between;
+  max-width: 500px;
+}
+
+li,
+a {
+  list-style-type: none;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--color-accent-brown);
+  transition: all ease 0.1s;
+}
+
+li:focus,
+li:hover {
+  color: var(--color-accent);
+}
+
+.container-login-cadastro {
+  gap: 12px;
+}
+
+.btn-login {
+  color: var(--color-blue-dark);
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  padding: 8px 14px;
+}
+
+.btn-cadastro {
+  background-color: var(--color-accent);
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-accent);
+}

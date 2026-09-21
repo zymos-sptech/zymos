@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+:root {
+  /* Paleta de Cores - Baseada no Guia Visual */
+  
+  /* Tons Quentes / Acento */
+  --color-accent: #D0A06F;
+  --colo-accent-brown: #50453B;
+  /* Tons de Verde */
+  --color-green-dark: #5A6B5E;
+  --color-green-light: #E8EFE6;
+  
+  /* Tons de Azul */
+  --color-blue-dark: #254567;
+  --color-blue-light: #E3F0FF;
+  
+  /* Tons Neutros / Fundo */
+  --color-neutral-base: #FFFAEF;
+  --color-neutral-light: #F7F3EA;
+  --color-neutral-gray: #D8DDD6;
+
+  /* Tipografia */
+  --font-primary: 'Outfit', sans-serif;
+  --font-secondary: 'Garet', sans-serif;
+}
+
+/* Reset e Configurações Globais Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-neutral-base);
+  color: var(--color-blue-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+}
