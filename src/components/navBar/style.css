@@ -50,13 +50,13 @@ li:hover {
 }
 
 .btn-cadastro {
-  background-color: var(--color-accent);
+  background-color: var(--color-blue-dark);
   color: var(--color-neutral-light);
   font-weight: 600;
   padding: 8px 16px;
   border-radius: 8px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-blue-dark);
 }
 
 .cursor {
