@@ -47,6 +47,9 @@ li:hover {
   border: none;
   font-size: 14px;
   padding: 8px 14px;
+  border-radius: 8px;
+
+  transition: all ease 0.3s;
 }
 
 .btn-cadastro {
@@ -56,6 +59,22 @@ li:hover {
   padding: 8px 16px;
   border-radius: 8px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-blue-dark);
+
+  transition: all ease 0.3s;
+}
+
+.btn-cadastro:hover,
+.btn-cadastro:focus-visible {
+  background-color: var(--color-blue-light);
+  color: var(--color-accent-brown);
+  border: 1px solid var(--color-blue-dark);
+}
+
+.btn-cadastro:active,
+.btn-login:active {
+  background-color: var(--color-blue-dark);
+  color: var(--color-neutral-light);
   border: 1px solid var(--color-blue-dark);
 }
 
