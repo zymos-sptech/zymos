@@ -18,6 +18,12 @@ footer {
   width: 100%;
 }
 
+@media screen and (max-width: 428px) {
+  .container-footer {
+    gap: 24px;
+  }
+}
+
 .container-column {
   display: flex;
   flex-direction: column;
