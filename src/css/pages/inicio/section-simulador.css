@@ -49,6 +49,7 @@
   font-weight: 400;
   line-height: 20px;
   margin-bottom: 54px;
+  max-width: 355px;
 }
 
 .simulador-button {
