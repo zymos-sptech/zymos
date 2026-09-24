@@ -4,7 +4,9 @@
   justify-content: space-around;
   align-items: center;
 
-  padding: 18px 0;
+  padding: 8px 0;
+
+  font-size: 12px;
 }
 
 .logo {
@@ -45,7 +47,7 @@ li:hover {
   color: var(--color-blue-dark);
   background-color: transparent;
   border: none;
-  font-size: 14px;
+  font-size: 12px;
   padding: 8px 14px;
   border-radius: 8px;
 
@@ -55,6 +57,7 @@ li:hover {
 .btn-cadastro {
   background-color: var(--color-blue-dark);
   color: var(--color-neutral-light);
+  font-size: 12px;
   font-weight: 600;
   padding: 8px 16px;
   border-radius: 8px;
