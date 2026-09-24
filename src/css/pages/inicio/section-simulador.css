@@ -40,6 +40,7 @@
   line-height: 32px; /* 120% */
   letter-spacing: -0.6px;
   margin-bottom: 18px;
+  max-width: 355px;
 }
 
 .simulador-descricao {
