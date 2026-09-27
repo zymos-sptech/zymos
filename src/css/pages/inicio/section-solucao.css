@@ -1,0 +1,237 @@
+.section-solucao {
+    width: 1512px;
+    height: 762px;
+    display: flex;
+    background: #426084;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 5.25em 0;
+}
+
+.container-solucao {
+    display: flex;
+    width: 1280px;
+    max-width: 1280px;
+    padding: 0 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 56px;
+}
+
+.solucao-arquitetura {
+    align-self: stretch;
+    color: #f0bd8a;
+    font-family: Outfit;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.solucao-titulo {
+    align-self: stretch;
+    color: #FFF;
+    font-family: Epilogue;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: -0.6px;
+}
+
+.solucao-subtitulo {
+    align-self: stretch;
+    color: #D1E4FF;
+    font-family: Outfit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.solucao-card1 {
+    width: 290px;
+    height: 245px;
+    position: absolute;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.00);
+    box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0, 0.15);
+}
+
+.solucao-card1-icon-background {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #F0F5EE;
+}
+
+.solucao-card1-icon {
+    width: 21.667px;
+    height: 15.329px;
+    fill: #D0A06F;
+}
+
+.solucao-card1-titulo {
+    align-self: stretch;
+    color: #426084;
+    font-family: Epilogue;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+}
+
+.solucao-card1-texto {
+    align-self: stretch;
+    color: #50453B;
+    font-family: Outfit;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22.75px;
+}
+
+.solucao-card2 {
+    width: 290px;
+    height: 245px;
+    position: absolute;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.00);
+    box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.15);
+}
+
+.solucao-card2-icon-background {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #F0F5EE;
+}
+
+.solucao-card2-icon {
+    width: 21.125px;
+    height: 17.333px;
+    fill: #D0A06F;
+}
+
+.solucao-card2-titulo {
+    align-self: stretch;
+    color: #426084;
+    font-family: Epilogue;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+}
+
+.solucao-card2-texto {
+    align-self: stretch;
+    color: #50453B;
+    font-family: Outfit;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22.75px;
+}
+
+.solucao-card3 {
+    width: 290px;
+    height: 245px;
+    position: absolute;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.00);
+    box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.15);
+}
+
+.solucao-card3-icon-background {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #F0F5EE;
+}
+
+.solucao-card3-icon {
+    width: 21.667px;
+    height: 20.583px;
+    fill: #D0A06F;
+}
+
+.solucao-card3-titulo {
+    align-self: stretch;
+    color: #426084;
+    font-family: Epilogue;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+}
+
+.solucao-card3-texto {
+    align-self: stretch;
+    color: #50453B;
+    font-family: Outfit;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22.75px;
+}
+
+.solucao-card4 {
+    width: 290px;
+    height: 245px;
+    position: absolute;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.00);
+    box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.15);
+}
+
+.solucao-card4-icon-background {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #F0F5EE;
+}
+
+.solucao-card4-icon {
+    width: 19.5px;
+    height: 20.583px;
+    fill: #D0A06F;
+}
+
+.solucao-card4-titulo {
+    align-self: stretch;
+    color: #426084;
+    font-family: Epilogue;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+}
+
+.solucao-card4-texto {
+    align-self: stretch;
+    color: #50453B;
+    font-family: Outfit;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22.75px;
+}
