@@ -1,43 +1,90 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/css/pages/inicio/section-simulador.css" />
-    <link rel="icon" type="image/x-con" href="./assets/logo-icon.png" />
-    <link rel="stylesheet" href="./src/css/global.css" />
-    <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
-    
-    <script type="module" src="./src/js/navbar.js"></script>
-    <script type="module" src="./src/js/footer.js"></script>
-    
-    <title>Início</title>
-  </head>
-  <body>
-    <div id="header"></div>
-    <section class="section-simulador">
-      <div class="simulador-container-section">
-        <div class="simulador-conteudo">
-          <span class="simulador-badge"
-            >CALCULADORA DE RETORNO SOBRE INVESTIMENTO</span
-          >
-          <h1 class="simulador-titulo">Quanto sua cervejaria tem a ganhar?</h1>
-          <p class="simulador-descricao">
-            Descubra em 2 minutos a economia da sua cervejaria ao evitar lotes
-            fora do padrão e paradas de fermentação.
-          </p>
-          <button class="simulador-button">
-            Ir para o simulador
-            <i
-              class="fa-solid fa-arrow-right"
-              style="color: var(--color-neutral-gray)"
-            ></i>
-          </button>
-        </div>
 
-        <img class="simulador-img"  src="./assets/images/homem-cerveja.svg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./src/css/pages/inicio/section-simulador.css" />
+  <link rel="stylesheet" href="./src/css/pages/inicio/section-problemas.css" />
+
+  <link rel="icon" type="image/x-con" href="./assets/logo-icon.png" />
+  <link rel="stylesheet" href="./src/css/global.css" />
+  <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
+
+  <script type="module" src="./src/js/navbar.js"></script>
+  <script type="module" src="./src/js/footer.js"></script>
+
+  <title>Início</title>
+</head>
+
+<body>
+  <div id="header"></div>
+  <section class="section-simulador">
+    <div class="simulador-container-section">
+      <div class="simulador-conteudo">
+        <span class="simulador-badge">CALCULADORA DE RETORNO SOBRE INVESTIMENTO</span>
+        <h1 class="simulador-titulo">Quanto sua cervejaria tem a ganhar?</h1>
+        <p class="simulador-descricao">
+          Descubra em 2 minutos a economia da sua cervejaria ao evitar lotes
+          fora do padrão e paradas de fermentação.
+        </p>
+        <button class="simulador-button">
+          Ir para o simulador
+          <i class="fa-solid fa-arrow-right" style="color: var(--color-neutral-gray)"></i>
+        </button>
       </div>
-    </section>
-    <div id="footer"></div>
-  </body>
+
+      <img class="simulador-img" src="./assets/images/homem-cerveja.svg">
+    </div>
+  </section>
+
+
+  <section class="problema-section">
+    <div class="problema-conteiner-alto">
+      <span class="problema-badge-alta">SENSIBILIDADE BIOLOGICA</span>
+      <h1 class="problema-titulo">A fermentação não perdoa desvios</h1>
+      <p class="problema-descricao">Na fermentação, qualquer grau fora do planejado
+        pode gerar sabores indesejados (off-flavors),
+        travar o trabalho da levedura ou jogar dias de produção fora.
+        Sem monitoramento contínuo,
+        oscilações térmicas passam despercebidas por horas e colocam o lote em risco.</p>
+    </div>
+    <div class="problema-conteiner-baixo-pai">
+      <div class="problema-conteiner-baixo">
+        <div class="icon-box">
+          <i class="fa-solid fa-temperature-high" style="color: var(--color-accent);"></i>
+        </div>
+        <div class="problema-card-item-left">
+          <span class="problema-conteiner-badge-baixo">Risco Invisivel</span>
+          <p class="problema-conteiner-text-baixo">+1.8°C no pico  de Fermentação</p>
+        </div>
+        
+        <div class="divisor-vertical"></div>
+        <div class="icon-box">
+          <i class="fa-solid fa-triangle-exclamation" style="color: var(--color-accent);"></i>
+        </div>
+        <div class="problema-card-item-center">
+          <span class="problema-conteiner-badge-baixo">Consequeência direta</span>
+          <p class="problema-conteiner-text-baixo">Alteração do 
+            Sabor & Aroma</p>
+
+        </div>
+        
+        <div class="divisor-vertical"></div>
+        <div class="icon-box">
+          <div class="icon-box">
+            <i class="fa-regular fa-circle-check" style="color: var(--color-accent);"></i>
+          </div>
+        </div>
+        <div class="problema-card-item-right">
+          <span class="problema-conteiner-badge-baixo">Solução Zymos</span>
+          <p class="problema-conteiner-text-baixo">Gestão Térmica 
+            Preventiva</p>
+        </div>
+      </div>
+
+  </section>
+  <div id="footer"></div>
+</body>
+
 </html>
