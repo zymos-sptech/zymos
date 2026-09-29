@@ -8,7 +8,7 @@
 
   background:
     linear-gradient(rgba(37, 69, 103, 0.75), rgba(37, 69, 103, 0.75)),
-    url("../zymos/assets/hero-bg.png");
+    url("/assets/images/hero-bg.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,7 +23,7 @@
 #hero h1 {
   color: #ffffff;
   font-family: "Epilogue", sans-serif;
-  font-size: 56px;
+  font-size: 42px;
   font-style: normal;
   font-weight: 700;
   line-height: 64px;

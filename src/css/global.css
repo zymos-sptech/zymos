@@ -26,6 +26,9 @@
   --font-primary: 'Outfit', sans-serif;
   --font-secondary: 'Garet', sans-serif;
   --font-tertiary: 'Epilogue', sans-serif;
+
+  /* Espaçamento */
+  --horizontal-margin: 5%;
 }
 
 /* Reset e Configurações Globais Base */
@@ -40,6 +43,7 @@ body {
   background-color: var(--color-neutral-base);
   color: var(--color-blue-dark);
   -webkit-font-smoothing: antialiased;
+
 }
 
 h1, h2, h3, h4, h5, h6 {
