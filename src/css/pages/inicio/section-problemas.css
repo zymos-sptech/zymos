@@ -18,7 +18,7 @@
 
 .problema-badge-alta {
   color: var(--color-accent);
-  font-size: 0.8875rem;
+  font-size: 0.75rem;
   font-weight: 700;
   line-height: 1rem;
   letter-spacing: 0.0938rem;
@@ -32,7 +32,7 @@
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.0375rem;
-  margin  : 0 0 1.125rem 0;
+  margin: 0 0 1.125rem 0;
 }
 
 .problema-descricao {
@@ -52,8 +52,6 @@
   padding: 1.5rem 2rem;
   max-width: 51.25rem;
   width: 100%;
-  box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.04);
-  box-sizing: border-box;
 }
 
 .problema-conteiner-baixo {
@@ -66,41 +64,36 @@
   padding: 3.5rem 5rem;
   max-width: 51.25rem;
   width: 100%;
-  box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.04);
+  box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
-
 }
 
 .problema-card-item-left {
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 0.85rem;
   flex: 1;
-    margin-left: 0.8rem;
-
-
+  margin-left: 0.8rem;
 }
 .problema-card-item-center {
   display: flex;
-  flex-direction: column ;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 0.85rem;
   flex: 1;
-   margin-left: 0.8rem;
-
+  margin-left: 0.8rem;
 }
 .problema-card-item-right {
   display: flex;
   align-items: center;
-  flex-direction: column ;
+  flex-direction: column;
   justify-content: space-between;
   gap: 0.85rem;
   flex: 1;
-    margin-left: 0.8rem;
-
+  margin-left: 0.8rem;
 }
 
 .icon-box {
@@ -129,10 +122,9 @@
 
 .problema-conteiner-text-baixo {
   color: var(--color-blue-dark);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 700;
-  line-height: 1.3;
-  margin: 1;
+  line-height: 1.3rem;
 }
 
 .divisor-vertical {
