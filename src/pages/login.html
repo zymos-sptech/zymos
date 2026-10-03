@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-con" href="../../assets/logo-icon.png" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/pages/login/style.css" />
+    <title>Zymos - login</title>
+    <script src="../js/pages/login.js"></script>
+    <script
+      src="https://kit.fontawesome.com/79924d81b1.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="login-body">
+    <section class="login-card">
+      <div class="login-header">
+        <a href="../../index.html">
+          <img
+            class="login-logo"
+            src="../../assets/zymos-logo-bege.svg"
+            alt="Zymos Qualidade na fermentação"
+          />
+        </a>
+
+        <h1 class="login-title">Acesse sua conta</h1>
+        <p class="login-description">
+          Monitoramento térmico contínuo para sua cervejaria
+        </p>
+      </div>
+      <form action="">
+        <div class="login-container-input">
+          <label for="iptEmail">E-mail corporativo</label>
+          <div class="login-input-wrapper">
+            <input
+              type="email"
+              name="email"
+              id="iptEmail"
+              placeholder="seuemail@cervejaria.com.br"
+              class="login-input"
+            />
+            <i class="fa-regular fa-envelope login-icon-input-left"></i>
+          </div>
+        </div>
+
+        <div class="login-container-input">
+          <label for="iptEmail">Senha</label>
+          <div class="login-input-wrapper">
+            <input
+              type="password"
+              name="password"
+              id="iptPassword"
+              placeholder="••••••••••••"
+              class="login-input"
+            />
+            <i class="fa-solid fa-lock login-icon-input-left"></i>
+
+            <i
+              onclick="passwordVisible()"
+              id="iconPasswordInvisible"
+              class="fa-regular fa-eye login-icon-input-right"
+            ></i>
+            <i
+              onclick="passwordInvisible()"
+              id="iconPasswordVisible"
+              class="fa-regular fa-eye-slash login-icon-input-right password-visible"
+            ></i>
+          </div>
+        </div>
+        <button type="button" class="btn-login">
+          Entrar
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </form>
+      <div class="login-container-or">
+        <div class="login-line"></div>
+        <span class="login-description">ou</span>
+        <div class="login-line"></div>
+      </div>
+
+      <p class="login-primeiro-acesso">
+        Primeiro acesso? <a href="">Ativar minha conta</a>
+      </p>
+    </section>
+
+    <footer class="login-footer">
+      <p class="login-description login-txt-footer">
+        © Zymos Tecnologia Cervejeira. Todos os direitos reservados.
+      </p>
+    </footer>
+  </body>
+</html>
