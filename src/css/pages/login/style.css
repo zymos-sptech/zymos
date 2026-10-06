@@ -90,16 +90,16 @@
 }
 
 .login-input-wrapper {
-  position: relative; /* Permite posicionar o ícone em relação a esta caixa */
+  position: relative;
   display: flex;
   align-items: center;
 }
 
 .login-icon-input-left {
   position: absolute;
-  left: 12px; /* Distância da borda esquerda */
-  font-size: 16px; /* Ajuste o tamanho se necessário */
-  pointer-events: none; /* Evita que o ícone bloqueie o clique no input */
+  left: 12px; 
+  font-size: 16px; 
+  pointer-events: none; 
 }
 
 .login-icon-input-right {

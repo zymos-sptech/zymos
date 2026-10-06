@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-con" href="../../assets/logo-icon.png" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/pages/cadastro/style.css" />
+    <title>Zymos - Ative sua conta</title>
+    <script src="../js/pages/cadastro.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/79924d81b1.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="cadastro-body">
+    <section class="cadastro-card">
+      <div class="cadastro-header">
+        <a href="../../index.html">
+          <img
+            class="cadastro-logo"
+            src="../../assets/zymos-logo-bege.svg"
+            alt="Zymos Qualidade na fermentação"
+          />
+        </a>
+
+        <h1 class="cadastro-title">Ative sua conta</h1>
+        <p class="cadastro-description">
+          Digite o código de ativação enviado pela Zymos e crie seu acesso
+        </p>
+      </div>
+      <form action="">
+        <div class="cadastro-container-input">
+          <label for="iptCodigo" class="cadastro-label">Código de Ativação</label>
+          <div class="cadastro-input-wrapper">
+            <input
+              type="text"
+              name="codigo"
+              id="iptCodigo"
+              placeholder="EX: ZYM-AMB1-2026"
+              class="cadastro-input"
+            />
+          </div>
+        </div>
+
+        <div class="cadastro-container-input">
+          <label for="iptNome" class="cadastro-label">Nome completo</label>
+          <div class="cadastro-input-wrapper">
+            <input
+              type="text"
+              name="nome"
+              id="iptNome"
+              placeholder="Carlos Silva Mestre"
+              class="cadastro-input"
+            />
+          </div>
+        </div>
+
+        <div class="cadastro-container-input">
+          <label for="iptEmail" class="cadastro-label">E-mail</label>
+          <div class="cadastro-input-wrapper">
+            <input
+              type="email"
+              name="email"
+              id="iptEmail"
+              placeholder="carlos@cervejaria.com.br"
+              class="cadastro-input with-icon-left"
+            />
+            <i class="fa-regular fa-envelope cadastro-icon-input-left"></i>
+          </div>
+        </div>
+
+        <div class="cadastro-container-input">
+          <label for="iptPassword" class="cadastro-label">Senha</label>
+          <div class="cadastro-input-wrapper">
+            <input
+              type="password"
+              name="password"
+              id="iptPassword"
+              placeholder="Crie sua senha segura"
+              class="cadastro-input with-icon-left with-icon-right"
+            />
+            <i class="fa-solid fa-lock cadastro-icon-input-left"></i>
+
+            <i
+              onclick="passwordVisible()"
+              id="iconPasswordInvisible"
+              class="fa-regular fa-eye cadastro-icon-input-right"
+            ></i>
+            <i
+              onclick="passwordInvisible()"
+              id="iconPasswordVisible"
+              class="fa-regular fa-eye-slash cadastro-icon-input-right password-visible"
+            ></i>
+          </div>
+        </div>
+
+        <div class="cadastro-container-input">
+          <label for="iptConfirmPassword" class="cadastro-label">Confirmar Senha</label>
+          <div class="cadastro-input-wrapper">
+            <input
+              type="password"
+              name="confirmPassword"
+              id="iptConfirmPassword"
+              placeholder="Repita a senha"
+              class="cadastro-input with-icon-left with-icon-right"
+            />
+            <i class="fa-solid fa-lock cadastro-icon-input-left"></i>
+
+            <i
+              onclick="confirmPasswordVisible()"
+              id="iconConfirmPasswordInvisible"
+              class="fa-regular fa-eye cadastro-icon-input-right"
+            ></i>
+            <i
+              onclick="confirmPasswordInvisible()"
+              id="iconConfirmPasswordVisible"
+              class="fa-regular fa-eye-slash cadastro-icon-input-right password-visible"
+            ></i>
+          </div>
+        </div>
+        <button type="button" class="btn-cadastro">
+          Criar conta
+          <i class="fa-solid fa-arrow-right" style="margin-left: 0.5rem;"></i>
+        </button>
+      </form>
+
+      <p class="cadastro-ja-tem-conta">
+        Já tem conta? <a href="login.html">Fazer login</a>
+      </p>
+    </section>
+
+    <footer class="cadastro-footer">
+      <div class="cadastro-footer-rede">
+        <div class="cadastro-footer-dot"></div>
+        <span>REDE CERVEJEIRA CONECTADA</span>
+      </div>
+      <p class="cadastro-description cadastro-txt-footer">
+        © Zymos Tecnologia Cervejeira. Todos os direitos reservados.
+      </p>
+    </footer>
+  </body>
+</html>
