@@ -75,6 +75,8 @@
  
     border-radius: 16px;
     background: #F0F5EE;
+    
+    
 }
  
 .captacao-card-topo {
@@ -147,9 +149,10 @@
     background: rgba(255, 255, 255, 0.80);
 }
  
-.captacao-beneficio-icone {
-    width: 18px;
-    height: 18px;
+.captacao-icone-marrom {
+    color: var(--color-accent);
+    width: 24px;
+    height: 24px;
 }
  
 .captacao-beneficio-icone.impacto {
