@@ -7,8 +7,8 @@ function exibir(e) {
     let i = 0
     while (i < div_faqs.length) {
         let el_faq = div_faqs[i]
-        let el_resp = div_faqs[i].nextElementSibling
-        let el_arrow = div_faqs[i].childNodes[3]
+        let el_resp = el_faq.nextElementSibling
+        let el_arrow = el_faq.childNodes[3]
         if (el_resp.id == div_resposta.id) {
             if (el_resp.classList.contains('hide')) {
                 el_resp.classList.remove('hide')
