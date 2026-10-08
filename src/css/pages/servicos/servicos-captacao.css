@@ -1,0 +1,180 @@
+.servicos-captacao {
+    display: flex;
+    height: 685px;
+    padding: 106px 116px 105px 116px;
+    justify-content: center;
+    align-items: center;
+ 
+    background: #FFF;
+}
+ 
+.captacao-container {
+    display: flex;
+    width: 1280px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+}
+ 
+
+.captacao-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-self: stretch;
+}
+ 
+.captacao-header-titulos {
+    display: flex;
+    max-width: 672px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+ 
+.captacao-eyebrow {
+    color: #7D562C;
+    font-family: Outfit;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px; 
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+ 
+.captacao-titulo {
+    color: #426084;
+    font-family: Epilogue;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 36px; 
+    letter-spacing: -0.28px;
+}
+ 
+.captacao-descricao {
+    max-width: 448px;
+    padding-right: 15.2px;
+ 
+    color: #50453B;
+    font-family: Outfit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; 
+}
+ 
+
+.captacao-card {
+    display: flex;
+    height: 342px;
+    padding: 52px 40px 0 40px;
+    flex-direction: column;
+    align-self: stretch;
+ 
+    border-radius: 16px;
+    background: #F0F5EE;
+    
+    
+}
+ 
+.captacao-card-topo {
+    display: flex;
+    height: 56px;
+    align-items: flex-start;
+    gap: 18px;
+}
+ 
+.captacao-card-icone {
+    display: flex;
+    width: 56px;
+    height: 56px;
+    justify-content: center;
+    align-items: center;
+ 
+    border-radius: 12px;
+    background: #FFF;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+}
+ 
+.captacao-card-icone img {
+    width: 10px;
+    height: 20px;
+}
+ 
+.captacao-card-titulo {
+    width: 907px;
+    padding-top: 16px;
+ 
+    color: #426084;
+    font-family: Epilogue;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px; 
+}
+ 
+.captacao-card-corpo {
+    margin-top: 29px;
+    align-self: stretch;
+ 
+    color: #50453B;
+    font-family: Outfit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; 
+}
+ 
+
+.captacao-beneficios {
+    display: flex;
+    height: 84px;
+    margin-top: 8px;
+    padding-top: 16px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+}
+ 
+.captacao-beneficio {
+    display: flex;
+    padding: 16px;
+    align-items: center;
+    gap: 16px;
+    flex: 1 0 0;
+ 
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.80);
+}
+ 
+.captacao-icone-marrom {
+    color: var(--color-accent);
+    width: 24px;
+    height: 24px;
+}
+ 
+.captacao-beneficio-icone.impacto {
+    width: 22px;
+    height: 21px;
+}
+ 
+.captacao-beneficio-label {
+    color: #50453B;
+    font-family: Outfit;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; 
+    letter-spacing: 0.48px;
+}
+ 
+.captacao-beneficio-valor {
+    color: #426084;
+    font-family: Outfit;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+}
