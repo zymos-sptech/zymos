@@ -14,6 +14,7 @@
     />
     <link rel="stylesheet" href="./src/css/pages/inicio/section-main.css" />
 
+    <link rel="stylesheet" href="./src/css/components/navbar.css" />
     <script
       src="https://kit.fontawesome.com/79924d81b1.js"
       crossorigin="anonymous"
@@ -23,7 +24,39 @@
     <title>Zymos - Inicio</title>
   </head>
   <body>
-    <div id="header"></div>
+    <header class="navBar">
+      <img
+        class="logo"
+        src="./assets/zymos-logo-bege.svg"
+        alt="zymos"
+        draggable="false"
+      />
+      <nav>
+        <ul>
+          <li><a href="./index.html" class="seleciodo">Inicio</a></li>
+          <li><a href="">Sobre nós</a></li>
+          <li><a href="">Serviços</a></li>
+          <li><a href="./src/pages/planos.html">Planos</a></li>
+          <li><a href="">Simulador</a></li>
+          <li><a href="">Contato</a></li>
+        </ul>
+      </nav>
+      
+      <div class="container-login-cadastro">
+        <a href="./src/pages/login.html">
+          <button class="btn-login cursor">
+            <i
+              class="fa-solid fa-arrow-right-to-bracket"
+              style="color: var(--color-blue-dark)"
+            ></i>
+            Entrar
+          </button>
+        </a>
+        <a href="./src/pages/cadastro.html">
+          <button class="btn-cadastro cursor">Cadastre-se</button>
+        </a>
+      </div>
+    </header>
 
     <section id="hero">
       <div class="hero-content">

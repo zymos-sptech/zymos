@@ -5,19 +5,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon" type="image/x-con" href="./assets/logo-icon.png" />
-    <link rel="stylesheet" href="../../css/global.css" />
-    <link rel="stylesheet" href="../../css/pages/planos/planos.css" />
+    <link rel="icon" type="image/x-con" href="../../assets/logo-icon.png" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/pages/planos/planos.css" />
 
+    <link rel="stylesheet" href="../css/components/navbar.css" />
     <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
-    <script type="module" src="../../js/navbar.js"></script>
-    <script type="module" src="../../js/footer.js"></script>
-    <script src="./planos.js"></script>
+    <script type="module" src="../js/navbar.js"></script>
+    <script type="module" src="../js/footer.js"></script>
+    <script src="../js/pages/planos.js"></script>
     <title>Zymos - Planos</title>
 </head>
 
 <body>
-    <div id="header"></div>
+    <header class="navBar">
+      <img
+        class="logo"
+        src="../../assets/zymos-logo-bege.svg"
+        alt="zymos"
+        draggable="false"
+      />
+      <nav>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="">Sobre nós</a></li>
+          <li><a href="">Serviços</a></li>
+          <li><a href="./planos.html" class="seleciodo">Planos</a></li>
+          <li><a href="">Simulador</a></li>
+          <li><a href="">Contato</a></li>
+        </ul>
+      </nav>
+      
+      <div class="container-login-cadastro">
+        <a href="./login.html">
+          <button class="btn-login cursor">
+            <i
+              class="fa-solid fa-arrow-right-to-bracket"
+              style="color: var(--color-blue-dark)"
+            ></i>
+            Entrar
+          </button>
+        </a>
+        <a href="./cadastro.html">
+          <button class="btn-cadastro cursor">Cadastre-se</button>
+        </a>
+      </div>
+    </header>
     <section class="section-planos">
         <section class="section-intro">
             <div class="intro-div-container-titulo">
