@@ -1,0 +1,166 @@
+.section-solucao {
+  width: 1512px;
+  height: 762px;
+  display: flex;
+  background: #426084;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5.25em 0;
+}
+
+.container-solucao {
+  display: flex;
+  width: 1280px;
+  max-width: 1280px;
+  padding: 0 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 56px;
+}
+
+.solucao-arquitetura {
+  align-self: stretch;
+  color: #f0bd8a;
+  font-family: Outfit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.solucao-titulo {
+  align-self: stretch;
+  color: #fff;
+  font-family: Epilogue;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: -0.6px;
+}
+
+.solucao-subtitulo {
+  align-self: stretch;
+  color: #d1e4ff;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.solucao-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  width: 100%;
+  align-items: stretch;
+}
+
+.solucao-card1,
+.solucao-card2,
+.solucao-card3,
+.solucao-card4 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 245px;
+  height: 100%;
+  padding: 24px;
+
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.15);
+}
+
+.solucao-card1-icon-background,
+.solucao-card2-icon-background,
+.solucao-card3-icon-background,
+.solucao-card4-icon-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #f0f5ee;
+}
+
+.solucao-card1-icon,
+.solucao-card2-icon,
+.solucao-card3-icon,
+.solucao-card4-icon {
+  display: block;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.solucao-card1-icon {
+  width: 21.667px;
+  height: 15.329px;
+}
+
+.solucao-card2-icon {
+  width: 21.125px;
+  height: 17.333px;
+}
+
+.solucao-card3-icon {
+  width: 21.667px;
+  height: 20.583px;
+}
+
+.solucao-card4-icon {
+  width: 19.5px;
+  height: 20.583px;
+}
+
+.solucao-card1-titulo,
+.solucao-card2-titulo,
+.solucao-card3-titulo,
+.solucao-card4-titulo {
+  width: 100%;
+  color: #426084;
+  font-family: Epilogue, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+  margin: 0;
+}
+
+.solucao-card1-texto,
+.solucao-card2-texto,
+.solucao-card3-texto,
+.solucao-card4-texto {
+  width: 100%;
+  color: #50453b;
+  font-family: Outfit, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22.75px;
+  margin: 0;
+}
+
+.section-solucao {
+  width: 100%;
+  overflow-x: clip;
+}
+
+.container-solucao {
+  width: 100%;
+  max-width: 1280px;
+  min-width: 0;
+  box-sizing: border-box;
+}

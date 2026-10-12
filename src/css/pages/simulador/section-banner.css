@@ -1,0 +1,50 @@
+main {
+  padding: 32px var(--horizontal-margin, 5%);
+}
+
+.banner {
+  max-width: 1400px;
+  min-height: 200px;
+  margin: 0 auto 32px auto;
+  padding: 28px 24px;
+  border-radius: 10px;
+  background-color: var(--color-green-light);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.banner-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background-color: var(--color-neutral-gray);
+  color: var(--color-blue-dark);
+  font-family: var(--font-primary);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.banner-tag i {
+  font-size: 11px;
+  color: var(--color-blue-dark);
+}
+
+.banner h1 {
+  max-width: 540px;
+  margin: 10px 0;
+  color: var(--color-blue-dark);
+  font-family: var(--font-tertiary);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.banner p {
+  max-width: 440px;
+  color: var(--color-accent-brown);
+  font-family: var(--font-primary);
+  font-size: 13px;
+  line-height: 1.5;
+}

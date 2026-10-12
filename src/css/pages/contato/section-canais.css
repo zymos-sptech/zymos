@@ -1,0 +1,161 @@
+/* Card com a imagem da cervejaria e monitoramento */
+.contato-card-imagem-monitoramento {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 220px;
+}
+
+.contato-gradient {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 220px;
+  background-image:
+    linear-gradient(
+      0deg,
+      rgba(66, 96, 132, 0.9) 0%,
+      rgba(66, 96, 132, 0.2) 50%,
+      rgba(66, 96, 132, 0) 100%
+    ),
+    url(../../../../assets/images/contato/monitoramento-fabrica.webp);
+}
+
+/* Ajuste da imagem para cobrir a área do card sem distorcer */
+.contato-imagem-fundo-cervejaria {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Faixa sobreposta na imagem com informações dos sensores e temperatura */
+.contato-faixa-status-imagem {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  background-color: var(--color-neutral-light);
+  backdrop-filter: blur(4px);
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-blue-dark);
+}
+
+/* Indicador visual de sensores ativos */
+.contato-status-sensores-ativo {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.contato-status-sensores-ativo i {
+  font-size: 0.5rem;
+  color: var(--colo-accent-brown);
+}
+
+/* Card verde claro agrupando os canais diretos de engenharia */
+.contato-card-canais-engenharia {
+  background-color: var(--color-neutral-light);
+  padding: 1.25rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Título do bloco de canais de engenharia */
+.contato-titulo-canais-engenharia {
+  font-size: 1rem;
+  color: var(--color-blue-dark);
+  margin: 0;
+}
+
+/* Caixas individuais para cada meio de contato (E-mail / Telefone) */
+.contato-item-canal-contato {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--white);
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.5rem;
+}
+
+/* Caixa com o ícone do canal de contato */
+.contato-icone-canal-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--color-neutral-light);
+  border-radius: 0.5rem;
+  color: var(--color-blue-dark);
+  font-size: 1.1rem;
+}
+
+/* Descrição minúscula acima do valor do contato */
+.contato-rotulo-pequeno-canal {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--colo-accent-brown);
+}
+
+/* Valor principal do contato (número ou e-mail) */
+.contato-valor-canal-contato {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--color-blue-dark);
+}
+
+/* Bloco contendo as vantagens e garantias de atendimento */
+.contato-bloco-diferenciais-atendimento {
+  margin-top: 0.25rem;
+}
+
+/* Parágrafos de diferenciais da equipe */
+.contato-texto-diferencial {
+  font-size: 0.75rem;
+  color: var(--colo-accent-brown);
+  margin: 0.35rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+/* Card inferior sobre a base operacional e abrangência */
+.contato-card-base-operacional {
+  background-color: var(--color-neutral-light);
+  padding: 0.85rem 1.25rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contato-base-operacional-conteudo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--colo-accent-brown);
+}
+
+/* Texto descritivo da base operacional */
+.contato-descricao-base-operacional {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--color-blue-dark);
+}
+
+/* Selo "Nacional" do card operacional */
+.contato-selo-nacional {
+  background-color: var(--color-blue-light);
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
