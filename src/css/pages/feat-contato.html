@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/css/global.css" />
+    <link rel="stylesheet" href="./src/css/pages/feat-contato.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Zymos - Contatos</title>
+</head>
+
+<body>
+    <section class="feat-contato">
+        <div class="feat-contato-conteudo">
+
+            <!-- COLUNA ESQUERDA -->
+            <div class="feat-contato-coluna-formulario">
+
+                <p class="feat-contato-etiqueta-atendimento">
+                    <span class="feat-contato-etiqueta-ponto-decorativo">●</span>
+                    ATENDIMENTO PROPOSTAS
+                </p>
+
+                <h1 class="feat-contato-titulo-principal">
+                    Vamos conversar sobre a fermentação da sua cervejaria?
+                </h1>
+
+                <p class="feat-contato-descricao-principal">
+                    Veja como é simples ter visibilidade contínua da temperatura dos seus tanques.
+                    Preencha o formulário para receber uma proposta sob medida e tirar dúvidas com nossa equipe.
+                </p>
+
+                <div class="feat-contato-card-formulario">
+
+                    <div class="feat-contato-card-formulario-cabecalho">
+                        <div>
+                            <h3 class="feat-contato-card-formulario-titulo">Solicitar Demonstração &amp; Proposta</h3>
+                            <p class="feat-contato-card-formulario-subtitulo">Resposta técnica detalhada em até 4 horas
+                                úteis.</p>
+                        </div>
+                        <div class="feat-contato-selo-iot">
+                            <i class="fa-regular fa-circle-check" style="color: var(--colo-accent-brown);"></i>
+                            <span>IoT Industrial</span>
+                        </div>
+                    </div>
+
+                    <div class="feat-contato-formulario-contato">
+
+                        <div class="feat-contato-formulario-linha-dupla">
+                            <div class="feat-contato-campo-grupo">
+                                <div class="feat-contato-campo-rotulo" for="nome">Nome completo *</div>
+                                <input class="campo-input" type="text" id="nome" name="nome"
+                                    placeholder="Ex: Carlos Albuquerque" required>
+                            </div>
+                            <div class="feat-contato-campo-grupo">
+                                <div class="feat-contato-campo-rotulo" for="email">E-mail corporativo *</div>
+                                <input class="campo-input" type="email" id="email" name="email"
+                                    placeholder="carlos@cervejaria.com.br" required>
+                            </div>
+                        </div>
+
+                        <div class="feat-contato-formulario-linha-dupla">
+                            <div class="feat-contato-campo-grupo">
+                                <div class="feat-contato-campo-rotulo" for="empresa">Cervejaria / Empresa *</div>
+                                <input class="campo-input" type="text" id="empresa" name="empresa"
+                                    placeholder="Nome da sua fábrica, brewpub ou marca" required>
+                            </div>
+                            <div class="feat-contato-campo-grupo">
+                                <span class="feat-contato-campo-rotulo">Quantidade de tanques</span>
+                                <div class="feat-contato-grupo-botoes-opcao">
+                                    <button type="button" class="feat-contato-botao-opcao-tanque">1 a 4</button>
+                                    <button type="button" class="feat-contato-botao-opcao-tanque selecionado">5 a
+                                        14</button>
+                                    <button type="button" class="feat-contato-botao-opcao-tanque">15 ou mais
+                                        tanques</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feat-contato-campo-grupo">
+                            <div class="feat-contato-campo-rotulo feat-contato-campo-rotulo-com-opcional"
+                                for="mensagem">
+                                Mensagem / Perfil da Operação
+                                <span class="feat-contato-texto-opcional">Opcional</span>
+                        </div>
+                            <textarea class="feat-contato-campo-texto-area" id="mensagem" name="mensagem" rows="4"
+                                placeholder="Conte um pouco sobre sua produção: quantos litros costuma fazer, principais desafios com controle de frio ou dúvidas sobre a instalação..."></textarea>
+                        </div>
+
+                        <div class="feat-contato-consentimento">
+                            <input type="checkbox" name="consentimento" required>
+                            Concordo em receber diagnóstico térmico personalizado e contato consultivo da equipe Zymos.
+                        </div>
+
+                        <button type="submit" class="feat-contato-botao-enviar-formulario">
+                            Enviar mensagem <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUNA DIREITA -->
+            <div class="feat-contato-coluna-informacoes">
+                
+                <div class="feat-contato-card-imagem-monitoramento">
+                    
+                    <img class="feat-contato-imagem-fundo-cervejaria" src="../../../assets/images/imagem_fabricapng.png"
+                      alt="">
+ 
+                    
+                    
+                    <div class="feat-contato-faixa-status-imagem">
+                        <span class="feat-contato-status-sensores-ativo">
+                            <i class="fa-solid fa-circle"></i>
+                            Rede de Sensores Ativa
+                        </span>
+                        <span>Tanque F1-F4 • 18.4°C</span>
+                    </div>
+                </div>
+
+                <div class="feat-contato-card-canais-engenharia">
+                    <h3 class="feat-contato-titulo-canais-engenharia">Canais Diretos de Engenharia</h3>
+
+                    <div class="feat-contato-item-canal-contato">
+                        <span class="feat-contato-icone-canal-box">
+                            <i class="fa-regular fa-envelope"></i>
+                        </span>
+                        <div>
+                            <span class="feat-contato-rotulo-pequeno-canal">E-mail corporativo</span>
+                            <p class="feat-contato-valor-canal-contato">contato@zymos.com.br</p>
+                        </div>
+                    </div>
+
+                    <div class="feat-contato-item-canal-contato">
+                        <span class="feat-contato-icone-canal-box">
+                            <i class="fa-solid fa-phone"></i>
+                        </span>
+                        <div>
+                            <span class="feat-contato-rotulo-pequeno-canal">Telefone comercial</span>
+                            <p class="feat-contato-valor-canal-contato">(11) 3456-7890</p>
+                        </div>
+                    </div>
+
+                    <div class="feat-contato-bloco-diferenciais-atendimento">
+                        <p class="feat-contato-texto-diferencial">
+                            <i class="fa-regular fa-clock"></i>
+                            <span><b>Resposta em até 4 horas úteis:</b> retorno ágil com nossa equipe de
+                                projetos.</span>
+                        </p>
+                        <p class="feat-contato-texto-diferencial">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span><b>Atendimento direto com especialistas:</b> cervejeiros e engenheiros
+                                dedicados.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="feat-contato-card-base-operacional">
+                    <div class="feat-contato-base-operacional-conteudo">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p class="feat-contato-descricao-base-operacional">
+                            <strong>Base Operacional</strong><br>
+                            Implantação em todo o Brasil sem parar sua produção
+                        </p>
+                    </div>
+                    <span class="feat-contato-selo-nacional">Nacional</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</body>
+<script>
+    //  Guarda todos os botões de tanque em uma lista
+    const botoesTanque = document.querySelectorAll('.feat-contato-botao-opcao-tanque');
+
+    // Para cada botão da lista 
+    botoesTanque.forEach(function (botao) {
+
+        // fica "escutando" o clique
+        botao.addEventListener('click', function () {
+
+            // Remove a classe "selecionado" de todos os botões
+            botoesTanque.forEach(function (outro) {
+                outro.classList.remove('selecionado');
+            });
+
+            // 5. Adiciona a classe só no botão clicado
+            botao.classList.add('selecionado');
+        });
+    });
+</script>
+
+</html>
