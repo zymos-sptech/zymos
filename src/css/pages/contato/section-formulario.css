@@ -1,0 +1,198 @@
+/* Emblema/Etiqueta superior que destaca o assunto principal */
+.contato-etiqueta-atendimento {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--color-neutral-light);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-blue-dark);
+  width: fit-content;
+}
+
+/* Ponto decorativo na etiqueta */
+.contato-etiqueta-ponto-decorativo {
+  color: var(--color-blue-dark);
+}
+
+/* Título principal da página */
+.contato-titulo-principal {
+  color: var(--color-blue-dark);
+  font-family: var(--font-primary);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* Subtítulo descritivo da página */
+.contato-descricao-principal {
+  color: var(--colo-accent-brown);
+  font-family: var(--font-primary), sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Cartão que envolve todo o formulário de proposta */
+.contato-card-formulario {
+  background-color: var(--white);
+  border-radius: 1rem;
+  padding: 1.75rem;
+  border: 1px solid var(--white);
+  box-shadow: 0 10px 25px -5px rgba(37, 69, 103, 0.08);
+}
+
+/* Cabeçalho superior do formulário */
+.contato-card-formulario-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+/* Título interno do formulário */
+.contato-card-formulario-titulo {
+  font-size: 1.125rem;
+  color: var(--color-blue-dark);
+  margin: 0;
+}
+
+/* Subtítulo interno do formulário com prazo de resposta */
+.contato-card-formulario-subtitulo {
+  font-size: 0.875rem;
+  color: var(--colo-accent-brown);
+  margin: 0.25rem 0 0 0;
+}
+
+/* Selo de identificação tecnológica no cabeçalho do formulário */
+.contato-selo-iot {
+  width: 9.625rem;
+  height: 1.925rem;
+  background-color: var(--color-neutral-light);
+  border-radius: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-shrink: 0;
+}
+
+/* Estrutura principal do formulário */
+.contato-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Agrupador de campos para alinhamento em 2 colunas lado a lado */
+.contato-formulario-linha-dupla {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Agrupador individual para cada rótulo (label) e campo de entrada (input) */
+.contato-campo-grupo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Rótulos descritivos acima dos campos */
+.contato-campo-rotulo {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--colo-accent-brown);
+}
+
+/* Alinhamento para rótulo e texto "Opcional" na mesma linha */
+.contato-campo-rotulo-com-opcional {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Texto indicativo de campo opcional */
+.contato-texto-opcional {
+  font-size: 0.75rem;
+  color: var(--colo-accent-brown);
+}
+
+/* Estilização para caixas de texto e áreas de mensagem */
+.campo-input,
+.contato-campo-texto-area {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--color-neutral-light);
+  border-radius: 0.5rem;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  box-sizing: border-box;
+}
+
+/* Grupo de botões para escolha da quantidade de tanques */
+.contato-grupo-botoes-opcao {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* Botão de seleção individual para tanques */
+.contato-botao-opcao-tanque {
+  flex: 1;
+  padding: 0.65rem 0.25rem;
+  border: 1px solid transparent;
+  background-color: var(--color-neutral-light);
+  color: var(--colo-accent-brown);
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Estado do botão de opção quando está selecionado */
+.contato-botao-opcao-tanque.selecionado {
+  background-color: var(--color-blue-dark);
+  color: var(--color-neutral-light);
+  border-color: var(--color-blue-dark);
+}
+
+/* Linha de consentimento com checkbox, acima do botão de envio */
+.contato-consentimento {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-blue-dark);
+  cursor: pointer;
+}
+
+/* Botão principal de envio do formulário */
+.contato-botao-enviar-formulario {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: var(--color-blue-dark);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.contato-botao-enviar-formulario:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .contato-formulario-linha-dupla {
+    flex-direction: column;
+  }
+}
