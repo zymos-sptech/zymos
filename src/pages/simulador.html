@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="../../assets/branding/favicon.png"
+    />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/components/navbar.css" />
+    <link rel="stylesheet" href="../css/pages/simulador/section-banner.css" />
+    <link
+      rel="stylesheet"
+      href="../css/pages/simulador/section-simulador.css"
+    />
+    <link rel="stylesheet" href="../css/pages/simulador/section-destaque.css" />
+    <link
+      rel="stylesheet"
+      href="../css/pages/simulador/section-proximo-passo.css"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/79924d81b1.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="../js/footer.js"></script>
+    <script src="../js/pages/simulador.js" defer></script>
+    <title>Zymos - Simulador Financeiro</title>
+  </head>
+
+  <body>
+    <header class="navBar">
+      <img
+        class="logo"
+        src="../../assets/branding/logo-bege.svg"
+        alt="zymos"
+        draggable="false"
+      />
+      <nav>
+        <ul>
+          <li><a href="../../index.html">Inicio</a></li>
+          <li><a href="">Sobre nós</a></li>
+          <li><a href="./servicos.html">Serviços</a></li>
+          <li><a href="./planos.html">Planos</a></li>
+          <li><a href="./simulador.html" class="seleciodo">Simulador</a></li>
+          <li><a href="./contato.html">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="container-login-cadastro">
+        <a href="./login.html">
+          <button class="btn-login cursor">
+            <i
+              class="fa-solid fa-arrow-right-to-bracket"
+              style="color: var(--color-blue-dark)"
+            ></i>
+            Entrar
+          </button>
+        </a>
+        <a href="./cadastro.html">
+          <button class="btn-cadastro cursor">Cadastre-se</button>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="banner">
+        <span class="banner-tag">
+          <i class="fa-solid fa-calculator" aria-hidden="true"></i>
+          CALCULADORA DE PRECISÃO TÉRMICA
+        </span>
+        <h1>Calcule o quanto sua cervejaria economiza com a Zymos</h1>
+        <p>
+          Descubra quanto dinheiro e volume de cerveja você deixa de perder ao
+          evitar oscilações de temperatura durante a fermentação.
+        </p>
+      </section>
+
+      <section class="simulador">
+        <h2>Simulador de Perdas Térmicas</h2>
+        <p class="simulador-sub">
+          Modelagem analítica para tanques de maturação & fermentação
+        </p>
+
+        <div class="simulador-conteudo">
+          <div class="painel">
+            <div class="painel-header">
+              <h1>
+                <i class="fa-solid fa-sliders" style="color: var(--color-accent);" aria-hidden="true"></i>
+                Parâmetros Fabris
+              </h1>
+              <span class="painel-etapa">Etapa 1 de 1</span>
+            </div>
+
+            <div class="campo">
+              <label for="ipt_litros">
+                <span>Produção anual da cervejaria (Litros)</span>
+                <span class="label-dado" id="span_litros_preview">6.000 L</span>
+              </label>
+              <div class="input-icone">
+                <i class="fa-solid fa-droplet" aria-hidden="true"></i>
+                <input
+                  type="number"
+                  id="ipt_litros"
+                  placeholder="6000"
+                  min="1"
+                />
+              </div>
+            </div>
+
+            <div class="linha-1">
+              <div class="campo">
+                <label for="ipt_custo_producao"
+                  >Custo médio para produzir 1 litro (R$)</label
+                >
+                <div class="input-icone input-moeda">
+                  <span class="icone-moeda">R$</span>
+                  <input
+                    type="number"
+                    id="ipt_custo_producao"
+                    placeholder="1.50"
+                  />
+                </div>
+              </div>
+
+              <div class="campo">
+                <label for="ipt_preco_litro"
+                  >Preço médio de venda do litro (R$)</label
+                >
+                <div class="input-icone input-moeda">
+                  <span class="icone-moeda">R$</span>
+                  <input
+                    type="number"
+                    id="ipt_preco_litro"
+                    placeholder="15.00"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label for="ipt_taxa">
+                <span>Taxa média de descarte por falhas térmicas (%)</span>
+                <span class="etiqueta">
+                  <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                  5% Média Setor
+                </span>
+              </label>
+              <div class="input-icone input-sufixo">
+                <i class="fa-solid fa-temperature-half" aria-hidden="true"></i>
+                <input
+                  type="number"
+                  id="ipt_taxa"
+                  placeholder="5.0"
+                  step="0.1"
+                  min="0"
+                  max="100"
+                />
+                <span class="sufixo-input">%</span>
+              </div>
+              <span class="campo-aviso">
+                Na ausência do dado, será usado o desperdício aproximado de 5%
+              </span>
+            </div>
+
+            <div class="campo">
+              <label>Estilo predominante (Ale / Lager)</label>
+              <div class="tipo-cerveja" id="div_estilos">
+                <button
+                  type="button"
+                  class="estilo"
+                  id="btn_ale"
+                  onclick="escolherAle()"
+                >
+                  <i class="fa-solid fa-beer-mug-empty" aria-hidden="true"></i>
+                  Ale (18°C - 22°C)
+                </button>
+                <button
+                  type="button"
+                  class="estilo"
+                  id="btn_lager"
+                  onclick="escolherLager()"
+                >
+                  <i class="fa-regular fa-snowflake" aria-hidden="true"></i>
+                  Lager (8°C - 13°C)
+                </button>
+              </div>
+            </div>
+
+            <button type="button" class="btn-simular" onclick="simular()">
+              <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
+              Simular Impacto Financeiro
+            </button>
+          </div>
+
+          <div id="div_exibir"></div>
+        </div>
+
+        <div class="simulador-cta">
+          <div>
+            <h3>Estes valores te incomodam?</h3>
+            <p>
+              Proteja sua receita e garanta a repetibilidade exata de cada
+              receita
+            </p>
+          </div>
+          <a href="./contato.html" class="btn-especialista">
+            <i class="fa-solid fa-headset" aria-hidden="true"></i>
+            Falar com especialista
+          </a>
+        </div>
+      </section>
+
+      <section class="destaque">
+        <span class="destaque-tag">CONTROLE EM NÍVEL DE GRAU CELSIUS</span>
+        <h2>Precisão milimétrica para proteger seu trabalho</h2>
+        <p>
+          Sensores IoT intrusivos e de cinta ajustável conectados 24h/dia,
+          reportando variações térmicas instantâneas antes que o perfil
+          sensorial da cerveja seja comprometido.
+        </p>
+      </section>
+
+      <section class="proximo-passo">
+        <span class="proximo-passo-tag">PRÓXIMO PASSO</span>
+        <h2>Pronto para parar de perder lotes?</h2>
+        <p>
+          Descubra os planos de monitoramento contínuo calibrados
+          especificamente para a escala e o número de tanques da sua cervejaria.
+        </p>
+        <a href="./planos.html" class="btn-planos">
+          Ver Planos
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </section>
+    </main>
+
+    <div id="footer"></div>
+  </body>
+</html>
