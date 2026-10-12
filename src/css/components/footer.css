@@ -3,9 +3,7 @@ footer {
   flex-direction: column;
   background-color: var(--color-blue-dark);
   padding: 41px 0;
-
   gap: 40px;
-
   color: var(--color-neutral-light);
 }
 
@@ -53,7 +51,7 @@ footer {
   gap: 8px;
 }
 
-span {
+.container-column span {
   font-size: 10px;
 }
 
@@ -75,6 +73,16 @@ span {
   text-align: left;
 }
 
+.container-column a {
+  color: var(--color-neutral-light);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.container-column a:hover {
+  color: var(--color-accent);
+}
+
 .text-contato {
   font-size: 14px;
   font-style: normal;
@@ -85,6 +93,7 @@ span {
 .row-margin-bottom {
   margin-bottom: 12px;
 }
+
 .container-rodape {
   border-top: 1px solid var(--color-blue-medium);
   padding-top: 24px;
