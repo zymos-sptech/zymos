@@ -137,7 +137,7 @@
     border-radius: 0.75em;
     background-image:
         linear-gradient(90deg, rgba(66, 96, 132, 0.95) 0%, rgba(66, 96, 132, 0.5) 75%, rgba(66, 96, 132, 0.10) 100%),
-        url(../../../../assets/images/planos-layer-bkg.svg);
+        url(../../../../assets/images/planos/planos-bg.webp);
 }
 
 .ambiente-container {

@@ -1,28 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="icon" type="image/x-con" href="../../assets/logo-icon.png" />
+    <link
+      rel="icon"
+      type="image/x-con"
+      href="../../assets/branding/favicon.png"
+    />
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/components/navbar.css" />
     <link rel="stylesheet" href="../css/pages/contato/section-main.css" />
     <link rel="stylesheet" href="../css/pages/contato/section-formulario.css" />
     <link rel="stylesheet" href="../css/pages/contato/section-canais.css" />
 
-    <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/79924d81b1.js"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="../js/footer.js"></script>
     <script src="../js/pages/contato.js" defer></script>
     <title>Zymos - Contato</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="navBar">
       <img
         class="logo"
-        src="../../assets/zymos-logo-bege.svg"
+        src="../../assets/branding/logo-bege.svg"
         alt="zymos"
         draggable="false"
       />
@@ -54,161 +60,216 @@
     </header>
 
     <section class="contato-section">
-        <div class="contato-conteudo">
+      <div class="contato-conteudo">
+        <!-- COLUNA ESQUERDA -->
+        <div class="contato-coluna-formulario">
+          <p class="contato-etiqueta-atendimento">
+            <span class="contato-etiqueta-ponto-decorativo">●</span>
+            ATENDIMENTO PROPOSTAS
+          </p>
 
-            <!-- COLUNA ESQUERDA -->
-            <div class="contato-coluna-formulario">
+          <h1 class="contato-titulo-principal">
+            Vamos conversar sobre a fermentação da sua cervejaria?
+          </h1>
 
-                <p class="contato-etiqueta-atendimento">
-                    <span class="contato-etiqueta-ponto-decorativo">●</span>
-                    ATENDIMENTO PROPOSTAS
+          <p class="contato-descricao-principal">
+            Veja como é simples ter visibilidade contínua da temperatura dos
+            seus tanques. Preencha o formulário para receber uma proposta sob
+            medida e tirar dúvidas com nossa equipe.
+          </p>
+
+          <div class="contato-card-formulario">
+            <div class="contato-card-formulario-cabecalho">
+              <div>
+                <h3 class="contato-card-formulario-titulo">
+                  Solicitar Demonstração &amp; Proposta
+                </h3>
+                <p class="contato-card-formulario-subtitulo">
+                  Resposta técnica detalhada em até 4 horas úteis.
                 </p>
-
-                <h1 class="contato-titulo-principal">
-                    Vamos conversar sobre a fermentação da sua cervejaria?
-                </h1>
-
-                <p class="contato-descricao-principal">
-                    Veja como é simples ter visibilidade contínua da temperatura dos seus tanques.
-                    Preencha o formulário para receber uma proposta sob medida e tirar dúvidas com nossa equipe.
-                </p>
-
-                <div class="contato-card-formulario">
-
-                    <div class="contato-card-formulario-cabecalho">
-                        <div>
-                            <h3 class="contato-card-formulario-titulo">Solicitar Demonstração &amp; Proposta</h3>
-                            <p class="contato-card-formulario-subtitulo">Resposta técnica detalhada em até 4 horas
-                                úteis.</p>
-                        </div>
-                        <div class="contato-selo-iot">
-                            <i class="fa-regular fa-circle-check" style="color: var(--colo-accent-brown);"></i>
-                            <span>IoT Industrial</span>
-                        </div>
-                    </div>
-
-                    <form class="contato-formulario" onsubmit="event.preventDefault()">
-
-                        <div class="contato-formulario-linha-dupla">
-                            <div class="contato-campo-grupo">
-                                <label class="contato-campo-rotulo" for="nome">Nome completo *</label>
-                                <input class="campo-input" type="text" id="nome" name="nome"
-                                    placeholder="Ex: Carlos Albuquerque" required>
-                            </div>
-                            <div class="contato-campo-grupo">
-                                <label class="contato-campo-rotulo" for="email">E-mail corporativo *</label>
-                                <input class="campo-input" type="email" id="email" name="email"
-                                    placeholder="carlos@cervejaria.com.br" required>
-                            </div>
-                        </div>
-
-                        <div class="contato-formulario-linha-dupla">
-                            <div class="contato-campo-grupo">
-                                <label class="contato-campo-rotulo" for="empresa">Cervejaria / Empresa *</label>
-                                <input class="campo-input" type="text" id="empresa" name="empresa"
-                                    placeholder="Nome da sua fábrica, brewpub ou marca" required>
-                            </div>
-                            <div class="contato-campo-grupo">
-                                <span class="contato-campo-rotulo">Quantidade de tanques</span>
-                                <div class="contato-grupo-botoes-opcao">
-                                    <button type="button" class="contato-botao-opcao-tanque">1 a 4</button>
-                                    <button type="button" class="contato-botao-opcao-tanque selecionado">5 a 14</button>
-                                    <button type="button" class="contato-botao-opcao-tanque">15 ou mais tanques</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="contato-campo-grupo">
-                            <div class="contato-campo-rotulo contato-campo-rotulo-com-opcional">
-                                <label for="mensagem">Mensagem / Perfil da Operação</label>
-                                <span class="contato-texto-opcional">Opcional</span>
-                            </div>
-                            <textarea class="contato-campo-texto-area" id="mensagem" name="mensagem" rows="4"
-                                placeholder="Conte um pouco sobre sua produção: quantos litros costuma fazer, principais desafios com controle de frio ou dúvidas sobre a instalação..."></textarea>
-                        </div>
-
-                        <label class="contato-consentimento">
-                            <input type="checkbox" name="consentimento" required>
-                            Concordo em receber diagnóstico térmico personalizado e contato consultivo da equipe Zymos.
-                        </label>
-
-                        <button type="submit" class="contato-botao-enviar-formulario">
-                            Enviar mensagem <i class="fa-solid fa-arrow-right"></i>
-                        </button>
-
-                    </form>
-                </div>
+              </div>
+              <div class="contato-selo-iot">
+                <i
+                  class="fa-regular fa-circle-check"
+                  style="color: var(--colo-accent-brown)"
+                ></i>
+                <span>IoT Industrial</span>
+              </div>
             </div>
 
-            <!-- COLUNA DIREITA -->
-            <div class="contato-coluna-informacoes">
-                
-                <div class="contato-card-imagem-monitoramento">
-                    <img class="contato-imagem-fundo-cervejaria" src="../../assets/images/imagem_fabricapng.png"
-                      alt="Cervejaria e monitoramento Zymos">
-                    
-                    <div class="contato-faixa-status-imagem">
-                        <span class="contato-status-sensores-ativo">
-                            <i class="fa-solid fa-circle"></i>
-                            Rede de Sensores Ativa
-                        </span>
-                        <span>Tanque F1-F4 • 18.4°C</span>
-                    </div>
+            <form class="contato-formulario" onsubmit="event.preventDefault()">
+              <div class="contato-formulario-linha-dupla">
+                <div class="contato-campo-grupo">
+                  <label class="contato-campo-rotulo" for="nome"
+                    >Nome completo *</label
+                  >
+                  <input
+                    class="campo-input"
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Ex: Carlos Albuquerque"
+                    required
+                  />
                 </div>
-
-                <div class="contato-card-canais-engenharia">
-                    <h3 class="contato-titulo-canais-engenharia">Canais Diretos de Engenharia</h3>
-
-                    <div class="contato-item-canal-contato">
-                        <span class="contato-icone-canal-box">
-                            <i class="fa-regular fa-envelope"></i>
-                        </span>
-                        <div>
-                            <span class="contato-rotulo-pequeno-canal">E-mail corporativo</span>
-                            <p class="contato-valor-canal-contato">contato@zymos.com.br</p>
-                        </div>
-                    </div>
-
-                    <div class="contato-item-canal-contato">
-                        <span class="contato-icone-canal-box">
-                            <i class="fa-solid fa-phone"></i>
-                        </span>
-                        <div>
-                            <span class="contato-rotulo-pequeno-canal">Telefone comercial</span>
-                            <p class="contato-valor-canal-contato">(11) 3456-7890</p>
-                        </div>
-                    </div>
-
-                    <div class="contato-bloco-diferenciais-atendimento">
-                        <p class="contato-texto-diferencial">
-                            <i class="fa-regular fa-clock"></i>
-                            <span><b>Resposta em até 4 horas úteis:</b> retorno ágil com nossa equipe de
-                                projetos.</span>
-                        </p>
-                        <p class="contato-texto-diferencial">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <span><b>Atendimento direto com especialistas:</b> cervejeiros e engenheiros
-                                dedicados.</span>
-                        </p>
-                    </div>
+                <div class="contato-campo-grupo">
+                  <label class="contato-campo-rotulo" for="email"
+                    >E-mail corporativo *</label
+                  >
+                  <input
+                    class="campo-input"
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="carlos@cervejaria.com.br"
+                    required
+                  />
                 </div>
+              </div>
 
-                <div class="contato-card-base-operacional">
-                    <div class="contato-base-operacional-conteudo">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <p class="contato-descricao-base-operacional">
-                            <strong>Base Operacional</strong><br>
-                            Implantação em todo o Brasil sem parar sua produção
-                        </p>
-                    </div>
-                    <span class="contato-selo-nacional">Nacional</span>
+              <div class="contato-formulario-linha-dupla">
+                <div class="contato-campo-grupo">
+                  <label class="contato-campo-rotulo" for="empresa"
+                    >Cervejaria / Empresa *</label
+                  >
+                  <input
+                    class="campo-input"
+                    type="text"
+                    id="empresa"
+                    name="empresa"
+                    placeholder="Nome da sua fábrica, brewpub ou marca"
+                    required
+                  />
                 </div>
+                <div class="contato-campo-grupo">
+                  <span class="contato-campo-rotulo"
+                    >Quantidade de tanques</span
+                  >
+                  <div class="contato-grupo-botoes-opcao">
+                    <button type="button" class="contato-botao-opcao-tanque">
+                      1 a 4
+                    </button>
+                    <button
+                      type="button"
+                      class="contato-botao-opcao-tanque selecionado"
+                    >
+                      5 a 14
+                    </button>
+                    <button type="button" class="contato-botao-opcao-tanque">
+                      15 ou mais tanques
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-            </div>
+              <div class="contato-campo-grupo">
+                <div
+                  class="contato-campo-rotulo contato-campo-rotulo-com-opcional"
+                >
+                  <label for="mensagem">Mensagem / Perfil da Operação</label>
+                  <span class="contato-texto-opcional">Opcional</span>
+                </div>
+                <textarea
+                  class="contato-campo-texto-area"
+                  id="mensagem"
+                  name="mensagem"
+                  rows="4"
+                  placeholder="Conte um pouco sobre sua produção: quantos litros costuma fazer, principais desafios com controle de frio ou dúvidas sobre a instalação..."
+                ></textarea>
+              </div>
+
+              <label class="contato-consentimento">
+                <input type="checkbox" name="consentimento" required />
+                Concordo em receber diagnóstico térmico personalizado e contato
+                consultivo da equipe Zymos.
+              </label>
+
+              <button type="submit" class="contato-botao-enviar-formulario">
+                Enviar mensagem <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
         </div>
+
+        <!-- COLUNA DIREITA -->
+        <div class="contato-coluna-informacoes">
+          <div class="contato-card-imagem-monitoramento">
+            <img
+              class="contato-imagem-fundo-cervejaria"
+              src="../../assets/images/contato/monitoramento-fabrica.webp"
+              alt="Cervejaria e monitoramento Zymos"
+            />
+
+            <div class="contato-faixa-status-imagem">
+              <span class="contato-status-sensores-ativo">
+                <i class="fa-solid fa-circle"></i>
+                Rede de Sensores Ativa
+              </span>
+              <span>Tanque F1-F4 • 18.4°C</span>
+            </div>
+          </div>
+
+          <div class="contato-card-canais-engenharia">
+            <h3 class="contato-titulo-canais-engenharia">
+              Canais Diretos de Engenharia
+            </h3>
+
+            <div class="contato-item-canal-contato">
+              <span class="contato-icone-canal-box">
+                <i class="fa-regular fa-envelope"></i>
+              </span>
+              <div>
+                <span class="contato-rotulo-pequeno-canal"
+                  >E-mail corporativo</span
+                >
+                <p class="contato-valor-canal-contato">contato@zymos.com.br</p>
+              </div>
+            </div>
+
+            <div class="contato-item-canal-contato">
+              <span class="contato-icone-canal-box">
+                <i class="fa-solid fa-phone"></i>
+              </span>
+              <div>
+                <span class="contato-rotulo-pequeno-canal"
+                  >Telefone comercial</span
+                >
+                <p class="contato-valor-canal-contato">(11) 3456-7890</p>
+              </div>
+            </div>
+
+            <div class="contato-bloco-diferenciais-atendimento">
+              <p class="contato-texto-diferencial">
+                <i class="fa-regular fa-clock"></i>
+                <span
+                  ><b>Resposta em até 4 horas úteis:</b> retorno ágil com nossa
+                  equipe de projetos.</span
+                >
+              </p>
+              <p class="contato-texto-diferencial">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span
+                  ><b>Atendimento direto com especialistas:</b> cervejeiros e
+                  engenheiros dedicados.</span
+                >
+              </p>
+            </div>
+          </div>
+
+          <div class="contato-card-base-operacional">
+            <div class="contato-base-operacional-conteudo">
+              <i class="fa-solid fa-location-dot"></i>
+              <p class="contato-descricao-base-operacional">
+                <strong>Base Operacional</strong><br />
+                Implantação em todo o Brasil sem parar sua produção
+              </p>
+            </div>
+            <span class="contato-selo-nacional">Nacional</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <div id="footer"></div>
-</body>
-
+  </body>
 </html>

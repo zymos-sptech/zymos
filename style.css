@@ -13,7 +13,7 @@
     padding: 40px;
 
     background: linear-gradient(rgba(37, 69, 103, 0.75), rgba(37, 69, 103, 0.75)),
-        url('../zymos/assets/hero-bg.png');
+        url('assets/images/inicio/hero-bg.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

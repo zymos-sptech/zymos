@@ -8,7 +8,15 @@ async function injectionFooter() {
     if (response.ok) {
       const footer = await response.text();
       const el = document.getElementById("footer");
-      if (el) el.innerHTML = footer;
+      if (el) {
+        el.innerHTML = footer;
+        const logoImg = el.querySelector(".container-column img");
+        if (logoImg) {
+          logoImg.src = isSubdir
+            ? "../../assets/branding/logo-branca.svg"
+            : "./assets/branding/logo-branca.svg";
+        }
+      }
     }
   } catch (err) {
     console.error("Erro ao injetar footer:", err);
