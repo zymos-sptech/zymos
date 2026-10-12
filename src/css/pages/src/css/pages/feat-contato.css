@@ -211,10 +211,6 @@ font-family: var(--font-primary);
     margin-top: 0.5rem;
 }
 
-/* ==========================================================================
-   CARDS INFORMATIVOS DA COLUNA DIREITA
-   ========================================================================== */
-
 /* Card com a imagem da cervejaria e monitoramento */
 .feat-contato-card-imagem-monitoramento {
     position: relative;
@@ -223,11 +219,25 @@ font-family: var(--font-primary);
     height: 220px;
 }
 
+.feat-contato-grandient {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    height: 220px;
+    background-image: linear-gradient(0deg, rgba(66, 96, 132, 0.90) 0%, rgba(66, 96, 132, 0.20) 50%, rgba(66, 96, 132, 0.00) 100%), url(../../../assets/images/imagem_fabricapng.png)
+
+
+
+    
+ 
+}
+
 /* Ajuste da imagem para cobrir a área do card sem distorcer */
 .feat-contato-imagem-fundo-cervejaria {
     width: 100%;
     height: 100%;
     object-fit: cover;
+     background-image: linear-gradient(url(../../../assets/images/imagem_fabricapng.png), 90deg, rgba(66, 96, 132, 0.90) 0%, rgba(66, 96, 132, 0.20) 50%, rgba(66, 96, 132, 0.00) 100%);
 }
 
 /* Faixa sobreposta na imagem com informações dos sensores e temperatura */
@@ -331,16 +341,13 @@ font-family: var(--font-primary);
 }
 
 /* Selo "Nacional" do card operacional */
-.feat-contato-selo-abrangencia-nacional {
+.feat-contato-selo-nacional {
     background-color: var(--color-blue-light);
     padding: 0.2rem 0.6rem;
     border-radius: 0.5rem;
     font-size: 0.7rem;
     font-weight: 600;
 }
-/* ==========================================================================
-   AJUSTES FINAIS
-   ========================================================================== */
 
 /* Campos e botões não herdam a fonte da página por padrão; isto força a herança */
 .feat-contato input,

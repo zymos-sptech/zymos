@@ -103,11 +103,14 @@
 
             <!-- COLUNA DIREITA -->
             <div class="feat-contato-coluna-informacoes">
-
+                
                 <div class="feat-contato-card-imagem-monitoramento">
-                    <img class="feat-contato-imagem-fundo-cervejaria" 
-                    src="../../../assets/images/imagem_fabricapng.png"
-                    alt= ""> 
+                    
+                    <img class="feat-contato-imagem-fundo-cervejaria" src="../../../assets/images/imagem_fabricapng.png"
+                      alt="">
+ 
+                    
+                    
                     <div class="feat-contato-faixa-status-imagem">
                         <span class="feat-contato-status-sensores-ativo">
                             <i class="fa-solid fa-circle"></i>
@@ -143,12 +146,12 @@
                     <div class="feat-contato-bloco-diferenciais-atendimento">
                         <p class="feat-contato-texto-diferencial">
                             <i class="fa-regular fa-clock"></i>
-                            <span><strong>Resposta em até 4 horas úteis:</strong> retorno ágil com nossa equipe de
+                            <span><b>Resposta em até 4 horas úteis:</b> retorno ágil com nossa equipe de
                                 projetos.</span>
                         </p>
                         <p class="feat-contato-texto-diferencial">
                             <i class="fa-solid fa-shield-halved"></i>
-                            <span><strong>Atendimento direto com especialistas:</strong> cervejeiros e engenheiros
+                            <span><b>Atendimento direto com especialistas:</b> cervejeiros e engenheiros
                                 dedicados.</span>
                         </p>
                     </div>
@@ -162,7 +165,7 @@
                             Implantação em todo o Brasil sem parar sua produção
                         </p>
                     </div>
-                    <span class="feat-contato-selo-abrangencia-nacional">Nacional</span>
+                    <span class="feat-contato-selo-nacional">Nacional</span>
                 </div>
 
             </div>
@@ -170,16 +173,16 @@
     </section>
 </body>
 <script>
-    // 1. Guarda todos os botões de tanque em uma lista
+    //  Guarda todos os botões de tanque em uma lista
     const botoesTanque = document.querySelectorAll('.feat-contato-botao-opcao-tanque');
 
-    // 2. Para cada botão da lista...
+    // Para cada botão da lista 
     botoesTanque.forEach(function (botao) {
 
-        // 3. ...fica "escutando" o clique
+        // fica "escutando" o clique
         botao.addEventListener('click', function () {
 
-            // 4. Remove a classe "selecionado" de todos os botões
+            // Remove a classe "selecionado" de todos os botões
             botoesTanque.forEach(function (outro) {
                 outro.classList.remove('selecionado');
             });
