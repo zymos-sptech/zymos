@@ -17,9 +17,16 @@
       <p class="grafico_historico_subtitulo">Mesma receita (IPA) · alinhado por tempo relativo, não por data · segue o período selecionado acima</p>
     </div>
     <div class="div_historico_filtros">
-      <p class="p_historico_comparando">Comparando:</p>
-      <select name="lote_principal" id="grafico_historico_lote1" class="select_lote1"></select>
-      <select name="lote_comparativo" id="grafico_historico_lote2" class="select_adicionar_lote">+ Adicionar lote</select>
+      <div class="filtros_lote">
+        <p class="p_historico_comparando">Comparando:</p>
+        <select name="lote_principal" id="grafico_historico_lote1" class="select_lote1"></select>
+        <select name="lote_comparativo" id="grafico_historico_lote2" class="select_adicionar_lote">+ Adicionar lote</select>
+      </div>
+      <div class="filtros_dia" id="filtros_dia">
+        <div class="div_filtro_tempo_real" id="tempo_real">Tempo real</div>
+        <div class="div_filtro_24h" id="ultimas_24h">Últimas 24h</div>
+        <div class="div_filtro_completo active" id="lote_completo">Lote completo</div>
+      </div>
     </div>
     <div class="canvas_container">
       <canvas id="canvas_grafico_historico" class="canvas_grafico_historico"></canvas>

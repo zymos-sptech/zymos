@@ -2,7 +2,7 @@
 
 .section_grafico_lote {
     display: flex;
-    width: auto;
+    width: 70em;
     height: 30em;
     padding: 1.7em;
     gap: 1em;
@@ -20,7 +20,7 @@
 .grafico_controles_container {
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .grafico_historico_titulo {
@@ -44,9 +44,17 @@
 
 .div_historico_filtros {
     display: flex;
-    width: 38rem;
+    width: 100%;
     align-items: center;
     gap: 0.75rem;
+    justify-content: space-between;
+}
+
+.filtros_lote,
+.filtros_dia {
+    display: flex;
+    align-items: center;
+    gap: 0 1em;
 }
 
 .p_historico_comparando {
@@ -96,8 +104,54 @@
     /* 150% */
 }
 
+.filtros_dia {
+
+    display: flex;
+    height: 2.34375rem;
+    padding: 0.25rem;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(226, 232, 240, 0.70);
+    background: rgba(226, 232, 240, 0.60);
+
+}
+
+.filtros_dia .active {
+    display: flex;
+    height: 1.875rem;
+    padding: 0.25rem 0.875rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    background: #426084;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    color: #FCFAF6;
+    text-align: center;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1rem;
+}
+
+.div_filtro_tempo_real,
+.div_filtro_24h,
+.div_filtro_completo {
+    cursor: pointer;
+    display: flex;
+    height: 1.875rem;
+    padding: 0.25rem 0.875rem;
+    border-radius: 0.625rem;
+}
+
+.div_filtro_tempo_real:hover,
+.div_filtro_24h:hover,
+.div_filtro_completo:hover {
+    box-shadow: 0 0 3px 1px var(--color-blue-dark);
+
+}
+
 .canvas_container {
-    /* max-height: 20rem; */
     display: flex;
     align-items: stretch;
     align-self: stretch;

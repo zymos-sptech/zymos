@@ -3,7 +3,8 @@ const ctx = document.getElementById('canvas_grafico_historico');
 const select_lotes = document.getElementById('grafico_historico_lote1')
 const select_lotes_comparativos = document.getElementById('grafico_historico_lote2')
 const div_legendas = document.getElementById('legenda_grafico_historico')
-const n_dias = 14 // buscar value do input element do filtro
+const div_filtros_dia = document.getElementById('filtros_dia')
+
 
 
 // DEFINIÇÃO DOS DADOS MOCADOS
@@ -15,7 +16,8 @@ const exemplo_lotes = [
         faixa_min: 18, // de acordo com o tipo de fermentação e receita
         faixa_max: 23,
         fermentacao: "Ale",
-        tipo: "IPA"
+        tipo: "IPA",
+        duracao: 14
     },
     {
         nome: 'Lote 099',
@@ -23,15 +25,17 @@ const exemplo_lotes = [
         faixa_min: 18,
         faixa_max: 23,
         fermentacao: "Ale",
-        tipo: "IPA"
+        tipo: "IPA",
+        duracao: 14
     },
     {
         nome: 'Lote 095',
-        data: [10, 10.2, 10.4, 10.5, 10.4, 10.8, 10.2, 10.4, 10.8, 12.1, 13.1, 13.7],
+        data: [10, 10.2, 10.4, 10.5, 10.4, 10.8, 10.8, 10.6, 11, 12.1, 13.1, 13.7, 13.9],
         faixa_min: 8,
         faixa_max: 14,
         fermentacao: "Pilsen",
-        tipo: "Lager"
+        tipo: "Lager",
+        duracao: 21
     }
 ]
 // definir lotes para comparação
@@ -41,7 +45,8 @@ const lotes_comparativos = [{
     faixa_min: 18, // de acordo com o tipo de fermentação e receita
     faixa_max: 23,
     fermentacao: "Ale",
-    tipo: "IPA"
+    tipo: "IPA",
+    duracao: 14
 },
 {
     nome: 'Lote 098',
@@ -49,15 +54,17 @@ const lotes_comparativos = [{
     faixa_min: 18,
     faixa_max: 23,
     fermentacao: "Ale",
-    tipo: "IPA"
+    tipo: "IPA",
+    duracao: 14
 },
 {
     nome: 'Lote 094',
-    data: [9, 9.2, 9.4, 9.5, 9.4, 9.8, 10.2, 10.4, 10.8, 11.1, 11.1, 11.7],
+    data: [9, 9.2, 9.4, 9.5, 9.4, 9.8, 10.2, 10.4, 10.8, 11.1, 11.1, 11.7, 11.6, 11.3, 11, 10.4, 10, 9.9, 9.9, 10, 10.5],
     faixa_temp: 8,
     faixa_max: 14,
     fermentacao: "Pilsen",
-    tipo: "Lager"
+    tipo: "Lager",
+    duracao: 21
 }]
 // carregar opções dos selects
 function carregarLotes() {
@@ -74,14 +81,19 @@ function carregarLotesComparativos() {
             select_lotes_comparativos.innerHTML += `<option value='${lotes_comparativos[i].nome}'>${lotes_comparativos[i].nome}</option>`
         }
     }
-    
+
 }
 
-function setupConfig(lote1, lote2, n_dias = 14) {
+function setupConfig(lote1, lote2, n_dias) {
     const labels = [] // rotulos do eixo x => dias/horas
     const faixa = { min: [], max: [] } // definir quantidade de registros para exibição em relação aos dias/horas
     if (n_dias == 1) {
-        // mostrar horas
+        // mostrar horas --> PRECISA BUSCAR OS DADOS DE REGISTROS DA ULTIMA HORA (OUTRO SELECT)
+        for (let hora = 1; hora <= 24; hora++) {
+            labels.push(hora + ':00')
+            faixa.min.push(lote1.faixa_min)
+            faixa.max.push(lote1.faixa_max)
+        }
     } else {
         for (let dia = 1; dia <= n_dias; dia++) {
             labels.push('Dia ' + dia)
@@ -159,8 +171,8 @@ function setupConfig(lote1, lote2, n_dias = 14) {
 }
 
 // CRIANDO O GRÁFICO
-function newChart(lote1, lote2, n_dias) {
-    return new Chart(ctx, setupConfig(lote1, lote2, n_dias));
+function newChart(lote1, lote2) {
+    return new Chart(ctx, setupConfig(lote1, lote2, lote1.duracao));
 }
 
 // EXIBIR LEGENDAS EM OUTRA DIV
@@ -182,7 +194,7 @@ function exibirLegendas() {
                 `
     }
 
-    
+
     div_legendas.innerHTML = html
 }
 
@@ -191,7 +203,14 @@ function atualizarConfig() {
     const lote2 = lotes_comparativos.find(
         l => l.nome === select_lotes_comparativos.value
     )
-
+    let active = document.getElementsByClassName('active')
+    let id = active[0].id
+    let n_dias = 0
+    
+    if (id == 'tempo_real') n_dias = lote1.data.length
+    else if (id == 'ultimas_24h') n_dias = 1
+    else if (id == 'lote_completo') n_dias = lote1.duracao > lote2.duracao ? lote1.duracao : lote2.duracao
+    console.log(active[0].id, n_dias)
     let nova_config = setupConfig(lote1, lote2, n_dias)
     chart.data = nova_config.data
     chart.options = nova_config.options
@@ -205,15 +224,25 @@ function atualizarConfig() {
 carregarLotes()
 carregarLotesComparativos()
 
-const chart = newChart(exemplo_lotes[0], lotes_comparativos[0], n_dias)
+const chart = newChart(exemplo_lotes[0], lotes_comparativos[0], exemplo_lotes[0].duracao)
 select_lotes.addEventListener('change', () => {
     carregarLotesComparativos()
     atualizarConfig()
-    exibirLegendas()
 })
 select_lotes_comparativos.addEventListener('change', () => {
     atualizarConfig()
-    exibirLegendas()
 })
+div_filtros_dia.addEventListener('click', (e) => {
+    const id = e.target.id
 
+    if (id != 'filtros_dia') {
+        for (let i = 0; i < div_filtros_dia.childElementCount; i++) {
+            if (div_filtros_dia.children[i].id == id) {
+                div_filtros_dia.children[i].classList.add('active')
+            } else div_filtros_dia.children[i].classList.remove('active')
+        }
+    }
+    atualizarConfig()
+
+})
 exibirLegendas()
