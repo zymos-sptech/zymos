@@ -10,6 +10,10 @@
   gap: 2rem;
 }
 
+.btn-close {
+  align-self: center;
+}
+
 .sidebar-container-close {
   display: none;
   width: 5rem;
