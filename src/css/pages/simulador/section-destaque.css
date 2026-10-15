@@ -1,0 +1,45 @@
+.destaque {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  max-width: 1400px;
+  min-height: 200px;
+  margin: 40px auto 32px auto;
+  padding: 32px 28px;
+  border-radius: 10px;
+  color: var(--white);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(66, 96, 132, 0.88) 0%,
+      rgba(66, 96, 132, 0.5) 50%,
+      rgba(66, 96, 132, 0.1) 100%
+    ),
+    url("../../../../assets/images/inicio/hero-bg.webp");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.destaque-tag {
+  color: var(--color-accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.destaque h2 {
+  max-width: 480px;
+  margin: 6px 0 10px 0;
+  font-family: var(--font-tertiary);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.destaque p {
+  max-width: 440px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #e3f0ff;
+}

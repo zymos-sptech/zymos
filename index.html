@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="icon" type="image/x-con" href="./assets/logo-icon.png" />
+    <link rel="icon" type="image/x-con" href="./assets/branding/favicon.png" />
     <link rel="stylesheet" href="./src/css/global.css" />
     <link rel="stylesheet" href="./src/css/pages/inicio/section-valores.css" />
     <link rel="stylesheet" href="./src/css/pages/inicio/section-solucao.css" />
@@ -14,16 +14,48 @@
     />
     <link rel="stylesheet" href="./src/css/pages/inicio/section-main.css" />
 
+    <link rel="stylesheet" href="./src/css/components/navbar.css" />
+    <link rel="stylesheet" href="./src/css/components/footer.css" />
     <script
       src="https://kit.fontawesome.com/79924d81b1.js"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="./src/js/navbar.js"></script>
-    <script type="module" src="./src/js/footer.js"></script>
     <title>Zymos - Inicio</title>
   </head>
   <body>
-    <div id="header"></div>
+    <header class="navBar">
+      <img
+        class="logo"
+        src="./assets/branding/logo-bege.svg"
+        alt="zymos"
+        draggable="false"
+      />
+      <nav>
+        <ul>
+          <li><a href="./index.html" class="seleciodo">Inicio</a></li>
+          <li><a href="">Sobre nós</a></li>
+          <li><a href="./src/pages/servicos.html">Serviços</a></li>
+          <li><a href="./src/pages/planos.html">Planos</a></li>
+          <li><a href="./src/pages/simulador.html">Simulador</a></li>
+          <li><a href="./src/pages/contato.html">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="container-login-cadastro">
+        <a href="./src/pages/login.html">
+          <button class="btn-login cursor">
+            <i
+              class="fa-solid fa-arrow-right-to-bracket"
+              style="color: var(--color-blue-dark)"
+            ></i>
+            Entrar
+          </button>
+        </a>
+        <a href="./src/pages/cadastro.html">
+          <button class="btn-cadastro cursor">Cadastre-se</button>
+        </a>
+      </div>
+    </header>
 
     <section id="hero">
       <div class="hero-content">
@@ -105,7 +137,7 @@
     <section class="section-valores">
       <img
         class="valores-img"
-        src="./assets/images/sec-valores_servindo-cerveja.svg"
+        src="./assets/images/inicio/valores-cerveja.webp"
         alt="foto servindo cerveja"
       />
       <div class="container-valores">
@@ -286,21 +318,88 @@
             Descubra em 2 minutos a economia da sua cervejaria ao evitar lotes
             fora do padrão e paradas de fermentação.
           </p>
-          <button class="simulador-button">
-            Ir para o simulador
-            <i
-              class="fa-solid fa-arrow-right"
-              style="color: var(--color-neutral-gray)"
-            ></i>
-          </button>
+          <a href="./src/pages/simulador.html" style="text-decoration: none;">
+            <button class="simulador-button">
+              Ir para o simulador
+              <i
+                class="fa-solid fa-arrow-right"
+                style="color: var(--color-neutral-gray)"
+              ></i>
+            </button>
+          </a>
         </div>
 
-        <img class="simulador-img" src="./assets/images/homem-cerveja.svg" />
+        <img class="simulador-img" src="./assets/images/inicio/simulador-cervejeiro.webp" alt="Ilustração simulador cervejeiro" />
       </div>
     </div>
   </section>
 
-  <div id="footer"></div>
-</body>
+    <footer>
+      <div class="container-footer">
+        <div class="container-column">
+          <img
+            src="./assets/branding/logo-branca.svg"
+            alt="Zymos qualidade na fermentação"
+            draggable="false"
+            style="width: 184px; height: 48px"
+          />
+          <p class="subTitulo">
+            Monitoramento térmico inteligente para fermentação cervejeira.
+          </p>
+          <div class="container-row">
+            <i
+              class="fa-solid fa-tower-broadcast"
+              style="color: var(--color-accent); font-size: 10px"
+            ></i>
+            <span>Telemetria de Precisão IoT</span>
+          </div>
+        </div>
 
+        <div class="container-column">
+          <h1 class="title">Navegação</h1>
+          <nav>
+            <ul>
+              <li><a href="./index.html">Inicio</a></li>
+              <li><a href="">Sobre nós</a></li>
+              <li><a href="./src/pages/servicos.html">Serviços</a></li>
+              <li><a href="./src/pages/planos.html">Planos</a></li>
+              <li><a href="./src/pages/simulador.html">Simulador</a></li>
+              <li><a href="./src/pages/contato.html">Contato</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="container-column">
+          <h1 class="title">Contato</h1>
+          <div class="container-row row-margin-bottom">
+            <i
+              class="fa-solid fa-envelope"
+              style="color: var(--color-accent)"
+            ></i>
+            <p class="text-contato">contato@zymos.com.br</p>
+          </div>
+
+          <div class="container-row row-margin-bottom">
+            <i class="fa-solid fa-phone" style="color: var(--color-accent)"></i>
+            <p class="text-contato">(11) 3456-7890</p>
+          </div>
+
+          <div class="container-row row-margin-bottom">
+            <i
+              class="fa-solid fa-location-dot"
+              style="color: var(--color-accent)"
+            ></i>
+            <p class="text-contato">SP - Brasil</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-rodape">
+        <p class="text-rodape">
+          © 2026 Zymos Sistemas de Telemetria Cervejeira. Todos os direitos
+          reservados.
+        </p>
+      </div>
+    </footer>
+  </body>
 </html>

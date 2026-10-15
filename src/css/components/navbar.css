@@ -1,0 +1,91 @@
+.navBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 8px 0;
+
+  font-size: 12px;
+}
+
+.logo {
+  height: 42px;
+  width: 115px;
+}
+
+nav,
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 500px;
+}
+
+li,
+a {
+  list-style-type: none;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  color: var(--color-accent-brown);
+  transition: all ease 0.1s;
+}
+
+li:focus,
+li:hover {
+  color: var(--color-accent);
+}
+
+.seleciodo {
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.container-login-cadastro {
+  gap: 12px;
+}
+
+.btn-login {
+  color: var(--color-blue-dark);
+  background-color: transparent;
+  border: none;
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 8px;
+
+  transition: all ease 0.3s;
+}
+
+.btn-cadastro {
+  background-color: var(--color-blue-dark);
+  color: var(--color-neutral-light);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-blue-dark);
+
+  transition: all ease 0.3s;
+}
+
+.btn-cadastro:hover,
+.btn-cadastro:focus-visible {
+  background-color: var(--color-blue-light);
+  color: var(--color-accent-brown);
+  border: 1px solid var(--color-blue-dark);
+}
+
+.btn-cadastro:active,
+.btn-login:active {
+  background-color: var(--color-blue-dark);
+  color: var(--color-neutral-light);
+  border: 1px solid var(--color-blue-dark);
+}
+
+.cursor {
+  cursor: pointer;
+}
