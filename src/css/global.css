@@ -16,12 +16,17 @@
   --color-blue-dark: #426084;
   --color-blue-medium: #d1e4ff;
   --color-blue-light: #e3f0ff;
+  
+  --color-gray-dark: #718092;
 
   /* Tons Neutros / Fundo */
   --color-neutral-base: #fffaef;
   --color-neutral-light: #f6fbf3;
   --color-neutral-gray: #d8ddd6;
   --white: #fff;
+
+  --color-orange-dark: #b8622c;
+  --color-orange-light: #fbf2ea;
 
   /* Tipografia */
   --font-primary: "Outfit", sans-serif;
