@@ -1,0 +1,184 @@
+/*
+ --font-primary: 'Outfit', sans-serif;
+  --font-secondary: 'Garet', sans-serif;
+  --font-tertiary: 'Epilogue', sans-serif;
+
+  /* Tons Quentes / Acento
+  --color-accent: #D0A06F;
+  --colo-accent-brown: #50453B;
+  /* Tons de Verde 
+  --color-green-dark: #5A6B5E;
+  --color-green-light: #E8EFE6;
+  
+  /* Tons de Azul 
+  --color-blue-dark: #254567;
+  --color-blue-medium: #D1E4FF;
+  --color-blue-light: #E3F0FF;
+  
+  /* Tons Neutros / Fundo 
+  --color-neutral-base: #FFFAEF;
+  --color-neutral-light: #F7F3EA;
+  --color-neutral-gray: #D8DDD6;
+  --white: #fff;
+
+  /* Tipografia 
+  --font-primary: 'Outfit', sans-serif;
+  --font-secondary: 'Garet', sans-serif;
+  --font-tertiary: 'Epilogue', sans-serif;
+
+  /* Espaçamento 
+  --horizontal-margin: 5%;
+*/
+
+/* =========================================================
+   2. RESET (zera os espaços padrão do navegador)
+   ========================================================= */
+
+/*
+body {
+  font-family: var(--font-primary);
+  background: var(--white);
+}
+color: var(--color-blue-dark);*/
+
+.pagina {
+    display: grid;
+    /* organiza objs em grades 'grid' */
+    grid-template-columns: 2fr 1fr;
+    /* fr = fração */
+    gap: 1.18rem;
+    /* espassamento */
+    max-width: 95rem;
+    /* tamanho maximo na tela */
+    margin: 0 auto;
+    /* margem automatica no centro */
+    padding: 40px;
+    /*espaço das bordas*/
+    background-color: var(--white);
+}
+
+.card {
+    background: var(--white);
+    border: 0.13rem solid var(--color-neutral-gray);
+    border-radius: 0.8rem;
+    padding: 1.5rem;
+}
+
+.titulo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-blue-dark);
+    margin-bottom: 0.4rem;
+}
+
+.subtitulo {
+    font-size: 0.5rem;
+    color: var(--colo-accent-brown);
+    margin-bottom: 0.4rem;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    /* tira espaço entre celulas */
+    font-size: 0.5rem;
+}
+
+.tabela th {
+    background: var(--color-neutral-gray);
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--cor-texto-suave);
+    padding: 1.2rem;
+}
+
+.tabela td {
+    padding: 14px 12px;
+    border-bottom: 0.03rem solid var(--color-neutral-gray);
+    vertical-align: top;
+    line-height: 1.4;
+    /* orienta objs na linha*/
+}
+
+/* remove a ultima linha da tabela */
+/*
+.tabela tbody tr:last-child td {
+  border-bottom: none;
+}
+*/
+.pico {
+    font-weight: 700;
+    color: var(--color-blue-dark);
+}
+
+.badge {
+    /* armazena igauldades */
+    display: inline-block;
+    /* config do span*/
+    padding: 0.3rem 1.1rem;
+    border-radius: 999rem;
+    /* formato pílula */
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+/* cores do status*/
+.aberto {
+    background: var(--color-accent);
+}
+
+.resolvido {
+    background: var(--color-green-dark);
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.botao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    width: 100%;
+    padding: 1.10rem;
+    background: var(--white);
+    border: 0.05rem solid var(--color-neutral-gray);
+    border-radius: 0.7rem;
+    font-family: var(--font-secondary);
+    /* botão usa a mesma fonte da página */
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-blue-dark);
+    cursor: pointer;
+    transition:  0.3s, transform 0.1s; /* tempo de anim.*/
+}
+
+/*icone*/
+.botao i {
+    width: 1.6rem;
+    height: 0.8rem;
+    flex-shrink: 0;
+    /* não faz o icone diminuir */
+}
+
+/* var(--color-neutral-gray) 
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    */
+/* animação do botão*/
+.botao:hover {
+    background: var(--color-blue-dark);
+    border-color: var(--color-neutral-gray);
+    color: var(--white);
+}
+/*anim. clique*/
+.botao:active {
+    transform: scale(0.98);
+}
