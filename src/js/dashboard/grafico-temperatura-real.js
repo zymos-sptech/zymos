@@ -2,7 +2,7 @@ const graficoTempReal = document.getElementById("temperaturaRealGrafico");
 
 // cores do global.css
 const corLinha = "#426084"; // --color-blue-dark
-const corFaixa = "#E7EEE3"; // --color-green-light
+const corFaixa = "#e8efe6"; // --color-green-light
 
 const labels = [
   "14:32:00",
