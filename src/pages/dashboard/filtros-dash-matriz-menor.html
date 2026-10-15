@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lote 101-A</title>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="filtros-dashboard1.css">
+  <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <main class="dashboard">
+
+    <section class="container-lote">
+
+      <div class="lote-dados">
+        <div class="lote-titulo">
+          <h1 class="lote-nome">Lote 101-A</h1>
+          <p class="lote-descricao">Índia Pale Ale (IPA)</p>
+        </div>
+
+        <div class="container-info">
+          <div class="info-linha">
+            <div class="info-item">
+              <span class="rotulo">Tipo:</span>
+              <span class="info-valor">Ale</span>
+            </div>
+            <div class="info-item">
+              <span class="rotulo">Levedura:</span>
+              <span class="info-valor">Saccharomyces cerevisiae</span>
+            </div>
+            <div class="info-item">
+              <span class="rotulo">Tanque:</span>
+              <span class="info-valor">TQ-01</span>
+            </div>
+            <div class="info-item">
+              <span class="rotulo">Unidade:</span>
+              <span class="info-valor">Matriz Ribeirão Preto</span>
+            </div>
+          </div>
+
+          <div class="info-linha info-linha-ponto">
+            <div class="info-item">
+              <span class="rotulo">Início:</span>
+              <span class="info-valor">20/09/2026</span>
+            </div>
+            <div class="info-item">
+              <span class="rotulo">Término previsto:</span>
+              <span class="info-valor">04/10/2026</span>
+            </div>
+            <div class="info-item">
+              <span class="rotulo">Faixa alvo:</span>
+              <span class="info-valor">15°C a 24°C</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-filtro">
+        <div class="filtro-campo">
+          <label class="rotulo" for="lote">Lote analisado:</label>
+          <div class="container-seletor">
+            <select class="seletor" id="lote" name="lote">
+              <option>Lote 101-A · IPA</option>
+            </select>
+            <i class="fa-solid fa-angle-down seletor-seta" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <button class="botao botao-primario" type="button">
+          <i class="fa-solid fa-filter"></i>
+          Aplicar Filtro
+        </button>
+      </div>
+
+    </section>
+
+    <section class="container-cards">
+
+      <article class="card">
+        <div class="card-corpo">
+          <span class="card-titulo">Progresso da fermentação</span>
+          <div class="card-linha-valor">
+            <span class="card-valor">8</span>
+            <span class="card-unidade">de 14 Dias</span>
+          </div>
+          <div class="container-progresso">
+            <div class="progresso-barra" style="--progresso: 57%"></div>
+          </div>
+        </div>
+        <p class="card-rodape">Lote 101-A · 57% de progresso</p>
+      </article>
+
+      <article class="card">
+        <div class="card-corpo">
+          <span class="card-titulo">Aderência à faixa ideal</span>
+          <div class="card-linha-valor">
+            <span class="card-valor">96,4%</span>
+          </div>
+          <div class="container-progresso">
+            <div class="progresso-barra" style="--progresso: 96.4%"></div>
+          </div>
+        </div>
+        <p class="card-rodape">Lote 101-A · até agora</p>
+      </article>
+
+      <article class="card">
+        <div class="card-corpo">
+          <span class="card-titulo">Desvios no período</span>
+          <div class="card-linha-valor">
+            <span class="card-valor">2</span>
+            <span class="card-unidade">ocorrências</span>
+          </div>
+          <div class="container-tags">
+            <span class="tag"><span class="tag-ponto"></span>1 resolvido</span>
+            <span class="tag"><span class="tag-ponto tag-destaque"></span>1 em aberto</span>
+          </div>
+        </div>
+        <p class="card-rodape">Lote 101-A · até agora</p>
+      </article>
+
+      <article class="card">
+        <div class="card-corpo">
+          <span class="card-titulo">Alertas em aberto</span>
+          <div class="card-linha-valor">
+            <span class="card-valor">1</span>
+            <span class="card-unidade">alerta</span>
+          </div>
+          <div class="container-tags">
+            <span class="tag"><span class="tag-ponto tag-destaque"></span>TQ-01 · acima do ideal</span>
+          </div>
+        </div>
+        <p class="card-rodape">desde 14:32:10 · aguardando revisão</p>
+      </article>
+
+    </section>
+  </main>
+</body>
+</html>
