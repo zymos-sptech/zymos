@@ -1,0 +1,211 @@
+/* SECTION GRAFICO HISTORICO LOTE */
+
+.section_grafico_lote {
+    display: flex;
+    width: 70em;
+    height: 30em;
+    padding: 1.7em;
+    gap: 1em;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* align-self: stretch; */
+
+    border-radius: 1em;
+    border: 1px solid #ECE6D9;
+    background: #FFF;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.grafico_controles_container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.grafico_historico_titulo {
+    color: var(--color-blue-dark);
+    font-family: var(--font-primary);
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.6875rem;
+
+}
+
+.grafico_historico_subtitulo {
+    color: #718092;
+    font-family: var(--font-secondary);
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.21875rem;
+}
+
+.div_historico_filtros {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: space-between;
+}
+
+.filtros_lote,
+.filtros_dia {
+    display: flex;
+    align-items: center;
+    gap: 0 1em;
+}
+
+.p_historico_comparando {
+    color: #718092;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.125rem;
+}
+
+.select_lote1 {
+    display: flex;
+    padding: 0.25rem 0.75rem;
+    align-items: center;
+    gap: 0.375rem;
+
+    border-radius: 0.625rem;
+    border: 1px solid #E2DBCE;
+    background: #426084;
+
+    color: #FFF;
+
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.125rem;
+}
+
+.select_adicionar_lote {
+    appearance: base-select;
+
+    display: flex;
+    padding: 0.25rem 0.75rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.375rem;
+
+    border-radius: 0.625rem;
+    border: 1px dashed #D0A06F;
+    background-color: #FDFAF7;
+
+    color: #4F6070;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.125rem;
+    /* 150% */
+}
+
+.filtros_dia {
+
+    display: flex;
+    height: 2.34375rem;
+    padding: 0.25rem;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 1px solid rgba(226, 232, 240, 0.70);
+    background: rgba(226, 232, 240, 0.60);
+
+}
+
+.filtros_dia .active {
+    display: flex;
+    height: 1.875rem;
+    padding: 0.25rem 0.875rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    background: #426084;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    color: #FCFAF6;
+    text-align: center;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1rem;
+}
+
+.div_filtro_tempo_real,
+.div_filtro_24h,
+.div_filtro_completo {
+    cursor: pointer;
+    display: flex;
+    height: 1.875rem;
+    padding: 0.25rem 0.875rem;
+    border-radius: 0.625rem;
+}
+
+.div_filtro_tempo_real:hover,
+.div_filtro_24h:hover,
+.div_filtro_completo:hover {
+    box-shadow: 0 0 3px 1px var(--color-blue-dark);
+
+}
+
+.canvas_container {
+    display: flex;
+    align-items: stretch;
+    align-self: stretch;
+
+}
+
+.canvas_grafico_historico {
+    width: 100%;
+    max-height: 18em;
+
+}
+
+.footer_grafico_historico_lote {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0em 1em;
+}
+
+.p_grafico_historico_correlacao {
+    color: var(--color-blue-dark);
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 1.2rem;
+
+}
+
+.span_historico_correlacao {
+    font-weight: 800;
+}
+
+.legenda_grafico_historico {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    gap: 1em;
+
+}
+
+.grafico_legenda {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.faixa_ideal {
+    display: block;
+    height: 2em;
+    min-height: 1em;
+    background-color: #EEE;
+    
+}
