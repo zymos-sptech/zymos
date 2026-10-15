@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/css/global.css" />
+    <link rel="stylesheet" href="/src/css/pages/src/css/pages/feat-desvio-tanque.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.css" integrity="sha512-x9WwyMYBnlXMNQ6kQ/Lyzu1NqIhLQKL5Oq6xByfXuRj7s9CskyCbLv/1IjqzJmXwFXWr0ov6jBV7Qbc0hh9nHg==" crossorigin="anonymous" referrerpolicy="no-referrer">  
+    <title>Document</title>
+</head>
+<body>
+
+  <main class="pagina">
+    <section class="card">
+      <h2 class="titulo">Histórico de desvios</h2>
+      <p class="subtitulo">Evento de desvio de temperatura</p>
+                            <!---->
+        <!--criando as tabelas da esquerda -->
+
+      <div class="tabela-scroll">
+        <table class="tabela">
+          <thead>  <!--cabeçalho da tabela -->
+            <tr>  <!-- tr = linha da tabela 'table row-->
+              <th>Início</th>   <!-- th espaço titulo-->
+              <th>Tipo</th> 
+              <th>Pico</th>
+              <th>Duração</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody> <!--corpo tabela -->
+            <tr>
+                 <!-- registros da tabela -->
+              <td>25/09/2026<br>14:32:10</td> <!-- td espaço dados -->
+              <td>Temperatura<br>acima do ideal</td>
+              <td class="pico">25,2°C</td> 
+              <td>em aberto</td>
+              <td><span class="badge aberto">Aberto</span></td>
+            </tr>
+            <tr>
+              <td>22/09/2026<br>03:12:08</td>
+              <td>Temperatura<br>acima do ideal</td>
+              <td class="pico">24,6°C</td>
+              <td>18 min</td>
+              <td><span class="badge resolvido">Resolvido</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="titulo">Relatórios</h2>
+      <p class="subtitulo">Emissão em PDF para auditoria e controle de qualidade</p>
+
+      <div class="botoes">
+
+        <button class="botao" type="button">
+            <i class="fa-solid fa-download"></i>
+          Relatório de qualidade (PDF)
+        </button>
+
+        <button class="botao" type="button">
+         <i class="fa-solid fa-download"></i>
+          Histórico de desvios (PDF)
+        </button>
+
+        <button class="botao" type="button">
+          <i class="fa-solid fa-download"></i>
+          Relatório completo do lote (PDF)
+        </button>
+
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
