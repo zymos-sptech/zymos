@@ -14,7 +14,7 @@
   <section class="section_grafico_lote">
     <div class="grafico_controles_container">
       <h3 class="grafico_historico_titulo">Comparativo histórico entre lotes</h3>
-      <p class="grafico_historico_subtitulo">Mesma receita (IPA) · alinhado por tempo relativo, não por data · segue o período selecionado acima</p>
+      <p class="grafico_historico_subtitulo">Mesma receita · alinhado por tempo relativo, não por data · segue o período selecionado abaixo</p>
     </div>
     <div class="div_historico_filtros">
       <div class="filtros_lote">
@@ -22,7 +22,7 @@
         <select name="lote_principal" id="grafico_historico_lote1" class="select_lote1"></select>
         <select name="lote_comparativo" id="grafico_historico_lote2" class="select_adicionar_lote">+ Adicionar lote</select>
       </div>
-      <div class="filtros_dia" id="filtros_dia">
+      <div class="filtros_dia" id="filtros_dia" onclick="">
         <div class="div_filtro_tempo_real" id="tempo_real">Tempo real</div>
         <div class="div_filtro_24h" id="ultimas_24h">Últimas 24h</div>
         <div class="div_filtro_completo active" id="lote_completo">Lote completo</div>
@@ -32,7 +32,7 @@
       <canvas id="canvas_grafico_historico" class="canvas_grafico_historico"></canvas>
     </div>
     <div class="footer_grafico_historico_lote">
-      <p class="p_grafico_historico_correlacao">Correlação entre os lotes: <span class="span_historico_correlacao">96,8%</span></p>
+      <p class="p_grafico_historico_correlacao">Correlação entre os lotes: <span id="historico_correlacao" class="span_historico_correlacao">96,8%</span></p>
       <div id="legenda_grafico_historico" class="legenda_grafico_historico"></div>
     </div>
   </section>

@@ -59,7 +59,7 @@
 
 .p_historico_comparando {
     color: #718092;
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 500;
     line-height: 1.125rem;
@@ -77,7 +77,7 @@
 
     color: #FFF;
 
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 500;
     line-height: 1.125rem;
@@ -97,7 +97,7 @@
     background-color: #FDFAF7;
 
     color: #4F6070;
-    font-size: 0.75rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 500;
     line-height: 1.125rem;
@@ -207,4 +207,5 @@
     height: 2em;
     min-height: 1em;
     background-color: #EEE;
+    
 }
