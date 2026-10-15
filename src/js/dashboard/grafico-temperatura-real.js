@@ -1,59 +1,73 @@
 const graficoTempReal = document.getElementById("temperaturaRealGrafico");
 
+// cores do global.css
+const corLinha = "#426084"; // --color-blue-dark
+const corFaixa = "#E7EEE3"; // --color-green-light
+
 const labels = [
-  "09:44:13",
-  "09:44:43",
-  "09:45:13",
-  "09:45:43",
-  "09:46:13",
-  "09:46:43",
-  "09:47:13",
+  "14:32:00",
+  "14:32:02",
+  "14:32:04",
+  "14:32:06",
+  "14:32:08",
+  "14:32:10",
+  "14:32:12",
+  "14:32:14",
+  "14:32:16",
+  "14:32:18",
 ];
+
+const temperaturas = [17, 18, 17, 18.5, 17.5, 25.2, 24.7, 25.5, 25.4, 25.2];
 
 const data = {
   labels: labels,
   datasets: [
     {
-      type: "line",
       label: "Temperatura real",
-      data: [14, 14, 14, 18, 23, 12, 12],
+      data: temperaturas,
+      borderColor: corLinha,
+      borderWidth: 2,
+      pointBackgroundColor: corLinha,
+      pointBorderColor: corLinha,
+      pointRadius: 4,
       fill: false,
-      borderColor: "#1F3F55",
       tension: 0.1,
     },
     {
-      type: "line",
-      label: "Faixa ideal",
-      data: [18, 18, 18, 18, 18, 18, 18],
-      borderColor: "rgba(255, 99, 132, 1)", // Cor da linha vermelha
-      backgroundColor: "rgba(255, 99, 132, 0.3)", // Cor do preenchimento com transparência
-      borderWidth: 2,
-      fill: "+1", // TRANSFORMA EM GRÁFICO DE ÁREA
-      tension: 0.4,
+      label: "Faixa máx.",
+      data: [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+      backgroundColor: corFaixa,
+      borderWidth: 0,
+      pointRadius: 0,
+      fill: "+1",
     },
     {
-      type: "line",
-      data: [8, 8, 8, 8, 8, 8, 8, 8],
-      borderColor: "rgba(255, 99, 132, 1)", // Cor da linha vermelha
-      backgroundColor: "rgba(255, 99, 132, 0.3)", // Cor do preenchimento com transparência
-      borderWidth: 2,
-      fill: false, // TRANSFORMA EM GRÁFICO DE ÁREA
-      tension: 0.4,
+      label: "Faixa mín.",
+      data: [15, 15, 15, 15, 15, 15, 15, 15, 15, 15],
+      borderWidth: 0,
+      pointRadius: 0,
+      fill: false,
     },
   ],
 };
 
 new Chart(graficoTempReal, {
+  type: "line",
   data: data,
   options: {
     responsive: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: { top: 25, right: 20 },
+    },
     scales: {
       y: {
-        min: 0,
+        min: 12,
+        max: 28,
       },
     },
     plugins: {
-
+      legend: { display: false },
     },
   },
 });
