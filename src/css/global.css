@@ -4,16 +4,29 @@
 :root {
   /* Paleta de Cores - Baseada no Guia Visual */
 
-  /* Tons Quentes / Acento */
+  /* Tons Quentes / Acento / Alerta */
   --color-accent: #d0a06f;
   --colo-accent-brown: #50453b;
   --color-accent-brown: #50453b;
+  --color-alert-red: #c05230;
+  --color-alert-terracotta: #bd5934;
+  --color-alert-border: #e7ab95;
+  --color-alert-light: #fdf3ef;
+  --color-badge-desvio: #c57b56;
+
   /* Tons de Verde */
   --color-green-dark: #5a6b5e;
+  --color-green-forest: #4e5f52;
   --color-green-light: #e8efe6;
+  --color-green-sage-light: #d1dbd1;
+  --color-green-sage-dark: #4a5a4f;
 
   /* Tons de Azul */
   --color-blue-dark: #426084;
+  --color-blue-navy: #1a3346;
+  --color-blue-petroleum: #233e54;
+  --color-blue-active: #2b495d;
+  --color-blue-muted: #556c80;
   --color-blue-medium: #d1e4ff;
   --color-blue-light: #e3f0ff;
   
@@ -23,6 +36,12 @@
   --color-neutral-base: #fffaef;
   --color-neutral-light: #f6fbf3;
   --color-neutral-gray: #d8ddd6;
+  --color-neutral-sand: #f5ede1;
+  --color-neutral-warm: #faf6ee;
+  --color-neutral-hover: #faf7f2;
+  --color-neutral-border: #ece5da;
+  --color-neutral-border-light: #efe8dd;
+  --color-text-muted: #8c8275;
   --white: #fff;
 
   --color-orange-dark: #b8622c;
