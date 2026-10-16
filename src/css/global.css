@@ -28,6 +28,17 @@
   --color-orange-dark: #b8622c;
   --color-orange-light: #fbf2ea;
 
+  /* Cores Adicionais do Dashboard */
+  --color-track-dark: #201d1d;
+  --color-border-warm: #e2dbce;
+  --color-accent-soft: #fdfaf7;
+  --color-blue-slate: #4f6070;
+  --color-filter-pill-border: rgba(226, 232, 240, 0.7);
+  --color-filter-pill-bg: rgba(226, 232, 240, 0.6);
+  --color-gray-light: #eeeeee;
+  --color-table-header: #f4f3ef;
+  --color-text-light: #fcfaf6;
+
   /* Tipografia */
   --font-primary: "Outfit", sans-serif;
   --font-secondary: "Garet", sans-serif;

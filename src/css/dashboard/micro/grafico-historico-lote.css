@@ -2,25 +2,24 @@
 
 .section_grafico_lote {
     display: flex;
-    width: 70em;
-    height: 30em;
-    padding: 1.7em;
-    gap: 1em;
+    width: 100%;
+    height: auto;
+    padding: 1.5rem 1.75rem;
+    gap: 1.25rem;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
-    /* align-self: stretch; */
+    align-items: stretch;
 
-    border-radius: 1em;
-    border: 1px solid #ECE6D9;
-    background: #FFF;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    border-radius: 1rem;
+    border: 0.0625rem solid var(--color-neutral-gray);
+    background: var(--white);
+    box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.05);
 }
 
 .grafico_controles_container {
     display: flex;
     flex-direction: column;
-
+    gap: 0.25rem;
 }
 
 .grafico_historico_titulo {
@@ -30,11 +29,10 @@
     font-style: normal;
     font-weight: 700;
     line-height: 1.6875rem;
-
 }
 
 .grafico_historico_subtitulo {
-    color: #718092;
+    color: var(--color-gray-dark);
     font-family: var(--font-secondary);
     font-size: 0.8125rem;
     font-style: normal;
@@ -54,11 +52,11 @@
 .filtros_dia {
     display: flex;
     align-items: center;
-    gap: 0 1em;
+    gap: 0 1rem;
 }
 
 .p_historico_comparando {
-    color: #718092;
+    color: var(--color-gray-dark);
     font-size: 1rem;
     font-style: normal;
     font-weight: 500;
@@ -72,10 +70,10 @@
     gap: 0.375rem;
 
     border-radius: 0.625rem;
-    border: 1px solid #E2DBCE;
-    background: #426084;
+    border: 0.0625rem solid var(--color-border-warm);
+    background: var(--color-blue-dark);
 
-    color: #FFF;
+    color: var(--white);
 
     font-size: 1rem;
     font-style: normal;
@@ -93,28 +91,25 @@
     gap: 0.375rem;
 
     border-radius: 0.625rem;
-    border: 1px dashed #D0A06F;
-    background-color: #FDFAF7;
+    border: 0.0625rem dashed var(--color-accent);
+    background-color: var(--color-accent-soft);
 
-    color: #4F6070;
+    color: var(--color-blue-slate);
     font-size: 1rem;
     font-style: normal;
     font-weight: 500;
     line-height: 1.125rem;
-    /* 150% */
 }
 
 .filtros_dia {
-
     display: flex;
     height: 2.34375rem;
     padding: 0.25rem;
     align-items: center;
     flex-shrink: 0;
     border-radius: 0.625rem;
-    border: 1px solid rgba(226, 232, 240, 0.70);
-    background: rgba(226, 232, 240, 0.60);
-
+    border: 0.0625rem solid var(--color-filter-pill-border);
+    background: var(--color-filter-pill-bg);
 }
 
 .filtros_dia .active {
@@ -125,9 +120,9 @@
     justify-content: center;
     align-items: center;
     border-radius: 0.625rem;
-    background: #426084;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    color: #FCFAF6;
+    background: var(--color-blue-dark);
+    box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.05);
+    color: var(--color-text-light);
     text-align: center;
     font-style: normal;
     font-weight: 300;
@@ -147,21 +142,21 @@
 .div_filtro_tempo_real:hover,
 .div_filtro_24h:hover,
 .div_filtro_completo:hover {
-    box-shadow: 0 0 3px 1px var(--color-blue-dark);
-
+    box-shadow: 0 0 0.1875rem 0.0625rem var(--color-blue-dark);
 }
 
 .canvas_container {
     display: flex;
     align-items: stretch;
     align-self: stretch;
-
+    width: 100%;
+    height: 14rem;
+    position: relative;
 }
 
 .canvas_grafico_historico {
     width: 100%;
-    max-height: 18em;
-
+    height: 100% !important;
 }
 
 .footer_grafico_historico_lote {
@@ -169,7 +164,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0em 1em;
+    align-items: center;
+    padding: 0;
 }
 
 .p_grafico_historico_correlacao {
@@ -179,7 +175,6 @@
     font-style: normal;
     font-weight: 200;
     line-height: 1.2rem;
-
 }
 
 .span_historico_correlacao {
@@ -191,8 +186,7 @@
     flex-direction: row;
     justify-content: end;
     align-items: center;
-    gap: 1em;
-
+    gap: 1rem;
 }
 
 .grafico_legenda {
@@ -204,8 +198,7 @@
 
 .faixa_ideal {
     display: block;
-    height: 2em;
-    min-height: 1em;
-    background-color: #EEE;
-    
+    height: 2rem;
+    min-height: 1rem;
+    background-color: var(--color-gray-light);
 }

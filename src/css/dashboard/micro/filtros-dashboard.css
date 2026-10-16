@@ -1,28 +1,24 @@
-body {
-  background: var(--color-neutral-base);
-  color: var(--color-accent-brown);
-  font-family: var(--font-primary);
-}
-
 button {
   font: inherit;
   cursor: pointer;
 }
 
 .dashboard {
-  max-width: 1512px;
+  flex: 1;
+  min-width: 0;
+  max-width: 94.5rem;
   margin: 0 auto;
-  padding: 32px 48px;
+  padding: 1.5rem 2.25rem;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 1.25rem;
 }
 
 .rotulo {
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 700;
-  line-height: 16.5px;
-  letter-spacing: 0.55px;
+  line-height: 1.03125rem;
+  letter-spacing: 0.0344rem;
   text-transform: uppercase;
   color: var(--color-blue-dark);
   white-space: nowrap;
@@ -32,25 +28,25 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.5rem;
   border: 0;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 12px;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  line-height: 16px;
+  line-height: 1rem;
   white-space: nowrap;
 }
 
 .botao-primario {
-  width: 138px;
+  width: 8.625rem;
   background: var(--color-blue-dark);
   color: var(--white);
 }
 
 .botao-primario svg {
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
   flex-shrink: 0;
 }
 
@@ -58,64 +54,64 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 21px;
+  gap: 1.5rem;
+  padding: 1.3125rem;
   background: var(--white);
-  border: 1px solid var(--color-neutral-gray);
-  border-radius: 12px;
+  border: 0.0625rem solid var(--color-neutral-gray);
+  border-radius: 0.75rem;
 }
 
 .lote-dados {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .lote-titulo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .lote-nome {
   margin: 0;
-  font-size: 28px;
+  font-size: 1.75rem;
   font-weight: 700;
-  line-height: 36px;
+  line-height: 2.25rem;
   color: var(--color-blue-dark);
 }
 
 .lote-descricao {
   margin: 0;
-  padding-left: 12px;
-  border-left: 1px solid var(--color-neutral-gray);
-  font-size: 16px;
+  padding-left: 0.75rem;
+  border-left: 0.0625rem solid var(--color-neutral-gray);
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 1.5rem;
 }
 
 .container-info {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.375rem;
 }
 
 .info-linha {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .info-item {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .info-item + .info-item::before {
   content: "|";
-  margin-right: 4px;
+  margin-right: 0.25rem;
   color: var(--color-neutral-gray);
 }
 
@@ -124,24 +120,24 @@ button {
 }
 
 .info-valor {
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 1rem;
 }
 
 .container-filtro {
-  width: 300px;
+  width: 18.75rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .filtro-campo {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.375rem;
 }
 
 .container-seletor {
@@ -153,15 +149,15 @@ button {
   appearance: none;
   -webkit-appearance: none;
   width: 100%;
-  height: 37.5px;
-  padding: 9px 36px 9px 15px;
+  height: 2.34375rem;
+  padding: 0.5625rem 2.25rem 0.5625rem 0.9375rem;
   background: var(--color-neutral-light);
-  border: 1px solid var(--color-neutral-gray);
-  border-radius: 8px;
+  border: 0.0625rem solid var(--color-neutral-gray);
+  border-radius: 0.5rem;
   font-family: inherit;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
-  line-height: 16px;
+  line-height: 1rem;
   color: var(--color-accent-brown);
   cursor: pointer;
 }
@@ -169,43 +165,47 @@ button {
 .seletor-seta {
   position: absolute;
   top: 50%;
-  right: 15px;
+  right: 0.9375rem;
   transform: translateY(-50%);
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1;
   color: var(--color-blue-dark);
   pointer-events: none;
 }
 
 .container-cards {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  display: flex;
+  gap: 1rem;
+  width: 100%;
 }
 
-.card {
-  min-height: 160px;
-  padding: 20px;
+.container-cards .card,
+.container-cards .card-metrica {
+  flex: 1;
+  min-width: 0;
+  min-height: 9.375rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 10px;
+  gap: 0.625rem;
   background: var(--color-blue-dark);
-  border-radius: 12px;
+  border-radius: 0.75rem;
   color: var(--white);
+  border: none;
 }
 
 .card-corpo {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.3125rem;
 }
 
 .card-titulo {
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 700;
-  line-height: 16.5px;
-  letter-spacing: 0.55px;
+  line-height: 1.03125rem;
+  letter-spacing: 0.0344rem;
   text-transform: uppercase;
   color: var(--color-blue-medium);
 }
@@ -213,37 +213,37 @@ button {
 .card-linha-valor {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .card-valor {
-  font-size: 36px;
+  font-size: 2.25rem;
   font-weight: 800;
-  line-height: 40px;
-  letter-spacing: -0.9px;
+  line-height: 2.5rem;
+  letter-spacing: -0.05625rem;
   color: var(--white);
 }
 
 .card-unidade {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 1.25rem;
   color: var(--color-blue-medium);
 }
 
 .card-rodape {
   margin: 0;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 1rem;
   color: var(--color-blue-medium);
 }
 
 .container-progresso {
-  height: 8px;
-  margin-top: 4px;
-  background: #201d1d;
-  border-radius: 999px;
+  height: 0.5rem;
+  margin-top: 0.25rem;
+  background: var(--color-track-dark);
+  border-radius: 999rem;
   overflow: hidden;
 }
 
@@ -251,35 +251,35 @@ button {
   width: var(--progresso, 0%);
   height: 100%;
   background: var(--color-accent);
-  border-radius: 999px;
+  border-radius: 999rem;
 }
 
 .container-tags {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
-  padding-top: 2.5px;
+  gap: 0.5rem;
+  padding-top: 0.15625rem;
 }
 
 .tag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
   background: color-mix(in srgb, var(--white) 18%, transparent);
-  border-radius: 6px;
-  font-size: 11px;
+  border-radius: 0.375rem;
+  font-size: 0.6875rem;
   font-weight: 500;
-  line-height: 16.5px;
+  line-height: 1.03125rem;
   color: var(--white);
   white-space: nowrap;
 }
 
 .tag-ponto {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 999rem;
   background: var(--color-blue-medium);
 }
 

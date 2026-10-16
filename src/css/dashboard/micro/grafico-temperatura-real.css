@@ -1,31 +1,37 @@
 .container-grafico {
-  width: 90%;
-  height: 90%;
+  width: 100%;
   display: flex;
-  padding: 1.75rem;
+  padding: 1.5rem 1.75rem;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
-  align-self: stretch;
+  align-items: stretch;
+  gap: 1.25rem;
 
   border-radius: 1rem;
-  border: 1px solid var(--color-blue-medium);
+  border: 0.0625rem solid var(--color-neutral-gray);
   background: var(--white);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 
-  margin: 1.5rem 3rem;
+  margin: 0;
 }
 
 .temp-real-container-header {
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 0.35rem;
+}
+
+.temp-real-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .temp-real-container-row {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .temp-real-titulo {
@@ -57,4 +63,39 @@
 .temp-real-descricao {
   font-size: 0.875rem;
   color: var(--color-gray-dark);
+}
+
+.temp-real-legenda {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--color-gray-dark);
+}
+
+.temp-real-legenda-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.temp-real-legenda-linha {
+  width: 1rem;
+  height: 0.2rem;
+  background-color: var(--color-blue-dark);
+  border-radius: 2px;
+}
+
+.temp-real-legenda-faixa {
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--color-green-light);
+  border-radius: 2px;
+}
+
+.temp-real-grafico-wrapper {
+  width: 100%;
+  height: 14rem;
+  position: relative;
+  display: flex;
 }
