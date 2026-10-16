@@ -8,3 +8,14 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.dashboard {
+  flex: 1;
+  min-width: 0;
+  max-width: 94.5rem;
+  margin: 0 auto;
+  padding: 1.5rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}

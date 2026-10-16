@@ -160,8 +160,7 @@ function setupConfig(lote1, lote2, n_dias) {
     },
     options: {
       responsive: true,
-      maintainAspectRattio: false,
-      aspectRadio: 4,
+      maintainAspectRatio: false,
       scales: {
         y: {
           min: faixa.min[0] - 3,
