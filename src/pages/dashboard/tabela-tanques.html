@@ -19,12 +19,12 @@
     <title>Zymos - Tanques e Lotes da Unidade</title>
   </head>
   <body>
-    <section class="card-lotes" aria-labelledby="card-title">
+    <section class="card-tanques">
         <header class="card-header">
           <h2 id="card-title" class="card-title">Tanques e lotes da unidade</h2>
         </header>
 
-        <nav class="filtros-wrapper" aria-label="Filtro de lotes e tanques">
+        <nav class="filtros-wrapper">
           <button
             type="button"
             class="filtro-btn active"
@@ -57,13 +57,13 @@
             data-filter="disponiveis"
             onclick="filtrarDisponiveis()"
           >
-            Dispon&iacute;veis &middot;
+            Disponíveis &middot;
             <span class="badge-count" id="count-disponiveis"></span>
           </button>
         </nav>
 
         <div class="tabela-container">
-          <table class="tabela-lotes">
+          <table class="tabela-tanques">
             <thead>
               <tr>
                 <th scope="col" class="th-tanque">Tanque</th>
@@ -71,10 +71,10 @@
                 <th scope="col" class="th-temp">Temperatura atual</th>
                 <th scope="col" class="th-faixa">Faixa ideal</th>
                 <th scope="col" class="th-status">Status</th>
-                <th scope="col" class="th-acao" aria-label="Ações"></th>
+                <th scope="col" class="th-acao"></th>
               </tr>
             </thead>
-            <tbody id="tabela-lotes-body"></tbody>
+            <tbody id="tabela-tanques-body"></tbody>
           </table>
         </div>
       </section>

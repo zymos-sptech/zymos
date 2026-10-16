@@ -123,7 +123,7 @@ function contarTanques() {
 }
 
 function renderizarTabela(data) {
-  const tableBody = document.getElementById("tabela-lotes-body");
+  const tableBody = document.getElementById("tabela-tanques-body");
 
   tableBody.innerHTML = "";
 
@@ -144,7 +144,7 @@ function renderizarTabela(data) {
 
     tableBody.innerHTML += `
          <tr
-                class="linha-lote status-desvio"
+                class="linha-tanque status-desvio"
                 data-status="desvio"
                 id="row-tq-${data[i].id}"
               >

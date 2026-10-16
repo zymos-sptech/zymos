@@ -1,4 +1,4 @@
-.card-lotes {
+.card-tanques {
   width: 100%;
   max-width: 1160px;
   background-color: var(--white);
@@ -107,7 +107,7 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.tabela-lotes {
+.tabela-tanques {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
@@ -115,11 +115,11 @@
   text-align: left;
 }
 
-.tabela-lotes thead tr {
+.tabela-tanques thead tr {
   background-color: var(--color-neutral-sand);
 }
 
-.tabela-lotes th {
+.tabela-tanques th {
   padding: 0.85rem 1.25rem;
   font-size: 0.75rem;
   font-weight: 700;
@@ -130,12 +130,12 @@
   white-space: nowrap;
 }
 
-.tabela-lotes th:first-child {
+.tabela-tanques th:first-child {
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
 
-.tabela-lotes th:last-child {
+.tabela-tanques th:last-child {
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 }
@@ -165,22 +165,22 @@
   text-align: right;
 }
 
-.tabela-lotes tbody tr {
+.tabela-tanques tbody tr {
   transition: background-color 0.15s ease;
 }
 
-.tabela-lotes tbody tr:hover {
+.tabela-tanques tbody tr:hover {
   background-color: var(--color-neutral-hover);
 }
 
-.tabela-lotes td {
+.tabela-tanques td {
   padding: 1.15rem 1.25rem;
   vertical-align: middle;
   border-bottom: 1px solid var(--color-neutral-border-light);
   white-space: nowrap;
 }
 
-.tabela-lotes tbody tr:last-child td {
+.tabela-tanques tbody tr:last-child td {
   border-bottom: none;
 }
 
@@ -286,13 +286,13 @@
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.linha-lote.aberto td {
+.linha-tanque.aberto td {
   background-color: var(--color-neutral-warm);
   border-bottom-color: transparent;
 }
 
 .btn-detalhes.ativo i,
-.linha-lote.aberto .btn-detalhes i {
+.linha-tanque.aberto .btn-detalhes i {
   transform: rotate(90deg);
 }
 
@@ -303,7 +303,7 @@
 }
 
 .btn-detalhes.ativo:hover i,
-.linha-lote.aberto .btn-detalhes:hover i {
+.linha-tanque.aberto .btn-detalhes:hover i {
   transform: rotate(90deg);
 }
 
@@ -424,7 +424,7 @@
     padding: 1rem 0.75rem;
   }
 
-  .card-lotes {
+  .card-tanques {
     padding: 1.25rem 1rem;
     border-radius: 1rem;
     gap: 1rem;
@@ -443,8 +443,8 @@
     font-size: 0.8rem;
   }
 
-  .tabela-lotes th,
-  .tabela-lotes td {
+  .tabela-tanques th,
+  .tabela-tanques td {
     padding: 0.85rem 0.75rem;
   }
 
