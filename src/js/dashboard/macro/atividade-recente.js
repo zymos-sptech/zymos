@@ -55,6 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderizarAtividadeRecente();
 });
 
-document.addEventListener("change", () => {
+selectUnidade.addEventListener("change", () => {
   renderizarAtividadeRecente();
 });
