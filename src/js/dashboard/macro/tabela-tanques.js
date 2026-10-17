@@ -236,7 +236,7 @@ function renderizarTabela(data) {
   }
 }
 
-function verDetalhes(idTanque, idBtn) {
+window.verDetalhes = function (idTanque, idBtn) {
   const btn = document.getElementById(idBtn);
   const detalhesId = document.getElementById(`detalhes-${idTanque}`);
   const tanque = document.getElementById(`row-tq-${idTanque}`);

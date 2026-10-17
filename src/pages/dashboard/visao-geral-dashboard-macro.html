@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../../../assets/branding/favicon.png"
+      type="image/x-icon"
+    />
+    <title>Zymos - Visão Geral Macro</title>
+
+    <!-- Estilos globais e componentes -->
+    <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link rel="stylesheet" href="../../css/dashboard/dashboard.css" />
+    <link rel="stylesheet" href="../../css/dashboard/macro/header-macro.css" />
+    <link rel="stylesheet" href="../../css/dashboard/macro/kpis-macro.css" />
+    <link rel="stylesheet" href="../../css/dashboard/macro/filtros-macro.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/dashboard/macro/tabela-tanques.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../css/dashboard/macro/atividade-recente.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../css/dashboard/macro/desvios-tanque-macro.css"
+    />
+
+    <!-- Ícones Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Scripts da Sidebar e da Tabela de Tanques -->
+    <script src="../../js/sidebar/sidebar.js" defer></script>
+    <script
+      type="module"
+      src="../../js/dashboard/macro/header.js"
+      defer
+    ></script>
+    <script
+      type="module"
+      src="../../js/dashboard/macro/filtro-unidades.js"
+      defer
+    ></script>
+    <script
+      type="module"
+      src="../../js/dashboard/macro/tabela-tanques.js"
+      defer
+    ></script>
+    <script
+      type="module"
+      src="../../js/dashboard/macro/atividade-recente.js"
+      defer
+    ></script>
+    <script
+      type="module"
+      src="../../js/dashboard/macro/desvio-tanque.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <!-- Sidebar Aberta -->
+    <aside id="sidebar-open" class="sidebar-container">
+      <button type="button" onclick="closeSidebar()" class="sidebar-btn-toggle">
+        <i class="fa-solid fa-table-columns"></i>
+      </button>
+      <img
+        class="sidebar-logo-open"
+        src="../../../assets/branding/logo-branca.svg"
+        alt="Zymos Qualidade na fermentação"
+        draggable="false"
+      />
+
+      <hr class="sidebar-divider" />
+      <nav>
+        <ul class="sidebar-list">
+          <a href="./visao-geral-dashboard-macro.html">
+            <li class="sidebar-link">
+              <i class="fa-regular fa-house"></i>
+              Visão geral
+            </li></a
+          >
+          <a href="./dashboard.html">
+            <li class="sidebar-link">
+              <i class="fa-solid fa-chart-column"></i> Dashboard
+            </li>
+          </a>
+          <li class="sidebar-link">
+            <i class="fa-regular fa-building"></i>
+            Unidades
+          </li>
+          <li class="sidebar-link">
+            <i class="fa-solid fa-jar"></i>
+            Tanques
+          </li>
+          <li class="sidebar-link">
+            <i class="fa-solid fa-flask"></i>
+            Lotes
+          </li>
+          <li class="sidebar-link">
+            <i class="fa-regular fa-user"></i>
+            Perfil e configuração
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <hr class="sidebar-divider" />
+        <div class="sidebar-user">
+          <div class="sidebar-user-avatar">CS</div>
+          <div class="sidebar-user-info">
+            <span class="sidebar-user-name">Carlos Silva</span>
+            <span class="sidebar-user-role">Administrador</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <aside id="sidebar-close" class="sidebar-container-close">
+      <button
+        type="button"
+        onclick="openSidebar()"
+        class="sidebar-btn-toggle btn-close"
+      >
+        <i class="fa-solid fa-table-columns"></i>
+      </button>
+      <img
+        class="sidebar-logo-open"
+        src="../../../assets/branding/mini-logo-branca.png"
+        alt="Zymos Qualidade na fermentação"
+        draggable="false"
+      />
+
+      <nav>
+        <ul class="sidebar-list">
+          <a href="./visao-geral-dashboard-macro.html">
+            <li class="sidebar-link">
+              <i class="fa-regular fa-house"></i></li
+          ></a>
+          <a href="./dashboard.html">
+            <li class="sidebar-link" title="Dashboard">
+              <i class="fa-solid fa-chart-column"></i>
+            </li>
+          </a>
+          <li class="sidebar-link" title="Unidades">
+            <i class="fa-regular fa-building"></i>
+          </li>
+          <li class="sidebar-link" title="Tanques">
+            <i class="fa-solid fa-jar"></i>
+          </li>
+          <li class="sidebar-link" title="Lotes">
+            <i class="fa-solid fa-flask"></i>
+          </li>
+          <li class="sidebar-link" title="Perfil e configuração">
+            <i class="fa-regular fa-user"></i>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <hr class="sidebar-divider" />
+        <div class="sidebar-user">
+          <div class="sidebar-user-avatar">CS</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Conteúdo Principal da Dashboard Macro -->
+    <main class="dashboard">
+      <!-- 1. Header de Boas-Vindas e Resumo Geral -->
+      <section class="macro-header-card">
+        <div class="macro-header-info">
+          <h1 class="macro-header-title" id="name-user"></h1>
+          <p class="macro-header-subtitle" id="subtitle"></p>
+        </div>
+        <div class="macro-header-badges">
+          <span class="macro-badge" id="badge-plano"></span>
+          <span class="macro-badge" id="badge-fabricas"></span>
+          <span class="macro-badge" id="badge-tanques-total"></span>
+        </div>
+      </section>
+
+      <!-- 2. Seção de Filtros e Busca de Unidade/Tanque -->
+      <section class="macro-filtros-card">
+        <form
+          class="macro-filtros-form"
+          id="form-filtros-macro"
+          onsubmit="event.preventDefault()"
+        >
+          <!-- Campo Unidade -->
+          <div class="filtro-campo-grupo filtro-campo-unidade">
+            <label class="filtro-rotulo" for="select-unidade">Unidade</label>
+            <div class="filtro-select-wrapper">
+              <select
+                onchange="sltUnidade()"
+                class="filtro-input-select"
+                id="select-unidade"
+              ></select>
+              <i class="fa-solid fa-angle-down filtro-select-arrow"></i>
+            </div>
+          </div>
+
+          <!-- Campo Busca -->
+          <div class="filtro-campo-grupo filtro-campo-busca">
+            <label class="filtro-rotulo" for="input-busca-tanque"
+              >Buscar tanque ou lote</label
+            >
+            <input
+              type="text"
+              class="filtro-input-text"
+              id="input-busca-tanque"
+              name="busca"
+              placeholder="Ex.: TQ-01, Lote 201, IPA"
+            />
+          </div>
+
+          <!-- Botão Aplicar -->
+          <button
+            type="submit"
+            class="btn-aplicar-filtro-macro"
+            id="btn-aplicar-filtro"
+          >
+            <i class="fa-solid fa-filter" aria-hidden="true"></i>
+            Aplicar Filtro
+          </button>
+        </form>
+
+        <!-- Filtros Ativos / Tags de Exibição -->
+        <div class="macro-filtros-ativos-linha">
+          <span>Exibindo:</span>
+          <span class="tag-filtro-ativo" id="unidade-ativa"></span>
+        </div>
+      </section>
+
+      <!-- 3. Cards de Métricas Principais (KPIs) -->
+      <section
+        class="macro-kpis-grid"
+        aria-label="Indicadores chave de desempenho"
+      >
+        <!-- Card 1: Lotes em andamento -->
+        <article class="macro-kpi-card" id="card-lotes-andamento">
+          <div class="kpi-topo">
+            <span class="kpi-titulo">Lotes em andamento</span>
+            <div class="kpi-valor-row">
+              <span class="kpi-valor" id="kpi-lotes-qtd">3</span>
+              <span class="kpi-unidade">lotes ativos</span>
+            </div>
+          </div>
+          <div class="kpi-tags-row">
+            <span class="kpi-tag" id="tag-lotes-ale">2 Ale</span>
+            <span class="kpi-tag" id="tag-lotes-lager">1 Lager</span>
+          </div>
+          <p class="kpi-rodape" id="kpi-unidade-referencia">
+            Matriz Ribeirão Preto
+          </p>
+        </article>
+
+        <!-- Card 2: Aderência média geral -->
+        <article class="macro-kpi-card" id="card-aderencia-media">
+          <div class="kpi-topo">
+            <span class="kpi-titulo">Aderência média geral</span>
+            <div class="kpi-valor-row">
+              <span class="kpi-valor" id="kpi-aderencia-valor">95,8%</span>
+            </div>
+          </div>
+          <div
+            class="kpi-progress-container"
+            role="progressbar"
+            aria-valuenow="95.8"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            <div class="kpi-progress-bar" style="width: 95.8%"></div>
+          </div>
+          <p class="kpi-rodape">Matriz Ribeirão Preto &middot; até agora</p>
+        </article>
+
+        <!-- Card 3: Desvios no período -->
+        <article class="macro-kpi-card" id="card-desvios-periodo">
+          <div class="kpi-topo">
+            <span class="kpi-titulo">Desvios no período</span>
+            <div class="kpi-valor-row">
+              <span class="kpi-valor" id="kpi-desvios-qtd">2</span>
+              <span class="kpi-unidade">ocorrências</span>
+            </div>
+          </div>
+          <div class="kpi-tags-row">
+            <span class="kpi-tag">
+              <span class="kpi-dot green"></span>
+              <span id="kpi-desvios-resolvidos">1 resolvido</span>
+            </span>
+            <span class="kpi-tag">
+              <span class="kpi-dot orange"></span>
+              <span id="kpi-desvios-abertos">1 em aberto</span>
+            </span>
+          </div>
+          <p class="kpi-rodape">Matriz Ribeirão Preto &middot; até agora</p>
+        </article>
+
+        <!-- Card 4: Alertas pendentes -->
+        <article class="macro-kpi-card" id="card-alertas-pendentes">
+          <div class="kpi-topo">
+            <span class="kpi-titulo">Alertas pendentes</span>
+            <div class="kpi-valor-row">
+              <span class="kpi-valor" id="kpi-alertas-qtd">1</span>
+              <span class="kpi-unidade">alerta</span>
+            </div>
+          </div>
+          <div class="kpi-tags-row">
+            <span class="kpi-tag kpi-tag-alert">
+              <span class="kpi-dot orange"></span>
+              <span id="kpi-alerta-detalhe">TQ-01 &middot; acima do ideal</span>
+            </span>
+          </div>
+          <p class="kpi-rodape" id="kpi-alerta-tempo">
+            desde 14:32:10 &middot; aguardando revisão
+          </p>
+        </article>
+
+        <!-- Card 5: Ocupação dos tanques -->
+        <article class="macro-kpi-card" id="card-ocupacao-tanques">
+          <div class="kpi-topo">
+            <span class="kpi-titulo">Ocupação dos tanques</span>
+            <div class="kpi-valor-row">
+              <span class="kpi-valor" id="kpi-ocupacao-qtd">3</span>
+              <span class="kpi-unidade">de 4 tanques</span>
+            </div>
+          </div>
+          <div
+            class="kpi-progress-container"
+            role="progressbar"
+            aria-valuenow="75"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            <div class="kpi-progress-bar" style="width: 75%"></div>
+          </div>
+          <p class="kpi-rodape" id="kpi-ocupacao-taxa">
+            Matriz &middot; 75% de ocupação
+          </p>
+        </article>
+      </section>
+
+      <!-- 4. Seção Tabela de Tanques e Lotes da Unidade -->
+      <section class="card-tanques">
+        <header class="card-header">
+          <h2 id="card-title" class="card-title">Tanques e lotes da unidade</h2>
+        </header>
+
+        <nav class="filtros-wrapper">
+          <button
+            type="button"
+            class="filtro-btn active"
+            data-filter="todos"
+            onclick="filtrarTodos()"
+          >
+            Todos &middot; <span class="badge-count" id="count-todos"></span>
+          </button>
+          <button
+            type="button"
+            class="filtro-btn filtro-desvio"
+            data-filter="desvio"
+            onclick="filtrarDesvio()"
+          >
+            Em desvio &middot;
+            <span class="badge-count" id="count-desvio"></span>
+          </button>
+          <button
+            type="button"
+            class="filtro-btn filtro-faixa"
+            data-filter="faixa"
+            onclick="filtrarFaixa()"
+          >
+            Na faixa &middot;
+            <span class="badge-count" id="count-faixa"></span>
+          </button>
+          <button
+            type="button"
+            class="filtro-btn filtro-disponiveis"
+            data-filter="disponiveis"
+            onclick="filtrarDisponiveis()"
+          >
+            Disponíveis &middot;
+            <span class="badge-count" id="count-disponiveis"></span>
+          </button>
+        </nav>
+
+        <div class="tabela-container">
+          <table class="tabela-tanques">
+            <thead>
+              <tr>
+                <th scope="col" class="th-tanque">Tanque</th>
+                <th scope="col" class="th-lote">Lote</th>
+                <th scope="col" class="th-temp">Temperatura atual</th>
+                <th scope="col" class="th-faixa">Faixa ideal</th>
+                <th scope="col" class="th-status">Status</th>
+                <th scope="col" class="th-acao"></th>
+              </tr>
+            </thead>
+            <tbody id="tabela-tanques-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 5. Grid Inferior: Atividade Recente e Desvios por Tanque -->
+      <section class="macro-grid-inferior">
+        <!-- Card: Atividade Recente -->
+        <article class="card-atividade-recente" id="card-atividade-recente">
+          <header class="secao-card-header">
+            <h3 class="secao-card-titulo">Atividade recente</h3>
+            <p class="secao-card-subtitulo" id="atv-recente-unidade-ativa"></p>
+          </header>
+
+          <div class="lista-atividades" id="lista-atividades-container"></div>
+        </article>
+
+        <!-- Card: Desvios por Tanque -->
+        <article class="card-desvios-tanque-macro" id="card-desvios-tanque">
+          <div>
+            <header class="secao-card-header">
+              <h3 class="secao-card-titulo">Desvios por tanque</h3>
+              <p class="secao-card-subtitulo" id="desvio-tanque-unidade"></p>
+            </header>
+
+            <div class="desvios-lista-tanques" id="lista-desvios-tanques">
+              <!-- TQ-01 -->
+              <div class="desvio-tanque-row">
+                <span class="desvio-tanque-nome">TQ-01</span>
+                <div class="desvio-barra-container">
+                  <div
+                    class="desvio-barra-preenchimento"
+                    style="width: 35%"
+                  ></div>
+                </div>
+                <span class="desvio-tanque-contagem">2</span>
+              </div>
+
+              <!-- TQ-04 -->
+              <div class="desvio-tanque-row">
+                <span class="desvio-tanque-nome">TQ-04</span>
+                <div class="desvio-barra-container">
+                  <span class="desvio-texto-vazio">0 desvios</span>
+                </div>
+                <span class="desvio-tanque-contagem">0</span>
+              </div>
+
+              <!-- TQ-02 -->
+              <div class="desvio-tanque-row">
+                <span class="desvio-tanque-nome">TQ-02</span>
+                <div class="desvio-barra-container">
+                  <span class="desvio-texto-vazio">0 desvios</span>
+                </div>
+                <span class="desvio-tanque-contagem">0</span>
+              </div>
+
+              <!-- TQ-03 -->
+              <div class="desvio-tanque-row">
+                <span class="desvio-tanque-nome">TQ-03</span>
+                <div class="desvio-barra-container">
+                  <span class="desvio-texto-vazio">0 desvios</span>
+                </div>
+                <span class="desvio-tanque-contagem">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rodapé Tempo Médio de Resposta -->
+          <footer class="desvios-card-rodape">
+            <span class="rodape-label-tempo">Tempo médio de resposta</span>
+            <span class="rodape-valor-tempo" id="valor-tempo-resposta"
+              >18 min</span
+            >
+          </footer>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
