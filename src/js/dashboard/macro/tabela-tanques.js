@@ -115,7 +115,6 @@ function contarTanques() {
   ).length;
 
 
-  lengthDisponivel = disponiveis;
   countTodos.textContent = data.length;
   countDesvio.textContent = desvio;
   countFaixa.textContent = faixa;
