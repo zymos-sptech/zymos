@@ -1,42 +1,61 @@
 import alertaData from "../../MOCK_DATA/alerta.js";
 import { getUnidadeSelecionada } from "./filtro-unidades.js";
 
-const selectUnidade = document.getElementById("select-unidade");
+const atualizarUnidade = document.getElementById("select-unidade");
 const unidade = document.getElementById("atv-recente-unidade-ativa");
 const listaAtividadeRecente = document.getElementById(
   "lista-atividades-container",
 );
 
 function renderizarAtividadeRecente() {
-  unidade.textContent = `Alertas e lotes ${getUnidadeSelecionada()}`;
+  listaAtividadeRecente.innerHTML = "";
+  let unidadeSelecionada = getUnidadeSelecionada();
+  unidade.textContent = `Alertas e lotes ${unidadeSelecionada}`;
 
   let statusAlerta = "";
   let mensagemAlerta = "";
   let descricaoAlerta = "";
 
-  for (let i = 0; i < alertaData.length; i++) {
-    if (alertaData[i].status.toLowerCase() === "aberto") {
+  let filterAtividadeRecente = alertaData.filter(
+    (item) =>
+      item.nome_unidade.toLowerCase() === unidadeSelecionada.toLowerCase(),
+  );
+
+  if (filterAtividadeRecente.length === 0) {
+    listaAtividadeRecente.innerHTML = `
+      <div class="item-atividade-vazio">
+        <div class="atividade-vazia-conteudo">
+          <span class="atividade-vazia-titulo">Sem alertas ou lotes recentes</span>
+          <span class="atividade-vazia-descricao">Nenhuma atividade encontrada na unidade ${unidadeSelecionada}.</span>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  for (let i = 0; i < filterAtividadeRecente.length; i++) {
+    if (filterAtividadeRecente[i].status.toLowerCase() === "aberto") {
       statusAlerta = "orange";
-      mensagemAlerta = `Alerta aberto &middot; ${alertaData[i].nome_unidade} &middot; ${alertaData[i].nome_tanque}`;
-      descricaoAlerta = `Temperatura acima do ideal: ${alertaData[i].temperatura}°C &middot; Lote ${alertaData[i].nome_lote}`;
-    } else if (alertaData[i].status.toLowerCase() === "resolvido") {
+      mensagemAlerta = `Alerta aberto &middot; ${filterAtividadeRecente[i].nome_unidade} &middot; ${filterAtividadeRecente[i].nome_tanque}`;
+      descricaoAlerta = `Temperatura acima do ideal: ${filterAtividadeRecente[i].temperatura}°C &middot; Lote ${filterAtividadeRecente[i].nome_lote}`;
+    } else if (filterAtividadeRecente[i].status.toLowerCase() === "resolvido") {
       statusAlerta = "green";
-      mensagemAlerta = `Alerta resolvido &middot; ${alertaData[i].nome_unidade} &middot; ${alertaData[i].nome_tanque}`;
-      descricaoAlerta = `Resposta rápida &middot; Lote ${alertaData[i].nome_lote}`;
-    } else if (alertaData[i].status.toLowerCase() === "iniciado") {
+      mensagemAlerta = `Alerta resolvido &middot; ${filterAtividadeRecente[i].nome_unidade} &middot; ${filterAtividadeRecente[i].nome_tanque}`;
+      descricaoAlerta = `Resposta rápida &middot; Lote ${filterAtividadeRecente[i].nome_lote}`;
+    } else if (filterAtividadeRecente[i].status.toLowerCase() === "iniciado") {
       statusAlerta = "blue";
-      mensagemAlerta = `Lote ${alertaData[i].nome_lote} iniciado`;
-      descricaoAlerta = `${alertaData[i].levedura} &middot; ${alertaData[i].nome_unidade} &middot; ${alertaData[i].nome_tanque}`;
+      mensagemAlerta = `Lote ${filterAtividadeRecente[i].nome_lote} iniciado`;
+      descricaoAlerta = `${filterAtividadeRecente[i].levedura} &middot; ${filterAtividadeRecente[i].nome_unidade} &middot; ${filterAtividadeRecente[i].nome_tanque}`;
     } else {
       statusAlerta = "gray";
-      mensagemAlerta = `Lote ${alertaData[i].nome_lote} finalizado`;
-      descricaoAlerta = `${alertaData[i].levedura} &middot; ${alertaData[i].nome_unidade} &middot; ${alertaData[i].nome_tanque}`;
+      mensagemAlerta = `Lote ${filterAtividadeRecente[i].nome_lote} finalizado`;
+      descricaoAlerta = `${filterAtividadeRecente[i].levedura} &middot; ${filterAtividadeRecente[i].nome_unidade} &middot; ${filterAtividadeRecente[i].nome_tanque}`;
     }
 
     listaAtividadeRecente.innerHTML += `
       <div class="item-atividade">
         <div class="item-atividade-conteudo">
-          <span class="atividade-timestamp">${alertaData[i].dt_inicio}</span>
+          <span class="atividade-timestamp">${filterAtividadeRecente[i].dt_inicio}</span>
           <div class="atividade-detalhes">
             <div class="atividade-titulo-linha">
               <span class="kpi-dot ${statusAlerta}"></span>
@@ -55,6 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderizarAtividadeRecente();
 });
 
-selectUnidade.addEventListener("change", () => {
+atualizarUnidade.addEventListener("change", () => {
   renderizarAtividadeRecente();
 });

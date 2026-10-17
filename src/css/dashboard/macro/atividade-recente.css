@@ -104,3 +104,42 @@
   color: var(--color-blue-navy);
   transform: translateX(2px);
 }
+
+/* Estado Vazio (Sem Atividades) */
+.item-atividade-vazio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.25rem 1.25rem;
+  background-color: var(--color-neutral-warm);
+  border: 1.5px dashed var(--color-neutral-border);
+  border-radius: 0.85rem;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.atividade-vazia-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.atividade-vazia-icone {
+  font-size: 1.4rem;
+  color: var(--color-gray-dark);
+  margin-bottom: 0.25rem;
+  opacity: 0.75;
+}
+
+.atividade-vazia-titulo {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-blue-navy);
+}
+
+.atividade-vazia-descricao {
+  font-size: 0.78rem;
+  color: var(--color-gray-dark);
+}
+
