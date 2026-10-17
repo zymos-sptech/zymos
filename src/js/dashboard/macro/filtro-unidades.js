@@ -23,6 +23,7 @@ window.sltUnidade = () => {
 };
 
 function getUnidadeSelecionada() {
+  console.log(selectUnidade.options[selectUnidade.selectedIndex].text)
   return selectUnidade.options[selectUnidade.selectedIndex].text;
 }
 

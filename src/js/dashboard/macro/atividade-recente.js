@@ -1,6 +1,7 @@
 import alertaData from "../../MOCK_DATA/alerta.js";
 import { getUnidadeSelecionada } from "./filtro-unidades.js";
 
+const selectUnidade = document.getElementById("select-unidade");
 const unidade = document.getElementById("atv-recente-unidade-ativa");
 const listaAtividadeRecente = document.getElementById(
   "lista-atividades-container",
@@ -51,5 +52,9 @@ function renderizarAtividadeRecente() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  renderizarAtividadeRecente();
+});
+
+document.addEventListener("change", () => {
   renderizarAtividadeRecente();
 });

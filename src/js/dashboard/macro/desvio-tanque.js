@@ -1,6 +1,8 @@
 import { loteData } from "../../MOCK_DATA/lote.js";
 import { getUnidadeSelecionada } from "./filtro-unidades.js";
 
+const selectUnidade = document.getElementById("select-unidade");
+
 function renderizarDesvioTanque() {
   const desvioTanqueUnidade = document.getElementById("desvio-tanque-unidade");
   const listaDesvioTanque = document.getElementById("lista-desvios-tanques");
@@ -41,5 +43,9 @@ function renderizarDesvioTanque() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  renderizarDesvioTanque();
+});
+
+selectUnidade.addEventListener("change", () => {
   renderizarDesvioTanque();
 });
