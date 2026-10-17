@@ -1,34 +1,37 @@
-import { loteData } from "../../MOCK_DATA/lote.js";
+import { tanqueData } from "../../MOCK_DATA/tanque.js";
 import { getUnidadeSelecionada } from "./filtro-unidades.js";
 
 const selectUnidade = document.getElementById("select-unidade");
 
 function renderizarDesvioTanque() {
+  const nomeUnidade = getUnidadeSelecionada();
   const desvioTanqueUnidade = document.getElementById("desvio-tanque-unidade");
   const listaDesvioTanque = document.getElementById("lista-desvios-tanques");
+  listaDesvioTanque.innerHTML = "";
 
   let valorMaximoDesvio = 0;
   let valorDesvio = 0;
   let porcentagemDesvio = 0;
 
-  const nomeUnidade = getUnidadeSelecionada();
   desvioTanqueUnidade.innerHTML = `${nomeUnidade} (até agora)`;
 
-  for (let i = 0; i < loteData.length; i++) {
-    valorDesvio = loteData[i].desvio;
+  let filterLotePorUnidade = tanqueData.filter(
+    (item) => item.nomeUnidade.trim().toLowerCase() === nomeUnidade.trim().toLowerCase(),
+  );
+
+  for (let i = 0; i < filterLotePorUnidade.length; i++) {
+    valorDesvio = filterLotePorUnidade[i].lote[0].desvio;
     if (valorDesvio > valorMaximoDesvio) {
       valorMaximoDesvio = valorDesvio;
     }
   }
 
-  listaDesvioTanque.innerHTML = "";
-
-  for (let i = 0; i < loteData.length; i++) {
-    let desvio = loteData[i].desvio;
-    porcentagemDesvio = (desvio / valorMaximoDesvio) * 100;
+  for (let i = 0; i < filterLotePorUnidade.length; i++) {
+    let desvio = filterLotePorUnidade[i].lote[0].desvio;
+    porcentagemDesvio = valorMaximoDesvio > 0 ? (desvio / valorMaximoDesvio) * 100 : 0;
     listaDesvioTanque.innerHTML += `
-      <div class="desvio-tanque-row" id="lote-${loteData[i].id}">
-        <span class="desvio-tanque-nome">${loteData[i].nome_tanque}</span>
+      <div class="desvio-tanque-row" id="tanque-${filterLotePorUnidade[i].id}">
+        <span class="desvio-tanque-nome">${filterLotePorUnidade[i].nome}</span>
         <div class="desvio-barra-container">
           ${
             desvio === 0
