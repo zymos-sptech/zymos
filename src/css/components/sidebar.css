@@ -180,3 +180,37 @@
   opacity: 0.85;
   white-space: nowrap;
 }
+
+.sidebar-btn-logout {
+  background-color: transparent;
+  border: none;
+  color: var(--color-blue-medium);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-left: auto;
+  transition: all 0.3s ease;
+}
+
+.sidebar-btn-logout:hover {
+  background-color: rgba(192, 82, 48, 0.2);
+  color: var(--color-alert-red);
+}
+
+.sidebar-container-close .sidebar-user {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-container-close .sidebar-btn-logout {
+  margin-left: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+

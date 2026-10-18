@@ -36,3 +36,12 @@ window.openSidebar = function () {
   sidebarOpen.style.display = "flex";
   sidebarClose.style.display = "none";
 };
+
+window.logout = function () {
+  sessionStorage.removeItem("NOME_COMPLETO");
+  sessionStorage.removeItem("CARGO");
+  sessionStorage.removeItem("EMAIL");
+  sessionStorage.removeItem("PASSWORD");
+
+  window.location = "../../pages/login.html";
+};
