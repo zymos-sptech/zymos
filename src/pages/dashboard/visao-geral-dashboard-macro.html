@@ -37,7 +37,7 @@
     ></script>
 
     <!-- Scripts da Sidebar e da Tabela de Tanques -->
-    <script src="../../js/sidebar/sidebar.js" defer></script>
+    <script type="module" src="../../js/sidebar/sidebar.js" defer></script>
     <script
       type="module"
       src="../../js/dashboard/macro/header.js"
@@ -114,10 +114,10 @@
       <div class="sidebar-footer">
         <hr class="sidebar-divider" />
         <div class="sidebar-user">
-          <div class="sidebar-user-avatar">CS</div>
+          <div class="sidebar-user-avatar" id="user-avatar"></div>
           <div class="sidebar-user-info">
-            <span class="sidebar-user-name">Carlos Silva</span>
-            <span class="sidebar-user-role">Administrador</span>
+            <span class="sidebar-user-name" id="user-name"></span>
+            <span class="sidebar-user-role" id="user-role"></span>
           </div>
         </div>
       </div>
@@ -167,7 +167,7 @@
       <div class="sidebar-footer">
         <hr class="sidebar-divider" />
         <div class="sidebar-user">
-          <div class="sidebar-user-avatar">CS</div>
+          <div class="sidebar-user-avatar" id="user-avatar-close"></div>
         </div>
       </div>
     </aside>

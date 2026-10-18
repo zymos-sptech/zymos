@@ -1,7 +1,7 @@
 const userData = {
   id: 1,
-  nome: "Carlos Silva",
-  cargo: "Administrador",
+  nome: "Pedro Paraiso",
+  cargo: "Dev FullStack",
   email: "carlos.silva@horizonte.com.br",
   nome_empresa: "Cervejaria Horizonte",
   plano: "Padrão",
