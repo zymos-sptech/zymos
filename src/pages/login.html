@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/pages/login/style.css" />
     <title>Zymos - login</title>
-    <script src="../js/pages/login.js"></script>
+    <script src="../js/pages/login.js" defer></script>
     <script
       src="https://kit.fontawesome.com/79924d81b1.js"
       crossorigin="anonymous"
@@ -72,7 +72,7 @@
             ></i>
           </div>
         </div>
-        <button type="button" class="btn-login">
+        <button type="button" class="btn-login" onclick="handleFormLogin()">
           Entrar
           <i class="fa-solid fa-arrow-right"></i>
         </button>

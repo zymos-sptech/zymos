@@ -1,16 +1,16 @@
 const userData = {
   id: 1,
-  nome: "Pedro Paraiso",
-  cargo: "Dev FullStack",
-  email: "carlos.silva@horizonte.com.br",
+  nome: sessionStorage.getItem("NOME_COMPLETO") || "Usuário Padrão",
+  cargo: sessionStorage.getItem("CARGO") || "Administrador",
+  email: sessionStorage.getItem("EMAIL") || "usuario@cervejaria.com.br",
   nome_empresa: "Cervejaria Horizonte",
   plano: "Padrão",
   unidades: [
     { id: 1, nome: "São Paulo" },
     { id: 2, nome: "São Francisco" },
-    { id: 3, nome: "Belo Horizonte" }
+    { id: 3, nome: "Belo Horizonte" },
   ],
-  totalTanques: 6
+  totalTanques: 6,
 };
 
 export default userData;
