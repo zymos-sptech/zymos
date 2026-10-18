@@ -128,15 +128,22 @@ function renderizarTabela(listaTanques) {
           <span class="tag-status ${tagClass}">${listaTanques[i].status}</span>
         </td>
         <td class="col-acao">
-          <button
-            id="btn-detalhes-${listaTanques[i].id}"
-            type="button"
-            class="btn-detalhes"
-            title="Ver detalhes do tanque ${listaTanques[i].tanque}"
-            onclick="verDetalhes(${listaTanques[i].id}, 'btn-detalhes-${listaTanques[i].id}')"
-          >
-            <i class="fa-solid fa-play" aria-hidden="true"></i>
-          </button>
+          ${
+            listaTanques[i].status.trim().toLowerCase() !== "disponivel"
+              ? `
+              <button
+                id="btn-detalhes-${listaTanques[i].id}"
+                type="button"
+                class="btn-detalhes"
+                title="Ver detalhes do tanque ${listaTanques[i].tanque}"
+                onclick="verDetalhes(${listaTanques[i].id}, 'btn-detalhes-${listaTanques[i].id}')"
+              >
+                <i class="fa-solid fa-play" aria-hidden="true"></i>
+              </button>
+            
+            `
+              : ``
+          }
         </td>
       </tr> 
 
