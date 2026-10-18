@@ -38,7 +38,7 @@
       src="../../js/dashboard/micro/grafico-temperatura-real.js"
       defer
     ></script>
-    <script src="../../js/sidebar/sidebar.js" defer></script>
+    <script type="module" src="../../js/sidebar/sidebar.js" defer></script>
 
     <title>Zymos - Dashboard</title>
   </head>
@@ -58,10 +58,12 @@
       <hr class="sidebar-divider" />
       <nav>
         <ul class="sidebar-list">
-          <li class="sidebar-link">
-            <i class="fa-regular fa-house"></i>
-            Visão geral
-          </li>
+          <a href="./visao-geral-dashboard-macro.html">
+            <li class="sidebar-link">
+              <i class="fa-regular fa-house"></i>
+              Visão geral
+            </li></a
+          >
           <li class="sidebar-link sidebar-link-active">
             <i class="fa-solid fa-chart-column"></i>
             Dashboard
@@ -88,10 +90,10 @@
       <div class="sidebar-footer">
         <hr class="sidebar-divider" />
         <div class="sidebar-user">
-          <div class="sidebar-user-avatar">CS</div>
+          <div class="sidebar-user-avatar" id="user-avatar"></div>
           <div class="sidebar-user-info">
-            <span class="sidebar-user-name">Carlos Silva</span>
-            <span class="sidebar-user-role">Administrador</span>
+            <span class="sidebar-user-name" id="user-name"></span>
+            <span class="sidebar-user-role" id="user-role"></span>
           </div>
         </div>
       </div>
@@ -114,9 +116,10 @@
 
       <nav>
         <ul class="sidebar-list">
-          <li class="sidebar-link">
-            <i class="fa-regular fa-house"></i>
-          </li>
+          <a href="./visao-geral-dashboard-macro.html"
+            ><li class="sidebar-link">
+              <i class="fa-regular fa-house"></i></li
+          ></a>
           <li class="sidebar-link sidebar-link-active">
             <i class="fa-solid fa-chart-column"></i>
           </li>
@@ -138,7 +141,7 @@
       <div class="sidebar-footer">
         <hr class="sidebar-divider" />
         <div class="sidebar-user">
-          <div class="sidebar-user-avatar">CS</div>
+          <div class="sidebar-user-avatar" id="user-avatar-close"></div>
         </div>
       </div>
     </aside>

@@ -1,242 +1,209 @@
-const data = [
-  {
-    id: 1,
-    tanque: "TQ-01",
-    lote: "IPA · Lote 101 - A",
-    temperatura: 25.3,
-    min: 15,
-    max: 24,
-    status: "Em desvio",
-    totalDias: 14,
-    diaAtual: 6,
-    tipo: "Ale",
-    levedura: "Saccharomyces cerevisiae",
-    volumeLote: 8000,
-    dataInicio: "20-10-2026",
-    aderenciaTermica: 92.4,
-    desvios: 1,
-  },
-  {
-    id: 2,
-    tanque: "TQ-02",
-    lote: "Ale · Lote 096",
-    temperatura: 19.4,
-    min: 15,
-    max: 24,
-    status: "Na faixa ideal",
-    totalDias: 14,
-    diaAtual: 6,
-    tipo: "Ale",
-    levedura: "Saccharomyces cerevisiae",
-    volumeLote: 8000,
-    dataInicio: "20-10-2026",
-    aderenciaTermica: 99.4,
-    desvios: 0,
-  },
-  {
-    id: 3,
-    tanque: "TQ-03",
-    lote: "Livre para novo lote",
-    temperatura: "-",
-    min: "",
-    max: "",
-    status: "Disponivel",
-    totalDias: "",
-    diaAtual: "",
-    tipo: "",
-    levedura: "",
-    volumeLote: "",
-    dataInicio: "",
-    aderenciaTermica: "",
-    desvios: "",
-  },
-  {
-    id: 4,
-    tanque: "TQ-04",
-    lote: "Ale · Lote 104",
-    temperatura: 20.4,
-    min: 15,
-    max: 24,
-    status: "Na faixa ideal",
-    totalDias: 14,
-    diaAtual: 1,
-    tipo: "Ale",
-    levedura: "Saccharomyces cerevisiae",
-    volumeLote: 8000,
-    dataInicio: "13-10-2026",
-    aderenciaTermica: 90.4,
-    desvios: 1,
-  },
-];
+import { tanqueData } from "../../MOCK_DATA/tanque.js";
+import { getUnidadeSelecionada } from "./filtro-unidades.js";
 
-let filtro = [];
+let dataAtual = [];
+const selectUnidade = document.getElementById("select-unidade");
 
+// Filtra os tanques da unidade selecionada usando for tradicional
+function obterTanquesDaUnidade() {
+  const unidade = getUnidadeSelecionada().trim().toLowerCase();
+  const tanquesFiltrados = [];
+
+  for (let i = 0; i < tanqueData.length; i++) {
+    if (tanqueData[i].nomeUnidade.trim().toLowerCase() === unidade) {
+      tanquesFiltrados.push(tanqueData[i]);
+    }
+  }
+
+  return tanquesFiltrados;
+}
+
+// Filtros das abas
 window.filtrarTodos = function () {
-  renderizarTabela(data);
+  renderizarTabela(dataAtual);
 };
 
 window.filtrarDesvio = function () {
-  let desvio = data.filter((item) => item.status.toLowerCase() === "em desvio");
+  const desvio = [];
+  for (let i = 0; i < dataAtual.length; i++) {
+    if (dataAtual[i].status.toLowerCase() === "em desvio") {
+      desvio.push(dataAtual[i]);
+    }
+  }
   renderizarTabela(desvio);
 };
 
 window.filtrarFaixa = function () {
-  let faixa = data.filter(
-    (item) => item.status.toLowerCase() === "na faixa ideal",
-  );
+  const faixa = [];
+  for (let i = 0; i < dataAtual.length; i++) {
+    if (dataAtual[i].status.toLowerCase() === "na faixa ideal") {
+      faixa.push(dataAtual[i]);
+    }
+  }
   renderizarTabela(faixa);
 };
 
 window.filtrarDisponiveis = function () {
-  let disponiveis = data.filter(
-    (item) => item.status.toLowerCase() === "disponivel",
-  );
+  const disponiveis = [];
+  for (let i = 0; i < dataAtual.length; i++) {
+    if (dataAtual[i].status.toLowerCase() === "disponivel") {
+      disponiveis.push(dataAtual[i]);
+    }
+  }
   renderizarTabela(disponiveis);
 };
 
-
-function contarTanques() {
+// Contadores dos badges
+function contarTanques(lista) {
   const countTodos = document.getElementById("count-todos");
   const countDesvio = document.getElementById("count-desvio");
   const countFaixa = document.getElementById("count-faixa");
   const countDisponiveis = document.getElementById("count-disponiveis");
 
-  let desvio = data.filter(
-    (item) => item.status.toLowerCase() === "em desvio",
-  ).length;
+  let desvio = 0;
+  let faixa = 0;
+  let disponiveis = 0;
 
-  let faixa = data.filter(
-    (item) => item.status.toLowerCase() === "na faixa ideal",
-  ).length;
+  for (let i = 0; i < lista.length; i++) {
+    const status = lista[i].status.toLowerCase();
+    if (status === "em desvio") {
+      desvio++;
+    } else if (status === "na faixa ideal") {
+      faixa++;
+    } else if (status === "disponivel") {
+      disponiveis++;
+    }
+  }
 
-
-  let disponiveis = data.filter(
-    (item) => item.status.toLowerCase() === "disponivel",
-  ).length;
-
-
-  lengthDisponivel = disponiveis;
-  countTodos.textContent = data.length;
+  countTodos.textContent = lista.length;
   countDesvio.textContent = desvio;
   countFaixa.textContent = faixa;
   countDisponiveis.textContent = disponiveis;
 }
 
-function renderizarTabela(data) {
+function renderizarTabela(listaTanques) {
   const tableBody = document.getElementById("tabela-tanques-body");
-
   tableBody.innerHTML = "";
 
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < listaTanques.length; i++) {
     let tagClass = "tag-disponivel";
 
-    if (data[i].status.toLowerCase() === "em desvio") {
+    if (listaTanques[i].status.toLowerCase() === "em desvio") {
       tagClass = "tag-desvio";
-    } else if (data[i].status.toLowerCase() === "na faixa ideal") {
+    } else if (listaTanques[i].status.toLowerCase() === "na faixa ideal") {
       tagClass = "tag-faixa";
     }
 
-    const desvio = data[i].status.toLowerCase() === "em desvio";
+    const desvio = listaTanques[i].status.toLowerCase() === "em desvio";
     const tempClass = desvio ? "temp-alerta" : "temp-normal";
     const iconSeta = desvio
       ? '<i class="fa-solid fa-arrow-up icon-arrow"></i>'
       : "";
 
+    // Usa nomeLote se existir (para não imprimir [object Object])
+    const textoLote = listaTanques[i].nomeLote || listaTanques[i].lote;
+
     tableBody.innerHTML += `
-         <tr
-                class="linha-tanque status-desvio"
-                data-status="desvio"
-                id="row-tq-${data[i].id}"
-              >
-                <td class="col-tanque">
-                  <span class="tanque-id">${data[i].tanque}</span>
-                </td>
-                <td class="col-lote">
-                  <span class="lote-info">${data[i].lote}</span>
-                </td>
-                <td class="col-temp">
-                  <span class="temp-valor ${tempClass}">
-                    ${typeof data[i].temperatura === "number" ? `${data[i].temperatura} ºC` : "-"}
-                    ${iconSeta}
-                  </span>
-                </td>
-                <td class="col-faixa">
-                  <span class="faixa-valor">${data[i].min ? `${data[i].min} ºC - ${data[i].max} ºC` : "-"}</span>
-                </td>
-                <td class="col-status">
-                  <span class="tag-status ${tagClass}">${data[i].status}</span>
-                </td>
-                <td class="col-acao">
-                  <button
-                    id="btn-detalhes-${data[i].id}"
-                    type="button"
-                    class="btn-detalhes"
-                    title="Ver detalhes do tanque ${data[i].tanque}"
-                    onclick="verDetalhes(${data[i].id}, 'btn-detalhes-${data[i].id}')"
-                  >
-                    <i class="fa-solid fa-play" aria-hidden="true"></i>
-                  </button>
-                </td>
-              </tr> 
-
-<tr class="linha-detalhes" id="detalhes-${data[i].id}">
-  <td colspan="6" class="td-detalhes">
-    <div class="container-detalhes">
-      
-      <div class="detalhes-topo">
-        <div class="detalhes-info-lote">
-          <span class="detalhes-titulo">
-            Resumo do lote · <strong>${data[i].lote}</strong>
+      <tr
+        class="linha-tanque status-desvio"
+        data-status="desvio"
+        id="row-tq-${listaTanques[i].id}"
+      >
+        <td class="col-tanque">
+          <span class="tanque-id">${listaTanques[i].tanque}</span>
+        </td>
+        <td class="col-lote">
+          <span class="lote-info">${textoLote}</span>
+        </td>
+        <td class="col-temp">
+          <span class="temp-valor ${tempClass}">
+            ${typeof listaTanques[i].temperatura === "number" ? `${listaTanques[i].temperatura} ºC` : "-"}
+            ${iconSeta}
           </span>
-          <span class="detalhes-subtitulo">${data[i].tanque} · ${data[i].tipo}</span>
-        </div>
-        <a href="#" class="link-dashboard-lote">
-          Abrir no dashboard por lote &rarr;
-        </a>
-      </div>
+        </td>
+        <td class="col-faixa">
+          <span class="faixa-valor">${listaTanques[i].min ? `${listaTanques[i].min} ºC - ${listaTanques[i].max} ºC` : "-"}</span>
+        </td>
+        <td class="col-status">
+          <span class="tag-status ${tagClass}">${listaTanques[i].status}</span>
+        </td>
+        <td class="col-acao">
+          ${
+            listaTanques[i].status.trim().toLowerCase() !== "disponivel"
+              ? `
+              <button
+                id="btn-detalhes-${listaTanques[i].id}"
+                type="button"
+                class="btn-detalhes"
+                title="Ver detalhes do tanque ${listaTanques[i].tanque}"
+                onclick="verDetalhes(${listaTanques[i].id}, 'btn-detalhes-${listaTanques[i].id}')"
+              >
+                <i class="fa-solid fa-play" aria-hidden="true"></i>
+              </button>
+            
+            `
+              : ``
+          }
+        </td>
+      </tr> 
 
-      <div class="detalhes-grid">
-        <div class="detalhe-card">
-          <span class="detalhe-label">Tipo</span>
-          <span class="detalhe-valor">${data[i].tipo ? `${data[i].tipo}` : "-"}</span>
-        </div>
-        <div class="detalhe-card">
-          <span class="detalhe-label">Levedura</span>
-          <span class="detalhe-valor">${data[i].levedura ? `${data[i].levedura}` : "-"}</span>
-        </div>
-        <div class="detalhe-card">
-          <span class="detalhe-label">Volume do lote</span>
-          <span class="detalhe-valor">${data[i].volumeLote ? `${data[i].volumeLote} litros` : "-"}</span>
-        </div>
-        <div class="detalhe-card">
-          <span class="detalhe-label">Início</span>
-          <span class="detalhe-valor">${data[i].dataIniciot ? `${data[i].dataInico}` : "-"}</span>
-        </div>
-        <div class="detalhe-card">
-          <span class="detalhe-label">Progresso</span>
-          <span class="detalhe-valor">${data[i].diaAtual ? `${data[i].diaAtual} de ${data[i].totalDias} dias` : "-"}</span>
-        </div>
-        <div class="detalhe-card">
-          <span class="detalhe-label">Aderência térmica</span>
-          <span class="detalhe-valor">${data[i].aderenciaTermica ? `${data[i].aderenciaTermica}%` : "-"}</span>
-        </div>
-        <div class="detalhe-card">
-          <span class="detalhe-label">Desvios</span>
-          <span class="detalhe-valor alerta">${data[i].desvios ? `${data[i].desvios} em aberto` : "-"}</span>
-        </div>
-        <div class="detalhe-card">
-          <span class="detalhe-label">Faixa ideal do estilo</span>
-          <span class="detalhe-valor">${data[i].min ? `${data[i].min} ºC a ` : "-"}  ${data[i].max ? `${data[i].max} ºC` : "-"}</span>
-        </div>
-      </div>
-    </div>
-  </td>
-</tr>
+      <tr class="linha-detalhes" id="detalhes-${listaTanques[i].id}">
+        <td colspan="6" class="td-detalhes">
+          <div class="container-detalhes">
+            <div class="detalhes-topo">
+              <div class="detalhes-info-lote">
+                <span class="detalhes-titulo">
+                  Resumo do lote · <strong>${textoLote}</strong>
+                </span>
+                <span class="detalhes-subtitulo">${listaTanques[i].tanque} · ${listaTanques[i].tipo}</span>
+              </div>
+              <a href="#" class="link-dashboard-lote">
+                Abrir no dashboard por lote &rarr;
+              </a>
+            </div>
+
+            <div class="detalhes-grid">
+              <div class="detalhe-card">
+                <span class="detalhe-label">Tipo</span>
+                <span class="detalhe-valor">${listaTanques[i].tipo ? `${listaTanques[i].tipo}` : "-"}</span>
+              </div>
+              <div class="detalhe-card">
+                <span class="detalhe-label">Levedura</span>
+                <span class="detalhe-valor">${listaTanques[i].levedura ? `${listaTanques[i].levedura}` : "-"}</span>
+              </div>
+              <div class="detalhe-card">
+                <span class="detalhe-label">Volume do lote</span>
+                <span class="detalhe-valor">${listaTanques[i].volumeLote ? `${listaTanques[i].volumeLote} litros` : "-"}</span>
+              </div>
+              <div class="detalhe-card">
+                <span class="detalhe-label">Início</span>
+                <span class="detalhe-valor">${listaTanques[i].dataInicio ? `${listaTanques[i].dataInicio}` : "-"}</span>
+              </div>
+              <div class="detalhe-card">
+                <span class="detalhe-label">Progresso</span>
+                <span class="detalhe-valor">${listaTanques[i].diaAtual ? `${listaTanques[i].diaAtual} de ${listaTanques[i].totalDias} dias` : "-"}</span>
+              </div>
+              <div class="detalhe-card">
+                <span class="detalhe-label">Aderência térmica</span>
+                <span class="detalhe-valor">${listaTanques[i].aderenciaTermica ? `${listaTanques[i].aderenciaTermica}%` : "-"}</span>
+              </div>
+              <div class="detalhe-card">
+                <span class="detalhe-label">Desvios</span>
+                <span class="detalhe-valor alerta">${listaTanques[i].desvios ? `${listaTanques[i].desvios} em aberto` : "-"}</span>
+              </div>
+              <div class="detalhe-card">
+                <span class="detalhe-label">Faixa ideal do estilo</span>
+                <span class="detalhe-valor">${listaTanques[i].min ? `${listaTanques[i].min} ºC a ` : "-"}  ${listaTanques[i].max ? `${listaTanques[i].max} ºC` : "-"}</span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
     `;
   }
 }
 
-function verDetalhes(idTanque, idBtn) {
+window.verDetalhes = function (idTanque, idBtn) {
   const btn = document.getElementById(idBtn);
   const detalhesId = document.getElementById(`detalhes-${idTanque}`);
   const tanque = document.getElementById(`row-tq-${idTanque}`);
@@ -250,9 +217,21 @@ function verDetalhes(idTanque, idBtn) {
     detalhesId.classList.add("aberto");
     tanque.classList.add("aberto");
   }
+};
+
+// Atualiza tanto a tabela quanto os números de contagem
+function atualizarTabelaEContadores() {
+  dataAtual = obterTanquesDaUnidade();
+  renderizarTabela(dataAtual);
+  contarTanques(dataAtual);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderizarTabela(data);
-  contarTanques();
+  atualizarTabelaEContadores();
 });
+
+if (selectUnidade) {
+  selectUnidade.addEventListener("change", () => {
+    atualizarTabelaEContadores();
+  });
+}

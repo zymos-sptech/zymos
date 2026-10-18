@@ -1,0 +1,145 @@
+.card-atividade-recente {
+  background-color: var(--white);
+  border: 1.5px solid var(--color-neutral-border);
+  border-radius: 1.25rem;
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 10px 25px -5px rgba(66, 96, 132, 0.03),
+    0 4px 10px -2px rgba(66, 96, 132, 0.02);
+}
+
+.secao-card-header {
+  margin-bottom: 1.25rem;
+}
+
+.secao-card-titulo {
+  color: var(--color-blue-navy);
+  font-family: var(--font-primary);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.secao-card-subtitulo {
+  color: var(--color-gray-dark);
+  font-size: 0.8125rem;
+  margin-top: 0.2rem;
+}
+
+.lista-atividades {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-atividade {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--color-neutral-border-light);
+}
+
+.item-atividade:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.item-atividade-conteudo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.atividade-timestamp {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  width: 5.25rem;
+  flex-shrink: 0;
+}
+
+.atividade-detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.atividade-titulo-linha {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.atividade-titulo {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--color-blue-navy);
+}
+
+.atividade-descricao {
+  font-size: 0.75rem;
+  color: var(--color-gray-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.link-ver-lote {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-blue-dark);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.link-ver-lote:hover {
+  color: var(--color-blue-navy);
+  transform: translateX(2px);
+}
+
+/* Estado Vazio (Sem Atividades) */
+.item-atividade-vazio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.25rem 1.25rem;
+  background-color: var(--color-neutral-warm);
+  border: 1.5px dashed var(--color-neutral-border);
+  border-radius: 0.85rem;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.atividade-vazia-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.atividade-vazia-icone {
+  font-size: 1.4rem;
+  color: var(--color-gray-dark);
+  margin-bottom: 0.25rem;
+  opacity: 0.75;
+}
+
+.atividade-vazia-titulo {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-blue-navy);
+}
+
+.atividade-vazia-descricao {
+  font-size: 0.78rem;
+  color: var(--color-gray-dark);
+}
+
