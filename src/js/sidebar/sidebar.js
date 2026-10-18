@@ -43,5 +43,5 @@ window.logout = function () {
   sessionStorage.removeItem("EMAIL");
   sessionStorage.removeItem("PASSWORD");
 
-  window.location.href = "../../pages/login.html";
+  window.location = "../../pages/login.html";
 };
