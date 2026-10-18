@@ -63,6 +63,7 @@
       src="../../js/dashboard/macro/desvio-tanque.js"
       defer
     ></script>
+    <script type="module" src="../../js/dashboard/macro/kpi.js" defer></script>
   </head>
   <body>
     <!-- Sidebar Aberta -->
@@ -239,26 +240,21 @@
       </section>
 
       <!-- 3. Cards de Métricas Principais (KPIs) -->
-      <section
-        class="macro-kpis-grid"
-        aria-label="Indicadores chave de desempenho"
-      >
+      <section class="macro-kpis-grid">
         <!-- Card 1: Lotes em andamento -->
         <article class="macro-kpi-card" id="card-lotes-andamento">
           <div class="kpi-topo">
             <span class="kpi-titulo">Lotes em andamento</span>
             <div class="kpi-valor-row">
-              <span class="kpi-valor" id="kpi-lotes-qtd">3</span>
+              <span class="kpi-valor" id="kpi-lotes-qtd"></span>
               <span class="kpi-unidade">lotes ativos</span>
             </div>
           </div>
           <div class="kpi-tags-row">
-            <span class="kpi-tag" id="tag-lotes-ale">2 Ale</span>
-            <span class="kpi-tag" id="tag-lotes-lager">1 Lager</span>
+            <span class="kpi-tag" id="tag-lotes-ale"></span>
+            <span class="kpi-tag" id="tag-lotes-lager"></span>
           </div>
-          <p class="kpi-rodape" id="kpi-unidade-referencia">
-            Matriz Ribeirão Preto
-          </p>
+          <p class="kpi-rodape" id="kpi-unidade-referencia"></p>
         </article>
 
         <!-- Card 2: Aderência média geral -->
@@ -276,9 +272,13 @@
             aria-valuemin="0"
             aria-valuemax="100"
           >
-            <div class="kpi-progress-bar" style="width: 95.8%"></div>
+            <div
+              class="kpi-progress-bar"
+              id="kpi-aderencia-progress-bar"
+              style="width: 95.8%"
+            ></div>
           </div>
-          <p class="kpi-rodape">Matriz Ribeirão Preto &middot; até agora</p>
+          <p class="kpi-rodape" id="kpi-aderencia-unidade"></p>
         </article>
 
         <!-- Card 3: Desvios no período -->
@@ -300,7 +300,7 @@
               <span id="kpi-desvios-abertos">1 em aberto</span>
             </span>
           </div>
-          <p class="kpi-rodape">Matriz Ribeirão Preto &middot; até agora</p>
+          <p class="kpi-rodape" id="kpi-desvios-unidade"></p>
         </article>
 
         <!-- Card 4: Alertas pendentes -->
@@ -308,19 +308,17 @@
           <div class="kpi-topo">
             <span class="kpi-titulo">Alertas pendentes</span>
             <div class="kpi-valor-row">
-              <span class="kpi-valor" id="kpi-alertas-qtd">1</span>
+              <span class="kpi-valor" id="kpi-alertas-qtd"></span>
               <span class="kpi-unidade">alerta</span>
             </div>
           </div>
           <div class="kpi-tags-row">
-            <span class="kpi-tag kpi-tag-alert">
-              <span class="kpi-dot orange"></span>
-              <span id="kpi-alerta-detalhe">TQ-01 &middot; acima do ideal</span>
+            <span class="kpi-tag">
+              <span class="kpi-dot" id="kpi-alerta-dot"></span>
+              <span id="kpi-alerta-detalhe"></span>
             </span>
           </div>
-          <p class="kpi-rodape" id="kpi-alerta-tempo">
-            desde 14:32:10 &middot; aguardando revisão
-          </p>
+          <p class="kpi-rodape" id="kpi-alerta-tempo"></p>
         </article>
 
         <!-- Card 5: Ocupação dos tanques -->
@@ -328,8 +326,8 @@
           <div class="kpi-topo">
             <span class="kpi-titulo">Ocupação dos tanques</span>
             <div class="kpi-valor-row">
-              <span class="kpi-valor" id="kpi-ocupacao-qtd">3</span>
-              <span class="kpi-unidade">de 4 tanques</span>
+              <span class="kpi-valor" id="kpi-ocupacao-qtd"></span>
+              <span class="kpi-unidade" id="kpi-ocupacao-total"></span>
             </div>
           </div>
           <div
@@ -339,11 +337,13 @@
             aria-valuemin="0"
             aria-valuemax="100"
           >
-            <div class="kpi-progress-bar" style="width: 75%"></div>
+            <div
+              class="kpi-progress-bar"
+              id="kpi-ocupacao-progress-bar"
+              style="width: 75%"
+            ></div>
           </div>
-          <p class="kpi-rodape" id="kpi-ocupacao-taxa">
-            Matriz &middot; 75% de ocupação
-          </p>
+          <p class="kpi-rodape" id="kpi-ocupacao-taxa">75% de ocupação</p>
         </article>
       </section>
 

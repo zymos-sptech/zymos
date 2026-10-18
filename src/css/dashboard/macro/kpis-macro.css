@@ -75,13 +75,6 @@
   white-space: nowrap;
 }
 
-.kpi-tag-alert {
-  background-color: transparent;
-  padding: 0;
-  font-size: 0.75rem;
-  color: #f1f5f9;
-}
-
 .kpi-dot {
   width: 0.45rem;
   height: 0.45rem;
