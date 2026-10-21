@@ -1,104 +1,111 @@
 .section-valores {
-    display: flex;
-    background: #FFF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 5.25em var(--horizontal-margin);
-    gap: 2rem;
+  display: flex;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5.25em var(--horizontal-margin);
+  gap: 2rem;
 }
 
 .container-valores {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 0;
 }
 
 .valores-img {
-    border-radius: 1rem;
-    width: 25%;
+  border-radius: 1rem;
+  width: 25%;
 }
 
 .valores-div-titulo {
-    flex-direction: column;
-    justify-content: center;
-    align-self: start;
+  flex-direction: column;
+  justify-content: center;
+  align-self: start;
 }
 
 .valores-subtitulo {
-    display: inline-flex;
-    color: var(--color-accent-brown);
-    text-align: center;
-    font-family: var(--font-primary);
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 1rem;
-    letter-spacing: 0.075rem;
-    text-transform: uppercase;
-    padding: 1em 0;
+  display: inline-flex;
+  color: var(--color-accent-brown);
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1rem;
+  letter-spacing: 0.075rem;
+  text-transform: uppercase;
+  padding: 1em 0;
 }
 
 .valores-titulo {
-    color: var(--color-blue-dark);
-    font-family: var(--font-titulo);
-    font-size: 2.5rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 3rem;
-    letter-spacing: -0.0375rem;
+  color: var(--color-blue-dark);
+  font-family: var(--font-titulo);
+  font-size: 2.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 3rem;
+  letter-spacing: -0.0375rem;
 }
 
 .valores-cards {
-    display: flex;
-    height: 16.5rem;
-    justify-content: flex-end;
-    align-items: flex-start;
-    gap: 0.9375rem;
-    padding: 1.5em 0;
+  display: flex;
+  height: 16.5rem;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 0.9375rem;
+  padding: 1.5em 0;
+  transition: height 0.3s ease-in-out;
+}
+.valores-card:hover {
+  translate: 0 -10px;
+  transition: translate 0.3s ease-in-out;
 }
 
 .valores-card {
-    border-radius: 1rem;
-    background: #ffffff00;
-    box-shadow: 0 2px 8px -2px rgba(37, 69, 103, 0.04), 0 12px 24px -4px rgba(37, 69, 103, 0.07);
-    padding: 1.7em;
-    min-width: 280px;
-    min-height: 264px;
+  border-radius: 1rem;
+  background: #ffffff00;
+  box-shadow:
+    0 2px 8px -2px rgba(37, 69, 103, 0.04),
+    0 12px 24px -4px rgba(37, 69, 103, 0.07);
+  padding: 1.7em;
+  min-width: 280px;
+  min-height: 264px;
 }
 
 .valores-card-icon {
-    display: flex;
-    width: 3.5rem;
-    height: 3.5rem;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    border-radius: 1rem;
-    background: #F0F5EE;
-    margin-bottom: 1em;
-    font-size: 1.5rem;
+  display: flex;
+  width: 3.5rem;
+  height: 3.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 1rem;
+  background: #f0f5ee;
+  margin-bottom: 1em;
+  font-size: 1.5rem;
 }
 
 .valores-card-titulo {
-    color: var(--color-blue-dark);
-    font-family: var(--font-titulo);
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 1.875rem;
-    /* 150% */
+  color: var(--color-blue-dark);
+  font-family: var(--font-titulo);
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.875rem;
+  /* 150% */
 }
 
 .valores-card-texto {
-    color: var(--color-accent-brown);
-    font-family: var(--font-primary);
-    font-size: 0.9rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.625rem;
-    /* 162.5% */
+  color: var(--color-accent-brown);
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.625rem;
+  /* 162.5% */
 }
