@@ -62,7 +62,7 @@
 
   /* Tipografia */
   --font-primary: "Outfit", sans-serif;
-  --font-secondary: "Epilogue", sans-serif;
+  --font-titulo: "Epilogue", sans-serif;
 
   /* Espaçamento */
   --horizontal-margin: 5%;
@@ -88,7 +88,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-tertiary);
+  font-family: var(--font-titulo);
 }
 
 button {

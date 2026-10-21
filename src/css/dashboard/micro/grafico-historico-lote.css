@@ -33,7 +33,7 @@
 
 .grafico_historico_subtitulo {
     color: var(--color-gray-dark);
-    font-family: var(--font-secondary);
+    font-family: var(--font-titulo);
     font-size: 0.8125rem;
     font-style: normal;
     font-weight: 400;
@@ -167,7 +167,7 @@
 
 .p_grafico_historico_correlacao {
     color: var(--color-blue-dark);
-    font-family: var(--font-secondary);
+    font-family: var(--font-titulo);
     font-size: 1rem;
     font-style: normal;
     font-weight: 200;

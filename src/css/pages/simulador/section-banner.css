@@ -35,7 +35,7 @@ main {
   max-width: 540px;
   margin: 10px 0;
   color: var(--color-blue-dark);
-  font-family: var(--font-tertiary);
+  font-family: var(--font-titulo);
   font-size: 28px;
   font-weight: 700;
   line-height: 1.25;

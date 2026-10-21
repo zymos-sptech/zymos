@@ -33,7 +33,7 @@
 
 .simulador-titulo {
   color: var(--color-blue-dark);
-  font-family: var(--font-tertiary);
+  font-family: var(--font-titulo);
   font-size: 32px;
   font-style: normal;
   font-weight: 700;

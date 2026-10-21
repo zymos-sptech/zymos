@@ -31,7 +31,7 @@
 .destaque h2 {
   max-width: 480px;
   margin: 6px 0 10px 0;
-  font-family: var(--font-tertiary);
+  font-family: var(--font-titulo);
   font-size: 22px;
   font-weight: 700;
   line-height: 1.3;

@@ -85,7 +85,7 @@
 
 .valores-card-titulo {
     color: var(--color-blue-dark);
-    font-family: var(--font-secondary);
+    font-family: var(--font-titulo);
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 700;
