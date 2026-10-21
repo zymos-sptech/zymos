@@ -36,7 +36,7 @@
 }
 
 .problema-descricao {
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
   font-size: 0.955rem;
   font-weight: 400;
   line-height: 1.6;
@@ -113,7 +113,7 @@
 }
 
 .problema-conteiner-badge-baixo {
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.03em;

@@ -22,7 +22,7 @@
 }
 
 .simulador-badge {
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
   font-size: 8px;
   font-style: normal;
   font-weight: 600;
@@ -44,7 +44,7 @@
 }
 
 .simulador-descricao {
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

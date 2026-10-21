@@ -6,8 +6,9 @@
 
   /* Tons Quentes / Acento / Alerta */
   --color-accent: #d0a06f;
-  --colo-accent-brown: #50453b;
   --color-accent-brown: #50453b;
+  --color-eyebrow-warm: #7d562c;
+  --color-accent-amber: #f0bd8a;
   --color-alert-red: #c05230;
   --color-alert-terracotta: #bd5934;
   --color-alert-border: #e7ab95;
@@ -36,6 +37,7 @@
   --color-neutral-base: #fffaef;
   --color-neutral-light: #f6fbf3;
   --color-neutral-gray: #d8ddd6;
+  --color-bg-sage-light: #f0f5ee;
   --color-neutral-sand: #f5ede1;
   --color-neutral-warm: #faf6ee;
   --color-neutral-hover: #faf7f2;
@@ -60,7 +62,7 @@
 
   /* Tipografia */
   --font-primary: "Outfit", sans-serif;
-  --font-tertiary: "Epilogue", sans-serif;
+  --font-secondary: "Epilogue", sans-serif;
 
   /* Espaçamento */
   --horizontal-margin: 5%;
@@ -86,7 +88,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-secondary);
+  font-family: var(--font-tertiary);
 }
 
 button {
