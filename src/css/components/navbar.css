@@ -71,21 +71,3 @@ li:hover {
 
   transition: all ease 0.3s;
 }
-
-.btn-cadastro:hover,
-.btn-cadastro:focus-visible {
-  background-color: var(--color-blue-light);
-  color: var(--color-accent-brown);
-  border: 1px solid var(--color-blue-dark);
-}
-
-.btn-cadastro:active,
-.btn-login:active {
-  background-color: var(--color-blue-dark);
-  color: var(--color-neutral-light);
-  border: 1px solid var(--color-blue-dark);
-}
-
-.cursor {
-  cursor: pointer;
-}

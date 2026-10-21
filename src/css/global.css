@@ -29,7 +29,7 @@
   --color-blue-muted: #556c80;
   --color-blue-medium: #d1e4ff;
   --color-blue-light: #e3f0ff;
-  
+
   --color-gray-dark: #718092;
 
   /* Tons Neutros / Fundo */
@@ -60,7 +60,6 @@
 
   /* Tipografia */
   --font-primary: "Outfit", sans-serif;
-  --font-secondary: "Garet", sans-serif;
   --font-tertiary: "Epilogue", sans-serif;
 
   /* Espaçamento */
@@ -92,4 +91,46 @@ h6 {
 
 button {
   cursor: pointer;
+}
+
+.btn {
+  padding: 14px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 50px;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background-color: var(--color-blue-dark);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.87rem 1.75rem;
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-blue-navy);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  transform: scale(0.98);
 }
