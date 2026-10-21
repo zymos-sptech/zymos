@@ -2,11 +2,11 @@
   width: 1512px;
   height: 762px;
   display: flex;
-  background: #426084;
+  background: var(--color-blue-dark);
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 5.25em 0;
+  padding: 5.25em var(--horizontal-margin);
 }
 
 .container-solucao {

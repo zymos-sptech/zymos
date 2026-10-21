@@ -32,7 +32,7 @@
     display: inline-flex;
     color: var(--color-accent-brown);
     text-align: center;
-    font-family: Outfit;
+    font-family: var(--font-primary);
     font-size: 0.75rem;
     font-style: normal;
     font-weight: 600;
@@ -42,9 +42,9 @@
     padding: 1em 0;
 }
 
-.valores-título {
+.valores-titulo {
     color: var(--color-blue-dark);
-    font-family: Epilogue;
+    font-family: var(--font-titulo);
     font-size: 2.5rem;
     font-style: normal;
     font-weight: 700;

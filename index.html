@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="./src/css/global.css" />
     <link rel="stylesheet" href="./src/css/pages/inicio/section-valores.css" />
     <link rel="stylesheet" href="./src/css/pages/inicio/section-solucao.css" />
-      <link rel="stylesheet" href="./src/css/pages/inicio/section-problemas.css" />
+    <link
+      rel="stylesheet"
+      href="./src/css/pages/inicio/section-problemas.css"
+    />
     <link
       rel="stylesheet"
       href="./src/css/pages/inicio/section-simulador.css"
@@ -32,7 +35,7 @@
       />
       <nav>
         <ul>
-          <li><a href="./index.html" class="seleciodo">Inicio</a></li>
+          <li><a href="./index.html" class="selecionado">Inicio</a></li>
           <li><a href="./src/pages/servicos.html">Serviços</a></li>
           <li><a href="./src/pages/planos.html">Planos</a></li>
           <li><a href="./src/pages/simulador.html">Simulador</a></li>
@@ -79,58 +82,67 @@
           ></i>
         </a>
         <a href="./src/pages/simulador.html" class="btn btn-secondary"
-          ><i
-            class="fa-regular fa-handshake"
-          ></i>
-          Simular economia</a
+          ><i class="fa-regular fa-handshake"></i> Simular economia</a
         >
       </div>
     </section>
 
-  <section class="problema-section">
-    <div class="problema-conteiner-alto">
-      <span class="problema-badge-alta">SENSIBILIDADE BIOLOGICA</span>
-      <h2 class="problema-titulo">A fermentação não perdoa desvios</h2>
-      <p class="problema-descricao">Na fermentação, qualquer grau fora do planejado
-        pode gerar sabores indesejados (off-flavors),
-        travar o trabalho da levedura ou jogar dias de produção fora.
-        Sem monitoramento contínuo,
-        oscilações térmicas passam despercebidas por horas e colocam o lote em risco.</p>
-    </div>
-    <div class="problema-conteiner-baixo-pai">
-      <div class="problema-conteiner-baixo">
-        <div class="icon-box">
-          <i class="fa-solid fa-temperature-high" style="color: var(--color-accent);"></i>
-        </div>
-        <div class="problema-card-item-left">
-          <span class="problema-conteiner-badge-baixo">Risco Invisivel</span>
-          <p class="problema-conteiner-text-baixo">+1.8°C no pico  de Fermentação</p>
-        </div>
-        
-        <div class="divisor-vertical"></div>
-        <div class="icon-box">
-          <i class="fa-solid fa-triangle-exclamation" style="color: var(--color-accent);"></i>
-        </div>
-        <div class="problema-card-item-center">
-          <span class="problema-conteiner-badge-baixo">Consequeência direta</span>
-          <p class="problema-conteiner-text-baixo">Alteração do 
-            Sabor & Aroma</p>
-
-        </div>
-        
-        <div class="divisor-vertical"></div>
-        <div class="icon-box">
+    <section class="problema-section">
+      <div class="problema-conteiner-alto">
+        <span class="problema-badge-alta">SENSIBILIDADE BIOLÓGICA</span>
+        <h2 class="problema-titulo">A fermentação não perdoa desvios</h2>
+        <p class="problema-descricao">
+          Na fermentação, qualquer grau fora do planejado pode gerar sabores
+          indesejados (off-flavors), travar o trabalho da levedura ou jogar dias
+          de produção fora. Sem monitoramento contínuo, oscilações térmicas
+          passam despercebidas por horas e colocam o lote em risco.
+        </p>
+      </div>
+      <div class="problema-conteiner-baixo-pai">
           <div class="icon-box">
-            <i class="fa-regular fa-circle-check" style="color: var(--color-accent);"></i>
+            <i
+              class="fa-solid fa-temperature-high"
+              style="color: var(--color-accent)"
+            ></i>
+          </div>
+          <div class="problema-card-item">
+            <span class="problema-conteiner-badge-baixo">Risco Invisível</span>
+            <p class="problema-conteiner-text-baixo">
+              +1.8°C no pico de Fermentação
+            </p>
+          </div>
+
+          <div class="divisor-vertical"></div>
+          <div class="icon-box">
+            <i
+              class="fa-solid fa-triangle-exclamation"
+              style="color: var(--color-accent)"
+            ></i>
+          </div>
+          <div class="problema-card-item">
+            <span class="problema-conteiner-badge-baixo"
+              >Consequência Direta</span
+            >
+            <p class="problema-conteiner-text-baixo">
+              Alteração do Sabor & Aroma
+            </p>
+          </div>
+
+          <div class="divisor-vertical"></div>
+          <div class="icon-box">
+            <i
+              class="fa-regular fa-circle-check"
+              style="color: var(--color-accent)"
+            ></i>
+          </div>
+          <div class="problema-card-item">
+            <span class="problema-conteiner-badge-baixo">Solução Zymos</span>
+            <p class="problema-conteiner-text-baixo">
+              Gestão Térmica Preventiva
+            </p>
           </div>
         </div>
-        <div class="problema-card-item-right">
-          <span class="problema-conteiner-badge-baixo">Solução Zymos</span>
-          <p class="problema-conteiner-text-baixo">Gestão Térmica 
-            Preventiva</p>
-        </div>
-      </div>
-  </section>
+    </section>
 
     <section class="section-valores">
       <img
@@ -141,7 +153,7 @@
       <div class="container-valores">
         <div class="valores-div-titulo">
           <p class="valores-subtitulo">Fundamentos Técnicos</p>
-          <p class="valores-título">Nossos Valores</p>
+          <h2 class="valores-titulo">Nossos Valores</h2>
         </div>
         <div class="valores-cards">
           <div class="valores-card">
@@ -151,7 +163,7 @@
                 style="color: var(--color-accent)"
               ></i>
             </div>
-            <p class="valores-card-titulo">Integridade e clareza</p>
+            <h3 class="valores-card-titulo">Integridade e clareza</h3>
             <p class="valores-card-texto">
               Fornecemos dados verdadeiros e com impacto real para sua
               indústria.
@@ -164,9 +176,9 @@
                 style="color: var(--color-accent)"
               ></i>
             </div>
-            <p class="valores-card-titulo">Qualidade no produto</p>
+            <h3 class="valores-card-titulo">Qualidade no produto</h3>
             <p class="valores-card-texto">
-              Proteção contínua da ntegridade do perfil da sua marca e cerveja.
+              Proteção contínua da integridade do perfil da sua marca e cerveja.
             </p>
           </div>
           <div class="valores-card">
@@ -176,7 +188,7 @@
                 style="color: var(--color-accent)"
               ></i>
             </div>
-            <p class="valores-card-titulo">Padronização</p>
+            <h3 class="valores-card-titulo">Padronização</h3>
             <p class="valores-card-texto">
               Proteção da identidade da marca através do monitoramento de cada
               tanque.
@@ -204,19 +216,10 @@
           <!-- CARD 1 -->
           <div class="solucao-card1">
             <div class="solucao-card1-icon-background">
-              <svg
-                class="solucao-card1-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="16"
-                viewBox="0 0 22 16"
-                fill="none"
-              >
-                <path
-                  d="M3.16875 15.3292C2.19375 14.3361 1.42188 13.1851 0.853125 11.876C0.284375 10.567 0 9.16319 0 7.66458C0 6.14792 0.284375 4.73507 0.853125 3.42604C1.42188 2.11701 2.19375 0.975 3.16875 0L4.7125 1.54375C3.91806 2.33819 3.29514 3.25903 2.84375 4.30625C2.39236 5.35347 2.16667 6.47292 2.16667 7.66458C2.16667 8.87431 2.39236 10.0028 2.84375 11.05C3.29514 12.0972 3.91806 13.009 4.7125 13.7854L3.16875 15.3292ZM6.22917 12.2688C5.65139 11.6729 5.19097 10.9823 4.84792 10.1969C4.50486 9.41146 4.33333 8.56736 4.33333 7.66458C4.33333 6.74375 4.50486 5.89062 4.84792 5.10521C5.19097 4.31979 5.65139 3.63819 6.22917 3.06042L7.77292 4.60417C7.37569 5.00139 7.06424 5.46181 6.83854 5.98542C6.61285 6.50903 6.5 7.06875 6.5 7.66458C6.5 8.26042 6.61285 8.82014 6.83854 9.34375C7.06424 9.86736 7.37569 10.3278 7.77292 10.725L6.22917 12.2688ZM10.8333 9.83125C10.2375 9.83125 9.72743 9.6191 9.30313 9.19479C8.87882 8.77049 8.66667 8.26042 8.66667 7.66458C8.66667 7.06875 8.87882 6.55868 9.30313 6.13438C9.72743 5.71007 10.2375 5.49792 10.8333 5.49792C11.4292 5.49792 11.9392 5.71007 12.3635 6.13438C12.7878 6.55868 13 7.06875 13 7.66458C13 8.26042 12.7878 8.77049 12.3635 9.19479C11.9392 9.6191 11.4292 9.83125 10.8333 9.83125ZM15.4375 12.2688L13.8938 10.725C14.291 10.3278 14.6024 9.86736 14.8281 9.34375C15.0538 8.82014 15.1667 8.26042 15.1667 7.66458C15.1667 7.06875 15.0538 6.50903 14.8281 5.98542C14.6024 5.46181 14.291 5.00139 13.8938 4.60417L15.4375 3.06042C16.0153 3.63819 16.4757 4.31979 16.8188 5.10521C17.1618 5.89062 17.3333 6.74375 17.3333 7.66458C17.3333 8.56736 17.1618 9.41146 16.8188 10.1969C16.4757 10.9823 16.0153 11.6729 15.4375 12.2688ZM18.4979 15.3292L16.9542 13.7854C17.7486 12.991 18.3715 12.0701 18.8229 11.0229C19.2743 9.97569 19.5 8.85625 19.5 7.66458C19.5 6.45486 19.2743 5.32639 18.8229 4.27917C18.3715 3.23194 17.7486 2.32014 16.9542 1.54375L18.4979 0C19.4729 0.975 20.2448 2.11701 20.8135 3.42604C21.3823 4.73507 21.6667 6.14792 21.6667 7.66458C21.6667 9.16319 21.3823 10.567 20.8135 11.876C20.2448 13.1851 19.4729 14.3361 18.4979 15.3292Z"
-                  fill="#D0A06F"
-                />
-              </svg>
+              <i
+                class="fa-solid fa-tower-broadcast"
+                style="color: var(--color-accent); font-size: 20px"
+              ></i>
             </div>
             <h3 class="solucao-card1-titulo">Acompanhamento em tempo real</h3>
             <p class="solucao-card1-texto">
@@ -228,19 +231,10 @@
           <!-- CARD 2 -->
           <div class="solucao-card2">
             <div class="solucao-card2-icon-background">
-              <svg
-                class="solucao-card2-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="18"
-                viewBox="0 0 22 18"
-                fill="none"
-              >
-                <path
-                  d="M7.04167 17.3333C6.44583 17.3333 5.93576 17.1212 5.51146 16.6969C5.08715 16.2726 4.875 15.7625 4.875 15.1667V11.9167H8.125V9.47917C7.49306 9.44306 6.89271 9.30312 6.32396 9.05937C5.75521 8.81563 5.23611 8.45 4.76667 7.9625V6.77083H3.52083L0 3.25C0.65 2.41944 1.45347 1.83264 2.41042 1.48958C3.36736 1.14653 4.33333 0.975 5.30833 0.975C5.79583 0.975 6.26979 1.01111 6.73021 1.08333C7.19063 1.15556 7.65556 1.29097 8.125 1.48958V0H21.125V14.0833C21.125 14.9861 20.809 15.7535 20.1771 16.3854C19.5451 17.0174 18.7778 17.3333 17.875 17.3333H7.04167ZM10.2917 11.9167H16.7917V14.0833C16.7917 14.3903 16.8955 14.6476 17.1031 14.8552C17.3108 15.0628 17.5681 15.1667 17.875 15.1667C18.1819 15.1667 18.4392 15.0628 18.6469 14.8552C18.8545 14.6476 18.9583 14.3903 18.9583 14.0833V2.16667H10.2917V2.81667L16.7917 9.31667V10.8333H15.275L12.1875 7.74583L11.9708 7.9625C11.7181 8.21528 11.4517 8.44097 11.1719 8.63958C10.892 8.83819 10.5986 8.99167 10.2917 9.1V11.9167ZM4.44167 4.60417H6.93333V6.93333C7.15 7.07778 7.37569 7.17708 7.61042 7.23125C7.84514 7.28542 8.08889 7.3125 8.34167 7.3125C8.75694 7.3125 9.1316 7.24931 9.46562 7.12292C9.79965 6.99653 10.1292 6.77083 10.4542 6.44583L10.6708 6.22917L9.15417 4.7125C8.63056 4.18889 8.04375 3.79618 7.39375 3.53437C6.74375 3.27257 6.04861 3.14167 5.30833 3.14167C4.94722 3.14167 4.60417 3.16875 4.27917 3.22292C3.95417 3.27708 3.62917 3.35833 3.30417 3.46667L4.44167 4.60417ZM14.625 14.0833H7.04167V15.1667H14.7875C14.7333 15.0042 14.6927 14.8326 14.6656 14.6521C14.6385 14.4715 14.625 14.2819 14.625 14.0833ZM7.04167 15.1667C7.04167 15.0042 7.04167 14.8326 7.04167 14.6521C7.04167 14.4715 7.04167 14.2819 7.04167 14.0833C7.04167 14.2639 7.04167 14.4444 7.04167 14.625C7.04167 14.8056 7.04167 14.9861 7.04167 15.1667Z"
-                  fill="#D0A06F"
-                />
-              </svg>
+              <i
+                class="fa-solid fa-clock-rotate-left"
+                style="color: var(--color-accent); font-size: 20px"
+              ></i>
             </div>
             <h3 class="solucao-card2-titulo">Histórico e Rastreabilidade</h3>
             <p class="solucao-card2-texto">
@@ -252,19 +246,10 @@
           <!-- CARD 3 -->
           <div class="solucao-card3">
             <div class="solucao-card3-icon-background">
-              <svg
-                class="solucao-card3-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="20"
-                viewBox="0 0 22 21"
-                fill="none"
-              >
-                <path
-                  d="M7.42083 16.0604L10.8333 14.0021L14.2458 16.0875L13.3521 12.1875L16.3583 9.5875L12.4042 9.23542L10.8333 5.55208L9.2625 9.20833L5.30833 9.56042L8.31458 12.1875L7.42083 16.0604ZM4.14375 20.5833L5.90417 12.9729L0 7.85417L7.8 7.17708L10.8333 0L13.8667 7.17708L21.6667 7.85417L15.7625 12.9729L17.5229 20.5833L10.8333 16.5479L4.14375 20.5833Z"
-                  fill="#D0A06F"
-                />
-              </svg>
+              <i
+                class="fa-solid fa-star"
+                style="color: var(--color-accent); font-size: 20px"
+              ></i>
             </div>
 
             <h3 class="solucao-card3-titulo">Padrão e Qualidade da Cerveja</h3>
@@ -278,26 +263,17 @@
           <!-- CARD 4 -->
           <div class="solucao-card4">
             <div class="solucao-card4-icon-background">
-              <svg
-                class="solucao-card4-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="22"
-                viewBox="0 0 20 21"
-                fill="none"
-              >
-                <path
-                  d="M0 20.5833V18.4167H13V20.5833H0ZM6.12083 15.3292L0 9.20833L2.275 6.87917L8.45 13L6.12083 15.3292ZM13 8.45L6.87917 2.275L9.20833 0L15.3292 6.12083L13 8.45ZM17.9833 19.5L3.84583 5.3625L5.3625 3.84583L19.5 17.9833L17.9833 19.5Z"
-                  fill="#D0A06F"
-                />
-              </svg>
+              <i
+                class="fa-solid fa-file-lines"
+                style="color: var(--color-accent); font-size: 20px"
+              ></i>
             </div>
 
             <h3 class="solucao-card4-titulo">Relatórios Oficiais</h3>
 
             <p class="solucao-card4-texto">
-              Conformidade automática com o Autocontrole (Lei nº 14.515/2022) e
-              normas do setor.
+              Conformidade automática com a Lei do Autocontrole (Lei nº
+              14.515/2022) e normas do setor.
             </p>
           </div>
         </div>
@@ -316,7 +292,7 @@
             Descubra em 2 minutos a economia da sua cervejaria ao evitar lotes
             fora do padrão e paradas de fermentação.
           </p>
-          <a href="./src/pages/simulador.html" style="text-decoration: none;">
+          <a href="./src/pages/simulador.html" style="text-decoration: none">
             <button class="btn-primary simulador-button">
               Ir para o simulador
               <i
@@ -327,10 +303,13 @@
           </a>
         </div>
 
-        <img class="simulador-img" src="./assets/images/inicio/simulador-cervejeiro.webp" alt="Ilustração simulador cervejeiro" />
+        <img
+          class="simulador-img"
+          src="./assets/images/inicio/simulador-cervejeiro.webp"
+          alt="Ilustração simulador cervejeiro"
+        />
       </div>
-    </div>
-  </section>
+    </section>
 
     <footer>
       <div class="container-footer">
