@@ -1,0 +1,264 @@
+/* SECTION-PRECO */
+.section-precos {
+  width: 100%;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+
+.precos-container-cards {
+  display: flex;
+  height: 20.75rem;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  align-self: stretch;
+}
+
+.preco-card {
+  width: max-content;
+  min-width: fit-content;
+  /* height: 16rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-self: stretch;
+  padding: 1em;
+
+  border-radius: 0.75rem;
+  background-color: var(--color-neutral-gray);
+  box-shadow:
+    0 2px 8px -2px rgba(37, 69, 103, 0.04),
+    0 12px 24px -4px rgba(37, 69, 103, 0.07);
+
+  color: var(--color-accent-brown);
+  font-family: var(--font-titulo);
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.25rem;
+  letter-spacing: -0.0175rem;
+}
+
+.preco-card-div-titulo-icone {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-bottom: 1rem;
+  justify-content: space-between;
+  align-self: center;
+}
+
+.preco-card-header {
+}
+
+.preco-card-titulo {
+  color: var(--color-blue-dark);
+  font-family: var(--font-titulo);
+  font-size: 1.375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.875rem;
+}
+
+.preco-card-subtitulo {
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25rem;
+  letter-spacing: 0.0175rem;
+}
+
+.preco-card-icone {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+
+  border-radius: 6255rem;
+  background: var(--color-neutral-base);
+  padding: 0.5rem;
+}
+
+.card-icon-destaque {
+  background-color: var(--color-blue-muted);
+}
+
+.icon {
+  font-size: 1rem;
+}
+
+.icon-blue {
+  color: var(--color-blue-dark);
+}
+
+.icon-destaque {
+  color: var(--color-accent);
+  opacity: 75%;
+}
+
+.preco-card-corpo {
+  color: var(--color-accent-brown);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem;
+  letter-spacing: 0.0175rem;
+}
+
+.preco-card-valor {
+  color: var(--color-blue-dark);
+  font-family: var(--font-titulo);
+  font-size: 1.55rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.25rem;
+  letter-spacing: -0.0175rem;
+}
+
+.preco-card-valor-menor {
+  color: var(--color-blue-dark);
+}
+
+.preco-card-descricao {
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem;
+  letter-spacing: 0.0175rem;
+}
+
+.preco-card-button {
+  cursor: pointer;
+  display: flex;
+  padding: 0.75rem 1.5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: stretch;
+  border-color: var(--color-neutral-light);
+  border-radius: 0.5rem;
+  border: transparent;
+  background: var(--color-neutral-light);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  color: var(--color-blue-dark);
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.375rem;
+  letter-spacing: 0.01rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.preco-card.destaque {
+  color: var(--color-blue-light);
+  border-radius: 0.75rem;
+  background-color: var(--color-blue-dark);
+  box-shadow: 0.25em 0.25em 1em -0.25em var(--color-blue-dark);
+  margin: -0.5em 0 0.5em 0;
+}
+
+.preco-card-destaque-label {
+  position: absolute;
+  margin-top: -4em;
+  width: 18em;
+
+  border-radius: 625rem;
+  background: var(--color-accent);
+
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  padding: 1rem 0.75rem;
+
+  color: var(--color-accent-brown);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1rem;
+  letter-spacing: 0.0375rem;
+  text-transform: uppercase;
+}
+
+.preco-card-titulo.destaque {
+  color: var(--white);
+}
+
+.preco-card-icone.destaque {
+  background: var(--color-blue-dark);
+  box-shadow: inset 0 0 1rem var(--color-accent);
+}
+
+.preco-card-corpo.destaque {
+  color: var(--color-blue-light);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem;
+  letter-spacing: 0.0175rem;
+}
+
+.preco-card-valor.destaque {
+  color: var(--color-accent);
+}
+
+.preco-card-valor-menor.destaque {
+  color: var(--color-accent);
+  font-family: var(--font-primary);
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem;
+}
+
+.preco-card-button.destaque {
+  background: var(--color-accent);
+  border-radius: 0.5rem;
+  border: transparent;
+  border-color: var(--color-accent);
+
+  color: var(--color-accent-brown);
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.375rem;
+  letter-spacing: 0.01rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.preco-card-button.destaque:hover,
+.preco-card-button:hover {
+  background: var(--color-blue-light);
+  border-radius: 0.5rem;
+  border-color: var(--color-accent);
+}
+
+.preco-card-button.destaque:active,
+.preco-card-button:active {
+  scale: calc(0.98);
+}
+
+.preco-footer-p {
+  padding-top: 3em;
+  color: var(--color-accent-brown);
+  text-align: center;
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.25rem;
+}

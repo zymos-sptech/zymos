@@ -2,8 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@100..900&display=swap");
 
 :root {
-  /* Paleta de Cores - Baseada no Guia Visual */
-
   /* Tons Quentes / Acento / Alerta */
   --color-accent: #d0a06f;
   --color-accent-brown: #50453b;
