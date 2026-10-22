@@ -1,8 +1,8 @@
 .simulador {
-  max-width: 1400px;
+  max-width: 87.5rem;
   margin: 0 auto;
-  padding: 36px 24px;
-  border-radius: 10px;
+  padding: 2.25rem 1.5rem;
+  border-radius: 0.625rem;
   background-color: var(--color-blue-dark);
   color: var(--white);
   font-family: var(--font-primary);
@@ -10,16 +10,16 @@
 
 .simulador h2 {
   font-family: var(--font-titulo);
-  font-size: 30px;
+  font-size: 1.875rem;
   font-weight: 700;
 }
 
 .simulador-sub {
-  margin-top: 4px;
-  margin-bottom: 14px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 12px;
+  margin-top: 0.25rem;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.2);
+  font-size: 0.75rem;
   color: var(--color-blue-medium);
 }
 
@@ -28,15 +28,15 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  gap: 24px;
-  margin-top: 24px;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 /* Painel de Parâmetros */
 .painel {
-  width: 460px;
-  padding: 24px;
-  border-radius: 10px;
+  width: 28.75rem;
+  padding: 1.5rem;
+  border-radius: 0.625rem;
   background-color: var(--white);
   color: var(--color-blue-dark);
   font-family: var(--font-primary);
@@ -47,16 +47,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .painel-header h1 {
   margin-bottom: 0;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   font-family: var(--font-titulo);
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--color-blue-dark);
 }
@@ -64,11 +64,11 @@
 .painel-header h1 i,
 .painel-header h1 svg {
   color: var(--color-accent);
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .painel-etapa {
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: var(--color-accent);
   font-weight: 500;
 }
@@ -76,34 +76,40 @@
 .linha-1 {
   display: flex;
   align-items: flex-end;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .campo {
   flex: 1;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .campo label {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 6px;
-  font-size: 11px;
+  margin-bottom: 0.375rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   color: var(--color-blue-dark);
 }
 
+.label-dado {
+  font-size: 0.6875rem;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
 .campo input {
   width: 100%;
-  height: 42px;
-  padding: 0 14px;
-  border: 1px solid transparent;
-  border-radius: 6px;
+  height: 2.625rem;
+  padding: 0 0.875rem;
+  border: 0.0625rem solid transparent;
+  border-radius: 0.375rem;
   background-color: var(--color-green-light);
   color: var(--color-blue-dark);
   font-family: var(--font-primary);
-  font-size: 13px;
+  font-size: 0.8125rem;
   outline: none;
   transition:
     border-color 0.2s,
@@ -117,9 +123,9 @@
 
 .campo-aviso {
   display: block;
-  margin-top: 6px;
+  margin-top: 0.375rem;
   color: var(--color-green-dark);
-  font-size: 10px;
+  font-size: 0.625rem;
 }
 
 .input-icone {
@@ -131,7 +137,7 @@
 .input-icone svg,
 .input-icone .icone-moeda {
   position: absolute;
-  left: 14px;
+  left: 0.875rem;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
@@ -141,32 +147,32 @@
 .input-icone i,
 .input-icone svg {
   color: var(--color-blue-dark);
-  font-size: 14px;
-  width: 14px;
-  height: 14px;
+  font-size: 0.875rem;
+  width: 0.875rem;
+  height: 0.875rem;
 }
 
 .input-icone .icone-moeda {
-  color: #827569;
-  font-size: 13px;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
   font-weight: 600;
 }
 
 .input-icone input {
-  padding-left: 38px;
+  padding-left: 2.375rem;
 }
 
 .input-sufixo input {
-  padding-right: 32px;
+  padding-right: 2rem;
 }
 
 .sufixo-input {
   position: absolute;
-  right: 14px;
+  right: 0.875rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #827569;
-  font-size: 13px;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
   font-weight: 600;
   pointer-events: none;
   z-index: 2;
@@ -175,72 +181,72 @@
 .etiqueta {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 3px 8px;
-  border-radius: 99px;
-  background-color: #fbdcc3;
-  color: #50453b;
-  font-size: 10px;
+  gap: 0.25rem;
+  padding: 0.1875rem 0.5rem;
+  border-radius: 99rem;
+  background-color: var(--color-orange-light);
+  color: var(--color-accent-brown);
+  font-size: 0.625rem;
   font-weight: 600;
 }
 
 .etiqueta i {
-  font-size: 10px;
+  font-size: 0.625rem;
   color: var(--color-accent-brown);
 }
 
 /* Seletor de Tipo de Cerveja */
 .tipo-cerveja {
   display: flex;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .estilo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.5rem;
   flex: 1;
-  padding: 10px 16px;
-  border: 2px solid transparent;
-  border-radius: 6px;
+  padding: 0.625rem 1rem;
+  border: 0.125rem solid transparent;
+  border-radius: 0.375rem;
   background-color: var(--color-neutral-gray);
   color: var(--color-blue-dark);
   font-family: var(--font-primary);
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .estilo:hover {
-  background-color: #cbd2c8;
+  background-color: var(--color-green-sage-light);
 }
 
 .estilo i {
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 .estilo-ativo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.5rem;
   flex: 1;
-  padding: 10px 16px;
-  border: 2px solid var(--color-accent);
-  border-radius: 6px;
+  padding: 0.625rem 1rem;
+  border: 0.125rem solid var(--color-accent);
+  border-radius: 0.375rem;
   background-color: var(--color-blue-dark);
   color: var(--white);
   font-family: var(--font-primary);
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .estilo-ativo i {
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: var(--color-accent);
 }
 
@@ -248,16 +254,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.5rem;
   width: 100%;
-  height: 44px;
-  margin-top: 8px;
+  height: 2.75rem;
+  margin-top: 0.5rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 0.375rem;
   background-color: var(--color-blue-dark);
   color: var(--white);
   font-family: var(--font-primary);
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 600;
   cursor: pointer;
   transition:
@@ -266,7 +272,7 @@
 }
 
 .btn-simular:hover {
-  background-color: #324b69;
+  background-color: var(--color-blue-navy);
 }
 
 .btn-simular:active {
@@ -274,7 +280,7 @@
 }
 
 .btn-simular i {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--color-accent);
 }
 
@@ -282,18 +288,18 @@
 .span-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  width: 560px;
+  gap: 1rem;
+  width: 35rem;
 }
 
 .card {
-  width: calc(50% - 8px);
-  padding: 18px;
-  border-radius: 10px;
+  width: calc(50% - 0.5rem);
+  padding: 1.125rem;
+  border-radius: 0.625rem;
   background-color: var(--white);
   color: var(--color-blue-dark);
   font-family: var(--font-primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -303,49 +309,49 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 }
 
 .card-titulo {
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--color-green-dark);
 }
 
 .card-topo i {
-  font-size: 22px;
+  font-size: 1.375rem;
   color: var(--color-blue-dark);
 }
 
 .card-valor {
   display: block;
   font-family: var(--font-titulo);
-  font-size: 26px;
+  font-size: 1.625rem;
   font-weight: 700;
   line-height: 1.2;
 }
 
 .card-descricao {
-  margin-top: 6px;
-  font-size: 11px;
+  margin-top: 0.375rem;
+  font-size: 0.6875rem;
   color: var(--color-green-dark);
 }
 
 .resultado-texto {
   width: 100%;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 1.25rem;
+  border-radius: 0.625rem;
   background-color: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.2);
   color: var(--white);
   font-family: var(--font-primary);
-  font-size: 13px;
+  font-size: 0.8125rem;
   line-height: 1.6;
 }
 
 .resultado-texto i {
-  margin-right: 8px;
-  font-size: 16px;
+  margin-right: 0.5rem;
+  font-size: 1rem;
   color: var(--color-accent);
 }
 
@@ -364,38 +370,38 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  margin-top: 36px;
-  padding: 20px 28px;
-  border-radius: 10px;
+  gap: 1rem;
+  margin-top: 2.25rem;
+  padding: 1.25rem 1.75rem;
+  border-radius: 0.625rem;
   background-color: var(--white);
   color: var(--color-blue-dark);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
 }
 
 .simulador-cta h3 {
-  margin-bottom: 2px;
+  margin-bottom: 0.125rem;
   font-family: var(--font-titulo);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
 }
 
 .simulador-cta p {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--color-accent-brown);
 }
 
 .btn-especialista {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 22px;
+  gap: 0.5rem;
+  padding: 0.75rem 1.375rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 0.375rem;
   background-color: var(--color-blue-dark);
   color: var(--white);
   font-family: var(--font-primary);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
@@ -404,34 +410,11 @@
 }
 
 .btn-especialista:hover {
-  background-color: #324b69;
+  background-color: var(--color-blue-navy);
 }
 
 .btn-especialista i {
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: var(--color-accent);
 }
 
-/* Responsividade */
-@media (max-width: 960px) {
-  .painel,
-  .span-container {
-    width: 100%;
-  }
-
-  .simulador-cta {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-@media (max-width: 600px) {
-  .linha-1 {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .card {
-    width: 100%;
-  }
-}
