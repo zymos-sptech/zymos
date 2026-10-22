@@ -1,12 +1,12 @@
 /* SECTION-CONTATO */
 .section-contato {
-  cursor: pointer;
   width: 100%;
   height: max-content;
 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
   border-radius: 0.75rem;
   background: var(--color-accent);
@@ -14,7 +14,7 @@
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -4px rgba(0, 0, 0, 0.1);
 
-  padding: 5em 3em;
+  padding: 0 0 0 3rem;
   gap: 1.5em 0;
 }
 
@@ -78,4 +78,8 @@
   font-weight: 500;
   line-height: 1.375rem;
   letter-spacing: 0.01rem;
+}
+
+.contato-img {
+  margin-top: -2.5rem;
 }
