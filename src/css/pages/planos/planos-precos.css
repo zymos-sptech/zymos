@@ -138,6 +138,7 @@
 
 .preco-card-button {
   cursor: pointer;
+  width: 100%;
   display: flex;
   padding: 0.75rem 1.5rem;
   justify-content: center;
@@ -228,6 +229,8 @@
   border-radius: 0.5rem;
   border: transparent;
   border-color: var(--color-accent);
+
+  width: 100%;
 
   color: var(--color-accent-brown);
   text-align: center;
