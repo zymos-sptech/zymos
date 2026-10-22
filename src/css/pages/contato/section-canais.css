@@ -54,7 +54,7 @@
 
 .contato-status-sensores-ativo i {
   font-size: 0.5rem;
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
 }
 
 /* Card verde claro agrupando os canais diretos de engenharia */
@@ -101,7 +101,7 @@
 .contato-rotulo-pequeno-canal {
   display: block;
   font-size: 0.7rem;
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
 }
 
 /* Valor principal do contato (número ou e-mail) */
@@ -120,7 +120,7 @@
 /* Parágrafos de diferenciais da equipe */
 .contato-texto-diferencial {
   font-size: 0.75rem;
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
   margin: 0.35rem 0;
   display: flex;
   align-items: flex-start;
@@ -141,7 +141,7 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
 }
 
 /* Texto descritivo da base operacional */

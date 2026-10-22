@@ -121,7 +121,7 @@
     background: var(--white);
     border: 0.05rem solid var(--color-neutral-gray);
     border-radius: 0.7rem;
-    font-family: var(--font-secondary);
+    font-family: var(--font-titulo);
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--color-blue-dark);

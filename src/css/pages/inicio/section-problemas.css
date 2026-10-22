@@ -1,10 +1,12 @@
 .problema-section {
   display: flex;
+  width: 100%;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   background-color: var(--color-neutral-gray);
-  padding: 5rem 1.25rem;
+  padding: 5rem var(--horizontal-margin);
+  gap: 2.5rem;
 }
 
 .problema-conteiner-alto {
@@ -32,12 +34,12 @@
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.0375rem;
-  margin: 0 0 1.125rem 0;
+  margin-bottom: 1.125rem;
 }
 
 .problema-descricao {
-  color: var(--colo-accent-brown);
-  font-size: 0.955rem;
+  color: var(--color-accent-brown);
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.6;
   margin: 0.5rem 1.2rem;
@@ -47,51 +49,21 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  border-radius: 1rem;
-  padding: 1.5rem 2rem;
-  max-width: 51.25rem;
-  width: 100%;
-}
-
-.problema-conteiner-baixo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   background-color: var(--white);
   border-radius: 0.4rem;
   padding: 3.5rem 5rem;
-  max-width: 51.25rem;
-  width: 100%;
   box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
+  gap: 0.85rem;
 }
 
-.problema-card-item-left {
+.problema-card-item {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.85rem;
-  flex: 1;
-  margin-left: 0.8rem;
-}
-.problema-card-item-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.85rem;
-  flex: 1;
-  margin-left: 0.8rem;
-}
-.problema-card-item-right {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.85rem;
+  align-items: flex-start;
+  text-align: left;
+  justify-content: center;
   flex: 1;
   margin-left: 0.8rem;
 }
@@ -113,7 +85,7 @@
 }
 
 .problema-conteiner-badge-baixo {
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -125,6 +97,7 @@
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.3rem;
+  min-width: 18rem;
 }
 
 .divisor-vertical {
