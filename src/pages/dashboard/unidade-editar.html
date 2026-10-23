@@ -1,150 +1,265 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/pages/unidades/unidades-editar.css" />
-    <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="/src/css/dashboard/unidades-editar.css" />
+    <script type="module" src="/src/js/sidebar/sidebar.js" defer></script>
+    <link rel="stylesheet" href="/src/css/components/sidebar.css">
+    <link rel="stylesheet" href="/src/css/dashboard/dashboard.css">
+    <link rel="stylesheet" href="/src/css/global.css" />
 
     <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
     <title>Zymos - Unidade (Editar)</title>
 </head>
 
 <body>
-    <section class="section_unidade_editar">
-        <div class="editar_header">
-            <p class="editar_caminho">Zymos / Unidades / Editar unidade</p>
-        </div>
-        <p class="editar_voltar">
-            <i class="fa-solid fa-arrow-left-long"></i>
-            Voltar para Unidades
-        </p>
-        <div class="editar_titulo">
-            <h3 class="editar_h_titulo">Editar unidade</h3>
-            <p class="editar_subtitulo">Atualize os dados de Fábrica Matriz.</p>
-        </div>
-        <div class="formulario_section">
-            <div class="editar_status">
-                <div class="div_status_card">
-                    <p class="status_titulo">STATUS DA UNIDADE</p>
-                    <div class="status_flag">Ativo</div>
-                    <p class="status_gerenciado">
-                        <i class="fa-solid fa-lock"></i>
-                        Gerenciado pela Zymos
-                    </p>
-                </div>
-                <div class="div_status_card">
-                    <p class="status_titulo">TANQUES ATIVOS</p>
-                    <p class="p_status_card">
-                        <span id="span_status_capacidade" class="status_numero">3</span>
-                        tanques
-                    </p>
-    
-                </div>
-                <div class="div_status_card">
-                    <p class="status_titulo">SENSORES IOT ALOCADOS</p>
-                    <p class="p_status_card">
-                        <span id="span_status_sensores" class="status_numero">4</span>
-                        LM35 (SNS-001, SNS-002, SNS-003)
-                    </p>
-    
-                </div>
-                <div class="div_status_card">
-                    <p class="status_titulo">CAPACIDADE ATUAL</p>
-                    <p class="p_status_card">
-                        <span id="span_status_capacidade" class="status_numero">4</span>
-                        tanques
-                    </p>
-    
+
+    <aside id="sidebar-open" class="sidebar-container">
+        <button type="button" onclick="closeSidebar()" class="sidebar-btn-toggle">
+            <i class="fa-solid fa-table-columns"></i>
+        </button>
+        <img class="sidebar-logo-open" src="../../../assets/branding/logo-branca.svg"
+            alt="Zymos Qualidade na fermentação" draggable="false" />
+
+        <hr class="sidebar-divider" />
+        <nav>
+            <ul class="sidebar-list">
+                <li class="sidebar-link sidebar-link-active">
+                    <i class="fa-regular fa-house"></i>
+                    Visão geral
+                </li>
+                <li class="sidebar-link">
+                    <i class="fa-solid fa-chart-column"></i>
+                    Dashboard
+                </li>
+                <li class="sidebar-link">
+                    <i class="fa-regular fa-building"></i>
+                    Unidades
+                </li>
+                <li class="sidebar-link">
+                    <i class="fa-solid fa-jar"></i>
+                    Tanques
+                </li>
+                <li class="sidebar-link">
+                    <i class="fa-solid fa-flask"></i>
+                    Lotes
+                </li>
+                <li class="sidebar-link">
+                    <i class="fa-regular fa-user"></i>
+                    Perfil e configuração
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <hr class="sidebar-divider" />
+            <div class="sidebar-user">
+                <div class="sidebar-user-avatar">CS</div>
+                <div class="sidebar-user-info">
+                    <span class="sidebar-user-name">Carlos Silva</span>
+                    <span class="sidebar-user-role">Administrador</span>
                 </div>
             </div>
-            <div class="editar_formulario_container">
-                <div class="formulario_titulo">
-                    <h3 class="formulario_h_titulo">Identificação</h3>
-                    <p class="formulario_p_subtitulo">Nome que aparece nos filtros, relatórios e no painel.</p>
-                </div>
-                <div class="div_formulario_campos">
-                    <div class="formulario_campo">
-                        <p class="formulario_campo_titulo">Nome da unidade <span class="campo_obrigatorio">*</span></p>
-                        <input type="text" id="ipt_nome_unidade" class="formulario_input">
-                    </div>
-                    <div class="formulario_campo">
-                        <div class="container_qtd_tanques_titulo">
-                            <p class="formulario_campo_titulo">Quantidade de tanques nesta planta</p>
-                            <div class="div_somente_leitura">
+        </div>
+    </aside>
+
+    <aside id="sidebar-close" class="sidebar-container-close">
+        <button type="button" onclick="openSidebar()" class="sidebar-btn-toggle btn-close">
+            <i class="fa-solid fa-table-columns"></i>
+        </button>
+        <img class="sidebar-logo-open" src="../../../assets/branding/mini-logo-branca.png"
+            alt="Zymos Qualidade na fermentação" draggable="false" />
+
+        <nav>
+            <ul class="sidebar-list">
+                <li class="sidebar-link sidebar-link-active">
+                    <i class="fa-regular fa-house"></i>
+                </li>
+                <li class="sidebar-link">
+                    <i class="fa-solid fa-chart-column"></i>
+                </li>
+                <li class="sidebar-link">
+                    <i class="fa-regular fa-building"></i>
+                </li>
+                <li class="sidebar-link">
+                    <i class="fa-solid fa-jar"></i>
+                </li>
+                <li class="sidebar-link">
+                    <i class="fa-solid fa-flask"></i>
+                </li>
+                <li class="sidebar-link">
+                    <i class="fa-regular fa-user"></i>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <hr class="sidebar-divider" />
+            <div class="sidebar-user">
+                <div class="sidebar-user-avatar">CS</div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="dashboard">
+        <section class="section_unidade_editar">
+            <div class="editar_header">
+                <p class="editar_caminho">Zymos / Unidades / Editar unidade</p>
+            </div>
+            <a href="#" class="editar_voltar">
+                <i class="fa-solid fa-arrow-left-long"></i>
+                Voltar para Unidades
+            </a>
+            <div class="editar_titulo">
+                <h3 class="editar_h_titulo">Editar unidade</h3>
+                <p class="editar_subtitulo">Atualize os dados de Fábrica Matriz.</p>
+            </div>
+            <div class="formulario_section">
+                <div class="editar_status">
+                    <div class="div_status_card">
+                        <p class="status_titulo">STATUS DA UNIDADE</p>
+                        <div class="div_status_linha">
+                            <div class="status_flag">Ativo</div>
+                            <p class="status_gerenciado">
                                 <i class="fa-solid fa-lock"></i>
-                                Somente leitura
-                            </div>
+                                Gerenciado pela Zymos
+                            </p>
                         </div>
-                        <input type="text" id="ipt_qtd_tanques_unidade" class="formulario_input somente_leitura" value="6"
-                            disabled>
                     </div>
-                    <div class="formulario_solicitar">
-                        <p class="solicitar_texto">Para solicitar expansão da capacidade de tanques desta unidade e o envio
-                            de novos sensores IoT, entre em contato com seu gestor de conta Zymos.</p>
-                        <p class="solicitar_link">Solicitar ampliação de sensores para esta unidade
-                            <i class="fa-solid fa-arrow-right-long"></i>
+                    <div class="div_status_card">
+                        <p class="status_titulo">TANQUES ATIVOS</p>
+                        <p class="p_status_card">
+                            <span id="span_status_tanques" class="status_numero">3</span>
+                            tanques
+                        </p>
+                    </div>
+                    <div class="div_status_card">
+                        <p class="status_titulo">SENSORES IOT ALOCADOS</p>
+                        <p class="p_status_card">
+                            <span id="span_status_sensores" class="status_numero">4</span>
+                            LM35 (SNS-001, SNS-002, SNS-003)
+                        </p>
+                    </div>
+                    <div class="div_status_card">
+                        <p class="status_titulo">CAPACIDADE ATUAL</p>
+                        <p class="p_status_card">
+                            <span id="span_status_capacidade" class="status_numero">4</span>
+                            tanques
                         </p>
                     </div>
                 </div>
+
+                <div class="editar_formulario_container">
+                    <div class="formulario_titulo">
+                        <h3 class="formulario_h_titulo">Identificação</h3>
+                        <p class="formulario_p_subtitulo">Nome que aparece nos filtros, relatórios e no painel.</p>
+                    </div>
+                    <div class="div_formulario_campos">
+                        <div class="formulario_campo">
+                            <label for="ipt_nome_unidade" class="formulario_campo_titulo">Nome da unidade
+                                <span class="campo_obrigatorio">*</span>
+                            </label>
+                            <input type="text" id="ipt_nome_unidade" class="formulario_input">
+                        </div>
+                        <div class="formulario_campo">
+                            <div class="container_qtd_tanques_titulo">
+                                <label for="ipt_qtd_tanques_unidade" class="formulario_campo_titulo">Quantidade de
+                                    tanques nesta planta</label>
+                                <div class="div_somente_leitura">
+                                    <i class="fa-solid fa-lock"></i>
+                                    Somente leitura
+                                </div>
+                            </div>
+                            <input type="text" id="ipt_qtd_tanques_unidade" class="formulario_input somente_leitura"
+                                value="6" disabled>
+                        </div>
+                        <div class="formulario_solicitar">
+                            <p class="solicitar_texto">Para solicitar expansão da capacidade de tanques desta unidade e
+                                o envio de novos sensores IoT, entre em contato com seu gestor de conta Zymos.</p>
+                            <p class="solicitar_link">Solicitar ampliação de sensores para esta unidade
+                                <i class="fa-solid fa-arrow-right-long"></i>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="editar_formulario_container">
+                    <div class="formulario_titulo">
+                        <h3 class="formulario_h_titulo">Endereço</h3>
+                        <p class="formulario_p_subtitulo">Endereço da planta, em campos separados.</p>
+                    </div>
+                    <div class="div_formulario_campos">
+                        <div class="formulario_campo">
+                            <label for="ipt_logradouro_unidade" class="formulario_campo_titulo">Logradouro
+                                <span class="campo_obrigatorio">*</span>
+                            </label>
+                            <input type="text" id="ipt_logradouro_unidade" class="formulario_input">
+                        </div>
+                        <div class="div_formulario_campos_duplos">
+                            <div class="formulario_campo">
+                                <label for="ipt_numero_unidade" class="formulario_campo_titulo">Número
+                                    <span class="campo_obrigatorio">*</span>
+                                </label>
+                                <input type="text" id="ipt_numero_unidade" class="formulario_input">
+                            </div>
+                            <div class="formulario_campo">
+                                <label for="ipt_complemento_unidade" class="formulario_campo_titulo">Complemento</label>
+                                <input type="text" id="ipt_complemento_unidade" class="formulario_input"
+                                    placeholder="Opcional">
+                            </div>
+                        </div>
+                        <div class="div_formulario_campos_duplos">
+                            <div class="formulario_campo">
+                                <label for="ipt_bairro_unidade" class="formulario_campo_titulo">Bairro
+                                    <span class="campo_obrigatorio">*</span>
+                                </label>
+                                <input type="text" id="ipt_bairro_unidade" class="formulario_input">
+                            </div>
+                            <div class="formulario_campo">
+                                <label for="ipt_cidade_unidade" class="formulario_campo_titulo">Cidade
+                                    <span class="campo_obrigatorio">*</span>
+                                </label>
+                                <input type="text" id="ipt_cidade_unidade" class="formulario_input">
+                            </div>
+                        </div>
+                        <div class="div_formulario_campos_duplos">
+                            <div class="formulario_campo">
+                                <label for="ipt_uf_unidade" class="formulario_campo_titulo">UF
+                                    <span class="campo_obrigatorio">*</span>
+                                </label>
+                                <input type="text" id="ipt_uf_unidade" class="formulario_input" maxlength="2">
+                            </div>
+                            <div class="formulario_campo">
+                                <label for="ipt_cep_unidade" class="formulario_campo_titulo">CEP
+                                    <span class="campo_obrigatorio">*</span>
+                                </label>
+                                <input type="text" id="ipt_cep_unidade" class="formulario_input" maxlength="9"
+                                    inputmode="numeric">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="editar_footer">
+                    <div class="div_legenda">
+                        <p class="p_formulario_legenda">
+                            <span class="campo_obrigatorio">*</span>
+                            campos obrigatórios
+                        </p>
+                    </div>
+                    <div class="footer_buttons">
+                        <button type="button" class="btn_cancelar" id="btn_cancelar">Cancelar / Voltar</button>
+                        <button type="button" class="btn_salvar" id="btn_salvar">Salvar Alterações</button>
+                    </div>
+                </div>
             </div>
-            <div class="editar_formulario_container">
-                <div class="formulario_titulo">
-                    <h3 class="formulario_h_titulo">Endereço</h3>
-                    <p class="formulario_p_subtitulo">Endereço da planta, em campos separados.</p>
-                </div>
-                <div class="div_formulario_campos">
-                    <div class="formulario_campo">
-                        <p class="formulario_campo_titulo">Logradouro <span class="campo_obrigatorio">*</span></p>
-                        <input type="text" id="ipt_logradouro_unidade" class="formulario_input">
-                    </div>
-                    <div class="div_formulario_campos_duplos">
-                        <div class="formulario_campo">
-                            <p class="formulario_campo_titulo">Número <span class="campo_obrigatorio">*</span></p>
-                            <input type="text" id="ipt_numero_unidade" class="formulario_input">
-                        </div>
-                        <div class="formulario_campo">
-                            <p class="formulario_campo_titulo">Complemento</p>
-                            <input type="text" id="ipt_complemento_unidade" class="formulario_input">
-                        </div>
-                    </div>
-                    <div class="div_formulario_campos_duplos">
-                        <div class="formulario_campo">
-                            <p class="formulario_campo_titulo">Bairro <span class="campo_obrigatorio">*</span></p>
-                            <input type="text" id="ipt_bairro_unidade" class="formulario_input">
-                        </div>
-                        <div class="formulario_campo">
-                            <p class="formulario_campo_titulo">Cidade <span class="campo_obrigatorio">*</span></p>
-                            <input type="text" id="ipt_cidade_unidade" class="formulario_input">
-                        </div>
-                    </div>
-                    <div class="div_formulario_campos_duplos">
-                        <div class="formulario_campo">
-                            <p class="formulario_campo_titulo">UF <span class="campo_obrigatorio">*</span></p>
-                            <input type="text" id="ipt_uf_unidade" class="formulario_input">
-                        </div>
-                        <div class="formulario_campo">
-                            <p class="formulario_campo_titulo">CEP <span class="campo_obrigatorio">*</span></p>
-                            <input type="text" id="ipt_cep_unidade" class="formulario_input">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="editar_footer">
-                <div class="div_legenda">
-                    <p class="p_formulario_legenda">
-                        <span class="campo_obrigatorio">*</span>
-                        campos obrigatórios
-                    </p>
-                </div>
-                <div class="footer_buttons">
-                    <button class="btn_cancelar" id="btn_cancelar">Cancelar / Voltar</button>
-                    <button class="btn_salvar" id="btn_salvar">Salvar Alterações</button>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+        </section>
+    </main>
+
 </body>
+
 
 </html>
