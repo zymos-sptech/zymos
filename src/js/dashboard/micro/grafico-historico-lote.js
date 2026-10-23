@@ -1,9 +1,7 @@
 // DEFINIÇÂO DOS ELEMENTOS HTML
 const ctx = document.getElementById("canvas_grafico_historico");
 const select_lotes = document.getElementById("grafico_historico_lote1");
-const select_lotes_comparativos = document.getElementById(
-  "grafico_historico_lote2",
-);
+const select_lotes_comparativos = document.getElementById("grafico_historico_lote2");
 const div_legendas = document.getElementById("legenda_grafico_historico");
 const div_filtros_dia = document.getElementById("filtros_dia");
 
@@ -12,43 +10,32 @@ const div_filtros_dia = document.getElementById("filtros_dia");
 const exemplo_lotes = [
   {
     nome: "Lote 101-A",
-    data: [20.1, 20.5, 20.9, 21.5, 21.9, 22.6, 22.5, 23.3],
+    data: [22.2, 21.5, 21.9, 22.5, 23.6, 22.6, 22.5, 24.2],
+    data_24h: [
+      21.1, 21.5, 21.4, 21.7, 21.6, 21.9, 21.8, 22.1, 22.2, 22.3, 22.2, 22.0, 22.1, 24.2
+    ],
     faixa_min: 18, // de acordo com o tipo de fermentação e receita
     faixa_max: 23,
     tipo: "IPA", // mudar para estilo
     estilo: "Ale",
     duracao: 14,
-  },
-  {
-    nome: "Lote 099",
-    data: [23.5, 24, 22, 20, 19.5, 19, 18.7, 18.3, 18, 18.2, 18.7, 18, 18.2],
-    faixa_min: 18,
-    faixa_max: 23,
-    tipo: "IPA",
-    estilo: "Ale",
-    duracao: 14,
-  },
-  {
-    nome: "Lote 095",
-    data: [
-      10, 10.2, 10.4, 10.5, 10.4, 10.8, 10.8, 10.6, 11, 12.1, 13.1, 13.7, 13.9,
-    ],
-    faixa_min: 8,
-    faixa_max: 14,
-    tipo: "Pilsen",
-    estilo: "Lager",
-    duracao: 21,
-  },
+  }
 ];
 // definindo lotes para comparação
 const lotes_comparativos = [
   {
-    nome: "Lote 101-B",
+    nome: "Lote 099",
     data: [
       19.1, 19.6, 19.9, 20.3, 20.7, 21.3, 21.6, 21.5, 21.3, 21.2, 21, 20.7,
       20.6, 20.8,
     ],
-    faixa_min: 18, // de acordo com o tipo de fermentação e receita
+    data_24h: [
+      21.1, 21.2, 21.3, 21.3, 21.4, 21.4,
+      21.5, 21.5, 21.5, 21.6, 21.6, 21.7,
+      21.7, 21.6, 21.6, 21.5, 21.5, 21.4,
+      21.4, 21.3, 21.3, 21.2, 21.1, 21.2
+    ],
+    faixa_min: 18,
     faixa_max: 23,
     tipo: "IPA",
     estilo: "Ale",
@@ -60,34 +47,27 @@ const lotes_comparativos = [
       22.5, 22, 21, 20.5, 20, 19.7, 19.6, 19.1, 18.7, 18.2, 18.3, 18.9, 19,
       19.9,
     ],
+    data_24h: [
+      18.7, 18.8, 18.9, 18.9, 19.0, 19.0,
+      19.1, 19.1, 19.1, 19.2, 19.2, 19.3,
+      19.3, 19.2, 19.2, 19.1, 19.1, 19.0,
+      19.0, 18.9, 18.9, 18.8, 18.7, 18.8
+    ],
     faixa_min: 18,
     faixa_max: 23,
     tipo: "IPA",
     estilo: "Ale",
     duracao: 14,
-  },
-  {
-    nome: "Lote 094",
-    data: [
-      9, 9.2, 9.4, 9.5, 9.4, 9.8, 10.2, 10.4, 10.8, 11.1, 11.1, 11.7, 11.6,
-      11.3, 11, 10.4, 10, 9.9, 9.9, 10, 10.5,
-    ],
-    faixa_temp: 8,
-    faixa_max: 14,
-    tipo: "Pilsen",
-    estilo: "Lager",
-    duracao: 21,
-  },
+  }
 ];
 // carregar opções dos selects
 function carregarLotes() {
   select_lotes.innerHTML = "";
-  for (let i = 0; i < exemplo_lotes.length; i++) {
-    select_lotes.innerHTML += `<option value='${i}'>${exemplo_lotes[i].nome}</option>`;
-  }
+  select_lotes.innerHTML += `<p>${exemplo_lotes[0].nome}</p>`;
+
 }
 function carregarLotesComparativos() {
-  let lote_principal = exemplo_lotes[select_lotes.value];
+  let lote_principal = exemplo_lotes[0];
   select_lotes_comparativos.innerHTML = "";
   for (let i = 0; i < lotes_comparativos.length; i++) {
     if (lote_principal.tipo == lotes_comparativos[i].tipo) {
@@ -100,8 +80,11 @@ function carregarLotesComparativos() {
 function setupConfig(lote1, lote2, n_dias) {
   const labels = []; // rotulos do eixo x => dias/horas
   const faixa = { min: [], max: [] }; // definir quantidade de registros para exibição em relação aos dias/horas
+  let data1 = lote1.data
+  let data2 = lote2.data
   if (n_dias == 1) {
-    // mostrar horas --> PRECISA BUSCAR OS DADOS DE REGISTROS POR HORA (OUTRO SELECT) PARA EXIBIÇÂO CORRETA
+    data1 = lote1.data_24h
+    data2 = lote2.data_24h
     for (let hora = 1; hora <= 24; hora++) {
       labels.push(hora + ":00");
       faixa.min.push(lote1.faixa_min);
@@ -121,17 +104,17 @@ function setupConfig(lote1, lote2, n_dias) {
         {
           type: "line",
           label: lote1.nome,
-          data: lote1.data,
-          backgroundColor: "#246",
+          data: data1,
+          backgroundColor: "#426084",
           borderWidth: 2,
-          borderColor: "#246",
+          borderColor: "#426084",
           tension: 0.4,
           cubicInterpolationMode: "monotone",
         },
         {
           type: "line",
           label: lote2.nome,
-          data: lote2.data,
+          data: data2,
           backgroundColor: "#C73",
           borderWidth: 2,
           borderColor: "#C73",
@@ -144,7 +127,7 @@ function setupConfig(lote1, lote2, n_dias) {
           label: "Faixa Ideal",
           data: faixa.max,
           fill: 3,
-          backgroundColor: "#EEE7",
+          backgroundColor: "#e8efe6A5",
           pointStyle: false,
           borderWidth: 0,
         },
@@ -214,13 +197,13 @@ function exibirLegendas() {
 }
 // Aplicar os valores dos lotes e tempo para exibição no chart.js (update)
 function atualizarConfig() {
-  const lote1 = exemplo_lotes[select_lotes.value];
+  const lote1 = exemplo_lotes[0];
   const lote2 = lotes_comparativos.find(
     (l) => l.nome === select_lotes_comparativos.value,
   );
   // filtros por dia/hora
-  let active = document.getElementsByClassName("active");
-  let id = active[0].id;
+  let filtro_escolhido = document.getElementsByClassName("active");
+  let id = filtro_escolhido[0].id;
   let n_dias = 0;
 
   if (id == "tempo_real") n_dias = lote1.data.length;
