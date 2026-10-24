@@ -129,12 +129,6 @@
     transition: 0.3s, transform 0.1s;
 }
 
-.botoes .botao-destaque {
-    background: var(--color-blue-dark);
-    color: var(--white);
-    border-color: var(--color-blue-dark);
-}
-
 .botoes .botao i {
     width: 1.6rem;
     height: 0.8rem;
