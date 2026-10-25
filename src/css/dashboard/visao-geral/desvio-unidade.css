@@ -1,0 +1,132 @@
+.card-desvios-unidade {
+  background-color: var(--white);
+  border: 1.5px solid var(--color-neutral-border);
+  border-radius: 1.25rem;
+  padding: 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow:
+    0 10px 25px -5px rgba(66, 96, 132, 0.03),
+    0 4px 10px -2px rgba(66, 96, 132, 0.02);
+  width: 100%;
+  max-width: 28rem;
+  box-sizing: border-box;
+}
+
+/* Cabeçalho do Card */
+.desvio-unidade-header,
+.card-desvios-unidade .secao-card-header {
+  margin-bottom: 1.25rem;
+}
+
+.desvio-unidade-titulo,
+.card-desvios-unidade .secao-card-titulo {
+  color: var(--color-blue-navy);
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.desvio-unidade-subtitulo,
+.card-desvios-unidade .secao-card-subtitulo {
+  color: var(--color-gray-dark);
+  font-size: 0.875rem;
+  margin: 0.25rem 0 0 0;
+}
+
+/* Lista de Unidades */
+.desvios-lista-unidades {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+/* Item individual de unidade: layout empilhado (Nome acima da barra) */
+.desvio-unidade-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Rótulo com o nome da unidade */
+.desvio-unidade-nome {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-blue-navy);
+}
+
+/* Linha horizontal contendo a barra de progresso e a contagem à direita */
+.desvio-unidade-linha-progresso {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+/* Trilho da barra de progresso */
+.desvio-unidade-barra-container {
+  flex: 1;
+  height: 1.6rem;
+  background-color: var(--color-bg-sage-light);
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 0 0.85rem;
+}
+
+/* Preenchimento da barra de progresso */
+.desvio-unidade-barra-preenchimento {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--color-blue-dark);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* Texto exibido quando a unidade não possui desvios (0 desvios) */
+.desvio-unidade-texto-vazio {
+  position: relative;
+  z-index: 1;
+  font-size: 0.72rem;
+  color: var(--color-gray-dark);
+}
+
+/* Contagem numérica de desvios à direita */
+.desvio-unidade-contagem {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-blue-navy);
+  min-width: 1.25rem;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* Rodapé: Tempo Médio de Resposta */
+.desvio-unidade-rodape {
+  background-color: var(--color-neutral-warm);
+  border-radius: 0.65rem;
+  padding: 0.9rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.desvio-unidade-rodape-label {
+  font-size: 0.8125rem;
+  color: var(--color-gray-dark);
+  font-weight: 500;
+}
+
+.desvio-unidade-rodape-valor {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-blue-navy);
+}
