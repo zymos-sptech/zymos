@@ -1,4 +1,4 @@
-.section_unidade_editar {
+.section-unidade-editar {
     display: flex;
     width: 100%;
     max-width: 88.75rem;
@@ -7,7 +7,7 @@
     align-items: flex-start;
 }
  
-.editar_header {
+.editar-header {
     display: flex;
     padding: 0.875rem 0;
     justify-content: space-between;
@@ -16,7 +16,7 @@
     border-bottom: 1px solid var(--color-accent);
 }
  
-.editar_caminho {
+.editar-caminho {
     color: var(--color-blue-navy);
     font-family: Outfit;
     font-size: 0.875rem;
@@ -25,7 +25,7 @@
     line-height: 1.225rem;
 }
  
-.editar_titulo {
+.editar-titulo {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -33,7 +33,7 @@
     margin-bottom: 1.25rem;
 }
  
-.editar_voltar {
+.editar-voltar {
     margin-top: 1rem;
     color: var(--color-blue-dark);
     font-size: 0.875rem;
@@ -43,7 +43,7 @@
     text-decoration: none;
 }
  
-.editar_h_titulo {
+.editar-h-titulo {
     color: var(--color-blue-dark);
     font-size: 2rem;
     font-style: normal;
@@ -51,7 +51,7 @@
     margin: 0;
 }
  
-.editar_subtitulo {
+.editar-subtitulo {
     color: var(--color-blue-dark);
     font-size: 0.875rem;
     font-style: normal;
@@ -60,7 +60,7 @@
     margin: 0;
 }
  
-.formulario_section {
+.formulario-section {
     display: flex;
     padding-top: 1.875rem;
     flex-direction: column;
@@ -72,7 +72,7 @@
     background: var(--white);
 }
  
-.editar_status {
+.editar-status {
     display: flex;
     width: calc(100% - 4.125rem);
     padding: 1.125rem 1.25rem;
@@ -85,20 +85,20 @@
     background: var(--color-green-light);
 }
  
-.div_status_card {
+.div-status-card {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
 }
  
-.div_status_linha {
+.div-status-linha {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
  
-.status_titulo {
+.status-titulo {
     color: var(--color-blue-slate);
     font-family: Outfit;
     font-size: 0.71875rem;
@@ -110,7 +110,7 @@
     text-transform: uppercase;
 }
  
-.status_flag {
+.status-flag {
     display: flex;
     padding: 0.21875rem 0.8125rem 0.23063rem 0.8125rem;
     align-items: flex-start;
@@ -124,7 +124,7 @@
     line-height: 1.1375rem;
 }
  
-.status_gerenciado {
+.status-gerenciado {
     color: var(--color-blue-slate);
     font-family: Outfit;
     font-size: 0.71875rem;
@@ -133,7 +133,7 @@
     line-height: 1.00625rem;
 }
  
-.status_numero {
+.status-numero {
     color: var(--color-blue-petroleum);
     font-family: Outfit;
     font-size: 1.25rem;
@@ -142,7 +142,7 @@
     line-height: 1.75rem;
 }
  
-.p_status_card {
+.p-status-card {
     color: var(--color-blue-slate);
     font-family: Outfit;
     font-size: 0.8125rem;
@@ -151,7 +151,7 @@
     line-height: 1.1375rem;
 }
  
-.editar_formulario_container {
+.editar-formulario-container {
     display: flex;
     width: 76.3125rem;
     padding: 0 2.0625rem;
@@ -159,12 +159,12 @@
     gap: 2.75rem;
 }
  
-.editar_formulario_container + .editar_formulario_container {
+.editar-formulario-container + .editar-formulario-container {
     padding-top: 1.5rem;
     border-top: 1px solid var(--color-border-warm);
 }
  
-.formulario_titulo {
+.formulario-titulo {
     display: flex;
     width: 15.625rem;
     flex-direction: column;
@@ -173,7 +173,7 @@
     flex-shrink: 0;
 }
  
-.formulario_h_titulo {
+.formulario-h-titulo {
     color: var(--color-blue-petroleum);
     font-family: Outfit;
     font-size: 1.0625rem;
@@ -182,7 +182,7 @@
     line-height: 1.4875rem;
 }
  
-.formulario_p_subtitulo {
+.formulario-p-subtitulo {
     color: var(--color-blue-slate);
     font-family: Outfit;
     font-size: 0.84375rem;
@@ -191,7 +191,7 @@
     line-height: 1.18125rem;
 }
  
-.div_formulario_campos {
+.div-formulario-campos {
     display: flex;
     flex: 1;
     align-items: flex-start;
@@ -199,14 +199,14 @@
     flex-direction: column;
 }
  
-.formulario_campo {
+.formulario-campo {
     display: flex;
     width: 100%;
     flex-direction: column;
     gap: 0.375rem;
 }
  
-.formulario_campo_titulo {
+.formulario-campo-titulo {
     color: var(--color-blue-slate);
     font-family: Outfit;
     font-size: 0.75rem;
@@ -217,7 +217,7 @@
     text-transform: uppercase;
 }
  
-.formulario_input {
+.formulario-input {
     display: flex;
     width: 100%;
     height: 2.875rem;
@@ -231,13 +231,13 @@
     font-family: Outfit;
 }
  
-.container_qtd_tanques_titulo {
+.container-qtd-tanques-titulo {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
  
-.div_somente_leitura {
+.div-somente-leitura {
     display: flex;
     padding: 0.125rem 0.5625rem 0.21188rem 0.5625rem;
     justify-content: center;
@@ -254,7 +254,7 @@
     line-height: normal;
 }
  
-.formulario_input.somente_leitura {
+.formulario-input.somente-leitura {
     display: flex;
     height: 2.875rem;
     padding: 0.78125rem 1rem;
@@ -268,7 +268,7 @@
     background: var(--color-table-header);
 }
  
-.formulario_solicitar {
+.formulario-solicitar {
     display: flex;
     padding: 0.57813rem 0.875rem 0.625rem 0.875rem;
     flex-direction: column;
@@ -281,7 +281,7 @@
     background: var(--color-blue-light);
 }
  
-.solicitar_texto {
+.solicitar-texto {
     color: var(--color-blue-petroleum);
     font-family: Outfit;
     font-size: 0.78125rem;
@@ -290,7 +290,7 @@
     line-height: 1.09375rem;
 }
  
-.solicitar_link {
+.solicitar-link {
     color: var(--color-accent);
     font-family: Outfit;
     font-size: 0.78125rem;
@@ -299,14 +299,14 @@
     line-height: 1.09375rem;
 }
  
-.div_formulario_campos_duplos {
+.div-formulario-campos-duplos {
     display: grid;
     width: 100%;
     column-gap: 16px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
  
-.editar_footer {
+.editar-footer {
     display: flex;
     width: 76.3125rem;
     padding: 1rem 2rem;
@@ -321,7 +321,7 @@
     background: var(--white);
 }
  
-.p_formulario_legenda {
+.p-formulario-legenda {
     color: var(--color-blue-slate);
     font-family: Outfit;
     font-size: 0.8125rem;
@@ -330,7 +330,7 @@
     line-height: 1.1375rem;
 }
  
-.campo_obrigatorio {
+.campo-obrigatorio {
     color: var(--color-alert-red);
     font-family: Outfit;
     font-size: 0.8125rem;
@@ -339,12 +339,12 @@
     line-height: 1.1375rem;
 }
  
-.footer_buttons {
+.footer-buttons {
     display: flex;
     gap: 0 1rem;
 }
  
-.btn_cancelar {
+.btn-cancelar {
     display: flex;
     height: 2.875rem;
     padding: 0 1.5rem;
@@ -364,7 +364,7 @@
     background: var(--white);
 }
  
-.btn_salvar {
+.btn-salvar {
     display: flex;
     height: 2.875rem;
     padding: 0 1.5rem;
