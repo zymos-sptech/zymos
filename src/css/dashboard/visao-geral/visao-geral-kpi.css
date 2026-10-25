@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-neutral-base);
+    color: var(--color-blue-dark);
+    -webkit-font-smoothing: antialiased;
+}
+
+.bem-vinda {
+    display: flex;
+    align-items: center;
+    margin: 15px;
+    height: 83px;
+    padding: 10px;
+    border-radius: 16px;
+    background-color: var(--white);
+    border-radius: 16px;
+}
+
+.saudacao h2 {
+    font-size: 25px;
+    color: var(--color-blue-dark);
+}
+
+.saudacao p {
+    margin: 4px 0 0;
+    color: var(--color-blue-slate);
+    font-size: 13px;
+}
+
+.badges {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.badge {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    background-color: var(--color-blue-light);
+    border: 1px solid var(--color-blue-medium);
+    color: var(--color-blue-dark);
+    padding: 8px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.cards {
+    display: flex;
+    gap: 15px;
+    margin: 0 15px 15px;
+}
+
+.card {
+    flex: 1;
+    background-color: var(--color-blue-dark);
+    color: var(--white);
+    padding: 15px 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px
+}
+
+.card-rotulo {
+    color: var(--color-green-light);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.55px;
+    text-transform: uppercase;
+}
+
+.card-valor {
+    font-size: 36px;
+    line-height: 40px;
+}
+
+.card-valor span {
+    font-size: 14px;
+    color: var(--color-green-light);
+}
+
+.card-tags {
+    display: flex;
+    gap: 6px;
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+}
+
+.bolinha {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-gray-dark);
+    margin-right: 6px;
+}
+
+.bolinha-aberto {
+    background-color: var(--color-accent);
+}
+
+.barra {
+    height: 6px;
+    background-color: var(--color-blue-navy);
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 6px 0;
+}
+
+.barra-preenchida {
+    height: 100%;
+    background-color: var(--color-accent);
+}
+
+.card-rodape {
+    color: var(--color-green-light); /* ALTERADO: mesmo erro de digitação */
+    font-size: 12px;
+    margin-top: auto;
+}
