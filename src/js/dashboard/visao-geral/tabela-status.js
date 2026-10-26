@@ -43,7 +43,7 @@ function buscarInfoTanques(nome_unidade, tanque_data, alerta_data) {
             }
         }
     }
-    
+
     tanques_unidade = {
         unidade: nome_unidade,
         qtd_tanques: qtd_tanques_total,
@@ -58,6 +58,8 @@ function buscarInfoTanques(nome_unidade, tanque_data, alerta_data) {
 // iterando nas unidades
 function buscarInfoUnidades(user_data) {
     const info_unidades = []
+    unidades_desvios = 0
+    unidades_estaveis = 0
     for (let i = 0; i < user_data.unidades.length; i++) {
         const dados_unidade = buscarInfoTanques(user_data.unidades[i].nome, tanqueData, alertaData)
         if (dados_unidade.status_unidade == 'Em desvio') unidades_desvios++
@@ -71,8 +73,6 @@ function buscarInfoUnidades(user_data) {
 function exibirDadosTabelados() {
     const data_unidades_total = buscarInfoUnidades(userData)
     numero_unidades = data_unidades_total.length
-    unidades_desvios = 0
-    unidades_estaveis = 0
     let data_unidades = []
     let linha = ''
     let tempo = 14
@@ -93,13 +93,13 @@ function exibirDadosTabelados() {
             }
         }
     } else data_unidades = data_unidades_total
-    
+
     for (let i = 0; i < data_unidades.length; i++) {
         if (data_unidades[i].alertas_aberto > 0) {
             tempo_msg = tempoInfo(tempo)
             status_alerta = 'em-desvio'
-            unidades_desvios++
-        } else unidades_estaveis++
+
+        }
         tempo += 30 + i
         linha += `
             <tr class='tabela-status-linha'>
@@ -113,15 +113,15 @@ function exibirDadosTabelados() {
     }
     if (data_unidades.length == 0) linha = `<tr><td colspan="6" style="text-align:center;padding:20px;">Nenhuma unidade neste filtro</td></tr>`
     tabela_status_body.innerHTML = linha
-    span_numero_unidades.innerHTML = data_unidades.length
+    span_numero_unidades.innerHTML = data_unidades_total.length
     span_unidades_desvio.innerHTML = unidades_desvios
     span_unidades_estavel.innerHTML = unidades_estaveis
 }
 
 // EVENTS
 const mapaFiltros = {
-    'filtro_tabela_status_todos':    'todos',
-    'filtro_tabela_status_desvios':  'desvios',
+    'filtro_tabela_status_todos': 'todos',
+    'filtro_tabela_status_desvios': 'desvios',
     'filtro_tabela_status_estaveis': 'estaveis'
 }
 
