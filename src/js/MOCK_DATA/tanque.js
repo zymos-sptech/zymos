@@ -137,7 +137,7 @@ const tanqueData = [
     temperatura: 24.2,
     min: 18,
     max: 23,
-    status: "Em desvio",
+    status: "Estável",
     totalDias: 14,
     diaAtual: 4,
     tipo: "Ale",

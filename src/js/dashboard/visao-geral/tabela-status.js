@@ -99,8 +99,11 @@ function exibirDadosTabelados() {
             tempo_msg = tempoInfo(tempo)
             status_alerta = 'em-desvio'
 
+        } else {
+            tempo_msg = ''
+            status_alerta = ''
         }
-        tempo += 30 + i
+        tempo += 28 + i
         linha += `
             <tr class='tabela-status-linha'>
                 <td>${data_unidades[i].unidade}</td>
@@ -108,7 +111,7 @@ function exibirDadosTabelados() {
                 <td>${lista_aderencia[i]}%</td>
                 <td>${data_unidades[i].alertas_aberto} em aberto ${tempo_msg}</td>
                 <td><div class='tabela-status-alerta ${status_alerta}'>${data_unidades[i].status_unidade}</div></td>
-                <td><p class="tabela-status-link">Ver unidade <i class="fa-solid fa-arrow-right"></i></p></td>
+                <td><p class="tabela-status-link"><a href='../../../pages/dashboard/dashboard-macro.html'>Ver unidade <i class="fa-solid fa-arrow-right"></i></a></p></td>
         `
     }
     if (data_unidades.length == 0) linha = `<tr><td colspan="6" style="text-align:center;padding:20px;">Nenhuma unidade neste filtro</td></tr>`
@@ -130,11 +133,14 @@ tabela_status_filtro.addEventListener("click", (event) => {
     if (!id || !mapaFiltros[id]) return
     filtro = mapaFiltros[id]
 
-    for (const child of tabela_status_filtro.children) {
-        child.classList.toggle("ativo", child.id === id)
+    for (let i = 0; i < tabela_status_filtro.children.length; i++) {
+        if (tabela_status_filtro.children[i].id == id) {
+            tabela_status_filtro.children[i].classList.add('ativo')
+        } else {
+             tabela_status_filtro.children[i].classList.remove('ativo')
+        }
     }
-
-    exibirDadosTabelados()
-})
+        exibirDadosTabelados()
+    })
 
 exibirDadosTabelados()
