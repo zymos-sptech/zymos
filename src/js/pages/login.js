@@ -38,5 +38,5 @@ window.handleFormLogin = () => {
     return alert("Email ou senha inválido");
   }
 
-  window.location = "../pages/dashboard/visao-geral-dashboard-macro.html";
+  window.location = "../pages/dashboard/visao-geral.html";
 };

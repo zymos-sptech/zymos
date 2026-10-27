@@ -157,7 +157,7 @@ function renderizarTabela(listaTanques) {
                 </span>
                 <span class="detalhes-subtitulo">${listaTanques[i].tanque} · ${listaTanques[i].tipo}</span>
               </div>
-              <a href="#" class="link-dashboard-lote">
+              <a href="../dashboard/dashboard-micro.html" class="link-dashboard-lote">
                 Abrir no dashboard por lote &rarr;
               </a>
             </div>

@@ -127,7 +127,7 @@ function exibirDadosTabelados() {
                 <td>${lista_aderencia[i]}%</td>
                 <td>${data_unidades[i].alertas_aberto} em aberto ${tempo_msg}</td>
                 <td><div class='tabela-status-alerta ${status_alerta}'>${data_unidades[i].status_unidade}</div></td>
-                <td><p class="tabela-status-link"><a href='../../../pages/dashboard/dashboard-macro.html'>Ver unidade <i class="fa-solid fa-arrow-right"></i></a></p></td>
+                <td><p class="tabela-status-link"><a href='../../pages/dashboard/dashboard-macro.html'>Ver unidade <i class="fa-solid fa-arrow-right"></i></a></p></td>
         `;
   }
   if (data_unidades.length == 0)
