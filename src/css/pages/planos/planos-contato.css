@@ -1,0 +1,85 @@
+/* SECTION-CONTATO */
+.section-contato {
+  width: 100%;
+  height: max-content;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 0.75rem;
+  background: var(--color-accent);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+  padding: 0 0 0 3rem;
+  gap: 1.5em 0;
+}
+
+.contato-container-texto {
+  display: inline-flex;
+  max-width: 36rem;
+  padding-top: 0.34375rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1rem 0;
+}
+
+.contato-subtitulo {
+  color: var(--color-accent-brown);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1rem;
+  letter-spacing: 0.0375rem;
+  text-transform: uppercase;
+}
+
+.contato-titulo {
+  color: var(--color-accent-brown);
+  font-family: var(--font-titulo);
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2.25rem;
+  letter-spacing: -0.0175rem;
+}
+
+.contato-corpo {
+  color: var(--color-accent-brown);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+.link-btn-contato {
+  display: flex;
+  align-self: flex-start;
+  justify-self: flex-start;
+}
+.contato-button {
+  width: 20.45688rem;
+  height: 3.125rem;
+
+  border-radius: 0.75rem;
+
+  justify-self: flex-start;
+  align-self: flex-start;
+
+  color: var(--white);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.375rem;
+  letter-spacing: 0.01rem;
+}
+
+.contato-img {
+  margin-top: -2.5rem;
+}

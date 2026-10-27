@@ -1,0 +1,53 @@
+/* SECTION-AMBIENTE */
+.section-ambiente {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  padding: 4rem 2em;
+  align-items: center;
+
+  display: flex;
+  /* width: 86.9375rem; */
+  padding: 3rem 0;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 0.75em;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(66, 96, 132, 0.95) 0%,
+      rgba(66, 96, 132, 0.5) 75%,
+      rgba(66, 96, 132, 0.1) 100%
+    ),
+    url(../../../../assets/images/planos/planos-bg.webp);
+}
+
+.ambiente-container {
+  display: flex;
+  max-width: 28rem;
+  padding: 0.4rem 2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.ambiente-titulo {
+  color: var(--color-accent);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1rem;
+  letter-spacing: 0.0375rem;
+  text-transform: uppercase;
+}
+
+.ambiente-corpo {
+  color: var(--white);
+  font-family: var(--font-titulo);
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.625rem;
+}

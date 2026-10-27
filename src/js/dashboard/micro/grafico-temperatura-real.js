@@ -2,7 +2,7 @@ const graficoTempReal = document.getElementById("temperaturaRealGrafico");
 
 // cores do global.css
 const corLinha = "#426084"; // --color-blue-dark
-const corFaixa = "#e8efe6"; // --color-green-light
+const corFaixa = "#e8efe6A5"; // --color-green-light
 
 const labels = [
   "14:32:00",
@@ -17,7 +17,7 @@ const labels = [
   "14:32:18",
 ];
 
-const temperaturas = [17, 18, 17, 18.5, 17.5, 25.2, 24.7, 25.5, 25.4, 25.2];
+const temperaturas = [19.1, 19, 18.9, 19.5, 19.9, 20.5, 21.7, 22.5, 23.4, 24.2];
 
 const data = {
   labels: labels,
@@ -35,7 +35,7 @@ const data = {
     },
     {
       label: "Faixa máx.",
-      data: [24, 24, 24, 24, 24, 24, 24, 24, 24, 24],
+      data: [23, 23, 23, 23, 23, 23, 23, 23, 23, 23],
       backgroundColor: corFaixa,
       borderWidth: 0,
       pointRadius: 0,
@@ -43,7 +43,7 @@ const data = {
     },
     {
       label: "Faixa mín.",
-      data: [15, 15, 15, 15, 15, 15, 15, 15, 15, 15],
+      data: [18, 18, 18, 18, 18, 18, 18, 18, 18, 18],
       borderWidth: 0,
       pointRadius: 0,
       fill: false,
@@ -62,9 +62,13 @@ new Chart(graficoTempReal, {
     },
     scales: {
       y: {
-        min: 12,
-        max: 28,
+        min: 15,
+        max: 26,
+        step: 5
       },
+      x: {
+        grid: {display: false}
+      }
     },
     plugins: {
       legend: { display: false },

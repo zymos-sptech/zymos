@@ -21,7 +21,7 @@
 
 .macro-header-title {
   color: var(--color-blue-navy);
-  font-family: var(--font-secondary);
+  font-family: var(--font-titulo);
   font-size: 1.75rem;
   font-weight: 700;
   line-height: 1.2;

@@ -1,180 +1,175 @@
 .servicos-captacao {
-    display: flex;
-    height: 685px;
-    padding: 106px 116px 105px 116px;
-    justify-content: center;
-    align-items: center;
- 
-    background: #FFF;
+  display: flex;
+  height: 42.8125rem;
+  padding: 6.625rem 7.25rem 6.5625rem 7.25rem;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--white);
 }
- 
+
 .captacao-container {
-    display: flex;
-    width: 1280px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 40px;
+  display: flex;
+  width: 80rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
 }
- 
 
 .captacao-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  align-self: stretch;
 }
- 
+
 .captacao-header-titulos {
-    display: flex;
-    max-width: 672px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+  display: flex;
+  max-width: 42rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
 }
- 
+
 .captacao-eyebrow {
-    color: #7D562C;
-    font-family: Outfit;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 16px; 
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
+  color: var(--color-eyebrow-warm);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1rem;
+  letter-spacing: 0.075rem;
+  text-transform: uppercase;
 }
- 
+
 .captacao-titulo {
-    color: #426084;
-    font-family: Epilogue;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 36px; 
-    letter-spacing: -0.28px;
+  color: var(--color-blue-dark);
+  font-family: var(--font-titulo);
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2.25rem;
+  letter-spacing: -0.0175rem;
 }
- 
+
 .captacao-descricao {
-    max-width: 448px;
-    padding-right: 15.2px;
- 
-    color: #50453B;
-    font-family: Outfit;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px; 
+  max-width: 28rem;
+  padding-right: 0.95rem;
+
+  color: var(--color-accent-brown);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
 }
- 
 
 .captacao-card {
-    display: flex;
-    height: 342px;
-    padding: 52px 40px 0 40px;
-    flex-direction: column;
-    align-self: stretch;
- 
-    border-radius: 16px;
-    background: #F0F5EE;
-    
-    
+  display: flex;
+  height: 21.375rem;
+  padding: 3.25rem 2.5rem 0 2.5rem;
+  flex-direction: column;
+  align-self: stretch;
+
+  border-radius: 1rem;
+  background-color: var(--color-bg-sage-light);
 }
- 
+
 .captacao-card-topo {
-    display: flex;
-    height: 56px;
-    align-items: flex-start;
-    gap: 18px;
+  display: flex;
+  height: 3.5rem;
+  align-items: flex-start;
+  gap: 1.125rem;
 }
- 
+
 .captacao-card-icone {
-    display: flex;
-    width: 56px;
-    height: 56px;
-    justify-content: center;
-    align-items: center;
- 
-    border-radius: 12px;
-    background: #FFF;
-    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.05));
+  display: flex;
+  width: 3.5rem;
+  height: 3.5rem;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.75rem;
+  background-color: var(--white);
+  filter: drop-shadow(0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.05));
 }
- 
+
 .captacao-card-icone img {
-    width: 10px;
-    height: 20px;
+  width: 0.625rem;
+  height: 1.25rem;
 }
- 
+
 .captacao-card-titulo {
-    width: 907px;
-    padding-top: 16px;
- 
-    color: #426084;
-    font-family: Epilogue;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 30px; 
+  width: 56.6875rem;
+  padding-top: 1rem;
+
+  color: var(--color-blue-dark);
+  font-family: var(--font-titulo);
+  font-size: 1.375rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.875rem;
 }
- 
+
 .captacao-card-corpo {
-    margin-top: 29px;
-    align-self: stretch;
- 
-    color: #50453B;
-    font-family: Outfit;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 26px; 
+  margin-top: 1.8125rem;
+  align-self: stretch;
+
+  color: var(--color-accent-brown);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.625rem;
 }
- 
 
 .captacao-beneficios {
-    display: flex;
-    height: 84px;
-    margin-top: 8px;
-    padding-top: 16px;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 16px;
+  display: flex;
+  height: 5.25rem;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
 }
- 
+
 .captacao-beneficio {
-    display: flex;
-    padding: 16px;
-    align-items: center;
-    gap: 16px;
-    flex: 1 0 0;
- 
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.80);
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 0 0;
+
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.8);
 }
- 
+
 .captacao-icone-marrom {
-    color: var(--color-accent);
-    width: 24px;
-    height: 24px;
+  color: var(--color-accent);
+  width: 1.5rem;
+  height: 1.5rem;
 }
- 
+
 .captacao-beneficio-icone.impacto {
-    width: 22px;
-    height: 21px;
+  width: 1.375rem;
+  height: 1.3125rem;
 }
- 
+
 .captacao-beneficio-label {
-    color: #50453B;
-    font-family: Outfit;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 16px; 
-    letter-spacing: 0.48px;
+  color: var(--color-accent-brown);
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1rem;
+  letter-spacing: 0.03rem;
 }
- 
+
 .captacao-beneficio-valor {
-    color: #426084;
-    font-family: Outfit;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px; 
+  color: var(--color-blue-dark);
+  font-family: var(--font-primary);
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25rem;
 }

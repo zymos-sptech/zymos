@@ -121,18 +121,12 @@
     background: var(--white);
     border: 0.05rem solid var(--color-neutral-gray);
     border-radius: 0.7rem;
-    font-family: var(--font-secondary);
+    font-family: var(--font-titulo);
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--color-blue-dark);
     cursor: pointer;
     transition: 0.3s, transform 0.1s;
-}
-
-.botoes .botao-destaque {
-    background: var(--color-blue-dark);
-    color: var(--white);
-    border-color: var(--color-blue-dark);
 }
 
 .botoes .botao i {

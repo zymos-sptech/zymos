@@ -2,12 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@100..900&display=swap");
 
 :root {
-  /* Paleta de Cores - Baseada no Guia Visual */
-
   /* Tons Quentes / Acento / Alerta */
   --color-accent: #d0a06f;
-  --colo-accent-brown: #50453b;
   --color-accent-brown: #50453b;
+  --color-eyebrow-warm: #7d562c;
+  --color-accent-amber: #f0bd8a;
   --color-alert-red: #c05230;
   --color-alert-terracotta: #bd5934;
   --color-alert-border: #e7ab95;
@@ -29,13 +28,14 @@
   --color-blue-muted: #556c80;
   --color-blue-medium: #d1e4ff;
   --color-blue-light: #e3f0ff;
-  
+
   --color-gray-dark: #718092;
 
   /* Tons Neutros / Fundo */
   --color-neutral-base: #fffaef;
   --color-neutral-light: #f6fbf3;
   --color-neutral-gray: #d8ddd6;
+  --color-bg-sage-light: #f0f5ee;
   --color-neutral-sand: #f5ede1;
   --color-neutral-warm: #faf6ee;
   --color-neutral-hover: #faf7f2;
@@ -60,8 +60,7 @@
 
   /* Tipografia */
   --font-primary: "Outfit", sans-serif;
-  --font-secondary: "Garet", sans-serif;
-  --font-tertiary: "Epilogue", sans-serif;
+  --font-titulo: "Epilogue", sans-serif;
 
   /* Espaçamento */
   --horizontal-margin: 5%;
@@ -87,9 +86,51 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-secondary);
+  font-family: var(--font-titulo);
 }
 
 button {
   cursor: pointer;
+}
+
+.btn {
+  padding: 14px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 50px;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background-color: var(--color-blue-dark);
+  color: var(--white);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.87rem 1.75rem;
+  font-family: var(--font-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-blue-navy);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  transform: scale(0.98);
 }
