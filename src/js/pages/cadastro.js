@@ -66,8 +66,10 @@ window.handleFormCadastro = () => {
 
   let senha = password.value;
   let confirmSenha = confirmPasword.value;
-  if (senha.length < 8 || senha !== confirmSenha) {
+  if (senha.length < 8) {
     return alert("Digite uma senha mais forte");
+  } else if (senha !== confirmSenha) {
+    return alert("A senha e a confirmação de senha não conferem")
   }
 
   sessionStorage.NOME_COMPLETO = username.value.trim();
