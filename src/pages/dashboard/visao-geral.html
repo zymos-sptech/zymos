@@ -40,6 +40,11 @@
       src="../../js/dashboard/visao-geral/tabela-status.js"
       defer
     ></script>
+    <script
+      type="module"
+      src="../../js/dashboard/visao-geral/header.js"
+      defer
+    ></script>
     <title>Zymos - Visão geral</title>
   </head>
   <body class="tela-visao-geral">
@@ -158,26 +163,23 @@
     <main class="dashboard dashboard-visao-geral">
       <div class="bem-vinda">
         <div class="saudacao">
-          <h2>Olá, Fernanda!</h2>
-          <p>
-            Bem-vinda ao painel da Cervejaria Horizonte · quinta-feira,
-            29/10/2026
-          </p>
+          <h2 id="name-user"></h2>
+          <p id="subtitle"></p>
         </div>
 
         <div class="badges">
-          <span class="badge">Plano Padrão</span>
-          <span class="badge">2 unidades ativas</span>
-          <span class="badge">10 tanques monitorados</span>
+          <span class="badge" id="badge-plano"></span>
+          <span class="badge" id="badge-fabricas"></span>
+          <span class="badge" id="badge-tanques-total"></span>
         </div>
       </div>
 
       <div class="cards">
         <div class="card card-ativas">
           <span class="card-rotulo">Unidades ativas</span>
-          <div class="card-valor"><b>2</b> <span>unidades</span></div>
+          <div class="card-valor"><b>3</b> <span>unidades</span></div>
           <div class="card-tags">
-            <span class="tag"><span class="bolinha"></span>0 estável</span>
+            <span class="tag"><span class="bolinha"></span>1 estável</span>
             <span class="tag"
               ><span class="bolinha bolinha-aberto"></span>2 com desvio</span
             >
@@ -187,28 +189,28 @@
 
         <div class="card card-cupacao">
           <span class="card-rotulo">Ocupação dos tanques</span>
-          <div class="card-valor"><b>7</b> <span>de 10 tanques</span></div>
+          <div class="card-valor"><b>4</b> <span>de 6 tanques</span></div>
           <div class="barra">
-            <div class="barra-preenchida" style="width: 70%"></div>
+            <div class="barra-preenchida" style="width: 66.7%"></div>
           </div>
-          <small class="card-rodape">70% de ocupação</small>
+          <small class="card-rodape">66,7% de ocupação</small>
         </div>
 
         <div class="card card-lote-andamento">
           <span class="card-rotulo">Lotes em andamento</span>
-          <div class="card-valor"><b>7</b> <span>lotes ativos</span></div>
+          <div class="card-valor"><b>4</b> <span>lotes ativos</span></div>
           <div class="card-tags">
             <span class="tag">4 Ale</span>
-            <span class="tag">3 Lager</span>
+            <span class="tag">0 Lager</span>
           </div>
           <small class="card-rodape">Todas as unidades</small>
         </div>
 
         <div class="card card-desvios">
           <span class="card-rotulo">Desvios no período</span>
-          <div class="card-valor"><b>3</b> <span>ocorrências</span></div>
+          <div class="card-valor"><b>4</b> <span>ocorrências</span></div>
           <div class="card-tags">
-            <span class="tag"><span class="bolinha"></span>1 resolvida</span>
+            <span class="tag"><span class="bolinha"></span>2 resolvidas</span>
             <span class="tag"
               ><span class="bolinha bolinha-aberto"></span>2 em aberto</span
             >
@@ -273,10 +275,10 @@
                 <i class="fa-solid fa-circle fa-2xs icone"></i>
                 <div class="alerta-textos">
                   <span class="titulo-alerta">
-                    Campinas · TQ-02 — Temperatura abaixo do ideal
+                    São Paulo · TQ-01 — Temperatura acima do ideal
                   </span>
                   <span class="legenda-alerta"
-                    >14,6°C registrados às 14:19:44 · Lote 202</span
+                    >25,3°C registrados às 14:32:00 · Lote 101-A</span
                   >
                 </div>
               </div>
@@ -284,10 +286,10 @@
                 <i class="fa-solid fa-circle fa-2xs icone"></i>
                 <div class="alerta-textos">
                   <span class="titulo-alerta">
-                    Matriz · TQ-01 — Temperatura acima do ideal
+                    Belo Horizonte · TQ-01 — Temperatura acima do ideal
                   </span>
                   <span class="legenda-alerta"
-                    >25,2°C registrados às 14:32:10 · Lote 101-A</span
+                    >24,2°C registrados às 13:05:00 · Lote 099</span
                   >
                 </div>
               </div>
@@ -307,9 +309,9 @@
               </header>
 
               <div class="desvios-lista-unidades" id="lista-desvios-unidades">
-                <!-- Matriz Ribeirão Preto -->
+                <!-- São Paulo -->
                 <div class="desvio-unidade-item">
-                  <span class="desvio-unidade-nome">Matriz Ribeirão Preto</span>
+                  <span class="desvio-unidade-nome">São Paulo</span>
                   <div class="desvio-unidade-linha-progresso">
                     <div class="desvio-unidade-barra-container">
                       <div
@@ -321,9 +323,22 @@
                   </div>
                 </div>
 
-                <!-- Campinas -->
+                <!-- São Francisco -->
                 <div class="desvio-unidade-item">
-                  <span class="desvio-unidade-nome">Campinas</span>
+                  <span class="desvio-unidade-nome">São Francisco</span>
+                  <div class="desvio-unidade-linha-progresso">
+                    <div class="desvio-unidade-barra-container">
+                      <div
+                        class="desvio-unidade-barra-preenchimento"
+                        style="width: 48%"
+                      ></div>
+                    </div>
+                    <span class="desvio-unidade-contagem">1</span>
+                  </div>
+                </div>
+                <!-- Belo Horizonte -->
+                <div class="desvio-unidade-item">
+                  <span class="desvio-unidade-nome">Belo Horizonte</span>
                   <div class="desvio-unidade-linha-progresso">
                     <div class="desvio-unidade-barra-container">
                       <div
@@ -345,7 +360,7 @@
               <span
                 class="desvio-unidade-rodape-valor"
                 id="valor-tempo-resposta-unidade"
-                >18 min</span
+                >42 min</span
               >
             </footer>
           </article>

@@ -5,7 +5,7 @@ const unidadeSelecionada = document.getElementById("unidade-ativa");
 
 function renderizarUnidades() {
   for (let i = 0; i < userData.unidades.length; i++) {
-    if (i === 1) {
+    if (i === 0) {
       selectUnidade.innerHTML += `<option value="${userData.unidades[i].id}" selected>
     ${userData.unidades[i].nome}</option>`;
       unidadeSelecionada.textContent =

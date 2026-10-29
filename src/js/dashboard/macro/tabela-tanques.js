@@ -100,7 +100,6 @@ function renderizarTabela(listaTanques) {
       ? '<i class="fa-solid fa-arrow-up icon-arrow"></i>'
       : "";
 
-    // Usa nomeLote se existir (para não imprimir [object Object])
     const textoLote = listaTanques[i].nomeLote || listaTanques[i].lote;
 
     tableBody.innerHTML += `
