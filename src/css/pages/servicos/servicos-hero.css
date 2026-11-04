@@ -97,3 +97,14 @@
   font-weight: 400;
   line-height: 1.828rem;
 }
+
+.hero-img {
+  position: absolute;
+  bottom: 0;
+  right: 4rem;
+  z-index: 1;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom right;
+  pointer-events: none;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/css/global.css" />
+    <link rel="stylesheet" href="/src/css/pages/style.css">
+    <title>Zymos - Nova unidade</title>
+</head>
+
+<body>
+
+    <div class="topo">
+        <a href="">Zymos</a> / <a href="">Unidades</a> / <b>Nova unidade</b>
+    </div>
+
+    <main class="pagina">
+        <a href="" class="voltar">Voltar para Unidade</a>
+
+        <h1>Solicitar nova unidade</h1>
+        <p class="subtitulo">Cadastre uma fábrica da Cervejaria Ambev - Unidade SP.
+            Depois você poderá adicionar os tanques a ela.</p>
+
+        <form action="" class="cartao">
+
+            <div class="secao">
+                <div class="secao-info">
+                    <h2>Identificação</h2>
+                    <p>Nome que aparece nos filtros, relatórios e no painel.</p>
+                </div>
+
+                <div class="campos">
+                    <div class="campo">
+                        <label for="nome">Nome da unidade <span class="obrigatorio">*</span></label>
+                        <input type="text" id="nome" placeholder="Fábrica Jacareí">
+                    </div>
+
+                    <div class="campo">
+                        <label for="tanques">Quantidade de Tanques nesta Planta
+                            <span class="obrigatorio">*</span></label>
+                        <input type="text" id="tanques" placeholder="6">
+                        <p class="ajuda"><span>i</span> Informe a quantidade de tanques que serão instalados nesta
+                            unidade para que o Zymos dimensione e envie os kits de sensores corretos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="secao">
+                <div class="secao-info">
+                    <h2>Endereço</h2>
+                    <p>Endereço da planta, em campos separados.</p>
+                </div>
+
+                <div class="campos">
+                    <div class="campo">
+                        <label for="logradouro">Logradouro <span class="obrigatorio">*</span></label>
+                        <input type="text" id="logradouro" placeholder="Rodovia Presidente Dutra">
+                    </div>
+
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="numero">Número <span class="obrigatorio">*</span></label>
+                            <input type="text" id="numero" placeholder="km 160">
+                        </div>
+
+                        <div class="campo">
+                            <label for="complemento">Complemento <span class="opcional">Opcional</span></label>
+                            <input type="text" id="complemento" placeholder="Setor B - Galpão 2">
+                        </div>
+                    </div>
+
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="bairro">Bairro <span class="obrigatorio">*</span></label>
+                            <input type="text" id="bairro" placeholder="Distrito Industrial">
+                        </div>
+
+                        <div class="campo">
+                            <label for="cidade">Cidade <span class="obrigatorio">*</span></label>
+                            <input type="text" id="cidade" placeholder="Jacareí">
+                        </div>
+                    </div>
+
+                    <div class="linha">
+                        <div class="campo">
+                            <label for="uf">UF <span class="obrigatorio">*</span></label>
+                            <input type="text" id="uf" placeholder="SP">
+                        </div>
+
+                        <div class="campo">
+                            <label for="cep">CEP <span class="obrigatorio">*</span></label>
+                            <input type="text" id="cep" placeholder="12300-000">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rodape">
+                <div class="rodape-texto">
+                    <p><span class="obrigatorio">*</span>campos obrigatórios</p>
+                    <p class="aviso"><span>i</span>Sua solicitação será enviada a equipe da Zymos para dimensionamentodo
+                        e agendamento do setup de hardware.</p>
+                </div>
+
+                <div class="botoes">
+                    <button class="btn-secundario" onclick="">Cancelar / Voltar</button>
+                    <button class="btn-primario" onclick="">Solicitar Implantação de Unidade</button>
+                </div>
+            </div>
+
+        </form>
+    </main>
+
+</body>
+
+</html>

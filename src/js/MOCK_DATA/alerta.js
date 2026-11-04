@@ -4,7 +4,7 @@ const alertaData = [
     dt_inicio: "2026-10-17",
     dt_fim: "",
     horario: "14:32:00",
-    status: "iniciado",
+    status: "aberto",
     tipo: "acima do ideal",
     temperatura: 25.3,
     nome_unidade: "São Paulo",
@@ -26,19 +26,6 @@ const alertaData = [
     levedura: "Ale"
   },
   {
-    id: 3,
-    dt_inicio: "2026-10-16",
-    dt_fim: "2026-10-16",
-    horario: "09:00:00",
-    status: "iniciado",
-    tipo: "Início de fermentação",
-    temperatura: 18.0,
-    nome_unidade: "São Paulo",
-    nome_tanque: "TQ-01",
-    nome_lote: "101-A",
-    levedura: "Ale"
-  },
-  {
     id: 4,
     dt_inicio: "2026-10-15",
     dt_fim: "2026-10-15",
@@ -54,9 +41,9 @@ const alertaData = [
   {
     id: 5,
     dt_inicio: "2026-10-17",
-    dt_fim: "",
+    dt_fim: "2026-10-17",
     horario: "10:20:00",
-    status: "aberto",
+    status: "resolvido",
     tipo: "acima do ideal",
     temperatura: 24.6,
     nome_unidade: "São Francisco",

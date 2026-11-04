@@ -1,38 +1,12 @@
 const tanqueData = [
-  // ===============================
-  // Unidade 1 - São Paulo
-  // ===============================
   {
     id: 1,
-    tanque: "TQ-01",
-    nome: "TQ-01",
-    capacidade: 8000,
-    unidadeId: 1,
-    nomeUnidade: "São Paulo",
-    lote: [{ id: 101, nome: "Lote 101-A", desvio: 3 }],
-    nomeLote: "IPA · Lote 101-A",
-    temperatura: 25.3,
-    min: 18,
-    max: 23,
-    status: "Em desvio",
-    totalDias: 14,
-    diaAtual: 6,
-    tipo: "Ale",
-    levedura: "Saccharomyces cerevisiae",
-    volumeLote: 8000,
-    dataInicio: "2026-10-10",
-    dataFim: "2026-11-16",
-    aderenciaTermica: 91.2,
-    desvios: 3,
-  },
-  {
-    id: 2,
     tanque: "TQ-02",
     nome: "TQ-02",
     capacidade: 8000,
     unidadeId: 1,
     nomeUnidade: "São Paulo",
-    lote: [{ id: 96, nome: "Lote 096", desvio: 0 }],
+    lote: [{ id: 96, nome: "Lote 096", desvio: 1 }],
     nomeLote: "Red Ale · Lote 096",
     temperatura: 19.4,
     min: 18,
@@ -48,6 +22,30 @@ const tanqueData = [
     aderenciaTermica: 99.4,
     desvios: 0,
   },
+  {
+    id: 2,
+    tanque: "TQ-01",
+    nome: "TQ-01",
+    capacidade: 8000,
+    unidadeId: 1,
+    nomeUnidade: "São Paulo",
+    lote: [{ id: 101, nome: "Lote 101-A", desvio: 1 }],
+    nomeLote: "IPA · Lote 101-A",
+    temperatura: 25.3,
+    min: 18,
+    max: 23,
+    status: "Em desvio",
+    totalDias: 14,
+    diaAtual: 6,
+    tipo: "Ale",
+    levedura: "Saccharomyces cerevisiae",
+    volumeLote: 8000,
+    dataInicio: "2026-10-10",
+    dataFim: "2026-11-16",
+    aderenciaTermica: 92.2,
+    desvios: 1,
+  },
+
   {
     id: 3,
     tanque: "TQ-03",
@@ -71,10 +69,6 @@ const tanqueData = [
     aderenciaTermica: "",
     desvios: "",
   },
-
-  // ===============================
-  // Unidade 2 - São Francisco
-  // ===============================
   {
     id: 4,
     tanque: "TQ-01",
@@ -95,8 +89,8 @@ const tanqueData = [
     volumeLote: 10000,
     dataInicio: "2026-10-13",
     dataFim: "2026-11-26",
-    aderenciaTermica: 94.8,
-    desvios: 1,
+    aderenciaTermica: 96.4,
+    desvios: 0,
   },
   {
     id: 5,
@@ -121,10 +115,6 @@ const tanqueData = [
     aderenciaTermica: "",
     desvios: "",
   },
-
-  // ===============================
-  // Unidade 3 - Belo Horizonte
-  // ===============================
   {
     id: 6,
     tanque: "TQ-01",
@@ -132,7 +122,7 @@ const tanqueData = [
     capacidade: 8000,
     unidadeId: 3,
     nomeUnidade: "Belo Horizonte",
-    lote: [{ id: 99, nome: "Lote 099", desvio: 2 }],
+    lote: [{ id: 99, nome: "Lote 099", desvio: 1 }],
     nomeLote: "IPA · Lote 099",
     temperatura: 24.2,
     min: 18,
@@ -145,8 +135,8 @@ const tanqueData = [
     volumeLote: 8000,
     dataInicio: "2026-10-14",
     dataFim: "2026-11-27",
-    aderenciaTermica: 92.0,
-    desvios: 2,
+    aderenciaTermica: 98.3,
+    desvios: 1,
   },
 ];
 

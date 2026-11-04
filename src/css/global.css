@@ -75,7 +75,7 @@
 
 body {
   font-family: var(--font-primary);
-  background-color: var(--color-neutral-base);
+  background-color: var(--white);
   color: var(--color-blue-dark);
   -webkit-font-smoothing: antialiased;
 }

@@ -40,10 +40,18 @@ function simular() {
     alert("Selecione o tipo da produção");
   } else if (producaoLitros == "") {
     alert("Insira o valor da produção");
+  } else if (producaoLitros <= 0) {
+    alert("A produção deve ser positiva");
   } else if (precoLitro == "") {
     alert("Insira o valor de venda por litro");
+  } else if (precoLitro <= 0) {
+    alert("O valor de venda por litro não pode ser negativo");
   } else if (custoProducao == "") {
     alert("Insira o custo de produção");
+  } else if (custoProducao <= 0) {
+    alert("O custo de produção não pode ser negativo");
+  } else if (taxaDesperdicio < 0) {
+    alert("A taxa de descarte deve ser positiva");
   } else {
     let litrosDesperdiciados = 0;
 
@@ -54,8 +62,8 @@ function simular() {
     }
 
     // Operações aritméticas
-    let dinheiroPerdido = (litrosDesperdiciados * precoLitro).toFixed(2);
-    let dinheiroProducao = (custoProducao * litrosDesperdiciados).toFixed(2);
+    let dinheiroPerdido = (litrosDesperdiciados * precoLitro).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    let dinheiroProducao = (custoProducao * litrosDesperdiciados).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     let porcentagemPerda = (
       (litrosDesperdiciados / producaoLitros) *
       100
@@ -88,7 +96,7 @@ function simular() {
                         <span class="card-titulo">Custo direto (R$)</span>
                         <i class="fa-solid fa-receipt"></i>
                     </div>
-                    <span class="card-valor">R$ ${dinheiroProducao}</span>
+                    <span class="card-valor">${dinheiroProducao}</span>
                     <p class="card-descricao">gasto em produção perdida</p>
                 </div>
 
@@ -97,7 +105,7 @@ function simular() {
                         <span class="card-titulo" style="color:#BA1A1A">Vendas brutas (R$)</span>
                         <i class="fa-solid fa-arrow-trend-down" style="color:#BA1A1A"></i>
                     </div>
-                    <span class="card-valor" style="color:#BA1A1A">R$ ${dinheiroPerdido}</span>
+                    <span class="card-valor" style="color:#BA1A1A">${dinheiroPerdido}</span>
                     <p class="card-descricao">prejuízo em vendas</p>
                 </div>
 
@@ -110,8 +118,8 @@ function simular() {
                     <b style="color: var(--color-accent);">${litrosTexto} litro(s)</b>, o que representa
                     <b style="color: var(--color-accent);">${porcentagemPerda}%</b> da sua produção total.
                     Isso equivale a uma perda direta de produção de
-                    <b style="color: var(--color-accent);">R$ ${dinheiroProducao}</b> e um potencial de receita
-                    não realizado de <b style="color: var(--color-accent);">R$ ${dinheiroPerdido}</b>.
+                    <b style="color: var(--color-accent);">${dinheiroProducao}</b> e um potencial de receita
+                    não realizado de <b style="color: var(--color-accent);">${dinheiroPerdido}</b>.
                 </div>
             </div>`;
 
