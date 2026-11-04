@@ -1,0 +1,43 @@
+.bem-vinda {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background-color: var(--white);
+  flex-shrink: 0;
+  border-radius: 0.625rem;
+}
+
+.saudacao h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-blue-dark);
+  margin: 0;
+}
+
+.saudacao p {
+  margin: 0.15rem 0 0;
+  color: var(--color-blue-slate);
+  font-size: 0.78rem;
+}
+
+.badges {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.badge {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  background-color: var(--color-blue-light);
+  border: 1px solid var(--color-blue-medium);
+  color: var(--color-blue-dark);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+

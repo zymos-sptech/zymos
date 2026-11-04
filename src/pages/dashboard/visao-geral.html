@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../../../assets/branding/favicon.png"
+      type="image/x-icon"
+    />
+
+    <link rel="stylesheet" href="../../css/dashboard/dashboard.css" />
+    <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link rel="stylesheet" href="../../css/dashboard/visao-geral/navbar.css" />
+    <link rel="stylesheet" href="../../css/dashboard/visao-geral/kpi.css" />
+    <link
+      rel="stylesheet"
+      href="../../css/dashboard/visao-geral/tabela-status.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../css/dashboard/visao-geral/alertas-em-aberto.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../css/dashboard/visao-geral/desvio-unidade.css"
+    />
+
+    <!-- Ícones Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/79924d81b1.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Scripts da Sidebar e da Tabela de Tanques -->
+    <script type="module" src="../../js/sidebar/sidebar.js" defer></script>
+    <script
+      type="module"
+      src="../../js/dashboard/visao-geral/tabela-status.js"
+      defer
+    ></script>
+    <script
+      type="module"
+      src="../../js/dashboard/visao-geral/header.js"
+      defer
+    ></script>
+    <title>Zymos - Visão geral</title>
+  </head>
+  <body class="tela-visao-geral">
+    <!-- Sidebar Aberta -->
+    <aside id="sidebar-open" class="sidebar-container">
+      <button type="button" onclick="closeSidebar()" class="sidebar-btn-toggle">
+        <i class="fa-solid fa-table-columns"></i>
+      </button>
+      <img
+        class="sidebar-logo-open"
+        src="../../../assets/branding/logo-branca.svg"
+        alt="Zymos Qualidade na fermentação"
+        draggable="false"
+      />
+
+      <hr class="sidebar-divider" />
+      <nav>
+        <ul class="sidebar-list">
+          <a href="./visao-geral.html">
+            <li class="sidebar-link sidebar-link-active">
+              <i class="fa-regular fa-house"></i>
+              Visão geral
+            </li></a
+          >
+          <a href="./dashboard-micro.html">
+            <li class="sidebar-link">
+              <i class="fa-solid fa-chart-column"></i> Dashboard
+            </li>
+          </a>
+          <li class="sidebar-link">
+            <i class="fa-regular fa-building"></i>
+            Unidades
+          </li>
+          <li class="sidebar-link">
+            <i class="fa-solid fa-jar"></i>
+            Tanques
+          </li>
+          <li class="sidebar-link">
+            <i class="fa-solid fa-flask"></i>
+            Lotes
+          </li>
+          <li class="sidebar-link">
+            <i class="fa-regular fa-user"></i>
+            Perfil e configuração
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <hr class="sidebar-divider" />
+        <div class="sidebar-user">
+          <div class="sidebar-user-avatar" id="user-avatar"></div>
+          <div class="sidebar-user-info">
+            <span class="sidebar-user-name" id="user-name"></span>
+            <span class="sidebar-user-role" id="user-role"></span>
+          </div>
+          <button
+            type="button"
+            class="sidebar-btn-logout"
+            title="Sair da conta"
+            onclick="logout()"
+          >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <aside id="sidebar-close" class="sidebar-container-close">
+      <button
+        type="button"
+        onclick="openSidebar()"
+        class="sidebar-btn-toggle btn-close"
+      >
+        <i class="fa-solid fa-table-columns"></i>
+      </button>
+      <img
+        class="sidebar-logo-open"
+        src="../../../assets/branding/mini-logo-branca.png"
+        alt="Zymos Qualidade na fermentação"
+        draggable="false"
+      />
+
+      <nav>
+        <ul class="sidebar-list">
+          <a href="./dashboard-macro.html">
+            <li class="sidebar-link sidebar-link-active">
+              <i class="fa-regular fa-house"></i></li
+          ></a>
+          <a href="./dashboard-micro.html">
+            <li class="sidebar-link" title="Dashboard">
+              <i class="fa-solid fa-chart-column"></i>
+            </li>
+          </a>
+          <li class="sidebar-link" title="Unidades">
+            <i class="fa-regular fa-building"></i>
+          </li>
+          <li class="sidebar-link" title="Tanques">
+            <i class="fa-solid fa-jar"></i>
+          </li>
+          <li class="sidebar-link" title="Lotes">
+            <i class="fa-solid fa-flask"></i>
+          </li>
+          <li class="sidebar-link" title="Perfil e configuração">
+            <i class="fa-regular fa-user"></i>
+          </li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <hr class="sidebar-divider" />
+        <div class="sidebar-user">
+          <div class="sidebar-user-avatar" id="user-avatar-close"></div>
+        </div>
+      </div>
+    </aside>
+    <main class="dashboard dashboard-visao-geral">
+      <div class="bem-vinda">
+        <div class="saudacao">
+          <h2 id="name-user"></h2>
+          <p id="subtitle"></p>
+        </div>
+
+        <div class="badges">
+          <span class="badge" id="badge-plano"></span>
+          <span class="badge" id="badge-fabricas"></span>
+          <span class="badge" id="badge-tanques-total"></span>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card card-ativas">
+          <span class="card-rotulo">Unidades ativas</span>
+          <div class="card-valor"><b>3</b> <span>unidades</span></div>
+          <div class="card-tags">
+            <span class="tag"><span class="bolinha"></span>1 estável</span>
+            <span class="tag"
+              ><span class="bolinha bolinha-aberto"></span>2 com desvio</span
+            >
+          </div>
+          <small class="card-rodape">Todas as unidades</small>
+        </div>
+
+        <div class="card card-cupacao">
+          <span class="card-rotulo">Ocupação dos tanques</span>
+          <div class="card-valor"><b>4</b> <span>de 6 tanques</span></div>
+          <div class="barra">
+            <div class="barra-preenchida" style="width: 66.7%"></div>
+          </div>
+          <small class="card-rodape">66,7% de ocupação</small>
+        </div>
+
+        <div class="card card-lote-andamento">
+          <span class="card-rotulo">Lotes em andamento</span>
+          <div class="card-valor"><b>4</b> <span>lotes ativos</span></div>
+          <div class="card-tags">
+            <span class="tag">4 Ale</span>
+            <span class="tag">0 Lager</span>
+          </div>
+          <small class="card-rodape">Todas as unidades</small>
+        </div>
+
+        <div class="card card-desvios">
+          <span class="card-rotulo">Desvios no período</span>
+          <div class="card-valor"><b>4</b> <span>ocorrências</span></div>
+          <div class="card-tags">
+            <span class="tag"><span class="bolinha"></span>2 resolvidas</span>
+            <span class="tag"
+              ><span class="bolinha bolinha-aberto"></span>2 em aberto</span
+            >
+          </div>
+          <small class="card-rodape">Todas as unidades · até agora</small>
+        </div>
+      </div>
+
+      <!-- Conteúdo Principal: Tabela à esquerda, Alertas e Desvios à direita -->
+      <div class="dashboard-conteudo-principal">
+        <section class="section-tabela-status">
+          <div class="container-titulo-tabela-status">
+            <div class="div-titulo-tabela-status">
+              <p class="titulo-tabela-status">Status e Desvios do Dia</p>
+              <p class="subtitulo-tabela-status">
+                Acompanhamento diário em tempo real
+              </p>
+            </div>
+            <div class="div-filtros-tabela-status" id="tabela_status_filtro">
+              <div class="filtros-opcoes ativo" id="filtro_tabela_status_todos">
+                Todas · <span id="tabela_status_span_todos">0</span>
+              </div>
+              <div class="filtros-opcoes" id="filtro_tabela_status_desvios">
+                Com desvios · <span id="tabela_status_span_desvios">0</span>
+              </div>
+              <div class="filtros-opcoes" id="filtro_tabela_status_estaveis">
+                Estáveis · <span id="tabela_status_span_estaveis">0</span>
+              </div>
+            </div>
+          </div>
+          <div class="div-tabela-status-container-table">
+            <table
+              class="table-tabela-status-unidades"
+              id="tabela_status_unidades"
+            >
+              <thead class="tabela-status-unidade-header">
+                <tr>
+                  <th>Unidade</th>
+                  <th>Tanques em uso</th>
+                  <th>Aderência</th>
+                  <th>Alertas em aberto</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody
+                class="tabela-status-unidade-body"
+                id="tabela_status_unidade_body"
+              ></tbody>
+            </table>
+          </div>
+          <div class="div-tabela-status-unidade-footer">
+            Atualização ao vivo ativada (intervalo: 2s)
+          </div>
+        </section>
+
+        <aside class="dashboard-coluna-lateral">
+          <article class="section-alertas">
+            <h3 class="titulo-alertas-aberto">Alertas em aberto</h3>
+            <div class="lista-alertas-abertos">
+              <div class="alerta-item">
+                <i class="fa-solid fa-circle fa-2xs icone"></i>
+                <div class="alerta-textos">
+                  <span class="titulo-alerta">
+                    São Paulo · TQ-01 — Temperatura acima do ideal
+                  </span>
+                  <span class="legenda-alerta"
+                    >25,3°C registrados às 14:32:00 · Lote 101-A</span
+                  >
+                </div>
+              </div>
+              <div class="alerta-item">
+                <i class="fa-solid fa-circle fa-2xs icone"></i>
+                <div class="alerta-textos">
+                  <span class="titulo-alerta">
+                    Belo Horizonte · TQ-01 — Temperatura acima do ideal
+                  </span>
+                  <span class="legenda-alerta"
+                    >24,2°C registrados às 13:05:00 · Lote 099</span
+                  >
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card-desvios-unidade" id="card-desvios-unidade">
+            <div class="desvio-unidade-conteudo">
+              <header class="desvio-unidade-header">
+                <h3 class="desvio-unidade-titulo">Desvios por unidades</h3>
+                <p
+                  class="desvio-unidade-subtitulo"
+                  id="desvio-unidade-subtitulo"
+                >
+                  Todas as unidades · (até agora)
+                </p>
+              </header>
+
+              <div class="desvios-lista-unidades" id="lista-desvios-unidades">
+                <!-- São Paulo -->
+                <div class="desvio-unidade-item">
+                  <span class="desvio-unidade-nome">São Paulo</span>
+                  <div class="desvio-unidade-linha-progresso">
+                    <div class="desvio-unidade-barra-container">
+                      <div
+                        class="desvio-unidade-barra-preenchimento barra-desvio-alerta"
+                        style="width: 100%"
+                      ></div>
+                    </div>
+                    <span class="desvio-unidade-contagem">2</span>
+                  </div>
+                </div>
+
+                <!-- São Francisco -->
+                <div class="desvio-unidade-item">
+                  <span class="desvio-unidade-nome">São Francisco</span>
+                  <div class="desvio-unidade-linha-progresso">
+                    <div class="desvio-unidade-barra-container">
+                      <div
+                        class="desvio-unidade-barra-preenchimento"
+                        style="width: 48%"
+                      ></div>
+                    </div>
+                    <span class="desvio-unidade-contagem">1</span>
+                  </div>
+                </div>
+                <!-- Belo Horizonte -->
+                <div class="desvio-unidade-item">
+                  <span class="desvio-unidade-nome">Belo Horizonte</span>
+                  <div class="desvio-unidade-linha-progresso">
+                    <div class="desvio-unidade-barra-container">
+                      <div
+                        class="desvio-unidade-barra-preenchimento"
+                        style="width: 48%"
+                      ></div>
+                    </div>
+                    <span class="desvio-unidade-contagem">1</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rodapé: Tempo Médio de Resposta -->
+            <footer class="desvio-unidade-rodape">
+              <span class="desvio-unidade-rodape-label"
+                >Tempo médio de resposta</span
+              >
+              <span
+                class="desvio-unidade-rodape-valor"
+                id="valor-tempo-resposta-unidade"
+                >42 min</span
+              >
+            </footer>
+          </article>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

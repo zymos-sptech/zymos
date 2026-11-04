@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unidades</title>
+  <link rel="stylesheet" href="../../css/global.css">
+  <link rel="stylesheet" href="../../css/dashboard/macro/unidades.css">
+  <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="caminho">
+    Zymos / <span class="caminho-atual">Unidades</span>
+  </nav>
+
+  <main class="dashboard">
+
+    <header class="container-cabecalho">
+      <div class="cabecalho-textos">
+        <h1 class="cabecalho-nome">Unidades</h1>
+        <p class="cabecalho-descricao">Unidades da Cervejaria Horizonte - Unidade SP</p>
+      </div>
+
+      <button class="botao botao-solicitar" type="button">
+        <i class="fa-solid fa-plus" aria-hidden="true"></i>
+        Solicitar Nova Unidade
+      </button>
+    </header>
+
+    <section class="container-busca">
+      <div class="busca-campo">
+        <i class="fa-solid fa-magnifying-glass busca-icone" aria-hidden="true"></i>
+        <input class="busca-entrada" type="search" placeholder="Pesquisar por nome, cidade ou endereço..." aria-label="Pesquisar unidades">
+      </div>
+    </section>
+
+    <section class="container-tabela">
+      <div class="tabela-linha tabela-cabecalho">
+        <span class="tabela-titulo">Unidade</span>
+        <span class="tabela-titulo">Cidade / UF</span>
+        <span class="tabela-titulo">Total de tanques</span>
+        <span class="tabela-titulo">Tanques ativos</span>
+        <span class="tabela-titulo">Status da implantação</span>
+        <span class="tabela-titulo">Ações</span>
+      </div>
+
+      <div class="tabela-linha">
+        <div class="tabela-celula">
+          <span class="unidade-nome">Fábrica Matriz</span>
+          <span class="unidade-endereco">Rodovia Anhanguera, 5000 · Distrito Industrial</span>
+        </div>
+        <div class="tabela-celula">Ribeirão Preto / SP</div>
+        <div class="tabela-celula">4 tanques</div>
+        <div class="tabela-celula tabela-destaque">3 tanques</div>
+        <div class="tabela-celula"><span class="status">Ativa</span></div>
+        <div class="tabela-celula">
+          <div class="container-acoes">
+            <button class="botao botao-editar" type="button">Editar</button>
+            <button class="botao botao-excluir" type="button">Excluir</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabela-linha">
+        <div class="tabela-celula">
+          <span class="unidade-nome">Fábrica Campinas</span>
+          <span class="unidade-endereco">Rodovia Dom Pedro I, 1200 – Galpão 2 · Distrito Industrial</span>
+        </div>
+        <div class="tabela-celula">Campinas / SP</div>
+        <div class="tabela-celula">6 tanques</div>
+        <div class="tabela-celula tabela-destaque">4 tanques</div>
+        <div class="tabela-celula"><span class="status">Ativa</span></div>
+        <div class="tabela-celula">
+          <div class="container-acoes">
+            <button class="botao botao-editar" type="button">Editar</button>
+            <button class="botao botao-excluir" type="button">Excluir</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="tabela-rodape">Mostrando 2 de 2 registros.</p>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,101 @@
+.container-grafico {
+  width: 100%;
+  display: flex;
+  padding: 1.5rem 1.75rem;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.25rem;
+
+  border-radius: 1rem;
+  border: 0.0625rem solid var(--color-neutral-gray);
+  background: var(--white);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+  margin: 0;
+}
+
+.temp-real-container-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.temp-real-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.temp-real-container-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.temp-real-titulo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-blue-dark);
+}
+
+.temp-real-badge-aovivo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--color-orange-dark);
+  background-color: var(--color-orange-light);
+  font-size: 0.875rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+}
+
+.temp-real-badge-aovivo-circulo {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--color-orange-dark);
+}
+
+.temp-real-descricao {
+  font-size: 0.875rem;
+  color: var(--color-gray-dark);
+}
+
+.temp-real-legenda {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--color-gray-dark);
+}
+
+.temp-real-legenda-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.temp-real-legenda-linha {
+  width: 1rem;
+  height: 0.2rem;
+  background-color: var(--color-blue-dark);
+  border-radius: 2px;
+}
+
+.temp-real-legenda-faixa {
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--color-green-light);
+  border-radius: 2px;
+}
+
+.temp-real-grafico-wrapper {
+  width: 100%;
+  height: 14rem;
+  position: relative;
+  display: flex;
+}

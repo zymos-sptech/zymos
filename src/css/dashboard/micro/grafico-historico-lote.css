@@ -1,0 +1,201 @@
+/* SECTION GRAFICO HISTORICO LOTE */
+
+.section_grafico_lote {
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 1.5rem 1.75rem;
+    gap: 1.25rem;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+
+    border-radius: 1rem;
+    border: 0.0625rem solid var(--color-neutral-gray);
+    background: var(--white);
+    box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.05);
+}
+
+.grafico_controles_container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.grafico_historico_titulo {
+    color: var(--color-blue-dark);
+    font-family: var(--font-primary);
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.6875rem;
+}
+
+.grafico_historico_subtitulo {
+    color: var(--color-gray-dark);
+    font-family: var(--font-titulo);
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.21875rem;
+}
+
+.div_historico_filtros {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: space-between;
+}
+
+.filtros_lote,
+.filtros_dia {
+    display: flex;
+    align-items: center;
+    gap: 0 1rem;
+}
+
+.p_historico_comparando {
+    color: var(--color-gray-dark);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.125rem;
+}
+
+.select_lote1 {
+    display: flex;
+    padding: 0.25rem 0.75rem;
+    align-items: center;
+    gap: 0.375rem;
+
+    border-radius: 0.625rem;
+    border: 0.0625rem solid var(--color-border-warm);
+    background: var(--color-blue-dark);
+
+    color: var(--white);
+
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.125rem;
+}
+
+.select_adicionar_lote {
+    appearance: base-select;
+
+    display: flex;
+    padding: 0.25rem 0.75rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.375rem;
+
+    border-radius: 0.625rem;
+    border: 0.0625rem dashed var(--color-accent);
+    background-color: var(--color-accent-soft);
+
+    color: var(--color-blue-slate);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.125rem;
+}
+
+.filtros_dia {
+    display: flex;
+    height: 2.34375rem;
+    padding: 0.25rem;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 0.625rem;
+    border: 0.0625rem solid var(--color-filter-pill-border);
+    background: var(--color-filter-pill-bg);
+}
+
+.filtros_dia .active {
+    display: flex;
+    height: 1.875rem;
+    padding: 0.25rem 0.875rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.625rem;
+    background: var(--color-blue-dark);
+    box-shadow: 0 0.0625rem 0.125rem 0 rgba(0, 0, 0, 0.05);
+    color: var(--color-text-light);
+    text-align: center;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1rem;
+}
+
+.div_filtro_tempo_real,
+.div_filtro_24h,
+.div_filtro_completo {
+    cursor: pointer;
+    display: flex;
+    height: 1.875rem;
+    padding: 0.25rem 0.875rem;
+    border-radius: 0.625rem;
+}
+
+.div_filtro_tempo_real:hover,
+.div_filtro_24h:hover,
+.div_filtro_completo:hover {
+    box-shadow: 0 0 0.1875rem 0.0625rem var(--color-blue-dark);
+}
+
+.canvas_container {
+    width: 100%;
+    height: 14rem;
+    position: relative;
+    display: flex;
+}
+
+.canvas_grafico_historico {
+    width: 100%;
+}
+
+.footer_grafico_historico_lote {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.p_grafico_historico_correlacao {
+    color: var(--color-blue-dark);
+    font-family: var(--font-titulo);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 1.2rem;
+}
+
+.span_historico_correlacao {
+    font-weight: 800;
+}
+
+.legenda_grafico_historico {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    gap: 1rem;
+}
+
+.grafico_legenda {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.faixa_ideal {
+    display: block;
+    height: 2rem;
+    min-height: 1rem;
+    background-color: var(--color-gray-light);
+}

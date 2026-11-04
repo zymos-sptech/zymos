@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../../../assets/branding/favicon.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="../../css/dashboard/micro/filtros-dashboard.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../css/dashboard/micro/grafico-historico-lote.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../../css/dashboard/micro/grafico-temperatura-real.css"
+    />
+    <link rel="stylesheet" href="../../css/dashboard/micro/desvio-tanque.css" />
+    <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="../../css/components/sidebar.css" />
+    <link rel="stylesheet" href="../../css/dashboard/dashboard.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script
+      src="https://kit.fontawesome.com/79924d81b1.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="../../js/dashboard/micro/grafico-historico-lote.js"
+      defer
+    ></script>
+    <script
+      src="../../js/dashboard/micro/grafico-temperatura-real.js"
+      defer
+    ></script>
+    <script type="module" src="../../js/sidebar/sidebar.js" defer></script>
+
+    <title>Zymos - Dashboard</title>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside id="sidebar-open" class="sidebar-container">
+      <button type="button" onclick="closeSidebar()" class="sidebar-btn-toggle">
+        <i class="fa-solid fa-table-columns"></i>
+      </button>
+      <img
+        class="sidebar-logo-open"
+        src="../../../assets/branding/logo-branca.svg"
+        alt="Zymos Qualidade na fermentação"
+        draggable="false"
+      />
+
+      <hr class="sidebar-divider" />
+      <nav>
+        <ul class="sidebar-list">
+          <a href="./visao-geral.html">
+            <li class="sidebar-link">
+              <i class="fa-regular fa-house"></i>
+              Visão geral
+            </li></a
+          >
+          <a href="./dashboard-micro.html">
+            <li class="sidebar-link sidebar-link-active">
+              <i class="fa-solid fa-chart-column"></i>
+              Dashboard
+            </li>
+          </a>
+          <li class="sidebar-link">
+            <i class="fa-regular fa-building"></i>
+            Unidades
+          </li>
+          <li class="sidebar-link">
+            <i class="fa-solid fa-jar"></i>
+            Tanques
+          </li>
+          <li class="sidebar-link">
+            <i class="fa-solid fa-flask"></i>
+            Lotes
+          </li>
+          <li class="sidebar-link">
+            <i class="fa-regular fa-user"></i>
+            Perfil e configuração
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <hr class="sidebar-divider" />
+        <div class="sidebar-user">
+          <div class="sidebar-user-avatar" id="user-avatar"></div>
+          <div class="sidebar-user-info">
+            <span class="sidebar-user-name" id="user-name"></span>
+            <span class="sidebar-user-role" id="user-role"></span>
+          </div>
+          <button
+            type="button"
+            class="sidebar-btn-logout"
+            id="btn-logout"
+            title="Sair da conta"
+          >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <aside id="sidebar-close" class="sidebar-container-close">
+      <button
+        type="button"
+        onclick="openSidebar()"
+        class="sidebar-btn-toggle btn-close"
+      >
+        <i class="fa-solid fa-table-columns"></i>
+      </button>
+      <img
+        class="sidebar-logo-open"
+        src="../../../assets/branding/mini-logo-branca.png"
+        alt="Zymos Qualidade na fermentação"
+        draggable="false"
+      />
+
+      <nav>
+        <ul class="sidebar-list">
+          <a href="./dashboard-macro.html"
+            ><li class="sidebar-link">
+              <i class="fa-regular fa-house"></i></li
+          ></a>
+          <a href="./dashboard-micro.html">
+            <li class="sidebar-link sidebar-link-active">
+              <i class="fa-solid fa-chart-column"></i>
+            </li>
+          </a>
+          <li class="sidebar-link">
+            <i class="fa-regular fa-building"></i>
+          </li>
+          <li class="sidebar-link">
+            <i class="fa-solid fa-jar"></i>
+          </li>
+          <li class="sidebar-link">
+            <i class="fa-solid fa-flask"></i>
+          </li>
+          <li class="sidebar-link">
+            <i class="fa-regular fa-user"></i>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <hr class="sidebar-divider" />
+        <div class="sidebar-user">
+          <div class="sidebar-user-avatar" id="user-avatar-close"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Conteúdo principal do Dashboard -->
+    <main class="dashboard">
+      <!-- 1. Header do Lote e Filtros -->
+      <section class="container-lote">
+        <div class="lote-dados">
+          <div class="lote-titulo">
+            <h1 class="lote-nome">Lote 101-A</h1>
+            <p class="lote-descricao">Índia Pale Ale (IPA)</p>
+          </div>
+
+          <div class="container-info">
+            <div class="info-linha">
+              <div class="info-item">
+                <span class="rotulo">Tipo:</span>
+                <span class="info-valor">Ale</span>
+              </div>
+              <div class="info-item">
+                <span class="rotulo">Levedura:</span>
+                <span class="info-valor">Saccharomyces cerevisiae</span>
+              </div>
+              <div class="info-item">
+                <span class="rotulo">Tanque:</span>
+                <span class="info-valor">TQ-01</span>
+              </div>
+              <div class="info-item">
+                <span class="rotulo">Unidade:</span>
+                <span class="info-valor">Matriz Ribeirão Preto</span>
+              </div>
+            </div>
+
+            <div class="info-linha info-linha-ponto">
+              <div class="info-item">
+                <span class="rotulo">Início:</span>
+                <span class="info-valor">20/09/2026</span>
+              </div>
+              <div class="info-item">
+                <span class="rotulo">Término previsto:</span>
+                <span class="info-valor">04/10/2026</span>
+              </div>
+              <div class="info-item">
+                <span class="rotulo">Faixa alvo:</span>
+                <span class="info-valor">18°C a 23°C</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-filtro">
+          <div class="filtro-campo">
+            <label class="rotulo" for="lote">Lote analisado:</label>
+            <div class="container-seletor">
+              <select class="seletor" id="lote" name="lote">
+                <option>Lote 101-A · IPA</option>
+              </select>
+              <i
+                class="fa-solid fa-angle-down seletor-seta"
+                aria-hidden="true"
+              ></i>
+            </div>
+          </div>
+
+          <button class="botao botao-primario" type="button">
+            <i class="fa-solid fa-filter"></i>
+            Aplicar Filtro
+          </button>
+        </div>
+      </section>
+
+      <!-- 2. Cards de Métricas e Indicadores -->
+      <section class="container-cards">
+        <article class="card card-metrica">
+          <div class="card-corpo">
+            <span class="card-titulo">Progresso da fermentação</span>
+            <div class="card-linha-valor">
+              <span class="card-valor">8</span>
+              <span class="card-unidade">de 14 Dias</span>
+            </div>
+            <div class="container-progresso">
+              <div class="progresso-barra" style="--progresso: 57%"></div>
+            </div>
+          </div>
+          <p class="card-rodape">Lote 101-A · 57% de progresso</p>
+        </article>
+
+        <article class="card card-metrica">
+          <div class="card-corpo">
+            <span class="card-titulo">Aderência à faixa ideal</span>
+            <div class="card-linha-valor">
+              <span class="card-valor">96,4%</span>
+            </div>
+            <div class="container-progresso">
+              <div class="progresso-barra" style="--progresso: 96.4%"></div>
+            </div>
+          </div>
+          <p class="card-rodape">Lote 101-A · até agora</p>
+        </article>
+
+        <article class="card card-metrica">
+          <div class="card-corpo">
+            <span class="card-titulo">Desvios no período</span>
+            <div class="card-linha-valor">
+              <span class="card-valor">2</span>
+              <span class="card-unidade">ocorrências</span>
+            </div>
+            <div class="container-tags">
+              <span class="tag"
+                ><span class="tag-ponto"></span>1 resolvido</span
+              >
+              <span class="tag"
+                ><span class="tag-ponto tag-destaque"></span>1 em aberto</span
+              >
+            </div>
+          </div>
+          <p class="card-rodape">Lote 101-A · até agora</p>
+        </article>
+
+        <article class="card card-metrica">
+          <div class="card-corpo">
+            <span class="card-titulo">Alertas em aberto</span>
+            <div class="card-linha-valor">
+              <span class="card-valor">1</span>
+              <span class="card-unidade">alerta</span>
+            </div>
+            <div class="container-tags">
+              <span class="tag"
+                ><span class="tag-ponto tag-destaque"></span>TQ-01 · acima do
+                ideal</span
+              >
+            </div>
+          </div>
+          <p class="card-rodape">desde 14:32:10 · aguardando revisão</p>
+        </article>
+      </section>
+
+      <!-- 3. Gráfico de temperatura real -->
+      <div class="container-grafico">
+        <div class="temp-real-container-header">
+          <div class="temp-real-header-top">
+            <div class="temp-real-container-row">
+              <h1 class="temp-real-titulo">
+                Temperatura real × Faixa ideal — Lote 101-A (IPA)
+              </h1>
+              <div class="temp-real-badge-aovivo">
+                <span class="temp-real-badge-aovivo-circulo"></span>Ao vivo
+              </div>
+            </div>
+
+            <div class="temp-real-legenda">
+              <span class="temp-real-legenda-item">
+                <span class="temp-real-legenda-linha"></span>Temperatura real
+              </span>
+
+              <span class="temp-real-legenda-item">
+                <span class="temp-real-legenda-faixa"></span>Faixa ideal 15–24°C
+              </span>
+            </div>
+          </div>
+
+          <p class="temp-real-descricao">
+            Leitura a cada 2 segundos · janela dos últimos 20 segundos (tanque
+            TQ-01)
+          </p>
+        </div>
+
+        <div class="temp-real-grafico-wrapper">
+          <canvas id="temperaturaRealGrafico"></canvas>
+        </div>
+      </div>
+
+      <!-- 4. Gráfico histórico entre lotes -->
+      <section class="section_grafico_lote">
+        <div class="grafico_controles_container">
+          <h3 class="grafico_historico_titulo">
+            Comparativo histórico entre lotes
+          </h3>
+          <p class="grafico_historico_subtitulo">
+            Mesma receita · alinhado por tempo relativo, não por data · segue o
+            período selecionado abaixo
+          </p>
+        </div>
+        <div class="div_historico_filtros">
+          <div class="filtros_lote">
+            <p class="p_historico_comparando">Comparando:</p>
+            <div
+              name="lote_principal"
+              id="grafico_historico_lote1"
+              class="select_lote1"
+            ></div>
+            <select
+              name="lote_comparativo"
+              id="grafico_historico_lote2"
+              class="select_adicionar_lote"
+            >
+              + Adicionar lote
+            </select>
+          </div>
+          <div class="filtros_dia" id="filtros_dia" onclick="">
+            <div class="div_filtro_tempo_real" id="tempo_real">Tempo real</div>
+            <div class="div_filtro_24h" id="ultimas_24h">Últimas 24h</div>
+            <div class="div_filtro_completo active" id="lote_completo">
+              Lote completo
+            </div>
+          </div>
+        </div>
+        <div class="canvas_container">
+          <canvas
+            id="canvas_grafico_historico"
+            class="canvas_grafico_historico"
+          ></canvas>
+        </div>
+        <div class="footer_grafico_historico_lote">
+          <p class="p_grafico_historico_correlacao">
+            Correlação entre os lotes:
+            <span id="historico_correlacao" class="span_historico_correlacao"
+              >96,8%</span
+            >
+          </p>
+          <div
+            id="legenda_grafico_historico"
+            class="legenda_grafico_historico"
+          ></div>
+        </div>
+      </section>
+
+      <!-- 5. Histórico de desvios e Relatórios -->
+      <section class="pagina">
+        <section class="card card-desvios">
+          <h2 class="titulo">Histórico de desvios</h2>
+          <p class="subtitulo">Evento de desvio de temperatura</p>
+
+          <div class="tabela-scroll">
+            <table class="tabela">
+              <thead>
+                <tr>
+                  <th>Início</th>
+                  <th>Tipo</th>
+                  <th>Pico</th>
+                  <th>Duração</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>25/09/2026<br />14:32:10</td>
+                  <td>Temperatura<br />acima do ideal</td>
+                  <td class="pico">24,2°C</td>
+                  <td>em aberto</td>
+                  <td><span class="badge aberto">Aberto</span></td>
+                </tr>
+                <tr>
+                  <td>22/09/2026<br />03:12:08</td>
+                  <td>Temperatura<br />acima do ideal</td>
+                  <td class="pico">23,6°C</td>
+                  <td>18 min</td>
+                  <td><span class="badge resolvido">Resolvido</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card card-relatorios">
+          <h2 class="titulo">Relatórios</h2>
+          <p class="subtitulo">
+            Emissão em PDF para auditoria e controle de qualidade
+          </p>
+
+          <div class="botoes">
+            <button class="botao" type="button">
+              <i class="fa-solid fa-download"></i>
+              Relatório de qualidade (PDF)
+            </button>
+
+            <button class="botao" type="button">
+              <i class="fa-solid fa-download"></i>
+              Histórico de desvios (PDF)
+            </button>
+
+            <button class="botao" type="button">
+              <i class="fa-solid fa-download"></i>
+              Relatório completo do lote (PDF)
+            </button>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

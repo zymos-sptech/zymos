@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Tabela Status</title>
+
+    <link rel="stylesheet" href="../../../css/global.css" />
+    <link rel="stylesheet" href="../../../css/dashboard/dashboard.css" />
+    <link rel="stylesheet" href="../../../css/dashboard/visao-geral/tabela-status.css" />
+
+    <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
+
+    <script type="module" src="../../../js/dashboard/visao-geral/tabela-status.js" defer></script>
+</head>
+
+<body>
+    <section class="section-tabela-status">
+        <div class="container-titulo-tabela-status">
+            <div class="div-titulo-tabela-status">
+                <p class="titulo-tabela-status">Status e Desvios do Dia</p>
+                <p class="subtitulo-tabela-status">Acompanhamento diário em tempo real</p>
+            </div>
+            <div class="div-filtros-tabela-status" id="tabela_status_filtro">
+                <div class="filtros-opcoes ativo" id="filtro_tabela_status_todos">Todas · <span
+                        id="tabela_status_span_todos">0</span></div>
+                <div class="filtros-opcoes" id="filtro_tabela_status_desvios">Desvios · <span
+                        id="tabela_status_span_desvios">0</span></div>
+                <div class="filtros-opcoes" id="filtro_tabela_status_estaveis">Estáveis · <span
+                        id="tabela_status_span_estaveis">0</span></div>
+            </div>
+        </div>
+        <div class="div-tabela-status-container-table">
+            <table class="table-tabela-status-unidades" id="tabela_status_unidades">
+                <thead class="tabela-status-unidade-header">
+                    <tr>
+                        <th>Unidade</th>
+                        <th>Tanques em uso</th>
+                        <th>Aderência</th>
+                        <th>Alertas em aberto</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="tabela-status-unidade-body" id="tabela_status_unidade_body">
+
+                </tbody>
+            </table>
+        </div>
+        <div class="div-tabela-status-unidade-footer">Atualização ao vivo ativada (intervalo: 2s)</div>
+    </section>
+</body>
+
+</html>

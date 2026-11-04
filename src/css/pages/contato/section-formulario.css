@@ -29,7 +29,7 @@
 
 /* Subtítulo descritivo da página */
 .contato-descricao-principal {
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
   font-family: var(--font-primary), sans-serif;
   font-size: 1rem;
   line-height: 1.5;
@@ -63,7 +63,7 @@
 /* Subtítulo interno do formulário com prazo de resposta */
 .contato-card-formulario-subtitulo {
   font-size: 0.875rem;
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
   margin: 0.25rem 0 0 0;
 }
 
@@ -104,7 +104,7 @@
 .contato-campo-rotulo {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
 }
 
 /* Alinhamento para rótulo e texto "Opcional" na mesma linha */
@@ -116,7 +116,7 @@
 /* Texto indicativo de campo opcional */
 .contato-texto-opcional {
   font-size: 0.75rem;
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
 }
 
 /* Estilização para caixas de texto e áreas de mensagem */
@@ -143,7 +143,7 @@
   padding: 0.65rem 0.25rem;
   border: 1px solid transparent;
   background-color: var(--color-neutral-light);
-  color: var(--colo-accent-brown);
+  color: var(--color-accent-brown);
   border-radius: 0.5rem;
   font-size: 0.75rem;
   font-weight: 600;
