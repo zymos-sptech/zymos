@@ -54,9 +54,9 @@ const alertaData = [
   {
     id: 6,
     dt_inicio: "2026-10-17",
-    dt_fim: "",
+    dt_fim: "2026-10-17",
     horario: "13:05:00",
-    status: "aberto",
+    status: "finalizado",
     tipo: "acima do ideal",
     temperatura: 24.2,
     nome_unidade: "Belo Horizonte",
