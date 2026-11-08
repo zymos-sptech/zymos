@@ -18,24 +18,58 @@ window.passwordInvisible = function () {
   inputPassword.type = "password";
 };
 
-const email = document.getElementById("iptEmail");
-const password = document.getElementById("iptPassword");
+const iptEmail = document.getElementById("iptEmail");
+const iptPassword = document.getElementById("iptPassword");
+
+const erroEmail = document.getElementById("erroEmail");
+const erroSenha = document.getElementById("erroSenha");
+
+iptEmail.addEventListener("input", () => {
+  let msg = validarEmail(iptEmail.value);
+  mostrarErro(iptEmail, erroEmail, msg);
+});
+
+iptPassword.addEventListener("input", () => {
+  let msg = iptPassword.value.trim() === "" ? "" : "";
+  mostrarErro(iptPassword, erroSenha, msg);
+})
 
 window.handleFormLogin = () => {
+  let emailVal = iptEmail.value.trim();
+  let senhaVal = iptPassword.value;
+
+  let tudoCerto = true;
+
+  let msgEmail = validarEmail(emailVal);
+  mostrarErro(iptEmail, erroEmail, msgEmail);
+  if(msgEmail !== ""){tudoCerto = false;}
+
+  let msgSenha = senhaVal === "" ? "Digite sua senha.":"";
+  mostrarErro(iptPassword, erroSenha, msgSenha);
+  if(msgSenha !== ""){tudoCerto = false;}
+
+  if(!tudoCerto){
+    const primeiroInvalido = document.querySelector("login-input.invalido.");
+    if(primeiroInvalido){
+      primeiroInvalido.focus();
+    }
+    return;
+  }
+
   const SESSION_EMAIL = sessionStorage.getItem("EMAIL");
   const SESSION_PASSWORD = sessionStorage.getItem("PASSWORD");
 
-  if (!SESSION_EMAIL || !SESSION_PASSWORD) {
-    return alert(
-      "Nenhum usuário cadastrado nesta sessão. Por favor, ative sua conta primeiro!",
-    );
+  if(!SESSION_EMAIL || !SESSION_PASSWORD){
+    mostrarErro(iptEmail, erroEmail, "Nenhum usuário cadastrado. Ative sua conta primeiro.");
+    iptEmail.focus();
+    return;
   }
 
-  if (
-    email.value.trim() !== SESSION_EMAIL ||
-    password.value !== SESSION_PASSWORD
-  ) {
-    return alert("Email ou senha inválido");
+  if(emailVal !== SESSION_EMAIL || senhaVal !== SESSION_PASSWORD){
+    mostrarErro(iptEmail, erroEmail, "E-mail ou senha incorretos.");
+    mostrarErro(iptPassword, erroSenha, "E-mail ou senha incorretos.");
+    iptEmail.focus();
+    return;
   }
 
   window.location = "../pages/dashboard/visao-geral.html";

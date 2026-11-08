@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/pages/login/style.css" />
     <title>Zymos - login</title>
+    <script src="../js/validations/validacoes.js" defer></script>
     <script src="../js/pages/login.js" defer></script>
     <script
       src="https://kit.fontawesome.com/79924d81b1.js"
@@ -23,7 +24,7 @@
         <a href="../../index.html">
           <img
             class="login-logo"
-            src="../../assets/branding/logo-bege.svg"
+            src="../../assets/branding/logo-azul.png"
             alt="Zymos Qualidade na fermentação"
           />
         </a>
@@ -35,28 +36,31 @@
       </div>
       <form action="">
         <div class="login-container-input">
-          <label for="iptEmail">E-mail corporativo</label>
+          <label for="iptEmail" class="login-label">E-mail corporativo</label>
           <div class="login-input-wrapper">
             <input
               type="email"
               name="email"
               id="iptEmail"
               placeholder="seuemail@cervejaria.com.br"
-              class="login-input"
+              class="login-input with-icon-left"
+              aria-describedby="erroEmail"
             />
             <i class="fa-regular fa-envelope login-icon-input-left"></i>
           </div>
+          <p class="login-erro" id="erroEmail" aria-live="polite"></p>
         </div>
 
         <div class="login-container-input">
-          <label for="iptEmail">Senha</label>
+          <label for="iptEmail" class="login-label">Senha</label>
           <div class="login-input-wrapper">
             <input
               type="password"
               name="password"
               id="iptPassword"
               placeholder="••••••••••••"
-              class="login-input"
+              class="login-input with-icon-left with-icon-right"
+              aria-describedby="erroSenha"
             />
             <i class="fa-solid fa-lock login-icon-input-left"></i>
 
@@ -71,6 +75,7 @@
               class="fa-regular fa-eye-slash login-icon-input-right password-visible"
             ></i>
           </div>
+          <p class="login-erro" id="erroSenha" aria-live="polite"></p>
         </div>
         <button type="button" class="btn-login" onclick="handleFormLogin()">
           Entrar
@@ -87,11 +92,5 @@
         Primeiro acesso? <a href="cadastro.html">Ativar minha conta</a>
       </p>
     </section>
-
-    <footer class="login-footer">
-      <p class="login-description login-txt-footer">
-        © Zymos Tecnologia Cervejeira. Todos os direitos reservados.
-      </p>
-    </footer>
   </body>
 </html>
