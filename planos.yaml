@@ -1,0 +1,122 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: planos
+meta:
+  id: wrk_cad60db6beed418cb46b6c153007b488
+  created: 1794172625055
+  modified: 1794172625055
+  description: ""
+collection:
+  - url: "{{ _.URL_LOCAL }}/planos"
+    name: "CRIAR "
+    meta:
+      id: req_3bcf92283187445089a5fb75a9a35194
+      created: 1794172641413
+      modified: 1794173538766
+      isPrivate: false
+      description: ""
+      sortKey: -1794172641413
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "Básico",
+        	"tanquesMin": 0,
+        	"tanquesMax": 9,
+        	"valorSetup": 1200.00,
+        	"valorMensalTanque": 290.00 
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}/planos"
+    name: LISTAR_ALL
+    meta:
+      id: req_c9f36e0476da43499d0b10828dfe266b
+      created: 1794173884753
+      modified: 1794174636176
+      isPrivate: false
+      description: ""
+      sortKey: -1794173884753
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}/planos/1"
+    name: DELETAR
+    meta:
+      id: req_6a319e253c1a44a2921aefe1fec6fc80
+      created: 1794174625112
+      modified: 1794174715375
+      isPrivate: false
+      description: ""
+      sortKey: -1794174625112
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}/planos/1"
+    name: ATUALIZAR
+    meta:
+      id: req_d81f0902351a469bb478f2e7d7a82b56
+      created: 1794183022293
+      modified: 1794183079039
+      isPrivate: false
+      description: ""
+      sortKey: -1794183022293
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "PRO",
+        	"tanquesMin": 12,
+        	"tanquesMax": 45,
+        	"valorSetup": 1200.00,
+        	"valorMensalTanque": 290.00 
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_13448ad5db88b0cb25a4d9bd8b94cc21a0cece47
+    created: 1794172625060
+    modified: 1794172625060
+environments:
+  name: Base Environment
+  meta:
+    id: env_13448ad5db88b0cb25a4d9bd8b94cc21a0cece47
+    created: 1794172625059
+    modified: 1794172673946
+    isPrivate: false
+  data:
+    URL_LOCAL: http://localhost:3333
