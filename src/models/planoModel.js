@@ -29,8 +29,25 @@ async function buscarPlano(planoId) {
   return database.executar(sql);
 }
 
+async function atualizarPlano(
+  planoId,
+  nome,
+  tanqueMin,
+  tanquesMax,
+  valorSetup,
+  valorMensalTanque,
+) {
+  var sql = `
+        UPDATE plano SET nome = ${nome}, tanques_min = ${tanquesMax}, 
+        tanques_max = ${tanquesMax}, valor_setup_tanque = ${valorSetup}, 
+        valor_mensal_tanque = ${valorMensalTanque} WHERE id = ${planoId};
+    `;
+
+  return database.executar(sql);
+}
+
 async function deletarPlano(planoId) {
-    console.log(planoId, "id para delete")
+  console.log(planoId, "id para delete");
   var sql = `DELETE FROM plano WHERE id = ${planoId};`;
 
   return database.executar(sql);
@@ -40,5 +57,6 @@ module.exports = {
   criarPlano,
   listarPlanos,
   buscarPlano,
+  atualizarPlano,
   deletarPlano,
 };

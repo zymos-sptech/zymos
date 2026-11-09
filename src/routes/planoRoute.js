@@ -11,6 +11,10 @@ route.get("/", function (req, res) {
   planoController.listarPlanos(req, res);
 });
 
+route.put("/:planoId", function (req, res) {
+  planoController.atualizarPlano(req, res);
+});
+
 route.delete("/:planoId", function (req, res) {
   planoController.deletarPlano(req, res);
 });

@@ -74,6 +74,37 @@ collection:
         send: true
         store: true
       rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}/planos/1"
+    name: ATUALIZAR
+    meta:
+      id: req_d81f0902351a469bb478f2e7d7a82b56
+      created: 1794183022293
+      modified: 1794183079039
+      isPrivate: false
+      description: ""
+      sortKey: -1794183022293
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "PRO",
+        	"tanquesMin": 12,
+        	"tanquesMax": 45,
+        	"valorSetup": 1200.00,
+        	"valorMensalTanque": 290.00 
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:

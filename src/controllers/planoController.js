@@ -41,6 +41,50 @@ async function listarPlanos(req, res) {
   });
 }
 
+async function atualizarPlano(req, res) {
+  const planoId = req.params.planoId;
+  const data = req.body;
+
+  const nome = data.nome;
+  const tanquesMin = data.tanquesMin;
+  const tanquesMax = data.tanquesMax;
+  const valorSetup = data.valorSetup;
+  const valorMensalTanque = data.valorMensalTanque;
+
+  if (
+    nome == undefined ||
+    tanquesMin == undefined ||
+    tanquesMax == undefined ||
+    valorSetup == undefined ||
+    valorMensalTanque == undefined
+  ) {
+    return res.status(400).send("Valores undefined.");
+  }
+
+  await planoModel
+    .atualizarPlano(
+      planoId,
+      nome,
+      tanquesMin,
+      tanquesMax,
+      valorSetup,
+      valorMensalTanque,
+    )
+    .then(function (response) {
+      console.log(response);
+
+      res.status(200).json(response);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      res
+        .status(500)
+        .send(
+          "Ocorreu um erro ao atualizar plano. Tente novamente mais tarde.",
+        );
+    });
+}
+
 async function deletarPlano(req, res) {
   const planoId = req.params.planoId;
 
@@ -49,7 +93,7 @@ async function deletarPlano(req, res) {
   if (planoExiste.length <= 0) {
     return res.status(404).send("Plano não encontrado.");
   }
-  
+
   await planoModel
     .deletarPlano(planoExiste[0].id)
     .then(function (response) {
@@ -57,6 +101,7 @@ async function deletarPlano(req, res) {
       res.status(200).send("Plano deletado com sucesso.");
     })
     .catch(function (erro) {
+      console.log(erro);
       res
         .status(500)
         .send(
@@ -68,5 +113,6 @@ async function deletarPlano(req, res) {
 module.exports = {
   criarPlano,
   listarPlanos,
+  atualizarPlano,
   deletarPlano,
 };
