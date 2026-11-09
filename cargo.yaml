@@ -1,0 +1,70 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: cargo
+meta:
+  id: wrk_359f63bd06ad487398dd05c34180c4a4
+  created: 1794223500994
+  modified: 1794223500994
+  description: ""
+collection:
+  - url: "{{ _.URL_LOCAL }}/cargos"
+    name: "CRIAR "
+    meta:
+      id: req_6f1211a4bc71470fb17474eaddb8461f
+      created: 1794223517279
+      modified: 1794225046967
+      isPrivate: false
+      description: ""
+      sortKey: -1794223517279
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "Admin",
+        	"permissao": 1
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}/cargos"
+    name: LISTAR
+    meta:
+      id: req_52c14511d95f4ce8bf57963a84034ed1
+      created: 1794224447640
+      modified: 1794224552316
+      isPrivate: false
+      description: ""
+      sortKey: -1794224447640
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_5b7b47c0fbd694b729b0d98311e30eea023510bc
+    created: 1794223500999
+    modified: 1794223500999
+environments:
+  name: Base Environment
+  meta:
+    id: env_5b7b47c0fbd694b729b0d98311e30eea023510bc
+    created: 1794223500998
+    modified: 1794223553768
+    isPrivate: false
+  data:
+    URL_LOCAL: http://localhost:3333

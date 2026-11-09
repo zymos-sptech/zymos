@@ -10,7 +10,6 @@ USE zymos;
 -- ============================================================
 -- 1. TABELAS DE DOMÍNIO
 -- ============================================================
-
 CREATE TABLE plano (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(20) NOT NULL,
