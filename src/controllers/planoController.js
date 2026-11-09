@@ -19,6 +19,11 @@ async function criarPlano(req, res) {
     return res.status(400).send("Valores undefined.");
   }
 
+  if (tanquesMin >= tanquesMax) {
+    return res
+      .status(400)
+      .send("Tanque minímos não pode ser maior ou igual a tanques máximos.");
+  }
   await planoModel
     .criarPlano(nome, tanquesMin, tanquesMax, valorSetup, valorMensalTanque)
     .then(function (response) {
@@ -59,6 +64,12 @@ async function atualizarPlano(req, res) {
     valorMensalTanque == undefined
   ) {
     return res.status(400).send("Valores undefined.");
+  }
+
+  if (tanquesMin >= tanquesMax) {
+    return res
+      .status(400)
+      .send("Tanque minímos não pode ser maior ou igual a tanques máximos.");
   }
 
   await planoModel
