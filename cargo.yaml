@@ -12,7 +12,7 @@ collection:
     meta:
       id: req_6f1211a4bc71470fb17474eaddb8461f
       created: 1794223517279
-      modified: 1794225046967
+      modified: 1794337344925
       isPrivate: false
       description: ""
       sortKey: -1794223517279
@@ -22,7 +22,7 @@ collection:
       text: |-
         {
         	"nome": "Admin",
-        	"permissao": 1
+        	"permissao": 5
         }
     headers:
       - name: Content-Type
@@ -45,6 +45,52 @@ collection:
       description: ""
       sortKey: -1794224447640
     method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}/cargos/1"
+    name: ATUALIZAR
+    meta:
+      id: req_71c4a8c080434a309d5032406bb07b29
+      created: 1794335999383
+      modified: 1794336187611
+      isPrivate: false
+      description: ""
+      sortKey: -1794335999383
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nome": "Pião",
+        	"permissao": 3
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}/cargos/2"
+    name: DELETAR
+    meta:
+      id: req_77846738d14842a689b8a219d56116df
+      created: 1794337360670
+      modified: 1794337392484
+      isPrivate: false
+      description: ""
+      sortKey: -1794337360670
+    method: DELETE
     settings:
       renderRequestBody: true
       encodeUrl: true
