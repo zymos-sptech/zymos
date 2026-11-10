@@ -36,25 +36,27 @@ function validarEmail(valor){
 
 function avaliarSenha(senha){
     const tamanho = senha.length >= 8;
-    const letra = /[A-Za-zÁ-ÿ]/.test(senha);
+    const letraMais = /[A-Z]/.test(senha);
+    const letraMinus = /[a-z]/.test(senha);
     const numero = /[0-9]/.test(senha);
-    const misturaLetras = /[a-zà-ÿ]/.test(senha) && /[A-ZÀ-Þ]/.test(senha);
-    const especial = /[^A-Za-zÀ-ÿ0-9]/.test(senha);
+    const especial = /[!@#$%&*?;.,]/.test(senha);
 
-    const atendeMinimo = tamanho && letra && numero;
+    
     let nivel = 0;
-    if(senha.length > 0){nivel = 1;}
-    if(atendeMinimo){nivel = 2;}
-    if(atendeMinimo && misturaLetras && especial){nivel = 3;}
+    if(tamanho) nivel++
+    if(letraMais) nivel++
+    if(letraMinus) nivel++
+    if(numero) nivel++
+    if(especial) nivel++
 
-    return{tamanho, letra, numero, atendeMinimo, nivel};
+    return{tamanho, letraMais, letraMinus, numero, nivel, especial};
 }
 
 function validarSenha(senha){
     if(senha === ""){
         return("Crie uma senha.");
     }
-    if(!avaliarSenha(senha).atendeMinimo){
+    if(!avaliarSenha(senha).nivel == 5){
         return("A senha precisa cumprir todos os requisitos.");
     }
     return("");

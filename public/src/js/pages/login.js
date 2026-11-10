@@ -60,7 +60,7 @@ window.handleFormLogin = () => {
   const SESSION_PASSWORD = sessionStorage.getItem("PASSWORD");
 
   if(!SESSION_EMAIL || !SESSION_PASSWORD){
-    mostrarErro(iptEmail, erroEmail, "Nenhum usuário cadastrado. Ative sua conta primeiro.");
+    mostrarErro(iptEmail, erroEmail, "Email ou senha incorretos.");
     iptEmail.focus();
     return;
   }

@@ -56,8 +56,10 @@ const erroConfirmacao = document.getElementById("erroConfirmacao");
 const divForca = document.getElementById("divForca");
 const textoForca = document.getElementById("textoForca");
 const reqTamanho = document.getElementById("reqTamanho");
-const reqLetra = document.getElementById("reqLetra");
+const reqLetraMais = document.getElementById("reqLetraMais");
+const reqLetraMinus = document.getElementById("reqLetraMinus");
 const reqNumero = document.getElementById("reqNumero");
+const reqSimbolo = document.getElementById("reqSimbolo");
 
 if (iptCodigo) {
   iptCodigo.addEventListener("input", () => {
@@ -98,22 +100,24 @@ if (iptConfirmPasword) {
 
 function mostrarForca(){
   let r = avaliarSenha(iptPassword.value);
-
+  console.log(r)
   if(r.tamanho){reqTamanho.classList.add("ok");}else{reqTamanho.classList.remove("ok");}
-  if(r.letra){reqLetra.classList.add("ok");}else{reqLetra.classList.remove("ok");}
+  if(r.letraMais){reqLetraMais.classList.add("ok");}else{reqLetraMais.classList.remove("ok");}
+  if(r.letraMinus){reqLetraMinus.classList.add("ok");}else{reqLetraMinus.classList.remove("ok");}
   if(r.numero){reqNumero.classList.add("ok");}else{reqNumero.classList.remove("ok");}
+  if(r.especial){reqSimbolo.classList.add("ok");}else{reqSimbolo.classList.remove("ok");}
 
   if(r.nivel == 0){
     textoForca.textContent = "";
-  }else if(r.nivel == 1){
+  }else if(r.nivel < 2){
     textoForca.textContent = "Senha fraca";
-  }else if(r.nivel == 2){
+  }else if(r.nivel < 5){
     textoForca.textContent = "Senha média";
   }else{
     textoForca.textContent = "Senha forte";
   }
 
-  divForca.dataset.nivel = r.nivel;
+  divForca.dataset.nivel = Math.ceil(r.nivel/2);
 
   if(iptConfirmPasword.value !== ""){
     conferirSenha();
