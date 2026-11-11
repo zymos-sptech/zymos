@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/global.css" />
     <link rel="stylesheet" href="../css/pages/cadastro/style.css" />
     <title>Zymos - Ative sua conta</title>
+    <script src="../js/validations/validacoes.js" defer></script>
     <script src="../js/pages/cadastro.js" defer></script>
     <script
       src="https://kit.fontawesome.com/79924d81b1.js"
@@ -19,11 +20,10 @@
         <a href="../../index.html">
           <img
             class="cadastro-logo"
-            src="../../assets/branding/logo-bege.svg"
+            src="../../assets/branding/logo-azul.png"
             alt="Zymos Qualidade na fermentação"
           />
         </a>
-
         <h1 class="cadastro-title">Ative sua conta</h1>
         <p class="cadastro-description">
           Digite o código de ativação enviado pela Zymos e crie seu acesso
@@ -40,8 +40,10 @@
               id="iptCodigo"
               placeholder="EX: ZYM-AMB1-2026"
               class="cadastro-input"
+              aria-describedby="erroCodigo"
             />
           </div>
+          <p class="cadastro-erro" id="erroCodigo" aria-live="polite"></p>
         </div>
 
         <div class="cadastro-container-input">
@@ -53,8 +55,10 @@
               id="iptNome"
               placeholder="Carlos Silva Mestre"
               class="cadastro-input"
+              aria-describedby="erroNome"
             />
           </div>
+          <p class="cadastro-erro" id="erroNome" aria-live="polite"></p>
         </div>
 
         <div class="cadastro-container-input">
@@ -66,9 +70,11 @@
               id="iptEmail"
               placeholder="carlos@cervejaria.com.br"
               class="cadastro-input with-icon-left"
+              aria-describedby="erroEmail"
             />
             <i class="fa-regular fa-envelope cadastro-icon-input-left"></i>
           </div>
+          <p class="cadastro-erro" id="erroEmail" aria-live="polite"></p>
         </div>
 
         <div class="cadastro-container-input">
@@ -80,6 +86,8 @@
               id="iptPassword"
               placeholder="Crie sua senha segura"
               class="cadastro-input with-icon-left with-icon-right"
+              oninput="mostrarForca()"
+              aria-describedby="erroSenha"
             />
             <i class="fa-solid fa-lock cadastro-icon-input-left"></i>
 
@@ -94,6 +102,19 @@
               class="fa-regular fa-eye-slash cadastro-icon-input-right password-visible"
             ></i>
           </div>
+          <p class="cadastro-erro" id="erroSenha" aria-live="polite"></p>
+
+          <div class="cadastro-forca" id="divForca" data-nivel="0">
+            <div class="cadastro-forca-barra"><span></span><span></span><span></span></div>
+            <p class="cadastro-forca-texto" id="textoForca" aria-live="polite"></p>
+          </div>
+          <ul class="cadastro-requisitos">
+            <li id="reqTamanho">Pelo memos 8 caracteres</li>
+            <li id="reqLetraMais">Pelo menos uma letra maiúscula</li>
+            <li id="reqLetraMinus">Pelo menos uma letra minúscula</li>
+            <li id="reqNumero">Pelo menos um número</li>
+            <li id="reqSimbolo">Pelo menos um caractere especial</li>
+          </ul>
         </div>
 
         <div class="cadastro-container-input">
@@ -105,6 +126,8 @@
               id="iptConfirmPassword"
               placeholder="Repita a senha"
               class="cadastro-input with-icon-left with-icon-right"
+              oninput="conferirSenha()"
+              aria-describedby="erroConfirmacao"
             />
             <i class="fa-solid fa-lock cadastro-icon-input-left"></i>
 
@@ -119,6 +142,7 @@
               class="fa-regular fa-eye-slash cadastro-icon-input-right password-visible"
             ></i>
           </div>
+          <p class="cadastro-erro" id="erroConfirmacao" aria-live="polite"></p>
         </div>
         <button type="button" class="btn-cadastro" onclick="handleFormCadastro()">
           Criar conta
@@ -130,15 +154,5 @@
         Já tem conta? <a href="login.html">Fazer login</a>
       </p>
     </section>
-
-    <footer class="cadastro-footer">
-      <div class="cadastro-footer-rede">
-        <div class="cadastro-footer-dot"></div>
-        <span>REDE CERVEJEIRA CONECTADA</span>
-      </div>
-      <p class="cadastro-description cadastro-txt-footer">
-        © Zymos Tecnologia Cervejeira. Todos os direitos reservados.
-      </p>
-    </footer>
   </body>
 </html>
