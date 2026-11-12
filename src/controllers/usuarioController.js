@@ -67,11 +67,55 @@ async function autenticar(req, res) {
     .autenticar(email, senha)
     .then(function (response) {
       if (response !== false) {
-        console.log(response)
+        console.log(response);
         res.status(200).json(response);
       } else {
         res.status(400).send("Email ou senha inválido.");
       }
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      res
+        .status(500)
+        .send("Ocorreu um erro do lado servidor. Tente novamente mais tarde.");
+    });
+}
+
+async function atualizarUsuario(req, res) {
+  const data = req.body;
+  const usuarioId = req.params.usuarioId;
+  const nome = data.nome;
+  const email = data.email;
+  const empresaId = data.empresaId;
+  const cargoId = data.cargoId;
+
+  if (nome.length < 3)
+    return res.status(400).send("O nome precisa ter pelo menos 3 caracteres.");
+
+  if (nome.length > 45)
+    return res.status(400).send("O nome pode ter no máximo 45 caracteres.");
+
+  if (!email.includes("@") || !email.includes("."))
+    return res.status(400).send("Email inválido.");
+
+  const emailExiste = await usuarioModel.buscarUsuario(null, email, null);
+
+  if (emailExiste.length == 0)
+    return res.status(400).send("Erro ao atualizar conta.");
+
+  const cargoExite = await cargoModel.buscarCargo(cargoId);
+
+  if (cargoExite == 0) return res.status(404).send("Cargo não encontrado.");
+
+  const empresaExiste = await empresaModel.buscarEmpresa(empresaId);
+
+  if (empresaExiste == 0)
+    return res.status(404).send("Empresa não encontrada.");
+
+  usuarioModel
+    .atualizarUsuario(usuarioId, nome, email, cargoId, empresaId)
+    .then(function (response) {
+      res.status(200).json(response);
     })
     .catch(function (erro) {
       console.log(erro);
@@ -103,4 +147,5 @@ async function senhaValida(senha) {
 module.exports = {
   criarUsuario,
   autenticar,
+  atualizarUsuario,
 };

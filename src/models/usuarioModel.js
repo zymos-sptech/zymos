@@ -9,11 +9,11 @@ async function criarUsuario(nome, email, senha, cargoId, empresaId) {
   return database.executar(sql);
 }
 
-async function buscarUsuario(id, email, nome) {
+async function buscarUsuario(usuarioId, email, nome) {
   let valores = [];
 
-  if (id !== null) {
-    valores.push(`u.id = ${id}`);
+  if (usuarioId !== null) {
+    valores.push(`u.id = ${usuarioId}`);
   }
 
   if (email !== null) {
@@ -49,8 +49,23 @@ async function autenticar(email, senha) {
   return false;
 }
 
+async function atualizarUsuario(usuarioId, nome, email, cargoId, empresaId) {
+  var sqlAtualizar = `
+    UPDATE usuario SET 
+    nome = "${nome}", email = "${email}", fk_cargo = ${cargoId}, fk_empresa = ${empresaId}
+    WHERE id = ${usuarioId};
+  `;
+
+  const atualizarUsuario = await database.executar(sqlAtualizar);
+
+  if (atualizarUsuario.affectedRows > 0) {
+    return buscarUsuario(usuarioId, null, null);
+  }
+}
+
 module.exports = {
   criarUsuario,
   autenticar,
   buscarUsuario,
+  atualizarUsuario,
 };

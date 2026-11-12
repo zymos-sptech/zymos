@@ -11,4 +11,8 @@ route.post("/autenticar", function (req, res) {
   usuarioController.autenticar(req, res);
 });
 
+route.put("/:usuarioId", function (req, res) {
+  usuarioController.atualizarUsuario(req, res);
+});
+
 module.exports = route;
