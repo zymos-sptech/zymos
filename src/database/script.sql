@@ -29,6 +29,13 @@ CREATE TABLE cargo (
     nome VARCHAR(50) NOT NULL,
     permisionamento TINYINT NOT NULL
 );
+
+select * from cargo;
+select * from empresa;
+select * from plano;
+
+INSERT INTO empresa (fk_plano, status, nome, cnpj, dt_inicio_contrato) VALUES
+(1, 1, 'Empresa de testes', 12345678901234, '2026-09-10');
 -- ============================================================
 -- 2. TABELAS PRINCIPAIS
 -- ============================================================
