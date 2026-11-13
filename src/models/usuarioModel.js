@@ -41,9 +41,9 @@ async function autenticar(email, senha) {
       `;
 
   const validarUsuario = await database.executar(sqlAutenticar);
-  console.log(validarUsuario, "validar usuario");
   if (validarUsuario.length > 0) {
-    return buscarUsuario(validarUsuario[0].id, null, null);
+    const dados = await buscarUsuario(validarUsuario[0].id, null, null);
+    return dados[0];
   }
 
   return false;
