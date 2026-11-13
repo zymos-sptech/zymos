@@ -19,20 +19,41 @@ CREATE TABLE plano (
     valor_mensal_tanque DECIMAL(8,2) NOT NULL
 );
 
-CREATE TABLE status_unidade (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(30) NOT NULL
-);
-
 CREATE TABLE cargo (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     permisionamento TINYINT NOT NULL
 );
 
+CREATE TABLE tipo_cerveja (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    tipo VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE levedura (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE status_tanque (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(30) NOT NULL
+);
+
+CREATE TABLE status_lote (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE status_unidade (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(30) NOT NULL
+);
+
 select * from cargo;
 select * from empresa;
 select * from plano;
+select * from usuario;
 
 INSERT INTO empresa (fk_plano, status, nome, cnpj, dt_inicio_contrato) VALUES
 (1, 1, 'Empresa de testes', 12345678901234, '2026-09-10');
@@ -127,4 +148,125 @@ CREATE TABLE usuario (
     CONSTRAINT fk_usuario_cargo
         FOREIGN KEY (fk_cargo)
         REFERENCES cargo(id)
+);
+
+CREATE TABLE cerveja (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    fk_tipo_cerveja INT NOT NULL,
+    fk_levedura INT NOT NULL,
+    nome VARCHAR(50) NOT NULL,
+    temperatura_min DECIMAL(4,1) NOT NULL,
+    temperatura_max DECIMAL(4,1) NOT NULL,
+    tempo_fermentacao_dias INT NOT NULL,
+    dt_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    dt_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_cerveja_tipo
+        FOREIGN KEY (fk_tipo_cerveja)
+        REFERENCES tipo_cerveja(id),
+
+    CONSTRAINT fk_cerveja_levedura
+        FOREIGN KEY (fk_levedura)
+        REFERENCES levedura(id),
+
+    CONSTRAINT chk_cerveja_temperatura
+        CHECK (temperatura_min < temperatura_max)
+);
+
+CREATE TABLE tanque (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    fk_unidade INT NOT NULL,
+    fk_status_tanque INT NOT NULL DEFAULT 1,
+    nome VARCHAR(30) NOT NULL,
+    capacidade INT NOT NULL,
+    dt_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    dt_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_tanque_unidade
+        FOREIGN KEY (fk_unidade)
+        REFERENCES unidade(id),
+
+    CONSTRAINT fk_tanque_status
+        FOREIGN KEY (fk_status_tanque)
+        REFERENCES status_tanque(id),
+
+    CONSTRAINT uq_tanque_unidade
+        UNIQUE (fk_unidade, nome)
+);
+
+CREATE TABLE sensor (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    fk_unidade INT NULL,
+    fk_tanque INT NULL,
+    status_sensor TINYINT NOT NULL,
+    modelo VARCHAR(20) NOT NULL DEFAULT 'LM35',
+    dt_instalacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    dt_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_sensor_unidade
+        FOREIGN KEY (fk_unidade)
+        REFERENCES unidade(id),
+
+    CONSTRAINT fk_sensor_tanque
+        FOREIGN KEY (fk_tanque)
+        REFERENCES tanque(id)
+);
+
+CREATE TABLE lote (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    codigo VARCHAR(20) UNIQUE NOT NULL,
+    volume_litros INT NOT NULL,
+    fk_tanque INT NOT NULL,
+    fk_cerveja INT NOT NULL,
+    fk_usuario_criador INT NOT NULL,
+    fk_status_lote INT NOT NULL DEFAULT 1,
+    dt_inicio DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    dt_fim DATETIME NULL,
+    dt_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_lote_tanque
+        FOREIGN KEY (fk_tanque)
+        REFERENCES tanque(id),
+
+    CONSTRAINT fk_lote_cerveja
+        FOREIGN KEY (fk_cerveja)
+        REFERENCES cerveja(id),
+
+    CONSTRAINT fk_lote_usuario
+        FOREIGN KEY (fk_usuario_criador)
+        REFERENCES usuario(id),
+
+    CONSTRAINT fk_lote_status
+        FOREIGN KEY (fk_status_lote)
+        REFERENCES status_lote(id)
+) AUTO_INCREMENT = 100;
+
+-- A leitura se relaciona diretamente com o sensor.
+
+CREATE TABLE leitura_sensor (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    fk_sensor INT NOT NULL,
+    temperatura DECIMAL(4,1) NOT NULL,
+    dt_medicao DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_leitura_sensor
+        FOREIGN KEY (fk_sensor)
+        REFERENCES sensor(id)
+);
+
+CREATE TABLE alerta (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    fk_leitura BIGINT NOT NULL,
+    tipo_alerta TINYINT NOT NULL,
+    descricao VARCHAR(255),
+    dt_alerta DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    dt_resolucao DATETIME NULL,
+
+    CONSTRAINT fk_alerta_leitura
+        FOREIGN KEY (fk_leitura)
+        REFERENCES leitura_sensor(id)
 );
