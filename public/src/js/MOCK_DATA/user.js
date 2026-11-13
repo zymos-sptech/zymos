@@ -3,14 +3,10 @@ const userData = {
   nome: sessionStorage.getItem("NOME") || "Usuário Padrão",
   cargo: sessionStorage.getItem("CARGO") || "Administrador",
   email: sessionStorage.getItem("EMAIL") || "usuario@cervejaria.com.br",
-  nome_empresa: "Cervejaria Horizonte",
-  plano: "Padrão",
-  unidades: [
-    { id: 1, nome: "São Paulo" },
-    { id: 2, nome: "São Francisco" },
-    { id: 3, nome: "Belo Horizonte" },
-  ],
-  totalTanques: 6,
+  nome_empresa: sessionStorage.getItem("NOME_EMPRESA") || "Sem empresa",
+  plano: sessionStorage.getItem("PLANO"),
+  unidades: sessionStorage.getItem("QTD_UNIDADE") || 0,
+  totalTanques: sessionStorage.getItem("") || 0,
 };
 
 export default userData;

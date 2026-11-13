@@ -93,6 +93,9 @@ window.handleFormLogin = async () => {
         ((sessionStorage.NOME = data.nome),
           (sessionStorage.EMAIL = data.email));
         sessionStorage.CARGO = data.cargo;
+        sessionStorage.NOME_EMPRESA = data.empresa;
+        sessionStorage.QTD_UNIDADE = data.qtd_unidade;
+        sessionStorage.PLANO = data.plano;
 
         setTimeout(() => {
           window.location = "../pages/dashboard/visao-geral.html";
