@@ -1,0 +1,44 @@
+/* Barra do topo: saudação + badges (Figma: 54px de altura).
+   Repete nas telas do dashboard, por isso é componente.
+   (O nome navbar.css já é usado pela navbar do site.) */
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  height: 3.375rem;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.topo__saudacao {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  min-width: 0;
+}
+
+.topo__titulo {
+  font-family: var(--font-primary);
+  font-size: var(--text-18);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+}
+
+.topo__subtitulo {
+  font-size: var(--text-14);
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.topo__badges {
+  display: flex;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}

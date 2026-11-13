@@ -1,0 +1,16 @@
+
+/* Badge do topo: "Plano Padrão", "2 unidades ativas"... (Figma: 33px de altura) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 2.0625rem;
+  padding: 0 1.125rem;
+  background: var(--color-badge-bg);
+  border: 1px solid var(--color-badge-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-12);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+ 

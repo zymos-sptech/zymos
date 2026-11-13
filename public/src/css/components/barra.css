@@ -1,0 +1,33 @@
+/* Barra de progresso. A largura do preenchimento vem do JS (style.width). */
+.barra {
+  height: 0.5rem;
+  background: var(--color-track);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.barra__preenchimento {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+/* Maior valor do gráfico fica laranja */
+.barra__preenchimento--destaque {
+  background: var(--color-accent);
+}
+
+/* Barra dentro do KPI azul: trilho escuro, preenchimento laranja */
+.barra--no-kpi {
+  background: var(--color-primary-dark);
+}
+
+.barra--no-kpi .barra__preenchimento {
+  background: var(--color-accent);
+}
+
+/* Barra grossa do gráfico "Desvios por unidade" (Figma: 15px) */
+.barra--grossa {
+  height: 0.9375rem;
+}
