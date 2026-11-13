@@ -64,7 +64,10 @@ const reqSimbolo = document.getElementById("reqSimbolo");
 if (iptCodigo) {
   iptCodigo.addEventListener("input", () => {
     let msgCodigo = validarCodigo(iptCodigo.value.trim());
-    if (msgCodigo === "" && iptCodigo.value.trim() !== sessionStorage.getItem("CODIGO")) {
+    if (
+      msgCodigo === "" &&
+      iptCodigo.value.trim() !== sessionStorage.getItem("CODIGO")
+    ) {
       msgCodigo = "Código inválido.";
     }
     mostrarErro(iptCodigo, erroCodigo, msgCodigo);
@@ -98,38 +101,58 @@ if (iptConfirmPasword) {
   });
 }
 
-function mostrarForca(){
+function mostrarForca() {
   let r = avaliarSenha(iptPassword.value);
-  console.log(r)
-  if(r.tamanho){reqTamanho.classList.add("ok");}else{reqTamanho.classList.remove("ok");}
-  if(r.letraMais){reqLetraMais.classList.add("ok");}else{reqLetraMais.classList.remove("ok");}
-  if(r.letraMinus){reqLetraMinus.classList.add("ok");}else{reqLetraMinus.classList.remove("ok");}
-  if(r.numero){reqNumero.classList.add("ok");}else{reqNumero.classList.remove("ok");}
-  if(r.especial){reqSimbolo.classList.add("ok");}else{reqSimbolo.classList.remove("ok");}
+  console.log(r);
+  if (r.tamanho) {
+    reqTamanho.classList.add("ok");
+  } else {
+    reqTamanho.classList.remove("ok");
+  }
+  if (r.letraMais) {
+    reqLetraMais.classList.add("ok");
+  } else {
+    reqLetraMais.classList.remove("ok");
+  }
+  if (r.letraMinus) {
+    reqLetraMinus.classList.add("ok");
+  } else {
+    reqLetraMinus.classList.remove("ok");
+  }
+  if (r.numero) {
+    reqNumero.classList.add("ok");
+  } else {
+    reqNumero.classList.remove("ok");
+  }
+  if (r.especial) {
+    reqSimbolo.classList.add("ok");
+  } else {
+    reqSimbolo.classList.remove("ok");
+  }
 
-  if(r.nivel == 0){
+  if (r.nivel == 0) {
     textoForca.textContent = "";
-  }else if(r.nivel < 2){
+  } else if (r.nivel < 2) {
     textoForca.textContent = "Senha fraca";
-  }else if(r.nivel < 5){
+  } else if (r.nivel < 5) {
     textoForca.textContent = "Senha média";
-  }else{
+  } else {
     textoForca.textContent = "Senha forte";
   }
 
-  divForca.dataset.nivel = Math.ceil(r.nivel/2);
+  divForca.dataset.nivel = Math.ceil(r.nivel / 2);
 
-  if(iptConfirmPasword.value !== ""){
+  if (iptConfirmPasword.value !== "") {
     conferirSenha();
   }
 }
 
-function conferirSenha(){
+function conferirSenha() {
   let mensagem = validarConfirmacao(iptPassword.value, iptConfirmPasword.value);
   mostrarErro(iptConfirmPasword, erroConfirmacao, mensagem);
 }
 
-window.handleFormCadastro = () => {
+window.handleFormCadastro = async () => {
   let codigoVal = iptCodigo.value.trim();
   let nomeVal = iptNome.value.trim();
   let emailVal = iptEmail.value.trim();
@@ -138,44 +161,66 @@ window.handleFormCadastro = () => {
 
   let tudoCerto = true;
   let msgCodigo = validarCodigo(codigoVal);
-  
-  if(codigoVal !== sessionStorage.getItem("CODIGO") && msgCodigo === ""){
+
+  if (codigoVal !== sessionStorage.getItem("CODIGO") && msgCodigo === "") {
     msgCodigo = "Código inválido.";
   }
   mostrarErro(iptCodigo, erroCodigo, msgCodigo);
-  if(msgCodigo !== ""){tudoCerto = false;}
+  if (msgCodigo !== "") {
+    tudoCerto = false;
+  }
 
   let msgNome = validarNome(nomeVal);
   mostrarErro(iptNome, erroNome, msgNome);
-  if (msgNome !== "") {tudoCerto = false;}
+  if (msgNome !== "") {
+    tudoCerto = false;
+  }
 
   let msgEmail = validarEmail(emailVal);
   mostrarErro(iptEmail, erroEmail, msgEmail);
-  if (msgEmail !== "") {tudoCerto = false;}
+  if (msgEmail !== "") {
+    tudoCerto = false;
+  }
 
   let msgSenha = validarSenha(senhaVal);
   mostrarErro(iptPassword, erroSenha, msgSenha);
-  if(msgSenha !== "") {tudoCerto = false};
+  if (msgSenha !== "") {
+    tudoCerto = false;
+  }
 
   let msgConfirmacao = validarConfirmacao(senhaVal, confirmVal);
   mostrarErro(iptConfirmPasword, erroConfirmacao, msgConfirmacao);
-  if(msgConfirmacao !== "") {tudoCerto = false;} 
-  
-  if(!tudoCerto){
+  if (msgConfirmacao !== "") {
+    tudoCerto = false;
+  }
+
+  if (!tudoCerto) {
     const primeiroInvalido = document.querySelector(".cadastro-input.invalido");
-    if(primeiroInvalido){
+    if (primeiroInvalido) {
       primeiroInvalido.focus();
     }
     return;
   }
 
-  sessionStorage.removeItem("NOME_COMPLETO");
-  sessionStorage.removeItem("EMAIL");
-  sessionStorage.removeItem("PASSWORD");
+  await fetch("/usuarios/cadastrar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      nome: nomeVal,
+      email: emailVal,
+      senha: senhaVal,
+      empresaId: 1,
+      cargoId: 1,
+    }),
+  }).then(function (response) {
+    console.log(response);
 
-  sessionStorage.NOME_COMPLETO = nomeVal;
-  sessionStorage.EMAIL = emailVal;
-  sessionStorage.PASSWORD = senhaVal;
-
-  window.location = "../pages/login.html";
+    if (response.ok) {
+      setTimeout(() => {
+        window.location = "../pages/login.html";
+      }, 5000);
+    }
+  });
 };
