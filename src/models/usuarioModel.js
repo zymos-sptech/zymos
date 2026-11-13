@@ -3,7 +3,7 @@ var database = require("../database/config");
 async function criarUsuario(nome, email, senha, cargoId, empresaId) {
   var sql = `
     INSERT INTO usuario (nome, email, senha, fk_cargo, fk_empresa, status) VALUES
-    ("${nome}", "${email}", "${senha}", ${cargoId}, ${empresaId}, 1)
+    ("${nome}", "${email}", SHA1("${senha}"), ${cargoId}, ${empresaId}, 1)
     `;
 
   return database.executar(sql);
@@ -37,7 +37,7 @@ async function buscarUsuario(usuarioId, email, nome) {
 async function autenticar(email, senha) {
   console.log(email, senha, "ema senh");
   var sqlAutenticar = `
-      SELECT id FROM usuario WHERE email = "${email}" AND senha = "${senha}";
+      SELECT id FROM usuario WHERE email = "${email}" AND senha = SHA1("${senha}");
       `;
 
   const validarUsuario = await database.executar(sqlAutenticar);
