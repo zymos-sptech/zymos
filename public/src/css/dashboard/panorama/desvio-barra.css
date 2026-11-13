@@ -1,0 +1,75 @@
+/* Painel "Desvios por unidade" */
+.painel--desvios {
+  flex-shrink: 0;
+}
+
+.lista-desvios {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.desvio-barra__nome {
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.desvio-barra__linha {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;                 /* Figma: 6px entre a barra e o número */
+}
+
+.desvio-barra__linha .barra {
+  flex: 1;
+}
+
+.desvio-barra__contagem {
+  min-width: 1rem;
+  text-align: right;
+  font-size: var(--text-14);
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
+}
+
+/* "+3 unidades com desvios · Ver todos" */
+.desvios-mais {
+  font-size: var(--text-14);
+  color: var(--color-text-muted);
+}
+
+.desvios-mais[hidden] {
+  display: none;
+}
+
+.desvios-mais a {
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+}
+
+/* Faixas inferiores (Figma: 30px de altura) */
+.desvios-demais,
+.metrica-rodape {
+  display: flex;
+  align-items: center;
+  height: 1.875rem;
+  padding: 0 var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--text-14);
+  color: var(--color-text-muted);
+}
+
+.desvios-demais {
+  border: 1px solid var(--color-border);
+}
+
+.metrica-rodape {
+  justify-content: space-between;
+  background: var(--color-surface-muted);
+}
+
+.metrica-rodape strong {
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
+}

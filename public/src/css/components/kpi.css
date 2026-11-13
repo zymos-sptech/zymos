@@ -1,0 +1,77 @@
+/* Card KPI (Figma: 130px de altura, padding 15/20, raio 16) */
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 7.4rem;
+  padding: 0.9375rem 1.25rem; /* 15px vertical, 20px horizontal */
+  background: var(--color-primary);
+  color: var(--color-text-on-dark);
+  border-radius: var(--radius-lg);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.kpi-card__rotulo {
+  font-family: var(--font-numeric);
+  font-size: var(--text-10);
+  font-weight: var(--weight-medium);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.kpi-card__valor {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  font-family: var(--font-numeric);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.kpi-card__valor strong {
+  font-size: var(--text-24);
+  font-weight: var(--weight-extrabold);
+}
+
+.kpi-card__valor span {
+  font-size: var(--text-13);
+  font-weight: var(--weight-regular);
+}
+
+.kpi-card__tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 1.375rem; /* 22px — mesma altura das tags do Figma */
+  font-size: var(--text-9);
+  gap: var(--space-sm);
+}
+
+/* Centraliza a barra na mesma linha horizontal das tags dos outros cards */
+.kpi-card .barra--no-kpi {
+  margin: 0.4375rem 0; /* (22px da tag - 8px da barra) / 2 = 7px acima e abaixo */
+}
+
+.kpi-card__rodape {
+  margin: 0;
+  font-size: var(--text-12);
+  line-height: 1.2;
+  opacity: 0.85;
+}
+
+/* Estado de alerta: o JS liga esta classe quando há alerta aberto */
+.kpi-card--alerta {
+  background: var(--color-accent);
+  color: var(--color-accent-dark);
+}
+
+.kpi-card--alerta .tag {
+  background: var(--color-tag-on-accent);
+}
+
+.kpi-card--alerta .kpi-card__rodape {
+  opacity: 1;
+}

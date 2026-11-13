@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zymos - Panorama</title>
+    <link
+      rel="shortcut icon"
+      href="../../../assets/branding/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../../css/tokens.css" />
+    <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="../../css/components/badge.css" />
+    <link rel="stylesheet" href="../../css/components/tag.css" />
+    <link rel="stylesheet" href="../../css/dashboard/panorama/desvio-barra.css" />
+    <link rel="stylesheet" href="../../css/components/kpi.css" />
+    <link rel="stylesheet" href="../../css/components/painel.css" />
+    <link rel="stylesheet" href="../../css/components/topo.css">
+    <link rel="stylesheet" href="../../css/dashboard/panorama/tabela-unidade.css" />
+    <link rel="stylesheet" href="../../css/dashboard/panorama/alertas-item.css" />
+    <link rel="stylesheet" href="../../css/components/barra.css" />
+    <link rel="stylesheet" href="../../css/dashboard/panorama/panorama.css" />
+    <script
+      src="https://kit.fontawesome.com/79924d81b1.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="module"
+      src="../../../js/dashboard/panorama/panorama.js"
+      defer
+    ></script>
+    <script
+      type="module"
+      src="../../js/dashboard/panorama/panorama.js"
+      defer
+    ></script>
+  </head>
+
+  <body class="pagina-fixa">
+    <!-- A sidebar é feita por outra pessoa e injetada aqui. Deixar vazio. -->
+    <div id="sidebar"></div>
+    <main class="panorama">
+      <header class="topo">
+        <div class="topo__saudacao">
+          <h1 class="topo__titulo" id="topo-titulo"></h1>
+          <p class="topo__subtitulo" id="topo-subtitulo"></p>
+        </div>
+        <div class="topo__badges">
+          <span class="badge" id="badge-plano"></span>
+          <span class="badge" id="badge-unidades"></span>
+          <span class="badge" id="badge-tanques"></span>
+        </div>
+      </header>
+       <section class="kpis" aria-label="Indicadores gerais">
+        <article class="kpi-card" id="kpi-unidades">
+          <p class="kpi-card__rotulo">Unidades ativas</p>
+          <p class="kpi-card__valor">
+            <strong id="kpi-unidades-valor"></strong>
+            <span>unidades</span>
+          </p>
+          <div class="kpi-card__tags" id="kpi-unidades-tags"></div>
+          <p class="kpi-card__rodape">Todas unidades</p>
+        </article>
+        <article class="kpi-card" id="kpi-ocupacao">
+          <p class="kpi-card__rotulo">Ocupação dos tanques</p>
+          <p class="kpi-card__valor">
+            <strong id="kpi-ocupacao-valor"></strong>
+            <span id="kpi-ocupacao-complemento"></span>
+          </p>
+          <div class="barra barra--no-kpi">
+            <div class="barra__preenchimento" id="kpi-ocupacao-barra"></div>
+          </div>
+          <p class="kpi-card__rodape" id="kpi-ocupacao-rodape"></p>
+        </article>
+        <article class="kpi-card" id="kpi-ocorrencias">
+          <p class="kpi-card__rotulo">Desvios no período</p>
+          <p class="kpi-card__valor">
+            <strong id="kpi-ocorrencias-valor"></strong>
+            <span>ocorrências</span>
+          </p>
+          <div class="kpi-card__tags" id="kpi-ocorrencias-tags"></div>
+          <p class="kpi-card__rodape">Últimas 24 horas</p>
+        </article>
+         <article class="kpi-card" id="kpi-alerta">
+          <p class="kpi-card__rotulo">Alerta pendente</p>
+          <p class="kpi-card__valor">
+            <strong id="kpi-alerta-valor"></strong>
+            <span id="kpi-alerta-complemento"></span>
+          </p>
+          <div class="kpi-card__tags" id="kpi-alerta-tags"></div>
+          <p class="kpi-card__rodape" id="kpi-alerta-rodape"></p>
+        </article>
+      </section> 
+      <div class="conteudo">
+        <!-- Tabela de unidades em desvio -->
+        <section class="painel painel--tabela" aria-labelledby="titulo-unidades">
+          <header class="painel__cabecalho">
+            <div class="painel__titulos painel__titulos--linha">
+              <h2 class="painel__titulo" id="titulo-unidades">
+                Unidades em desvio
+              </h2>
+              <p class="painel__subtitulo">
+                Só o que exige ação · status do dia em tempo real
+              </p>
+            </div>
+            <span class="botao-contador" id="contador-desvio"></span>
+          </header>
+ 
+          <div class="tabela-unidades">
+            <table class="tabela-unidades__tabela">
+              <thead>
+                <tr>
+                  <th>Unidade</th>
+                  <th>Volume em risco</th>
+                  <th>Alertas em aberto</th>
+                  <th>Status</th>
+                  <th><span class="sr-only">Ação</span></th>
+                </tr>
+              </thead>
+              <!-- O JS cria, para cada unidade, 2 linhas:
+                   dados da unidade + faixa com as tags dos tanques -->
+              <tbody id="tabela-unidades-corpo"></tbody>
+            </table>
+          </div>
+ 
+          <footer class="painel__rodape">
+            <p id="tabela-rodape-resumo"></p>
+            <p id="tabela-rodape-ao-vivo">Ao vivo · 2s</p>
+          </footer>
+        </section>
+ 
+        <!-- Coluna lateral -->
+        <aside class="lateral">
+          <section class="painel painel--alertas" aria-labelledby="titulo-alertas">
+            <header class="painel__titulos">
+              <h2 class="painel__titulo" id="titulo-alertas">
+                Alertas em aberto
+              </h2>
+              <p class="painel__subtitulo">Mais antigos primeiro · exige revisão</p>
+            </header>
+            <ul class="lista-alertas" id="lista-alertas"></ul>
+          </section>
+ 
+          <section class="painel painel--desvios" aria-labelledby="titulo-desvios">
+            <header class="painel__titulos">
+              <h2 class="painel__titulo" id="titulo-desvios">
+                Desvios por unidade
+              </h2>
+              <p class="painel__subtitulo">
+                Top 5 · Todas as unidades · últimas 24 horas
+              </p>
+            </header>
+ 
+            <div class="lista-desvios" id="lista-desvios"></div>
+ 
+            <!-- "+3 unidades com desvios · Ver todos" (só aparece com mais de 5) -->
+            <p class="desvios-mais" id="desvios-mais" hidden></p>
+            <!-- "Demais N unidades · 0 desvios" -->
+            <p class="desvios-demais" id="desvios-demais"></p>
+ 
+            <div class="metrica-rodape">
+              <span>Tempo médio de resposta</span>
+              <strong id="tempo-resposta"></strong>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

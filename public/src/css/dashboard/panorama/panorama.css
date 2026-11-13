@@ -1,0 +1,154 @@
+/* LAYOUT DA PÁGINA PANORAMA
+   Aqui só tem grid. A aparência de cada peça está em css/components/.
+   Página fixa: nada rola; só as listas internas rolam. */
+
+/* tokens.css já vem antes; as regras abaixo vencem o global.css antigo do grupo */
+.pagina-fixa {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--color-page);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+}
+
+#sidebar {
+  flex-shrink: 0;
+}
+
+/* PROVISÓRIO: simula a sidebar enquanto a real não chega.
+   Quando a sidebar real entrar, apague estas duas regras e a classe
+   sidebar-simulada do <div id="sidebar"> no HTML.
+   Para testar a sidebar fechada, troque no HTML para:
+   class="sidebar-simulada sidebar-simulada--fechada" */
+.sidebar-simulada {
+  width: var(--sidebar-largura);
+  background: var(--color-primary);
+}
+
+.sidebar-simulada--fechada {
+  width: var(--sidebar-largura-fechada);
+}
+
+/* Largura única do conteúdo (Figma: 1636px).
+   A largura sai da TELA e da sidebar ABERTA, nunca da sidebar atual:
+   tela - 254 - 15 - 15, com teto de 1636.
+   Por isso abrir ou fechar a sidebar não muda o tamanho da página.
+   O conteúdo fica centralizado no espaço que sobra:
+   sidebar aberta  -> 15px de cada lado
+   sidebar fechada -> 105,5px de cada lado (tela 1920) */
+
+.panorama {
+  --panorama-largura: 102.25rem; /* 1636px */
+  width: min(
+    var(--panorama-largura),
+    calc(100vw - var(--sidebar-largura) - 2 * var(--space-md))
+  );
+  flex: 0 1 auto;
+  min-width: 0;
+  margin: 0 auto;
+  height: 100%;
+  padding: var(--space-md) 0;
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr); /* topo, KPIs, o que sobrar */
+  gap: var(--space-md); /* Espaço padrão vertical entre os blocos */
+  overflow: hidden;
+}
+
+/* ---------- KPIs (Figma: 4 cards, 130px de altura) ---------- */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-md); /* Espaço horizontal padrão entre os 4 cards */
+  height: 7.4rem;
+}
+
+/* ---------- Tabela (esquerda) + lateral (direita) ---------- */
+.conteudo {
+  display: grid;
+  grid-template-columns: minmax(0, 1082fr) minmax(0, 539fr); /* Proporção exata do Figma */
+  gap: var(--space-md); /* Garante que o espaçamento entre a tabela e a lateral use o padrão --space-md */
+  min-height: 0;
+}
+
+/* Alertas pega o espaço que sobrar; Desvios tem a altura do próprio conteúdo */
+.lateral {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: var(--space-md);
+  min-height: 0;
+}
+
+/* ---------- MODO COMPACTO ----------
+   Telas menores que 1700px (ex.: notebook Full HD com zoom 125%, que o
+   navegador enxerga com ~1536px). Os cards e o tamanho da página ficam
+   iguais; só encolhem letras, paddings e alturas das peças apertadas.
+   Em telas de 1700px ou mais vale o tamanho exato do Figma. */
+@media (max-width: 1700px) {
+  .painel__titulo { font-size: var(--text-16); }
+  .painel__subtitulo,
+  .painel__rodape { font-size: var(--text-12); }
+
+  .botao-contador {
+    height: 1.5rem;
+    padding: 0 var(--space-md);
+    font-size: var(--text-12);
+  }
+
+  /* Tabela */
+  .tabela-unidades__tabela th:nth-child(1) { width: 26%; }
+  .tabela-unidades__tabela th:nth-child(2) { width: 17%; }
+  .tabela-unidades__tabela th:nth-child(3) { width: 26%; }
+  .tabela-unidades__tabela th:nth-child(4) { width: 14%; }
+  .tabela-unidades__tabela th:nth-child(5) { width: 17%; }
+
+  .tabela-unidades__tabela thead th {
+    height: 2.125rem;
+    padding: 0 var(--space-sm);
+    font-size: var(--text-10);
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.05em;
+  }
+
+  .tabela__linha td {
+    padding: var(--space-sm) var(--space-sm) var(--space-xs);
+    font-size: var(--text-13);
+  }
+
+  .tabela__tanques td { padding: 0 var(--space-sm) var(--space-sm); }
+  .tabela__tanques-conteudo { gap: var(--space-xs) var(--space-sm); }
+  .tabela__tanques-rotulo { font-size: var(--text-11); }
+
+  .tag-tanque {
+    height: 1.5rem;
+    padding: 0 var(--space-sm);
+    font-size: var(--text-12);
+  }
+
+  .status {
+    height: 1.5rem;
+    padding: 0 0.75rem;
+    font-size: var(--text-12);
+  }
+
+  .tabela__link { font-size: var(--text-13); }
+
+  /* Alertas em aberto */
+  .alerta-item { padding: 0.5rem 0.75rem; }
+  .alerta-item__titulo { font-size: var(--text-12); }
+  .alerta-item__legenda { font-size: var(--text-11); }
+
+  /* Desvios por unidade */
+  .lista-desvios { gap: var(--space-xs); }
+  .desvio-barra__nome,
+  .desvio-barra__contagem,
+  .desvios-mais { font-size: var(--text-12); }
+  .barra--grossa { height: 0.625rem; }
+
+  .desvios-demais,
+  .metrica-rodape {
+    height: 1.625rem;
+    font-size: var(--text-12);
+  }
+}

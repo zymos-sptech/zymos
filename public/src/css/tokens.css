@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;700;800&display=swap");
+
+/*
+  TOKENS GLOBAIS DO ZYMOS
+  Regra: ninguém escreve número solto no CSS dos componentes, só var(--nome).
+  Se o Figma mudar, muda aqui e o projeto inteiro acompanha.
+  Base: 1rem = 16px (não mexer no font-size do html).
+*/
+
+:root {
+  /* ---------- Cores ---------- */
+  --color-primary: #254567;          /* azul dos KPIs, textos e títulos */
+  --color-primary-dark: #1a3346;     /* trilho da barra dentro do KPI azul */
+  --color-accent: #d0a06f;           /* laranja: alerta, barra de desvio, destaque */
+  --color-accent-dark: #50453b;      /* marrom: tag sobre fundo laranja */
+
+  --color-page: #ffff;             /* fundo da página */
+  --color-surface: #ffffff;          /* fundo dos painéis */
+  --color-border: #E2E8F0;           /* borda dos painéis */
+  --color-surface-muted: #e9edf1;    /* cabeçalho da tabela, rodapé "tempo médio" */
+  --color-track: #eef0ea;            /* trilho das barras em fundo branco */
+
+  --color-text: #254567;
+  --color-text-muted: #556c80;       /* subtítulos e textos de apoio */
+  --color-text-on-dark: #ffffff;
+
+  --color-badge-bg: #e3f0ff;         /* badges do topo (Plano, unidades) */
+  --color-badge-border: #d1e4ff;
+  --color-tag-on-dark: rgba(255, 255, 255, 0.15);
+  --color-tag-on-accent: #50453b;
+
+  /* ---------- Fontes ---------- */
+  --font-primary: "Outfit", sans-serif;  /* textos e títulos */
+  --font-numeric: "Inter", sans-serif;   /* só números grandes dos KPIs */
+
+  /* Escala tipográfica (rem, base 16px) */
+  --text-9: 0.5625rem;  /* 09 */
+  --text-10: 0.625rem;  /* 10 */
+  --text-11: 0.6875rem; /* 11 */
+  --text-12: 0.75rem;   /* 12 */
+  --text-13: 0.8125rem; /* 13 */
+  --text-14: 0.875rem;  /* 14 */
+  --text-15: 0.9375rem; /* 15 */
+  --text-16: 1rem;      /* 16 */
+  --text-17: 1.0625rem; /* 17 */
+  --text-18: 1.125rem;  /* 18 */
+  --text-19: 1.1875rem; /* 19 */
+  --text-20: 1.25rem;   /* 20 */
+  --text-21: 1.3125rem; /* 21 */
+  --text-22: 1.375rem;  /* 22 */
+  --text-23: 1.4375rem; /* 23 */
+  --text-24: 1.5rem;    /* 24 */
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  /* ---------- Espaçamentos ---------- */
+  --space-2xs: 0.1875rem; /* 3 */
+  --space-xs: 0.3125rem;  /* 5 */
+  --space-sm: 0.625rem;   /* 10 */
+  --space-md: 0.9375rem;  /* 15: padding interno dos painéis e gap entre seções */
+  --space-lg: 1.25rem;    /* 20: padding horizontal dos KPIs */
+
+  /* ---------- Raios ---------- */
+  --radius-sm: 0.3125rem; /* 5: tags pequenas */
+  --radius-md: 0.625rem;  /* 10: botões, badges, itens de alerta */
+  --radius-lg: 1rem;      /* 16: cards KPI e moldura da tabela */
+  --radius-full: 9999px;  /* barras e pontos */
+
+  /* ---------- Sidebar (Figma) ---------- */
+  --sidebar-largura: 15.875rem;          /* 254px aberta */
+  --sidebar-largura-fechada: 4.5625rem;  /* 73px fechada */
+
+  /* ---------- Sombra ---------- */
+  --shadow-panel: 0 1px 2px rgba(37, 69, 103, 0.04);
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--text-14);
+  color: var(--color-text);
+  background-color: var(--color-page);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-primary);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- Utilitário: texto só para leitor de tela ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
