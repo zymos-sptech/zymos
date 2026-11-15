@@ -19,6 +19,7 @@ var indexRouter = require("./src/routes/indexRoute");
 var usuarioRouter = require("./src/routes/usuarioRoute");
 var planoRouter = require("./src/routes/planoRoute");
 var cargoRouter = require("./src/routes/cargoRoute");
+var tipoCervejaRouter = require("./src/routes/tipoCervejaRoute");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,6 +31,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/planos", planoRouter);
 app.use("/cargos", cargoRouter);
+app.use("/tipos-cerveja", tipoCervejaRouter);
 
 app.listen(PORTA_APP, function () {
   console.log(`
