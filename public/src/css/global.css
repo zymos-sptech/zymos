@@ -134,3 +134,8 @@ button {
 .btn-secondary:active {
   transform: scale(0.98);
 }
+
+a {
+    text-decoration: none;
+    color: inherit; 
+ }

@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/src/css/dashboard/unidades-editar.css" />
-    <script type="module" src="/src/js/sidebar/sidebar.js" defer></script>
-    <link rel="stylesheet" href="/src/css/components/sidebar.css">
-    <link rel="stylesheet" href="/src/css/dashboard/dashboard.css">
-    <link rel="stylesheet" href="/src/css/global.css" />
+    <link rel="stylesheet" href="../../../src/css/dashboard/unidades-editar.css" />
+    <script type="module" src="../../../src/js/sidebar/sidebar.js" defer></script>
+    <link rel="stylesheet" href="../../../src/css/components/sidebar.css">
+    <link rel="stylesheet" href="../../../src/css/dashboard/dashboard.css">
+    <link rel="stylesheet" href="../../../src/css/global.css" />
 
     <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
     <title>Zymos - Unidade (Editar)</title>
@@ -17,7 +17,7 @@
 <body>
 
     <aside id="sidebar-open" class="sidebar-container">
-        <button type="button" onclick="closeSidebar()" class="sidebar-btn-toggle">
+        <button type="button" onclick="closeSidebar()" class="sidebar-btn-toggle">  
             <i class="fa-solid fa-table-columns"></i>
         </button>
         <img class="sidebar-logo-open" src="../../../assets/branding/logo-branca.svg"
@@ -106,9 +106,14 @@
     <main class="dashboard">
         <section class="section-unidade-editar">
             <div class="editar-header">
-                <p class="editar-caminho">Zymos / Unidades / Editar unidade</p>
+                <p class="editar-caminho">
+                    <a href="/public/index.html"> Zymos </a> 
+                    / 
+                   <a href="/public/src/pages/dashboard/unidades.html"> Unidades </a>
+                    / 
+                    Editar unidade</p>
             </div>
-            <a href="#" class="editar-voltar">
+            <a href="/public/src/pages/dashboard/unidades.html" class="editar-voltar">
                 <i class="fa-solid fa-arrow-left-long"></i>
                 Voltar para Unidades
             </a>
@@ -248,10 +253,14 @@
                             <span class="campo-obrigatorio">*</span>
                             campos obrigatórios
                         </p>
-                    </div>
+                    </div>  
                     <div class="footer-buttons">
-                        <button type="button" class="btn-cancelar" id="btn-cancelar">Cancelar / Voltar</button>
+                        <a href="/public/src/pages/dashboard/unidades.html">
+                            <button type="button" class="btn-cancelar" id="btn-cancelar">Cancelar / Voltar</button>
+                            </a>
+                            <a href="/public/src/pages/dashboard/unidades.html">
                         <button type="button" class="btn-salvar" id="btn-salvar">Salvar Alterações</button>
+                        </a>
                     </div>
                 </div>
             </div>
