@@ -1,10 +1,10 @@
 type: collection.insomnia.rest/5.0
 schema_version: "5.1"
-name: planos
+name: plano
 meta:
   id: wrk_cad60db6beed418cb46b6c153007b488
   created: 1794172625055
-  modified: 1794172625055
+  modified: 1794223511244
   description: ""
 collection:
   - url: "{{ _.URL_LOCAL }}/planos"

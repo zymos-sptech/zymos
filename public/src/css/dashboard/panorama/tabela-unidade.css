@@ -1,0 +1,152 @@
+/* Tabela "Unidades em desvio".
+   Cada unidade = 2 linhas: .tabela__linha (dados) + .tabela__tanques (tags). */
+.painel--tabela {
+  min-width: 0;
+}
+
+.tabela-unidades {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;               /* a lista rola por dentro, a página nunca */
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.tabela-unidades__tabela {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+/* Colunas (5): 1 Unidade | 2 Volume em risco | 3 Alertas em aberto | 4 Status | 5 Ação.
+   Se mudar o número de colunas: ajuste estas larguras, os seletores nth-child
+   abaixo, o <thead> do HTML e a constante COLUNAS_TABELA no render.js. */
+.tabela-unidades__tabela th:nth-child(1) { width: 26%; }
+.tabela-unidades__tabela th:nth-child(2) { width: 16%; }
+.tabela-unidades__tabela th:nth-child(3) { width: 26%; }
+.tabela-unidades__tabela th:nth-child(4) { width: 15%; }
+.tabela-unidades__tabela th:nth-child(5) { width: 17%; }
+
+.tabela-unidades__tabela thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 2.5rem;
+  padding: 0 var(--space-md);
+  background: var(--color-surface-muted);
+  font-size: var(--text-12);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  line-height: 1.25;
+}
+
+/* Linha de dados */
+.tabela__linha td {
+  padding: var(--space-md) var(--space-md) var(--space-sm);
+  vertical-align: middle;
+  font-size: var(--text-11);
+  font-weight: var(--weight-semibold);
+}
+
+.tabela__linha td:nth-child(1) {
+  font-weight: var(--weight-bold);
+}
+
+.tabela__linha td:nth-child(3) {
+  color: var(--color-accent);
+}
+
+.tabela__linha td:nth-child(5) {
+  text-align: right;
+}
+
+/* Faixa com as tags dos tanques em desvio */
+.tabela__tanques td {
+  padding: 0 var(--space-md) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tabela__tanques:last-child td {
+  border-bottom: 0;
+}
+
+.tabela__tanques-conteudo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+}
+
+.tabela__tanques-rotulo {
+  font-size: var(--text-12);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Tag do tanque: "↑ TQ-01 acima do ideal" (Figma: 27px de altura) */
+.tag-tanque {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+  height: 1.6875rem;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--color-badge-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-14);
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.tag-tanque strong {
+  margin: 0 0.25rem 0 0.375rem;
+  font-weight: var(--weight-semibold);
+}
+
+.tag-tanque--acima i { color: var(--color-accent); }
+.tag-tanque--abaixo i { color: var(--color-primary); }
+
+/* Status da unidade (Figma: 27px de altura) */
+.status {
+  display: inline-flex;
+  align-items: center;
+  height: 1.6875rem;
+  padding: 0 1.0625rem;
+  border-radius: var(--radius-md);
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-on-dark);
+  white-space: nowrap;
+}
+
+.status--desvio { background: var(--color-accent); }
+.status--estavel { background: var(--color-primary); }
+
+/* Link "Ver tanques →" */
+.tabela__link {
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.tabela__link:hover { color: var(--color-accent); }
+.tabela__link i { margin-left: var(--space-xs); }
+
+/* Nenhuma unidade em desvio */
+.tabela__vazio td {
+  padding: 2rem var(--space-md);
+  text-align: center;
+  font-size: var(--text-14);
+  color: var(--color-text-muted);
+}
+
+/* "(há 14 min)": se faltar espaço, quebra a linha inteira e não no meio */
+.tabela__tempo {
+  white-space: nowrap;
+}
