@@ -41,7 +41,6 @@ function cadastrar(req, res) {
   }
 }
 
-
 function registrarLeitura(res, idSensor, temperatura) {
   return leituraSensorModel.cadastrar(idSensor, temperatura)
     .then(
@@ -111,77 +110,19 @@ function listar(req, res) {
     );
 }
 
-function buscarPorId(req, res) {
-  var idLeitura = req.params.idLeitura;
+function listarPorLote(req, res) {
+  var idLote = req.params.idLote;
 
-  if (naoENumero(idLeitura)) {
-    res.status(400).send("O id da leitura é inválido!");
+  if (naoENumero(idLote)) {
+    res.status(400).send("O id do lote é inválido!");
   } else {
-    leituraSensorModel.buscarPorId(idLeitura)
+    leituraSensorModel.buscarLote(idLote)
       .then(
-        function (resultado) {
-          if (resultado.length > 0) {
-            res.status(200).json(resultado[0]);
+        function (lote) {
+          if (lote.length == 0) {
+            res.status(404).send("Lote não encontrado!");
           } else {
-            res.status(404).send("Leitura não encontrada!");
-          }
-        }
-      ).catch(
-        function (erro) {
-          console.log(erro);
-          console.log("Houve um erro ao buscar a leitura: ", erro.sqlMessage);
-          res.status(500).json(erro.sqlMessage);
-        }
-      );
-  }
-}
-
-function buscarUltimaPorSensor(req, res) {
-  var idSensor = req.params.idSensor;
-
-  if (naoENumero(idSensor)) {
-    res.status(400).send("O id do sensor é inválido!");
-  } else {
-    leituraSensorModel.buscarSensor(idSensor)
-      .then(
-        function (sensor) {
-          if (sensor.length == 0) {
-            res.status(404).send("Sensor não encontrado!");
-          } else {
-            return leituraSensorModel.buscarUltimaPorSensor(idSensor)
-              .then(
-                function (resultado) {
-                  if (resultado.length > 0) {
-                    res.status(200).json(resultado[0]);
-                  } else {
-                    res.status(204).send("Nenhum resultado encontrado!");
-                  }
-                }
-              );
-          }
-        }
-      ).catch(
-        function (erro) {
-          console.log(erro);
-          console.log("Houve um erro ao buscar a última leitura: ", erro.sqlMessage);
-          res.status(500).json(erro.sqlMessage);
-        }
-      );
-  }
-}
-
-
-function listarLeituras(res, id, nome, buscarExistente, buscarLeituras) {
-  if (naoENumero(id)) {
-    res.status(400).send("O id do " + nome + " é inválido!");
-  } else {
-    buscarExistente(id)
-      .then(
-        function (existe) {
-          if (existe.length == 0) {
-            res.status(404).send("O " + nome + " não foi encontrado!");
-          } else {
-            return buscarLeituras(id, limite_linhas)
+            return leituraSensorModel.listarPorLote(idLote, limite_linhas)
               .then(
                 function (resultado) {
                   if (resultado.length > 0) {
@@ -196,31 +137,15 @@ function listarLeituras(res, id, nome, buscarExistente, buscarLeituras) {
       ).catch(
         function (erro) {
           console.log(erro);
-          console.log("Houve um erro ao buscar as leituras do " + nome + ": ", erro.sqlMessage);
+          console.log("Houve um erro ao buscar as leituras do lote: ", erro.sqlMessage);
           res.status(500).json(erro.sqlMessage);
         }
       );
   }
 }
 
-function listarPorSensor(req, res) {
-  listarLeituras(res, req.params.idSensor, "sensor", leituraSensorModel.buscarSensor, leituraSensorModel.listarPorSensor);
-}
-
-function listarPorTanque(req, res) {
-  listarLeituras(res, req.params.idTanque, "tanque", leituraSensorModel.buscarTanque, leituraSensorModel.listarPorTanque);
-}
-
-function listarPorLote(req, res) {
-  listarLeituras(res, req.params.idLote, "lote", leituraSensorModel.buscarLote, leituraSensorModel.listarPorLote);
-}
-
 module.exports = {
   cadastrar,
   listar,
-  buscarPorId,
-  buscarUltimaPorSensor,
-  listarPorSensor,
-  listarPorTanque,
   listarPorLote
 }

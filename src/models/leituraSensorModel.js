@@ -8,14 +8,6 @@ function buscarSensor(idSensor) {
   return database.executar(instrucaoSql);
 }
 
-function buscarTanque(idTanque) {
-  var instrucaoSql = `
-        SELECT id FROM tanque WHERE id = ${idTanque};
-    `;
-  console.log("Executando a instrução SQL: \n" + instrucaoSql);
-  return database.executar(instrucaoSql);
-}
-
 function buscarLote(idLote) {
   var instrucaoSql = `
         SELECT id FROM lote WHERE id = ${idLote};
@@ -56,7 +48,6 @@ function buscarLoteAtivo(idSensor, temperatura) {
   return database.executar(instrucaoSql);
 }
 
-
 function cadastrar(idSensor, temperatura) {
   var instrucaoSql = `
         INSERT INTO leitura_sensor (fk_sensor, temperatura) VALUES (${idSensor}, ${temperatura});
@@ -82,69 +73,6 @@ function listar(limite_linhas) {
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
-
-function buscarPorId(idLeitura) {
-  var instrucaoSql = `
-        SELECT
-            ls.id,
-            ls.fk_sensor,
-            ls.temperatura,
-            ls.dt_medicao,
-            a.id AS idAlerta,
-            a.tipo_alerta,
-            a.descricao,
-            a.dt_resolucao
-        FROM leitura_sensor ls
-            LEFT JOIN alerta a
-                ON a.fk_leitura = ls.id
-        WHERE ls.id = ${idLeitura};
-    `;
-  console.log("Executando a instrução SQL: \n" + instrucaoSql);
-  return database.executar(instrucaoSql);
-}
-
-function listarPorSensor(idSensor, limite_linhas) {
-  var instrucaoSql = `
-        SELECT id, fk_sensor, temperatura, dt_medicao
-        FROM leitura_sensor
-        WHERE fk_sensor = ${idSensor}
-        ORDER BY dt_medicao DESC LIMIT ${limite_linhas};
-    `;
-  console.log("Executando a instrução SQL: \n" + instrucaoSql);
-  return database.executar(instrucaoSql);
-}
-
-function buscarUltimaPorSensor(idSensor) {
-  var instrucaoSql = `
-        SELECT id, fk_sensor, temperatura, dt_medicao
-        FROM leitura_sensor
-        WHERE fk_sensor = ${idSensor}
-        ORDER BY dt_medicao DESC LIMIT 1;
-    `;
-  console.log("Executando a instrução SQL: \n" + instrucaoSql);
-  return database.executar(instrucaoSql);
-}
-
-function listarPorTanque(idTanque, limite_linhas) {
-  var instrucaoSql = `
-        SELECT
-            t.nome AS tanque,
-            ls.id,
-            ls.fk_sensor,
-            ls.temperatura,
-            ls.dt_medicao
-        FROM leitura_sensor ls
-            INNER JOIN sensor s
-                ON s.id = ls.fk_sensor
-            INNER JOIN tanque t
-                ON t.id = s.fk_tanque
-        WHERE t.id = ${idTanque}
-        ORDER BY ls.dt_medicao DESC LIMIT ${limite_linhas};
-    `;
-  console.log("Executando a instrução SQL: \n" + instrucaoSql);
-  return database.executar(instrucaoSql);
-}
-
 
 function listarPorLote(idLote, limite_linhas) {
   var instrucaoSql = `
@@ -178,15 +106,10 @@ function listarPorLote(idLote, limite_linhas) {
 
 module.exports = {
   buscarSensor,
-  buscarTanque,
   buscarLote,
   buscarLoteAtivo,
   cadastrar,
   cadastrarAlerta,
   listar,
-  buscarPorId,
-  listarPorSensor,
-  buscarUltimaPorSensor,
-  listarPorTanque,
   listarPorLote
 }
