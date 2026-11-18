@@ -1,0 +1,204 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: leituras
+meta:
+  id: wrk_e1b9092c14b94b20861454eaa36cd6a7
+  created: 1794963966073
+  modified: 1794963966073
+  description: ""
+collection:
+  - url: "{{ _.base_url }}/leiturasSensor/cadastrar"
+    name: CADASTRAR_SEM_DADOS
+    meta:
+      id: req_477a3496320843c7900fb27c22792110
+      created: 1794963976192
+      modified: 1794964038348
+      isPrivate: false
+      description: ""
+      sortKey: -1794963976192
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/leiturasSensor/cadastrar\t"
+    name: CADASTRAR_SEM_TEMPERATURA
+    meta:
+      id: req_274cbcf02e554d5a8057b5ad7d52109d
+      created: 1794964045862
+      modified: 1794964059886
+      isPrivate: false
+      description: ""
+      sortKey: -1794964045862
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/leiturasSensor/cadastrar"
+    name: CADASTRAR_SENSOR_INVALIDO
+    meta:
+      id: req_c5b5c3b379bb4d84a10f5a3af4ec9340
+      created: 1794964067723
+      modified: 1794964081492
+      isPrivate: false
+      description: ""
+      sortKey: -1794964067723
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/leiturasSensor/cadastrar"
+    name: CADASTRAR_TEMPERATURA_INVALIDA
+    meta:
+      id: req_1a15bddde2fb418c894cdafe3e68a591
+      created: 1794964093251
+      modified: 1794964106849
+      isPrivate: false
+      description: ""
+      sortKey: -1794964093251
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/leiturasSensor/cadastrar"
+    name: CADASTRAR_SENSOR_INEXISTENTE
+    meta:
+      id: req_c4ef5cf015eb4564914ebbae6058261e
+      created: 1794964113931
+      modified: 1794964126714
+      isPrivate: false
+      description: ""
+      sortKey: -1794964113931
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/leiturasSensor/listar"
+    name: LISTAR
+    meta:
+      id: req_34633def6b56472cae3e25db57ccd907
+      created: 1794964133990
+      modified: 1794964148725
+      isPrivate: false
+      description: ""
+      sortKey: -1794964133990
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/leiturasSensor/lote/100"
+    name: LISTAR_LOTE
+    meta:
+      id: req_8823ec12274140dfb43e1db8461a38f3
+      created: 1794964155688
+      modified: 1794964168628
+      isPrivate: false
+      description: ""
+      sortKey: -1794964155688
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/leiturasSensor/lote/103"
+    name: LISTAR_LOTE_SEM_LEITURAS
+    meta:
+      id: req_ee13d58f9595430a8d88d8e555e94314
+      created: 1794964175909
+      modified: 1794964196397
+      isPrivate: false
+      description: ""
+      sortKey: -1794964175909
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/leiturasSensor/lote/abc"
+    name: LISTAR_LOTE_INVALIDO
+    meta:
+      id: req_02bf0b9b11ee449ab28c76066ecb6d9f
+      created: 1794964209395
+      modified: 1794964221041
+      isPrivate: false
+      description: ""
+      sortKey: -1794964209395
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/leiturasSensor/lote/999"
+    name: LISTAR_LOTE_INEXISTENTE
+    meta:
+      id: req_cbdc5015548c429cad87bbe892b4c666
+      created: 1794964228594
+      modified: 1794964244991
+      isPrivate: false
+      description: ""
+      sortKey: -1794964228594
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_8c75a0a64347e6959092f610c236f9778a7c04f2
+    created: 1794963966095
+    modified: 1794963966095
+environments:
+  name: Base Environment
+  meta:
+    id: env_8c75a0a64347e6959092f610c236f9778a7c04f2
+    created: 1794963966090
+    modified: 1794964022645
+    isPrivate: false
+  data:
+    base_url: http://[::1]:3333
