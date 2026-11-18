@@ -1,0 +1,126 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: lote
+meta:
+  id: wrk_54ee507c7b69419699e5965e28cb2083
+  created: 1794972863414
+  modified: 1794972863414
+  description: ""
+collection:
+  - url: "{{ _.URL_LOCAL }}lotes/abc"
+    name: New Request
+    meta:
+      id: req_1c221081f77240eb9171efe5a54127eb
+      created: 1794972881635
+      modified: 1794975407630
+      isPrivate: false
+      description: ""
+      sortKey: -1794972881636
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}lotes/100"
+    name: New Request
+    meta:
+      id: req_b38b6c73fd424e74b131607664f7a28f
+      created: 1794974383447
+      modified: 1794974830263
+      isPrivate: false
+      description: ""
+      sortKey: -1794974383447
+    method: PUT
+    body:
+      mimeType: application/json
+      text: '{"codigo":"101-A","volumeLitros":40,"fkCerveja":9999,"fkStatusLote":999}'
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}lotes"
+    name: New Request
+    meta:
+      id: req_222e051beef8468098ad7c8571845ff5
+      created: 1794974846945
+      modified: 1794975203790
+      isPrivate: false
+      description: ""
+      sortKey: -1794974846945
+    method: POST
+    body:
+      mimeType: application/json
+      text: '{"codigo":"LT-TESTEDWAIINDWIAODNIAWNIODNAWIODNWOIWIDAODONAIWNDIO","volumeLitros":500,"fkCerveja":1,"fkUsuarioCriador":1}'
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}lotes/104/finalizar"
+    name: New Request
+    meta:
+      id: req_97ae91802f564807849b757abf5b37dc
+      created: 1794975215780
+      modified: 1794975317067
+      isPrivate: false
+      description: ""
+      sortKey: -1794975215780
+    method: PATCH
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}lotes/104"
+    name: New Request
+    meta:
+      id: req_3f52aa1711754f3e8c6898154540facd
+      created: 1794975337142
+      modified: 1794975384949
+      isPrivate: false
+      description: ""
+      sortKey: -1794975337142
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_3aeaf58cf996e66a2683eac6b799481cbd7222e6
+    created: 1794972863425
+    modified: 1794972863425
+environments:
+  name: Base Environment
+  meta:
+    id: env_3aeaf58cf996e66a2683eac6b799481cbd7222e6
+    created: 1794972863422
+    modified: 1794973093198
+    isPrivate: false
+  data:
+    URL_LOCAL: http://localhost:3333/

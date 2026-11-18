@@ -5,26 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Unidades</title>
   <link rel="stylesheet" href="../../css/global.css">
+  <script type="module" src="../../../src/js/sidebar/sidebar.js" defer></script>
+    <link rel="stylesheet" href="../../../src/css/components/sidebar.css">
   <link rel="stylesheet" href="../../css/dashboard/macro/unidades.css">
   <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  
   <nav class="caminho">
-    Zymos / <span class="caminho-atual">Unidades</span>
+   <a href="/public/index.html"> Zymos </a>
+    /     
+    <span class="caminho-atual">Unidades</span>
   </nav>
 
   <main class="dashboard">
-
+      
     <header class="container-cabecalho">
       <div class="cabecalho-textos">
         <h1 class="cabecalho-nome">Unidades</h1>
         <p class="cabecalho-descricao">Unidades da Cervejaria Horizonte - Unidade SP</p>
       </div>
-
+      <a href="/public/src/pages/dashboard/solicitar-unidade.html">
       <button class="botao botao-solicitar" type="button">
         <i class="fa-solid fa-plus" aria-hidden="true"></i>
         Solicitar Nova Unidade
       </button>
+      </a>
     </header>
 
     <section class="container-busca">
@@ -55,8 +61,12 @@
         <div class="tabela-celula"><span class="status">Ativa</span></div>
         <div class="tabela-celula">
           <div class="container-acoes">
+
+           <a href="/public/src/pages/dashboard/unidade-editar.html"> 
             <button class="botao botao-editar" type="button">Editar</button>
-            <button class="botao botao-excluir" type="button">Excluir</button>
+           </a>
+
+            <button class="botao botao-excluir" id="excluir-matriz"  data-nome="Fábrica Matriz" type="button">Excluir</button>
           </div>
         </div>
       </div>
@@ -72,8 +82,12 @@
         <div class="tabela-celula"><span class="status">Ativa</span></div>
         <div class="tabela-celula">
           <div class="container-acoes">
-            <button class="botao botao-editar" type="button">Editar</button>
-            <button class="botao botao-excluir" type="button">Excluir</button>
+
+            <a href="/public/src/pages/dashboard/unidade-editar.html">
+               <button class="botao botao-editar" type="button">Editar</button>
+               </a>
+
+            <button class="botao botao-excluir" id="excluir-campinas" data-nome="Fábrica Campinas" type="button">Excluir</button>
           </div>
         </div>
       </div>
@@ -82,5 +96,72 @@
     <p class="tabela-rodape">Mostrando 2 de 2 registros.</p>
 
   </main>
+  <dialog id="popup-excluir" class="popup">
+  <h2 class="cabecalho-nome">Excluir unidade?</h2>
+  <p class="popup__nome unidade-nome" id="popup-nome"></p>
+  <p class="popup__texto tabela-celula">
+    Esta unidade não possui tanques ou lotes cadastrados.
+    A exclusão é permanente e não poderá ser desfeita.
+  </p>
+
+  <div class="popup__botoes">
+    <button class="popup-cancelar" id="popup-cancelar" type="button">Cancelar</button>
+    <button class="popup-excluir" id="popup-excluir" type="button">Excluir</button>
+  </div>
+</dialog>
+
+  <dialog id="popup-erro" class="popup">
+  <h2 class="cabecalho-nome">Não é possível excluir</h2>
+  <p class="popup__nome  unidade-nome" id="popup-nome"></p>
+  <p class="popup__texto tabela-celula">
+    A unidade possui tanques cadastrados. Remova ou transfira os
+tanques antes de excluir.
+  </p>
+
+  <div class="popup__botoes">
+    <button class="popup-cancelar" id="popup-entendi" type="button">Entendi</button>
+    
+  </div>
+</dialog>
+
 </body>
+<script>
+const popupExcluir = document.getElementById("popup-excluir");
+const popupErro = document.getElementById("popup-erro");
+const popupNome = document.getElementById("popup-nome");
+
+
+
+const botaoMatriz = document.getElementById("excluir-matriz");
+
+botaoMatriz.addEventListener("click", () => {
+  popupNome.textContent = botaoMatriz.dataset.nome;
+  popupExcluir.showModal();
+});
+
+const botaoCampinas = document.getElementById("excluir-campinas");
+
+botaoCampinas.addEventListener("click", () => {
+  popupNome.textContent = botaoCampinas.dataset.nome;
+  popupErro.showModal();
+});
+
+
+
+document.getElementById("popup-cancelar").addEventListener("click", () => {
+  popupExcluir.close();
+});
+
+document.getElementById("popup-excluir").addEventListener("click", () => {
+  popupExcluir.close();
+});
+
+document.getElementById("popup-entendi").addEventListener("click", () => {
+  popupErro.close();
+});
+
+popup.addEventListener("click", (e) => {
+  if (e.target === popup) popup.close();
+});
+</script>
 </html>
