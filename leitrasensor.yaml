@@ -7,15 +7,33 @@ meta:
   modified: 1794334710016
   description: ""
 collection:
-  - url: "{{ _.LOCAL_URL }}/"
+  - url: ""
     name: New Request
     meta:
       id: req_0eda66d77cb047a09febc78aee89cba7
       created: 1794334720998
-      modified: 1794335629134
+      modified: 1794961354414
       isPrivate: false
       description: ""
       sortKey: -1794334720998
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3334/sensores/listar/1
+    name: http://localhost:3333/sensores/listar/1
+    meta:
+      id: req_c18f7107dae741a4b3f3db602536bf04
+      created: 1794961354205
+      modified: 1794961358887
+      isPrivate: false
+      description: ""
+      sortKey: -1794961354205
     method: GET
     settings:
       renderRequestBody: true

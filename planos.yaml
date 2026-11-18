@@ -38,12 +38,12 @@ collection:
         send: true
         store: true
       rebuildPath: true
-  - url: "{{ _.URL_LOCAL }}/planos"
+  - url: http://[::1]:3333/planos
     name: LISTAR_ALL
     meta:
       id: req_c9f36e0476da43499d0b10828dfe266b
       created: 1794173884753
-      modified: 1794174636176
+      modified: 1794961520771
       isPrivate: false
       description: ""
       sortKey: -1794173884753

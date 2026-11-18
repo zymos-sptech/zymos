@@ -1,0 +1,240 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: tanques
+meta:
+  id: wrk_c306326d337b424eaeecaf37b339838a
+  created: 1794962904770
+  modified: 1794962904770
+  description: ""
+collection:
+  - url: "{{ _.base_url }}/tanques/listar/999\t"
+    name: LISTAR_UNIDADE
+    meta:
+      id: req_2ae810c3acb64611bbaba1737f2845b8
+      created: 1794962914809
+      modified: 1794963068585
+      isPrivate: false
+      description: ""
+      sortKey: -1794962914809
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/listar/abc\t"
+    name: LISTAR_UNIDADE_INEXISTENTE
+    meta:
+      id: req_58057ad6fc4e463698f5707425f172de
+      created: 1794963072457
+      modified: 1794963123796
+      isPrivate: false
+      description: ""
+      sortKey: -1794963072457
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/listar/abc"
+    name: LISTAR_ID_INVALIDO
+    meta:
+      id: req_9ed837634fa04b83b0fa71fcf582e492
+      created: 1794963097478
+      modified: 1794963153194
+      isPrivate: false
+      description: ""
+      sortKey: -1794963097478
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/cadastrar"
+    name: CADASTRAR_UNIDADE_CHEIA
+    meta:
+      id: req_88d6b0b5952442f59a8c63dbe59f9e70
+      created: 1794963161177
+      modified: 1794963181165
+      isPrivate: false
+      description: ""
+      sortKey: -1794963161177
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/cadastrar"
+    name: "CADASTRAR_UNIDADE_INEXISTENTE\t"
+    meta:
+      id: req_3a9d1a1523804b20bdaa533c9c4fdbf5
+      created: 1794963190116
+      modified: 1794963203911
+      isPrivate: false
+      description: ""
+      sortKey: -1794963190116
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/cadastrar"
+    name: CADASTRAR_NOME_INVALIDO
+    meta:
+      id: req_fd5e12fba3374663ba1c0cc62ce91f4c
+      created: 1794963215483
+      modified: 1794963237526
+      isPrivate: false
+      description: ""
+      sortKey: -1794963215483
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/cadastrar"
+    name: "CADASTRAR_CAPACIDADE_INVALIDA\t"
+    meta:
+      id: req_a788ad0f7fe2431cb09086824ff3fcd9
+      created: 1794963247268
+      modified: 1794963261522
+      isPrivate: false
+      description: ""
+      sortKey: -1794963247268
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/editar/1"
+    name: EDITAR_COM_LOTE_ATIVO
+    meta:
+      id: req_d8caa6c931ac4c0b9c77884bb5728656
+      created: 1794963270559
+      modified: 1794963306321
+      isPrivate: false
+      description: ""
+      sortKey: -1794963270559
+    method: PUT
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/editar/1"
+    name: EDITAR_NOME_DUPLICADO
+    meta:
+      id: req_ef69d7909a724be88679b69905270e2f
+      created: 1794963318561
+      modified: 1794963332033
+      isPrivate: false
+      description: ""
+      sortKey: -1794963318561
+    method: PUT
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/editar/999"
+    name: EDITAR_INEXISTENTE
+    meta:
+      id: req_d3f718a4ae734238bce23a5f00e45342
+      created: 1794963338597
+      modified: 1794963360175
+      isPrivate: false
+      description: ""
+      sortKey: -1794963338597
+    method: PUT
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/deletar/1"
+    name: DELETAR_COM_PRODUCAO
+    meta:
+      id: req_669b7721bc6048e9b314fb80c972cd98
+      created: 1794963368493
+      modified: 1794963381055
+      isPrivate: false
+      description: ""
+      sortKey: -1794963368493
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/deletar/5"
+    name: DELETAR_COM_SENSOR
+    meta:
+      id: req_1a6766d6192e42598e6a39ad9b4be2b9
+      created: 1794963389598
+      modified: 1794963402796
+      isPrivate: false
+      description: ""
+      sortKey: -1794963389598
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_20d6f19d90359778db5ebefb2e4717ce68535b43
+    created: 1794962904795
+    modified: 1794962904795
+environments:
+  name: Base Environment
+  meta:
+    id: env_20d6f19d90359778db5ebefb2e4717ce68535b43
+    created: 1794962904790
+    modified: 1794962991363
+    isPrivate: false
+  data:
+    base_url: http://[::1]:3333
