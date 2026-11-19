@@ -1,5 +1,5 @@
 const userData = {
-  id: 1,
+  id: sessionStorage.getItem("ID_USUARIO"),
   nome: sessionStorage.getItem("NOME") || "Usuário Padrão",
   cargo: sessionStorage.getItem("CARGO") || "Administrador",
   email: sessionStorage.getItem("EMAIL") || "usuario@cervejaria.com.br",
