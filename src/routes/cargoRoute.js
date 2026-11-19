@@ -11,6 +11,10 @@ route.get("/", function (req, res) {
   cargoController.listarCargo(req, res);
 });
 
+route.get("/:cargoId", function (req, res) {
+  cargoController.buscarCargo(req, res);
+});
+
 route.put("/:cargoId", function (req, res) {
   cargoController.atualizarCargo(req, res);
 });
