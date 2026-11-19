@@ -1,0 +1,186 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: sensores
+meta:
+  id: wrk_8094317cb731490ab2ef5fea5cec3a37
+  created: 1794961808261
+  modified: 1794961808261
+  description: ""
+collection:
+  - url: "{{ _.base_url }}/sensores/listar/1"
+    name: LISTAR_UNIDADE
+    meta:
+      id: req_cedb1047b296413d97748e0346efcd9e
+      created: 1794961876313
+      modified: 1794963043539
+      isPrivate: false
+      description: ""
+      sortKey: -1794961876313
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/sensores/listar/999"
+    name: LISTAR_UNIDADE_SEM_SENSOR
+    meta:
+      id: req_e96083849ca749fcb36a3a212fbfe603
+      created: 1794962177210
+      modified: 1794963039837
+      isPrivate: false
+      description: ""
+      sortKey: -1794962177210
+    method: PUT
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: " {{ _.base_url }}/sensores/listar/abc"
+    name: LISTAR_ID_INVALIDO
+    meta:
+      id: req_44cf298df5f44b7cb1ba5c0faad078f6
+      created: 1794962213803
+      modified: 1794963035476
+      isPrivate: false
+      description: ""
+      sortKey: -1794962213803
+    method: PUT
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/sensores/cadastrar"
+    name: CADASTRAR_TANQUE_COM_SENSOR
+    meta:
+      id: req_ff11e46e80d542aa805c56780dba9f4b
+      created: 1794962290255
+      modified: 1794963027066
+      isPrivate: false
+      description: ""
+      sortKey: -1794962290255
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/sensores/cadastrar"
+    name: CADASTRAR_TANQUE_INEXISTENTE
+    meta:
+      id: req_854e2cab12ad476682dcf92a57eba237
+      created: 1794962316184
+      modified: 1794963016335
+      isPrivate: false
+      description: ""
+      sortKey: -1794962316184
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/sensores/cadastrar"
+    name: CADASTRAR_SEM_ID
+    meta:
+      id: req_2ca16566f42b4470aff5ce7c3b0efdd0
+      created: 1794962339830
+      modified: 1794963009168
+      isPrivate: false
+      description: ""
+      sortKey: -1794962339830
+    method: POST
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/sensores/status/1"
+    name: STATUS_INVALIDO
+    meta:
+      id: req_af33cf9dbe1e400ea86ecab08d518164
+      created: 1794962373937
+      modified: 1794962398050
+      isPrivate: false
+      description: ""
+      sortKey: -1794962373937
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/sensores/status/999"
+    name: STATUS_SENSOR_INEXISTENTE
+    meta:
+      id: req_943b5099221f41f58b0852f348d8ae1f
+      created: 1794962403480
+      modified: 1794962423030
+      isPrivate: false
+      description: ""
+      sortKey: -1794962403480
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/sensores/deletar/1"
+    name: DELETAR_COM_LEITURAS
+    meta:
+      id: req_ae3c9ae34493477a8cdfd1ec552f7ad1
+      created: 1794962434211
+      modified: 1794962454982
+      isPrivate: false
+      description: ""
+      sortKey: -1794962434211
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_e4fd6f45db0e9d226a9dcf16cd2d4e2ce56b9e40
+    created: 1794961808308
+    modified: 1794961808308
+environments:
+  name: Base Environment
+  meta:
+    id: env_e4fd6f45db0e9d226a9dcf16cd2d4e2ce56b9e40
+    created: 1794961808306
+    modified: 1794962067702
+    isPrivate: false
+  data:
+    base_url: http://[::1]:3333

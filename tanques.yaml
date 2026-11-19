@@ -1,0 +1,136 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: tanques
+meta:
+  id: wrk_c306326d337b424eaeecaf37b339838a
+  created: 1794962904770
+  modified: 1794962904770
+  description: ""
+collection:
+  - url: "{{ _.base_url }}/tanques/1"
+    name: LISTAR
+    meta:
+      id: req_2ae810c3acb64611bbaba1737f2845b8
+      created: 1794962914809
+      modified: 1795125141715
+      isPrivate: false
+      description: ""
+      sortKey: -1794962914809
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques"
+    name: CADASTRAR
+    meta:
+      id: req_3a9d1a1523804b20bdaa533c9c4fdbf5
+      created: 1794963190116
+      modified: 1795125171389
+      isPrivate: false
+      description: ""
+      sortKey: -1794963190116
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "idUnidade": 1,
+          "nome": "TQ-11",
+          "capacidade": 10000
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/1"
+    name: EDITAR
+    meta:
+      id: req_d8caa6c931ac4c0b9c77884bb5728656
+      created: 1794963270559
+      modified: 1795125379958
+      isPrivate: false
+      description: ""
+      sortKey: -1794963270559
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nome": "TQ-01",
+          "capacidade": 10000,
+          "idStatusTanque": 2
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/1"
+    name: DELETAR
+    meta:
+      id: req_669b7721bc6048e9b314fb80c972cd98
+      created: 1794963368493
+      modified: 1795125388988
+      isPrivate: false
+      description: ""
+      sortKey: -1794963368493
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/1/1"
+    name: BUSCAR_TANQUE
+    meta:
+      id: req_2f0794086b0f4d90abe7dd9baadd23df
+      created: 1795126551388
+      modified: 1795127224624
+      isPrivate: false
+      description: ""
+      sortKey: -1794962914709
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_20d6f19d90359778db5ebefb2e4717ce68535b43
+    created: 1794962904795
+    modified: 1794962904795
+environments:
+  name: Base Environment
+  meta:
+    id: env_20d6f19d90359778db5ebefb2e4717ce68535b43
+    created: 1794962904790
+    modified: 1794962991363
+    isPrivate: false
+  data:
+    base_url: http://[::1]:3333

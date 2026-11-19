@@ -10,7 +10,7 @@ require("dotenv").config({ path: caminho_env });
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
-var PORTA_APP = process.env.APP_PORT;
+var PORTA_APP = 3333;
 var HOST_APP = process.env.APP_HOST;
 
 var app = express();
@@ -18,13 +18,18 @@ var app = express();
 var indexRouter = require("./src/routes/indexRoute");
 var usuarioRouter = require("./src/routes/usuarioRoute");
 var planoRouter = require("./src/routes/planoRoute");
+var leituraSensorRouter = require("./src/routes/leituraSensorRoute");
 var cargoRouter = require("./src/routes/cargoRoute");
+var producaoRouter = require("./src/routes/producaoRoute");
+var loteRouter = require("./src/routes/loteRoute");
 var sensorRouter = require("./src/routes/sensorRoute");
+var tanqueRouter = require("./src/routes/tanqueRoute");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/sensores", sensorRouter);
+
 
 app.use(cors());
 
@@ -32,6 +37,12 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/planos", planoRouter);
 app.use("/cargos", cargoRouter);
+app.use("/producoes", producaoRouter);
+app.use("/lotes", loteRouter);
+app.use("/sensores", sensorRouter);
+app.use("/leiturasSensor", leituraSensorRouter);
+app.use("/tanques", tanqueRouter);
+
 
 app.listen(PORTA_APP, function () {
   console.log(`
