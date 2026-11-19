@@ -1,0 +1,27 @@
+/* Sobrescreve as colunas definidas na base .tabela-linha de listas.css */
+.tabela-linha {
+  grid-template-columns: 2fr 1.5fr 1fr 1fr 1.2fr 1fr;
+}
+
+/* Larguras e grids específicos dos modais de Unidades */
+.modal-solicitar-unidade,
+.modal-editar-unidade {
+  max-width: 600px;
+}
+
+.modal-ampliacao {
+  max-width: 560px;
+}
+
+.grid-numero-complemento,
+.grid-ampliacao-tanques {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.grid-bairro-cidade-uf {
+  display: grid;
+  grid-template-columns: 1.5fr 1.2fr 0.6fr;
+  gap: var(--space-sm);
+}
