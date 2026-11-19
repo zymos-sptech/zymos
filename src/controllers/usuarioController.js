@@ -63,11 +63,10 @@ async function autenticar(req, res) {
   if (!email.includes("@") || !email.includes("."))
     return res.status(400).send("Email inválido.");
 
-  usuarioModel
+  await usuarioModel
     .autenticar(email, senha)
     .then(function (response) {
       if (response !== false) {
-        console.log(response);
         res.status(200).json(response);
       } else {
         res.status(400).send("Email ou senha inválido.");
