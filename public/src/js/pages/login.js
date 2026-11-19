@@ -60,22 +60,6 @@ window.handleFormLogin = async () => {
     return;
   }
 
-  // const SESSION_EMAIL = sessionStorage.getItem("EMAIL");
-  // const SESSION_PASSWORD = sessionStorage.getItem("PASSWORD");
-
-  // if (!SESSION_EMAIL || !SESSION_PASSWORD) {
-  //   mostrarErro(iptEmail, erroEmail, "Email ou senha incorretos.");
-  //   iptEmail.focus();
-  //   return;
-  // }
-
-  // if (emailVal !== SESSION_EMAIL || senhaVal !== SESSION_PASSWORD) {
-  //   mostrarErro(iptEmail, erroEmail, "E-mail ou senha incorretos.");
-  //   mostrarErro(iptPassword, erroSenha, "E-mail ou senha incorretos.");
-  //   iptEmail.focus();
-  //   return;
-  // }
-
   await fetch("/usuarios/autenticar", {
     method: "POST",
     headers: {
@@ -98,8 +82,8 @@ window.handleFormLogin = async () => {
         sessionStorage.PLANO = data.plano;
 
         setTimeout(() => {
-          window.location = "../pages/dashboard/visao-geral.html";
-        }, 5000);
+          window.location = "../pages/dashboard/panorama.html";
+        }, 3000);
       } else {
         mostrarErro(iptEmail, erroEmail, "Email ou senha incorretos.");
         iptEmail.focus();
