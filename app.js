@@ -23,6 +23,7 @@ var cargoRouter = require("./src/routes/cargoRoute");
 var producaoRouter = require("./src/routes/producaoRoute");
 var loteRouter = require("./src/routes/loteRoute");
 var sensorRouter = require("./src/routes/sensorRoute");
+var tanqueRouter = require("./src/routes/tanqueRoute");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -39,6 +40,8 @@ app.use("/producoes", producaoRouter);
 app.use("/lotes", loteRouter);
 app.use("/sensores", sensorRouter);
 app.use("/leiturasSensor", leituraSensorRouter);
+app.use("/tanques", tanqueRouter);
+
 
 app.listen(PORTA_APP, function () {
   console.log(`
