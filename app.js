@@ -19,10 +19,12 @@ var indexRouter = require("./src/routes/indexRoute");
 var usuarioRouter = require("./src/routes/usuarioRoute");
 var planoRouter = require("./src/routes/planoRoute");
 var cargoRouter = require("./src/routes/cargoRoute");
+var sensorRouter = require("./src/routes/sensorRoute");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/sensores", sensorRouter);
 
 app.use(cors());
 
