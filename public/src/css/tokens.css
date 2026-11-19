@@ -3,8 +3,6 @@
 /*
   TOKENS GLOBAIS DO ZYMOS
   Regra: ninguém escreve número solto no CSS dos componentes, só var(--nome).
-  Se o Figma mudar, muda aqui e o projeto inteiro acompanha.
-  Base: 1rem = 16px (não mexer no font-size do html).
 */
 
 :root {
@@ -114,7 +112,6 @@ a {
   text-decoration: none;
 }
 
-/* ---------- Utilitário: texto só para leitor de tela ---------- */
 .sr-only {
   position: absolute;
   width: 1px;

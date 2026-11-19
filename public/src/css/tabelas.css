@@ -1,0 +1,257 @@
+/* Complementa o body do tokens.css para páginas de listagem com altura fixa */
+body.pagina-fixa,
+body {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+#sidebar,
+.sidebar-simulada {
+  flex-shrink: 0;
+  width: var(--sidebar-largura);
+  background: var(--color-primary);
+}
+
+.sidebar-simulada--fechada {
+  width: var(--sidebar-largura-fechada);
+}
+
+.dashboard {
+  --panorama-largura: 102.25rem;
+  width: min(
+    var(--panorama-largura),
+    calc(100vw - var(--sidebar-largura) - 2 * var(--space-md))
+  );
+  flex: 0 1 auto;
+  min-width: 0;
+  margin: 0 auto;
+  height: 100%;
+  padding: var(--space-md) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  overflow: hidden;
+}
+
+.caminho {
+  font-size: var(--text-12);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.caminho a {
+  color: var(--color-text-muted);
+}
+
+.caminho-atual {
+  color: var(--color-primary);
+  font-weight: var(--weight-medium);
+}
+
+.container-cabecalho,
+.container-barra-superior {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 14px var(--space-lg);
+  box-shadow: var(--shadow-panel);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-shrink: 0;
+}
+
+.cabecalho-nome {
+  font-size: var(--text-18);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+.busca-campo {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.busca-icone {
+  position: absolute;
+  left: 14px;
+  color: var(--color-text-muted);
+  font-size: var(--text-13);
+}
+
+.busca-entrada {
+  width: 100%;
+  padding: 10px 12px 10px 38px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  font-family: var(--font-primary);
+  font-size: var(--text-14);
+  color: var(--color-text);
+}
+
+.busca-entrada:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.filtro-select {
+  padding: 10px 38px 10px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  font-family: var(--font-primary);
+  font-size: var(--text-14);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23556c80' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px;
+}
+
+.filtro-select:focus {
+  border-color: var(--color-primary);
+}
+
+.botao {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-14);
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+}
+
+.botao:hover {
+  opacity: 0.9;
+}
+
+.botao-principal,
+.botao-solicitar {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-dark);
+  white-space: nowrap;
+}
+
+.botao-editar {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  padding: 6px 12px;
+  font-size: var(--text-13);
+}
+
+.botao-excluir {
+  background-color: transparent;
+  color: #b91c1c;
+  border: 1px solid var(--color-border);
+  padding: 6px 12px;
+  font-size: var(--text-13);
+}
+
+.card-tabela {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-panel);
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.container-tabela {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Cada página define grid-template-columns no seu CSS específico */
+.tabela-linha {
+  display: grid;
+  padding: 14px 16px;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tabela-cabecalho {
+  background-color: var(--color-surface-muted);
+  font-size: var(--text-11);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.tabela-linha:last-child {
+  border-bottom: none;
+}
+
+.tabela-celula {
+  font-size: var(--text-14);
+  color: var(--color-text);
+}
+
+/* Padrão reutilizável para título e subtítulo na primeira coluna das tabelas */
+.item-titulo,
+.unidade-nome {
+  font-weight: var(--weight-semibold);
+  display: block;
+  color: var(--color-primary);
+}
+
+.item-subtitulo,
+.unidade-endereco {
+  font-size: var(--text-12);
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 2px;
+}
+
+.status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-12);
+  font-weight: var(--weight-medium);
+}
+
+.status-ativa,
+.status {
+  background-color: #5A6B5A;
+  color: var(--color-text-on-dark);
+}
+
+.status-analise {
+  background-color: var(--color-accent);
+  color: var(--color-text-on-dark);
+}
+
+.tabela-rodape {
+  font-size: var(--text-12);
+  color: var(--color-text-muted);
+  padding-top: var(--space-sm);
+  padding-left: 4px;
+  flex-shrink: 0;
+}
