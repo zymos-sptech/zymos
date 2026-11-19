@@ -28,6 +28,7 @@ var tanqueRouter = require("./src/routes/tanqueRoute");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/sensores", sensorRouter);
 
 
 app.use(cors());
