@@ -101,6 +101,26 @@ function listarPorUnidade(req, res) {
     }).catch(tratarErro(res, "buscar os tanques"));
 }
 
+function listarPorTanque(req, res) {
+    var idUnidade = req.params.idUnidade;
+    var idTanque = req.params.idTanque;
+
+    if (naoEInteiro(idUnidade) || naoEInteiro(idTanque)) {
+        return res.status(400).send("O id da unidade ou do tanque é inválido!");
+    }
+
+    tanqueModel.listarPorTanque(idUnidade, idTanque).then(function (resultado) {
+        if (resultado.length == 0) {
+            return res.status(404).send("Tanque não encontrado nessa unidade!");
+        }
+
+        return res.status(200).json(resultado[0]);
+    }).catch(tratarErro(res, "buscar o tanque"));
+}
+
+
+
+
 function editar(req, res) {
     var idTanque = req.params.idTanque;
     var nome = req.body.nome;
@@ -170,6 +190,7 @@ function deletar(req, res) {
 module.exports = {
     cadastrar,
     listarPorUnidade,
+    listarPorTanque,
     editar,
     deletar
 }

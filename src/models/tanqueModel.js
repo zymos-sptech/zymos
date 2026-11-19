@@ -88,6 +88,31 @@ function listarPorUnidade(idUnidade) {
     return database.executar(instrucaoSql);
 }
 
+function listarPorTanque(idUnidade, idTanque) {
+    var instrucaoSql = `
+        SELECT
+            t.id AS idTanque,
+            t.nome,
+            t.capacidade,
+            t.fk_status_tanque,
+            st.nome AS status_tanque,
+            l.codigo AS lote,
+            c.nome AS cerveja
+        FROM tanque t
+            INNER JOIN status_tanque st
+                ON st.id = t.fk_status_tanque
+            LEFT JOIN producao p
+                ON p.fk_tanque = t.id AND p.dt_saida IS NULL
+            LEFT JOIN lote l
+                ON l.id = p.fk_lote AND l.fk_status_lote = 1
+            LEFT JOIN cerveja c
+                ON c.id = l.fk_cerveja
+        WHERE t.fk_unidade = ${idUnidade} AND t.id = ${idTanque};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function editar(idTanque, nome, capacidade, idStatusTanque) {
     var instrucaoSql = `
         UPDATE tanque
@@ -112,6 +137,7 @@ module.exports = {
     buscarPorNome,
     cadastrar,
     listarPorUnidade,
+    listarPorTanque,
     editar,
     deletar
 }

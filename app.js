@@ -33,6 +33,7 @@ app.use("/planos", planoRouter);
 app.use("/cargos", cargoRouter);
 app.use("/tanques", tanqueRouter);
 
+
 app.listen(PORTA_APP, function () {
   console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  
