@@ -12,10 +12,11 @@
   top: 0;
   flex-shrink: 0;
   z-index: 100;
+  transition: all ease 150ms;
 }
 
 .sidebar-container {
-  display: none;
+  /* display: none; */
 }
 
 .btn-close {
@@ -53,14 +54,15 @@
   rotate: -180deg;
 }
 
-.sidebar-logo-open {
-}
+.sidebar-logo-open {}
 
-.sidebar-divider {
+.sidebar-divider, 
+.sidebar-line {
   width: 100%;
   border: none;
   border-top: 1px solid var(--color-neutral-base);
   opacity: 0.1;
+  margin: 1rem 0;
 }
 
 .sidebar-container nav,
@@ -214,3 +216,28 @@
   height: 2.4rem;
 }
 
+.sidebar-title {
+  color: var(--color-neutral-gray);
+  
+  font-size: 0.7rem;
+  font-style: normal;
+  
+  line-height: 1rem;
+  text-transform: uppercase;
+  padding-bottom: 0.3rem;
+}
+
+.btn-logout {
+  background: none;
+  appearance: none;
+  border-radius: 0.625rem;
+  padding: 0.3rem;
+  border: 0;
+  color: var(--white);
+  font-size: 1.5rem;
+  transition: ease-in-out 150ms;
+}
+
+.btn-logout:hover {
+  color: var(--color-accent);
+}

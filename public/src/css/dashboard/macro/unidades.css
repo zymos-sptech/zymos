@@ -208,3 +208,47 @@ button {
   font-size: 11px;
   line-height: 16px;
 }
+
+.popup {
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;          
+  border-radius: 1.75rem;   
+  padding: 4rem;         
+  width: 38.75rem;
+  background: var(--white);
+  box-shadow: 0 20px 48px -12px rgba(18, 30, 49, 0.22), 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.popup::backdrop {
+  background: rgba(20, 30, 50, 0.45); 
+  backdrop-filter: blur(2px);         
+}
+
+
+
+.popup__botoes {
+  display: flex;              
+  justify-content: flex-end;  
+  gap: 3rem;                  
+}
+
+.popup-cancelar {
+  padding: 14px 24px;
+  background: var(--white);
+  border: 1px solid var(--color-neutral-gray);
+  border-radius: 13px;
+  font-size: 15px;
+  color: var(--color-blue-dark); 
+}
+
+.popup-excluir {
+  padding: 14px 24px;
+  background: var(--color-alert-red);
+  border: 1px solid var(--color-neutral-gray);
+  border-radius: 13px;
+  font-size: 15px;
+  color: var(--white); 
+}

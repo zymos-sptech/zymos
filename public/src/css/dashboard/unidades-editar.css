@@ -24,7 +24,7 @@
     font-weight: 400;
     line-height: 1.225rem;
 }
- 
+
 .editar-titulo {
     display: flex;
     flex-direction: column;
@@ -32,7 +32,7 @@
     align-content: flex-start;
     margin-bottom: 1.25rem;
 }
- 
+
 .editar-voltar {
     margin-top: 1rem;
     color: var(--color-blue-dark);

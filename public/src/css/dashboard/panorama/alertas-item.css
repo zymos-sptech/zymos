@@ -1,0 +1,97 @@
+/* Lista "Alertas em aberto" (Figma: item 60px, padding 10/16, gap entre itens 5)
+   Cada alerta é um BOTÃO: ao passar o mouse (ou focar com o teclado) fica laranja. */
+.lista-alertas {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  list-style: none;
+  overflow-y: auto;
+}
+
+.lista-alertas > li {
+  flex-shrink: 0;
+}
+
+.alerta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+  padding: var(--space-sm) 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.alerta-item__ponto {
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: 0.375rem;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  transition: background-color 0.2s ease;
+}
+
+.alerta-item__texto {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.alerta-item__titulo {
+  display: block;
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+  line-height: 1.43;
+  color: var(--color-text);
+  transition: color 0.2s ease;
+}
+
+.alerta-item__legenda {
+  display: block;
+  font-size: var(--text-12);
+  line-height: 1.33;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+/* Só hover e foco do teclado deixam o alerta laranja */
+.alerta-item:hover,
+.alerta-item:focus-visible {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.alerta-item:hover .alerta-item__ponto,
+.alerta-item:focus-visible .alerta-item__ponto {
+  background: var(--color-accent-dark);
+}
+
+.alerta-item:hover .alerta-item__titulo,
+.alerta-item:hover .alerta-item__legenda,
+.alerta-item:focus-visible .alerta-item__titulo,
+.alerta-item:focus-visible .alerta-item__legenda {
+  color: var(--color-accent-dark);
+}
+
+.alerta-item:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Sem alertas */
+.lista-alertas__vazio {
+  padding: var(--space-md);
+  font-size: var(--text-14);
+  color: var(--color-text-muted);
+}

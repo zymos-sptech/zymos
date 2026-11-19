@@ -1,18 +1,18 @@
 type: collection.insomnia.rest/5.0
 schema_version: "5.1"
-name: planos
+name: plano
 meta:
   id: wrk_cad60db6beed418cb46b6c153007b488
   created: 1794172625055
-  modified: 1794172625055
+  modified: 1794223511244
   description: ""
 collection:
-  - url: "{{ _.URL_LOCAL }}/planos"
+  - url: http://localhost:3333/producoes
     name: "CRIAR "
     meta:
       id: req_3bcf92283187445089a5fb75a9a35194
       created: 1794172641413
-      modified: 1794173538766
+      modified: 1794976948891
       isPrivate: false
       description: ""
       sortKey: -1794172641413
@@ -21,11 +21,9 @@ collection:
       mimeType: application/json
       text: |-
         {
-        	"nome": "Básico",
-        	"tanquesMin": 0,
-        	"tanquesMax": 9,
-        	"valorSetup": 1200.00,
-        	"valorMensalTanque": 290.00 
+          "loteId": 100,
+          "tanqueId": 5,
+          "dtEntrada": "2026-11-18 08:00:00"
         }
     headers:
       - name: Content-Type
@@ -38,16 +36,22 @@ collection:
         send: true
         store: true
       rebuildPath: true
-  - url: "{{ _.URL_LOCAL }}/planos"
+  - url: http://localhost:3333/producoes/100/5
     name: LISTAR_ALL
     meta:
       id: req_c9f36e0476da43499d0b10828dfe266b
       created: 1794173884753
-      modified: 1794174636176
+      modified: 1794977138417
       isPrivate: false
       description: ""
       sortKey: -1794173884753
-    method: GET
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: ""
+    headers:
+      - name: Content-Type
+        value: application/json
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -79,7 +83,7 @@ collection:
     meta:
       id: req_d81f0902351a469bb478f2e7d7a82b56
       created: 1794183022293
-      modified: 1794183079039
+      modified: 1794976242767
       isPrivate: false
       description: ""
       sortKey: -1794183022293
@@ -89,7 +93,7 @@ collection:
       text: |-
         {
         	"nome": "PRO",
-        	"tanquesMin": 12,
+        	"tanquesMin": 0,
         	"tanquesMax": 45,
         	"valorSetup": 1200.00,
         	"valorMensalTanque": 290.00 
