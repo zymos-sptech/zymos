@@ -33,6 +33,8 @@ async function criarContato(req, res) {
   const emailJira = process.env.JIRA_EMAIL;
   const tokenJira = process.env.JIRA_TOKEN_LEAD;
 
+// https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issues/#api-rest-api-3-events-get
+
   const bodyData = {
     fields: {
       project: {
