@@ -10,7 +10,7 @@ require("dotenv").config({ path: caminho_env });
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
-var PORTA_APP = 3333;
+var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
 
 var app = express();
@@ -22,6 +22,7 @@ var leituraSensorRouter = require("./src/routes/leituraSensorRoute");
 var cargoRouter = require("./src/routes/cargoRoute");
 var producaoRouter = require("./src/routes/producaoRoute");
 var loteRouter = require("./src/routes/loteRoute");
+var contatoRouter = require("./src/routes/contatoRoute");
 var sensorRouter = require("./src/routes/sensorRoute");
 var tanqueRouter = require("./src/routes/tanqueRoute");
 
@@ -39,6 +40,7 @@ app.use("/planos", planoRouter);
 app.use("/cargos", cargoRouter);
 app.use("/producoes", producaoRouter);
 app.use("/lotes", loteRouter);
+app.use("/contato", contatoRouter);
 app.use("/sensores", sensorRouter);
 app.use("/leiturasSensor", leituraSensorRouter);
 app.use("/tanques", tanqueRouter);
