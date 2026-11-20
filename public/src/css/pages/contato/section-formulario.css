@@ -191,6 +191,29 @@
   opacity: 0.9;
 }
 
+.campo-input.invalido {
+  border-color: var(--color-alert-red);
+  background-color: var(--color-alert-light);
+}
+
+.campo-input.invalido:focus {
+  box-shadow: 0 0 0 3px rgba(192, 82, 48, 0.2);
+}
+
+.contato-erro {
+  color: var(--color-alert-red);
+  font-family: var(--font-primary);
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 0.9rem;
+  margin-left: 0.2rem;
+  margin-top: 0.15rem;
+}
+
+.contato-erro:empty {
+  display: none;
+}
+
 @media (max-width: 600px) {
   .contato-formulario-linha-dupla {
     flex-direction: column;

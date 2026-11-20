@@ -34,6 +34,20 @@ function validarEmail(valor){
     return("");
 }
 
+function validarEmpresa(valor){
+    const empresa = valor.trim();
+    if(empresa === ""){
+        return("Digite o nome da sua empresa.");
+    }
+    if(empresa.length < 2){
+        return("O nome da empresa precisa ter pelo menos 2 caracteres.");
+    }
+    if(empresa.length > 100){
+        return("O nome da empresa pode ter no máximo 100 caracteres.");
+    }
+    return("");
+}
+
 function avaliarSenha(senha){
     const tamanho = senha.length >= 8;
     const letraMais = /[A-Z]/.test(senha);
