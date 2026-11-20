@@ -7,15 +7,79 @@ meta:
   modified: 1794334710016
   description: ""
 collection:
-  - url: "{{ _.LOCAL_URL }}/"
-    name: New Request
+  - url: "{{ _.base_url }}/leiturasSensor/cadastrar"
+    name: CADASTRAR
     meta:
       id: req_0eda66d77cb047a09febc78aee89cba7
       created: 1794334720998
-      modified: 1794780184739
+      modified: 1795123929744
       isPrivate: false
       description: ""
       sortKey: -1794334720998
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "idSensor": 1,
+          "temperatura": 25.5
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/leiturasSensor/listar"
+    name: LISTAR
+    meta:
+      id: req_a568067aa5fa4632af1821a4fbd68721
+      created: 1795123965090
+      modified: 1795123987348
+      isPrivate: false
+      description: ""
+      sortKey: -1795123965090
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/leiturasSensor/lote/100"
+    name: LISTAR_LOTE
+    meta:
+      id: req_247242242d844707aabda884f677112c
+      created: 1795123999130
+      modified: 1795124007758
+      isPrivate: false
+      description: ""
+      sortKey: -1795123999130
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3334/sensores/listar/1
+    name: http://localhost:3333/sensores/listar/1
+    meta:
+      id: req_c18f7107dae741a4b3f3db602536bf04
+      created: 1794961354205
+      modified: 1794961358887
+      isPrivate: false
+      description: ""
+      sortKey: -1794961354205
     method: GET
     settings:
       renderRequestBody: true
@@ -36,8 +100,7 @@ environments:
   meta:
     id: env_e6540b849813ab0aadf0b862bdc0ee8f9e410e26
     created: 1794334710033
-    modified: 1794334918135
+    modified: 1795123799860
     isPrivate: false
   data:
-    LOCAL_URL: http://localhost:3333
-    "": ""
+    base_url: http://[::1]:3333
