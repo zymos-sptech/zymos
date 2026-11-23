@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 async function criarUsuario(nome, email, senha, cargoId, empresaId) {
   var sql = `
-    INSERT INTO usuario (nome, email, senha, fk_cargo, fk_empresa, status) VALUES
+    INSERT INTO usuario (nome, email, senha, fk_cargo, fk_empresa, statuss) VALUES
     ("${nome}", "${email}", SHA2("${senha}", 256), ${cargoId}, ${empresaId}, 1)
     `;
 

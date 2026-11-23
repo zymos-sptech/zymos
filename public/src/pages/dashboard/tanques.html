@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tanques - Zymos</title>    
+    <link rel="shortcut icon" href="../../../assets/branding/simbolo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="../../css/tabelas.css">
+    <link rel="stylesheet" href="../../css/modais.css">
+    <link rel="stylesheet" href="../../css/dashboard/tanques.css">
+    <link rel="stylesheet" href="../../css/components/sidebar.css">
+    <script src="../../js/sidebar/sidebar.js" defer type="module"></script>
+    <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="sidebar"></div>
+
+    <main class="dashboard">
+
+        <!-- Barra Superior (Título, Filtro de Unidade, Busca, Filtro de Status e Botão) -->
+        <section class="container-barra-superior">
+            <h1 class="cabecalho-nome">Tanques</h1>
+
+            <select class="filtro-unidade">
+                <option value="campinas">Unidade: Fábrica Campinas</option>
+                <option value="ribeirao">Unidade: Matriz Ribeirão Preto</option>
+                <option value="sorocaba">Unidade: Fábrica Sorocaba</option>
+            </select>
+
+            <div class="busca-campo">
+                <i class="fa-solid fa-magnifying-glass busca-icone" aria-hidden="true"></i>
+                <input class="busca-entrada" type="search" placeholder="Pesquisar tanque ou lote...">
+            </div>
+
+            <select class="filtro-select">
+                <option value="">Status: Todos</option>
+                <option value="em-uso">Em uso</option>
+                <option value="disponivel">Disponível</option>
+                <option value="aguardando-ativacao">Aguardando ativação</option>
+            </select>
+
+            <button class="botao botao-principal" id="btn-abrir-adicionar-tanque" type="button">
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                Adicionar tanque
+            </button>
+        </section>
+
+        <!-- Card Externo com Rolagem Interna que abraça a Tabela -->
+        <section class="card-tabela">
+            <div class="container-tabela">
+                <div class="tabela-linha tabela-cabecalho">
+                    <span>Tanque</span>
+                    <span>Capacidade</span>
+                    <span>Temperatura atual</span>
+                    <span>Lote atual</span>
+                    <span>Status</span>
+                    <span>Ações</span>
+                </div>
+
+                <!-- Linha 1: TQ-01 (Em uso) -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">TQ-01</span>
+                        <span class="item-subtitulo">Fábrica Campinas</span>
+                    </div>
+                    <div class="tabela-celula">10.000 L</div>
+                    <div class="tabela-celula">4,2 °C</div>
+                    <div class="tabela-celula">Lote 201 · Pilsen</div>
+                    <div class="tabela-celula"><span class="status status-ativa">Em uso</span></div>
+                    <div class="tabela-celula">
+                        <div style="display: flex; gap: 8px;">
+                            <button class="botao botao-editar js-editar-tanque-em-uso" type="button">Editar</button>
+                            <button class="botao botao-excluir js-excluir-bloqueado" data-tanque="TQ-01"
+                                data-lote="Lote 201" type="button">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linha 2: TQ-02 (Em uso) -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">TQ-02</span>
+                        <span class="item-subtitulo">Fábrica Campinas</span>
+                    </div>
+                    <div class="tabela-celula">10.000 L</div>
+                    <div class="tabela-celula">18,0 °C</div>
+                    <div class="tabela-celula">Lote 202 · Red Ale</div>
+                    <div class="tabela-celula"><span class="status status-ativa">Em uso</span></div>
+                    <div class="tabela-celula">
+                        <div style="display: flex; gap: 8px;">
+                            <button class="botao botao-editar js-editar-tanque-em-uso" type="button">Editar</button>
+                            <button class="botao botao-excluir js-excluir-bloqueado" data-tanque="TQ-02"
+                                data-lote="Lote 202" type="button">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linha 3: TQ-03 (Em uso) -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">TQ-03</span>
+                        <span class="item-subtitulo">Fábrica Campinas</span>
+                    </div>
+                    <div class="tabela-celula">10.000 L</div>
+                    <div class="tabela-celula">19,5 °C</div>
+                    <div class="tabela-celula">Lote 203 · IPA</div>
+                    <div class="tabela-celula"><span class="status status-ativa">Em uso</span></div>
+                    <div class="tabela-celula">
+                        <div style="display: flex; gap: 8px;">
+                            <button class="botao botao-editar js-editar-tanque-em-uso" type="button">Editar</button>
+                            <button class="botao botao-excluir js-excluir-bloqueado" data-tanque="TQ-03"
+                                data-lote="Lote 203" type="button">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linha 4: TQ-04 (Em uso) -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">TQ-04</span>
+                        <span class="item-subtitulo">Fábrica Campinas</span>
+                    </div>
+                    <div class="tabela-celula">10.000 L</div>
+                    <div class="tabela-celula">17,8 °C</div>
+                    <div class="tabela-celula">Lote 204 · Weiss</div>
+                    <div class="tabela-celula"><span class="status status-ativa">Em uso</span></div>
+                    <div class="tabela-celula">
+                        <div style="display: flex; gap: 8px;">
+                            <button class="botao botao-editar js-editar-tanque-em-uso" type="button">Editar</button>
+                            <button class="botao botao-excluir js-excluir-bloqueado" data-tanque="TQ-04"
+                                data-lote="Lote 204" type="button">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linha 5: TQ-05 (Disponível) -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">TQ-05</span>
+                        <span class="item-subtitulo">Fábrica Campinas</span>
+                    </div>
+                    <div class="tabela-celula">10.000 L</div>
+                    <div class="tabela-celula">—</div>
+                    <div class="tabela-celula">—</div>
+                    <div class="tabela-celula"><span class="status status-ativa">Disponível</span></div>
+                    <div class="tabela-celula">
+                        <div style="display: flex; gap: 8px;">
+                            <button class="botao botao-editar js-editar-tanque-disponivel" type="button">Editar</button>
+                            <button class="botao botao-excluir js-excluir-tanque" data-tanque="TQ-05"
+                                type="button">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linha 6: TQ-06 (Aguardando ativação) -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">TQ-06</span>
+                        <span class="item-subtitulo">Fábrica Campinas</span>
+                    </div>
+                    <div class="tabela-celula">10.000 L</div>
+                    <div class="tabela-celula">—</div>
+                    <div class="tabela-celula">—</div>
+                    <div class="tabela-celula"><span class="status status-analise">Aguardando ativação</span></div>
+                    <div class="tabela-celula">
+                        <div style="display: flex; gap: 8px;">
+                            <button class="botao botao-editar js-editar-tanque-aguardando" type="button">Editar</button>
+                            <button class="botao botao-excluir js-excluir-aguardando" data-tanque="TQ-06"
+                                data-unidade="Campinas" type="button">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="tabela-rodape">Mostrando 6 de 6 tanques · 4 em uso · 1 disponível · 1 aguardando ativação</p>
+        </section>
+    </main>
+
+    <!-- MODAL 1: CADASTRAR TANQUE (UNIDADE COM VAGAS DISPONÍVEIS) -->
+    <dialog id="modal-cadastrar-tanque" class="modal modal-formulario">
+        <form method="dialog" class="modal-estrutura">
+            <header class="modal-cabecalho">
+                <div>
+                    <h2 class="modal-titulo">Cadastrar tanque</h2>
+                    <p class="modal-subtitulo">Escolha a unidade e informe os dados do tanque.</p>
+                </div>
+                <button type="button" class="modal-fechar" id="fechar-modal-tanque">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </header>
+
+            <div class="modal-corpo">
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="tanque-unidade">
+                        Unidade <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <select class="campo-select" id="tanque-unidade">
+                        <option value="campinas" selected>Campinas · 5 de 6 tanques</option>
+                        <option value="ribeirao">Matriz Ribeirão Preto · 4 de 4 tanques (Cheia)</option>
+                    </select>
+                </div>
+
+                <div class="grid-metricas-tanque">
+                    <div class="modal-metrica-card">
+                        <span class="modal-metrica-valor">6</span>
+                        <span class="modal-metrica-label">tanques contratados</span>
+                    </div>
+                    <div class="modal-metrica-card">
+                        <span class="modal-metrica-valor">5</span>
+                        <span class="modal-metrica-label">já cadastrados</span>
+                    </div>
+                    <div class="modal-metrica-card">
+                        <span class="modal-metrica-valor modal-metrica-valor--destaque">1</span>
+                        <span class="modal-metrica-label">ainda pode cadastrar</span>
+                    </div>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="tanque-nome">
+                        Nome do tanque <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <input class="campo-entrada" type="text" id="tanque-nome" placeholder="Ex: TQ-06" value="TQ-06"
+                        required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="tanque-capacidade">
+                        Capacidade (litros) <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <input class="campo-entrada" type="text" id="tanque-capacidade" placeholder="Ex: 10.000"
+                        value="10.000" required>
+                </div>
+
+                <div class="modal-aviso">
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    <p>
+                        O tanque nasce como <strong>Aguardando ativação</strong>. Quando a Zymos ligar o sensor, ele
+                        passa para <strong>Disponível</strong> e entra no monitoramento.
+                    </p>
+                </div>
+            </div>
+
+            <footer class="modal-rodape">
+                <button type="button" class="botao-modal-cancelar" id="cancelar-modal-tanque">Cancelar</button>
+                <button type="submit" class="botao-modal-confirmar">Cadastrar tanque</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- MODAL 2: CADASTRAR TANQUE (UNIDADE COMPLETA / CHEIA) -->
+    <dialog id="modal-tanque-cheio" class="modal modal-formulario">
+        <form method="dialog" class="modal-estrutura">
+            <header class="modal-cabecalho">
+                <div>
+                    <h2 class="modal-titulo">Cadastrar tanque</h2>
+                    <p class="modal-subtitulo">Escolha a unidade e informe os dados do tanque.</p>
+                </div>
+                <button type="button" class="modal-fechar" id="fechar-modal-tanque-cheio">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </header>
+
+            <div class="modal-corpo">
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="tanque-unidade-cheia">
+                        Unidade <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <select class="campo-select" id="tanque-unidade-cheia">
+                        <option value="ribeirao" selected>Matriz Ribeirão Preto · 4 de 4 tanques</option>
+                        <option value="campinas">Campinas · 5 de 6 tanques</option>
+                    </select>
+                </div>
+
+                <div class="modal-aviso">
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    <div class="modal-aviso-conteudo">
+                        <span class="modal-aviso-titulo">Todos os tanques contratados já foram cadastrados</span>
+                        <p>Para cadastrar mais tanques em <strong>Matriz Ribeirão Preto</strong>, peça a ampliação à
+                            Zymos.</p>
+                    </div>
+                </div>
+
+                <div class="grid-metricas-tanque">
+                    <div class="modal-metrica-card">
+                        <span class="modal-metrica-valor">4</span>
+                        <span class="modal-metrica-label">tanques contratados</span>
+                    </div>
+                    <div class="modal-metrica-card">
+                        <span class="modal-metrica-valor">4</span>
+                        <span class="modal-metrica-label">já cadastrados</span>
+                    </div>
+                    <div class="modal-metrica-card">
+                        <span class="modal-metrica-valor modal-metrica-valor--destaque">0</span>
+                        <span class="modal-metrica-label">ainda pode cadastrar</span>
+                    </div>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="tanque-nome-bloqueado">Nome do tanque</label>
+                    <input class="campo-entrada campo-entrada--bloqueado" type="text" id="tanque-nome-bloqueado"
+                        value="Indisponível: unidade completa" readonly>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="tanque-capacidade-bloqueada">Capacidade (litros)</label>
+                    <input class="campo-entrada campo-entrada--bloqueado" type="text" id="tanque-capacidade-bloqueada"
+                        value="Indisponível: unidade completa" readonly>
+                </div>
+            </div>
+
+            <footer class="modal-rodape">
+                <button type="button" class="botao-modal-cancelar" id="cancelar-modal-tanque-cheio">Cancelar</button>
+                <a href="../unidades/unidade.html" class="botao botao-principal">
+                    Solicitar ampliação <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- MODAL 3: EDITAR TANQUE (STATUS EM USO) -->
+    <dialog id="modal-editar-tanque-em-uso" class="modal modal-formulario">
+        <form method="dialog" class="modal-estrutura">
+            <header class="modal-cabecalho">
+                <div class="modal-cabecalho-info">
+                    <div class="modal-titulo-linha">
+                        <h2 class="modal-titulo">Editar tanque</h2>
+                        <span class="modal-status-badge modal-status-badge--em-uso">Em uso</span>
+                    </div>
+                    <p class="modal-subtitulo">TQ-02 · Campinas</p>
+                </div>
+                <button type="button" class="modal-fechar" id="fechar-modal-editar-em-uso">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </header>
+
+            <div class="modal-corpo">
+                <div class="campo-grupo">
+                    <div class="campo-rotulo-linha">
+                        <label class="campo-rotulo" for="em-uso-unidade">Unidade</label>
+                        <span class="campo-opcional">Somente leitura</span>
+                    </div>
+                    <select class="campo-select campo-entrada--bloqueado" id="em-uso-unidade" disabled>
+                        <option value="campinas" selected>Campinas</option>
+                    </select>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="em-uso-nome">
+                        Nome do tanque <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <input class="campo-entrada" type="text" id="em-uso-nome" value="TQ-02" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="em-uso-capacidade">
+                        Capacidade (litros) <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <input class="campo-entrada" type="text" id="em-uso-capacidade" value="10.000" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <div class="campo-rotulo-linha">
+                        <label class="campo-rotulo" for="em-uso-status">Status</label>
+                        <span class="campo-opcional">Somente leitura</span>
+                    </div>
+                    <input class="campo-entrada campo-entrada--bloqueado" type="text" id="em-uso-status" value="Em uso"
+                        readonly>
+
+                    <div class="modal-aviso modal-aviso--info">
+                        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                        <p>
+                            A capacidade não pode ficar abaixo do volume do lote em andamento (<strong>7.000
+                                L</strong>). O status “<strong>Em uso</strong>” muda sozinho quando o lote termina.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="modal-rodape">
+                <button type="button" class="botao-modal-cancelar" id="cancelar-modal-editar-em-uso">Cancelar</button>
+                <button type="submit" class="botao-modal-confirmar">Salvar alterações</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- MODAL 4: EDITAR TANQUE (STATUS AGUARDANDO ATIVAÇÃO - UNIDADE SOMENTE LEITURA) -->
+    <dialog id="modal-editar-tanque-aguardando" class="modal modal-formulario">
+        <form method="dialog" class="modal-estrutura">
+            <header class="modal-cabecalho">
+                <div class="modal-cabecalho-info">
+                    <div class="modal-titulo-linha">
+                        <h2 class="modal-titulo">Editar tanque</h2>
+                        <span class="modal-status-badge modal-status-badge--analise">Aguardando ativação</span>
+                    </div>
+                    <p class="modal-subtitulo">TQ-06 · Campinas</p>
+                </div>
+                <button type="button" class="modal-fechar" id="fechar-modal-editar-aguardando">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </header>
+
+            <div class="modal-corpo">
+                <div class="campo-grupo">
+                    <div class="campo-rotulo-linha">
+                        <label class="campo-rotulo" for="aguardando-unidade">Unidade</label>
+                        <span class="campo-opcional">Somente leitura</span>
+                    </div>
+                    <select class="campo-select campo-entrada--bloqueado" id="aguardando-unidade" disabled>
+                        <option value="campinas" selected>Campinas</option>
+                    </select>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="aguardando-nome">
+                        Nome do tanque <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <input class="campo-entrada" type="text" id="aguardando-nome" value="TQ-06" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="aguardando-capacidade">
+                        Capacidade (litros) <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <input class="campo-entrada" type="text" id="aguardando-capacidade" value="10.000" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <div class="campo-rotulo-linha">
+                        <label class="campo-rotulo" for="aguardando-status">Status</label>
+                        <span class="campo-opcional">Somente leitura</span>
+                    </div>
+                    <input class="campo-entrada campo-entrada--bloqueado" type="text" id="aguardando-status"
+                        value="Aguardando ativação" readonly>
+
+                    <div class="modal-aviso modal-aviso--info">
+                        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                        <p>
+                            A unidade não pode ser alterada enquanto o sensor está em ativação pela Zymos. Ao ligar o
+                            sensor, o tanque passa para <strong>Disponível</strong> sozinho.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="modal-rodape">
+                <button type="button" class="botao-modal-cancelar"
+                    id="cancelar-modal-editar-aguardando">Cancelar</button>
+                <button type="submit" class="botao-modal-confirmar">Salvar alterações</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- MODAL 5: EDITAR TANQUE (STATUS DISPONÍVEL - UNIDADE SOMENTE LEITURA) -->
+    <dialog id="modal-editar-tanque-disponivel" class="modal modal-formulario">
+        <form method="dialog" class="modal-estrutura">
+            <header class="modal-cabecalho">
+                <div class="modal-cabecalho-info">
+                    <div class="modal-titulo-linha">
+                        <h2 class="modal-titulo">Editar tanque</h2>
+                        <span class="modal-status-badge modal-status-badge--ativa">Disponível</span>
+                    </div>
+                    <p class="modal-subtitulo">TQ-05 · Campinas</p>
+                </div>
+                <button type="button" class="modal-fechar" id="fechar-modal-editar-disponivel">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </header>
+
+            <div class="modal-corpo">
+                <div class="campo-grupo">
+                    <div class="campo-rotulo-linha">
+                        <label class="campo-rotulo" for="disponivel-unidade">Unidade</label>
+                        <span class="campo-opcional">Somente leitura</span>
+                    </div>
+                    <select class="campo-select campo-entrada--bloqueado" id="disponivel-unidade" disabled>
+                        <option value="campinas" selected>Campinas</option>
+                    </select>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="disponivel-nome">
+                        Nome do tanque <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <input class="campo-entrada" type="text" id="disponivel-nome" value="TQ-05" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="disponivel-capacidade">
+                        Capacidade (litros) <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <input class="campo-entrada" type="text" id="disponivel-capacidade" value="10.000" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <div class="campo-rotulo-linha">
+                        <label class="campo-rotulo" for="disponivel-status">Status</label>
+                        <span class="campo-opcional">Somente leitura</span>
+                    </div>
+                    <input class="campo-entrada campo-entrada--bloqueado" type="text" id="disponivel-status"
+                        value="Disponível" readonly>
+
+                    <div class="modal-aviso modal-aviso--info">
+                        <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                        <p>
+                            Este tanque está <strong>Disponível</strong> para receber um novo lote. O status muda para
+                            <strong>Em uso</strong> automaticamente ao iniciar um lote nele.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="modal-rodape">
+                <button type="button" class="botao-modal-cancelar"
+                    id="cancelar-modal-editar-disponivel">Cancelar</button>
+                <button type="submit" class="botao-modal-confirmar">Salvar alterações</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- MODAL 6: EXCLUIR TANQUE DISPONÍVEL (0 LOTES EM ANDAMENTO) -->
+    <dialog id="modal-excluir-tanque" class="modal modal-alerta">
+        <form method="dialog" class="modal-alerta-corpo">
+            <div class="modal-icone-circulo modal-icone-circulo--perigo">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <h2 class="modal-titulo">Excluir o tanque <span id="excluir-tanque-nome">TQ-05</span>?</h2>
+                <p class="modal-alerta-texto">
+                    O tanque deixa de aparecer nas listas. O histórico de lotes e leituras fica guardado, e o sensor
+                    dele é arquivado.
+                </p>
+            </div>
+
+            <div class="modal-metricas-grid">
+                <div class="modal-metrica-card">
+                    <span class="modal-metrica-valor">0</span>
+                    <span class="modal-metrica-label">lotes em andamento</span>
+                </div>
+                <div class="modal-metrica-card">
+                    <span class="modal-metrica-valor">Arquivado</span>
+                    <span class="modal-metrica-label">histórico mantido</span>
+                </div>
+            </div>
+
+            <footer class="modal-alerta-rodape">
+                <button type="button" class="botao-modal-cancelar" id="voltar-excluir-tanque">Voltar</button>
+                <button type="submit" class="botao-modal-perigo">Excluir tanque</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- MODAL 7: EXCLUSÃO BLOQUEADA POR LOTE EM ANDAMENTO (Ex: TQ-02) -->
+    <dialog id="modal-exclusao-tanque-bloqueada" class="modal modal-alerta">
+        <div class="modal-alerta-corpo">
+            <div class="modal-icone-circulo modal-icone-circulo--aviso">
+                <i class="fa-solid fa-exclamation" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <h2 class="modal-titulo">Não é possível excluir <span id="bloqueado-tanque-nome">TQ-02</span></h2>
+                <p class="modal-alerta-texto">
+                    O <strong id="bloqueado-tanque-texto">TQ-02</strong> tem o <strong id="bloqueado-lote-nome">Lote
+                        202</strong> em andamento. Finalize ou cancele o lote antes de excluir o tanque.
+                </p>
+            </div>
+
+            <div class="modal-metricas-grid">
+                <div class="modal-metrica-card modal-metrica-card--unica">
+                    <span class="modal-metrica-valor">1</span>
+                    <span class="modal-metrica-label">lote em andamento</span>
+                </div>
+            </div>
+
+            <footer class="modal-alerta-rodape">
+                <button type="button" class="botao-modal-cancelar" id="fechar-modal-exclusao-bloqueada">Entendi</button>
+                <a href="../lotes/lotes.html" class="botao botao-principal">
+                    Ver lote <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+            </footer>
+        </div>
+    </dialog>
+
+    <!-- MODAL 8: TANQUE AGUARDANDO ATIVAÇÃO (NÃO PODE EXCLUIR DIRETAMENTE) -->
+    <dialog id="modal-tanque-aguardando-bloqueio" class="modal modal-alerta">
+        <div class="modal-alerta-corpo">
+            <div class="modal-icone-circulo modal-icone-circulo--aviso">
+                <i class="fa-solid fa-exclamation" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <h2 class="modal-titulo">Não é possível excluir <span id="aguardando-exclusao-nome">TQ-06</span></h2>
+                <p class="modal-alerta-texto">
+                    Este tanque está <strong>Aguardando ativação</strong> do sensor pela Zymos em <strong
+                        id="aguardando-exclusao-unidade">Campinas</strong>. Não é possível excluir enquanto a ativação
+                    está em andamento.
+                </p>
+            </div>
+
+            <div class="modal-metricas-grid">
+                <div class="modal-metrica-card">
+                    <span class="modal-metrica-valor">Aguardando ativação</span>
+                    <span class="modal-metrica-label">status do sensor</span>
+                </div>
+                <div class="modal-metrica-card">
+                    <span class="modal-metrica-valor">0</span>
+                    <span class="modal-metrica-label">lotes em andamento</span>
+                </div>
+            </div>
+
+            <footer class="modal-alerta-rodape">
+                <button type="button" class="botao-modal-cancelar"
+                    id="fechar-modal-aguardando-bloqueio">Entendi</button>
+            </footer>
+        </div>
+    </dialog>
+
+    <script>
+        const modalCadastrarTanque = document.getElementById("modal-cadastrar-tanque");
+        const modalTanqueCheio = document.getElementById("modal-tanque-cheio");
+        const modalEditarEmUso = document.getElementById("modal-editar-tanque-em-uso");
+        const modalEditarAguardando = document.getElementById("modal-editar-tanque-aguardando");
+        const modalEditarDisponivel = document.getElementById("modal-editar-tanque-disponivel");
+        const modalExcluirTanque = document.getElementById("modal-excluir-tanque");
+        const modalExclusaoBloqueada = document.getElementById("modal-exclusao-tanque-bloqueada");
+        const modalAguardandoBloqueio = document.getElementById("modal-tanque-aguardando-bloqueio");
+
+        // 1. Cadastrar tanque
+        document.getElementById("btn-abrir-adicionar-tanque").addEventListener("click", () => {
+            modalCadastrarTanque.showModal();
+        });
+
+        document.getElementById("tanque-unidade").addEventListener("change", (e) => {
+            if (e.target.value === "ribeirao") {
+                modalCadastrarTanque.close();
+                document.getElementById("tanque-unidade-cheia").value = "ribeirao";
+                modalTanqueCheio.showModal();
+            }
+        });
+
+        document.getElementById("tanque-unidade-cheia").addEventListener("change", (e) => {
+            if (e.target.value === "campinas") {
+                modalTanqueCheio.close();
+                document.getElementById("tanque-unidade").value = "campinas";
+                modalCadastrarTanque.showModal();
+            }
+        });
+
+        document.getElementById("fechar-modal-tanque").addEventListener("click", () => modalCadastrarTanque.close());
+        document.getElementById("cancelar-modal-tanque").addEventListener("click", () => modalCadastrarTanque.close());
+        document.getElementById("fechar-modal-tanque-cheio").addEventListener("click", () => modalTanqueCheio.close());
+        document.getElementById("cancelar-modal-tanque-cheio").addEventListener("click", () => modalTanqueCheio.close());
+
+        // 2. Editar tanque (Em uso / Aguardando ativação / Disponível)
+        document.querySelectorAll(".js-editar-tanque-em-uso").forEach((btn) => {
+            btn.addEventListener("click", () => modalEditarEmUso.showModal());
+        });
+        document.getElementById("fechar-modal-editar-em-uso").addEventListener("click", () => modalEditarEmUso.close());
+        document.getElementById("cancelar-modal-editar-em-uso").addEventListener("click", () => modalEditarEmUso.close());
+
+        document.querySelectorAll(".js-editar-tanque-aguardando").forEach((btn) => {
+            btn.addEventListener("click", () => modalEditarAguardando.showModal());
+        });
+        document.getElementById("fechar-modal-editar-aguardando").addEventListener("click", () => modalEditarAguardando.close());
+        document.getElementById("cancelar-modal-editar-aguardando").addEventListener("click", () => modalEditarAguardando.close());
+
+        document.querySelectorAll(".js-editar-tanque-disponivel").forEach((btn) => {
+            btn.addEventListener("click", () => modalEditarDisponivel.showModal());
+        });
+        document.getElementById("fechar-modal-editar-disponivel").addEventListener("click", () => modalEditarDisponivel.close());
+        document.getElementById("cancelar-modal-editar-disponivel").addEventListener("click", () => modalEditarDisponivel.close());
+
+        // 3. Excluir tanque disponível (permitido)
+        document.querySelectorAll(".js-excluir-tanque").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                document.getElementById("excluir-tanque-nome").textContent = btn.dataset.tanque;
+                modalExcluirTanque.showModal();
+            });
+        });
+        document.getElementById("voltar-excluir-tanque").addEventListener("click", () => modalExcluirTanque.close());
+
+        // 4. Excluir tanque em uso (bloqueado por lote em andamento)
+        document.querySelectorAll(".js-excluir-bloqueado").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                document.getElementById("bloqueado-tanque-nome").textContent = btn.dataset.tanque;
+                document.getElementById("bloqueado-tanque-texto").textContent = btn.dataset.tanque;
+                document.getElementById("bloqueado-lote-nome").textContent = btn.dataset.lote;
+                modalExclusaoBloqueada.showModal();
+            });
+        });
+        document.getElementById("fechar-modal-exclusao-bloqueada").addEventListener("click", () => modalExclusaoBloqueada.close());
+
+        // 5. Excluir tanque aguardando ativação (bloqueado enquanto sensor está em ativação)
+        document.querySelectorAll(".js-excluir-aguardando").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                document.getElementById("aguardando-exclusao-nome").textContent = btn.dataset.tanque;
+                document.getElementById("aguardando-exclusao-unidade").textContent = btn.dataset.unidade;
+                modalAguardandoBloqueio.showModal();
+            });
+        });
+        document.getElementById("fechar-modal-aguardando-bloqueio").addEventListener("click", () => modalAguardandoBloqueio.close());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cervejas - Zymos</title>
+    <link rel="shortcut icon" href="../../../assets/branding/simbolo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="../../css/tabelas.css">
+    <link rel="stylesheet" href="../../css/modais.css">
+    <link rel="stylesheet" href="../../css/dashboard/cervejas.css">
+    <link rel="stylesheet" href="../../css/components/sidebar.css">
+    <script src="../../js/sidebar/sidebar.js" defer type="module"></script>
+    <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="sidebar"></div>
+    <main class="dashboard">
+
+        <!-- Barra Superior -->
+        <section class="container-barra-superior">
+            <h1 class="cabecalho-nome">Cervejas</h1>
+
+            <select class="filtro-select">
+                <option value="todas">Unidade: Todas</option>
+                <option value="campinas">Unidade: Campinas</option>
+                <option value="matriz">Unidade: Fábrica Matriz</option>
+                <option value="ribeirao">Unidade: Matriz Ribeirão Preto</option>
+            </select>
+
+            <div class="busca-campo">
+                <i class="fa-solid fa-magnifying-glass busca-icone" aria-hidden="true"></i>
+                <input class="busca-entrada" type="search" placeholder="Pesquisar cerveja..."
+                    ="Pesquisar cervejas">
+            </div>
+
+            <select class="filtro-select">
+                <option value="">Tipo: Todos</option>
+                <option value="ale">Ale</option>
+                <option value="lager">Lager</option>
+            </select>
+
+            <button class="botao botao-principal" id="btn-abrir-nova-cerveja" type="button">
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                Nova cerveja
+            </button>
+        </section>
+
+        <!-- Card Externo com Rolagem Interna -->
+        <section class="card-tabela">
+            <div class="container-tabela">
+                <div class="tabela-linha tabela-cabecalho">
+                    <span>Cerveja</span>
+                    <span>Tipo</span>
+                    <span>Levedura</span>
+                    <span>Faixa ideal</span>
+                    <span>Fermentação</span>
+                    <span>Lotes</span>
+                    <span>Ações</span>
+                </div>
+
+                <!-- Linha 1: IPA (usada por lotes -> bloqueada para excluir) -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">IPA</span>
+                    </div>
+                    <div class="tabela-celula">Ale</div>
+                    <div class="tabela-celula">S. cerevisiae</div>
+                    <div class="tabela-celula">18–24 °C</div>
+                    <div class="tabela-celula">14 dias</div>
+                    <div class="tabela-celula"><span class="lote-apoio">2 em andamento</span></div>
+                    <div class="tabela-celula">
+                        <div class="tabela-acoes">
+                            <button class="botao botao-editar js-editar-cerveja" data-nome="IPA" data-unidade="Campinas"
+                                data-tipo="Ale" data-levedura="Saccharomyces cerevisiae" data-temp-min="18,0"
+                                data-temp-max="24,0" data-fermentacao="14" data-lotes-andamento="2"
+                                type="button">Editar</button>
+                            <button class="botao botao-excluir js-excluir-cerveja-bloqueada" data-nome="IPA"
+                                data-andamento="2" data-finalizado="1" type="button">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linha 2: Red Ale -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">Red Ale</span>
+                    </div>
+                    <div class="tabela-celula">Ale</div>
+                    <div class="tabela-celula">S. cerevisiae</div>
+                    <div class="tabela-celula">18–24 °C</div>
+                    <div class="tabela-celula">14 dias</div>
+                    <div class="tabela-celula"><span class="lote-apoio">1 em andamento</span></div>
+                    <div class="tabela-celula">
+                        <div class="tabela-acoes">
+                            <button class="botao botao-editar js-editar-cerveja" data-nome="Red Ale"
+                                data-unidade="Campinas" data-tipo="Ale" data-levedura="Saccharomyces cerevisiae"
+                                data-temp-min="18,0" data-temp-max="24,0" data-fermentacao="14" data-lotes-andamento="1"
+                                type="button">Editar</button>
+                            <button class="botao botao-excluir js-excluir-cerveja-bloqueada" data-nome="Red Ale"
+                                data-andamento="1" data-finalizado="0" type="button">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linha 3: Pilsen -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">Pilsen</span>
+                    </div>
+                    <div class="tabela-celula">Lager</div>
+                    <div class="tabela-celula">S. pastorianus</div>
+                    <div class="tabela-celula">8–14 °C</div>
+                    <div class="tabela-celula">21 dias</div>
+                    <div class="tabela-celula"><span class="lote-apoio">1 em andamento</span></div>
+                    <div class="tabela-celula">
+                        <div class="tabela-acoes">
+                            <button class="botao botao-editar js-editar-cerveja" data-nome="Pilsen"
+                                data-unidade="Campinas" data-tipo="Lager" data-levedura="Saccharomyces pastorianus"
+                                data-temp-min="8,0" data-temp-max="14,0" data-fermentacao="21" data-lotes-andamento="1"
+                                type="button">Editar</button>
+                            <button class="botao botao-excluir js-excluir-cerveja-bloqueada" data-nome="Pilsen"
+                                data-andamento="1" data-finalizado="0" type="button">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linha 4: Weiss (nunca usada -> pode excluir) -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">Weiss</span>
+                    </div>
+                    <div class="tabela-celula">Ale</div>
+                    <div class="tabela-celula">S. cerevisiae</div>
+                    <div class="tabela-celula">18–24 °C</div>
+                    <div class="tabela-celula">10 dias</div>
+                    <div class="tabela-celula"><span class="lote-apoio">nunca usada</span></div>
+                    <div class="tabela-celula">
+                        <div class="tabela-acoes">
+                            <button class="botao botao-editar js-editar-cerveja" data-nome="Weiss"
+                                data-unidade="Campinas" data-tipo="Ale" data-levedura="Saccharomyces cerevisiae"
+                                data-temp-min="18,0" data-temp-max="24,0" data-fermentacao="10" data-lotes-andamento="0"
+                                type="button">Editar</button>
+                            <button class="botao botao-excluir js-excluir-cerveja" data-nome="Weiss" data-tipo="Ale"
+                                type="button">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="tabela-rodape">Mostrando 4 de 4 cervejas · cerveja usada por algum lote só pode ser arquivada, não
+                excluída.</p>
+        </section>
+
+    </main>
+
+    <!-- MODAL 1: NOVA CERVEJA (COM SELETOR DE UNIDADE) -->
+    <dialog id="modal-nova-cerveja" class="modal modal-formulario">
+        <form method="dialog" class="modal-estrutura">
+            <header class="modal-cabecalho">
+                <div>
+                    <h2 class="modal-titulo">Nova cerveja</h2>
+                    <p class="modal-subtitulo">A faixa define os alertas dos lotes</p>
+                </div>
+                <button type="button" class="modal-fechar" id="fechar-modal-nova-cerveja">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </header>
+
+            <div class="modal-corpo">
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="nova-cerveja-unidade">
+                        Unidade <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <select class="campo-select" id="nova-cerveja-unidade" required>
+                        <option value="" selected disabled>Escolha uma unidade</option>
+                        <option value="Campinas">Campinas</option>
+                        <option value="Fábrica Matriz">Fábrica Matriz</option>
+                        <option value="Matriz Ribeirão Preto">Matriz Ribeirão Preto</option>
+                    </select>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="nova-cerveja-nome">
+                        Nome da cerveja <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <input class="campo-entrada" type="text" id="nova-cerveja-nome" placeholder="Ex: Pilsen"
+                        value="Pilsen" required>
+                </div>
+
+                <div class="grid-cerveja-dupla">
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="nova-cerveja-tipo">
+                            Tipo <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <select class="campo-select" id="nova-cerveja-tipo" required>
+                            <option value="Lager" selected>Lager</option>
+                            <option value="Ale">Ale</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="nova-cerveja-levedura">
+                            Levedura <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <select class="campo-select" id="nova-cerveja-levedura" required>
+                            <option value="Saccharomyces pastorianus" selected>Saccharomyces pastorianus</option>
+                            <option value="Saccharomyces cerevisiae">Saccharomyces cerevisiae</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid-cerveja-tripla">
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="nova-cerveja-temp-min">
+                            Temp. mínima <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <input class="campo-entrada" type="text" id="nova-cerveja-temp-min" value="8,0" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="nova-cerveja-temp-max">
+                            Temp. máxima <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <input class="campo-entrada" type="text" id="nova-cerveja-temp-max" value="14,0" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="nova-cerveja-fermentacao">
+                            Fermentação (dias) <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <input class="campo-entrada" type="text" id="nova-cerveja-fermentacao" value="21" required>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="modal-rodape">
+                <button type="button" class="botao-modal-cancelar" id="cancelar-modal-nova-cerveja">Cancelar</button>
+                <button type="submit" class="botao-modal-confirmar">Salvar cerveja</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- MODAL 2: EDITAR CERVEJA (SUBTÍTULO: CERVEJA · UNIDADE) -->
+    <dialog id="modal-editar-cerveja" class="modal modal-formulario">
+        <form method="dialog" class="modal-estrutura">
+            <header class="modal-cabecalho">
+                <div>
+                    <h2 class="modal-titulo">Editar cerveja</h2>
+                    <p class="modal-subtitulo" id="editar-cerveja-subtitulo">IPA · Campinas</p>
+                </div>
+                <button type="button" class="modal-fechar" id="fechar-modal-editar-cerveja">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </header>
+
+            <div class="modal-corpo">
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="editar-cerveja-nome">
+                        Nome da cerveja <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <input class="campo-entrada" type="text" id="editar-cerveja-nome" value="IPA" required>
+                </div>
+
+                <div class="grid-cerveja-dupla">
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="editar-cerveja-tipo">
+                            Tipo <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <select class="campo-select" id="editar-cerveja-tipo" required>
+                            <option value="Ale" selected>Ale</option>
+                            <option value="Lager">Lager</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="editar-cerveja-levedura">
+                            Levedura <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <select class="campo-select" id="editar-cerveja-levedura" required>
+                            <option value="Saccharomyces cerevisiae" selected>Saccharomyces cerevisiae</option>
+                            <option value="Saccharomyces pastorianus">Saccharomyces pastorianus</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid-cerveja-tripla">
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="editar-cerveja-temp-min">
+                            Temp. mínima <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <input class="campo-entrada" type="text" id="editar-cerveja-temp-min" value="18,0" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="editar-cerveja-temp-max">
+                            Temp. máxima <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <input class="campo-entrada" type="text" id="editar-cerveja-temp-max" value="24,0" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="editar-cerveja-fermentacao">
+                            Fermentação (dias) <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <input class="campo-entrada" type="text" id="editar-cerveja-fermentacao" value="14" required>
+                    </div>
+                </div>
+
+                <div class="modal-aviso">
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    <p id="editar-cerveja-aviso">
+                        A nova faixa vale só para <strong>lotes novos</strong>. Os <strong>2 lotes em andamento</strong>
+                        mantêm <strong>18–24°C</strong>.
+                    </p>
+                </div>
+            </div>
+
+            <footer class="modal-rodape">
+                <button type="button" class="botao-modal-cancelar" id="cancelar-modal-editar-cerveja">Cancelar</button>
+                <button type="submit" class="botao-modal-confirmar">Salvar cerveja</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- MODAL 3: EXCLUIR CERVEJA NÃO USADA -->
+    <dialog id="modal-excluir-cerveja" class="modal modal-alerta">
+        <form method="dialog" class="modal-alerta-corpo">
+            <div class="modal-icone-circulo modal-icone-circulo--perigo">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <h2 class="modal-titulo">Excluir a cerveja <span id="excluir-cerveja-nome">Weiss</span>?</h2>
+                <p class="modal-alerta-texto">
+                    Ela nunca foi usada em um lote, então pode ser apagada de vez. Nenhum lote nem relatório é aferido.
+                </p>
+            </div>
+
+            <div class="modal-metricas-grid">
+                <div class="modal-metrica-card">
+                    <span class="modal-metrica-valor">0</span>
+                    <span class="modal-metrica-label">lotes</span>
+                </div>
+                <div class="modal-metrica-card">
+                    <span class="modal-metrica-valor" id="excluir-cerveja-tipo">Ale</span>
+                    <span class="modal-metrica-label">tipo</span>
+                </div>
+            </div>
+
+            <footer class="modal-alerta-rodape">
+                <button type="button" class="botao-modal-cancelar" id="entendi-excluir-cerveja">Entendi</button>
+                <button type="submit" class="botao-modal-perigo">Excluir cerveja</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- MODAL 4: EXCLUSÃO DE CERVEJA BLOQUEADA (USADA POR LOTES) -->
+    <dialog id="modal-cerveja-bloqueada" class="modal modal-alerta">
+        <div class="modal-alerta-corpo">
+            <div class="modal-icone-circulo modal-icone-circulo--aviso">
+                <i class="fa-solid fa-exclamation" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <h2 class="modal-titulo">Não é possível excluir <span id="bloqueada-cerveja-nome">IPA</span></h2>
+                <p class="modal-alerta-texto" id="bloqueada-cerveja-texto">
+                    Esta cerveja é usada por <strong>3 lotes</strong> (<strong>2 em andamento</strong> e <strong>1
+                        finalizado</strong>). Cervejas já usadas não são apagadas.
+                </p>
+            </div>
+
+            <div class="modal-metricas-grid">
+                <div class="modal-metrica-card">
+                    <span class="modal-metrica-valor" id="bloqueada-andamento">2</span>
+                    <span class="modal-metrica-label">em andamento</span>
+                </div>
+                <div class="modal-metrica-card">
+                    <span class="modal-metrica-valor" id="bloqueada-finalizado">1</span>
+                    <span class="modal-metrica-label">finalizado</span>
+                </div>
+            </div>
+
+            <footer class="modal-alerta-rodape">
+                <button type="button" class="botao-modal-cancelar" id="fechar-cerveja-bloqueada">Entendi</button>
+            </footer>
+        </div>
+    </dialog>
+
+    <script>
+        const modalNovaCerveja = document.getElementById("modal-nova-cerveja");
+        const modalEditarCerveja = document.getElementById("modal-editar-cerveja");
+        const modalExcluirCerveja = document.getElementById("modal-excluir-cerveja");
+        const modalCervejaBloqueada = document.getElementById("modal-cerveja-bloqueada");
+
+        // 1. Nova cerveja
+        document.getElementById("btn-abrir-nova-cerveja").addEventListener("click", () => {
+            modalNovaCerveja.showModal();
+        });
+        document.getElementById("fechar-modal-nova-cerveja").addEventListener("click", () => modalNovaCerveja.close());
+        document.getElementById("cancelar-modal-nova-cerveja").addEventListener("click", () => modalNovaCerveja.close());
+
+        // 2. Editar cerveja (subtítulo com ponto central: "Cerveja · Unidade")
+        let unidadeAtualEdicao = "Campinas";
+
+        function atualizarSubtituloEditar() {
+            const nome = document.getElementById("editar-cerveja-nome").value.trim() || "Cerveja";
+            document.getElementById("editar-cerveja-subtitulo").textContent = `${nome} · ${unidadeAtualEdicao}`;
+        }
+
+        document.getElementById("editar-cerveja-nome").addEventListener("input", atualizarSubtituloEditar);
+
+        document.querySelectorAll(".js-editar-cerveja").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const d = btn.dataset;
+                unidadeAtualEdicao = d.unidade || "Campinas";
+                document.getElementById("editar-cerveja-nome").value = d.nome;
+                document.getElementById("editar-cerveja-tipo").value = d.tipo;
+                document.getElementById("editar-cerveja-levedura").value = d.levedura;
+                document.getElementById("editar-cerveja-temp-min").value = d.tempMin;
+                document.getElementById("editar-cerveja-temp-max").value = d.tempMax;
+                document.getElementById("editar-cerveja-fermentacao").value = d.fermentacao;
+
+                document.getElementById("editar-cerveja-aviso").innerHTML =
+                    `A nova faixa vale só para <strong>lotes novos</strong>. Os <strong>${d.lotesAndamento} lotes em andamento</strong> mantêm <strong>${d.tempMin.replace(",", ".")}–${d.tempMax.replace(",", ".")}°C</strong>.`;
+
+                atualizarSubtituloEditar();
+                modalEditarCerveja.showModal();
+            });
+        });
+
+        document.getElementById("editar-cerveja-nome").addEventListener("change", atualizarSubtituloEditar);
+        document.getElementById("fechar-modal-editar-cerveja").addEventListener("click", () => modalEditarCerveja.close());
+        document.getElementById("cancelar-modal-editar-cerveja").addEventListener("click", () => modalEditarCerveja.close());
+
+        // 3. Excluir cerveja não usada
+        document.querySelectorAll(".js-excluir-cerveja").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                document.getElementById("excluir-cerveja-nome").textContent = btn.dataset.nome;
+                document.getElementById("excluir-cerveja-tipo").textContent = btn.dataset.tipo;
+                modalExcluirCerveja.showModal();
+            });
+        });
+        document.getElementById("entendi-excluir-cerveja").addEventListener("click", () => modalExcluirCerveja.close());
+
+        // 4. Excluir cerveja bloqueada
+        document.querySelectorAll(".js-excluir-cerveja-bloqueada").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const andamento = Number(btn.dataset.andamento || 0);
+                const finalizado = Number(btn.dataset.finalizado || 0);
+                const total = andamento + finalizado;
+
+                document.getElementById("bloqueada-cerveja-nome").textContent = btn.dataset.nome;
+                document.getElementById("bloqueada-cerveja-texto").innerHTML =
+                    `Esta cerveja é usada por <strong>${total} lotes</strong> (<strong>${andamento} em andamento</strong> e <strong>${finalizado} finalizado</strong>). Cervejas já usadas não são apagadas.`;
+                document.getElementById("bloqueada-andamento").textContent = String(andamento);
+                document.getElementById("bloqueada-finalizado").textContent = String(finalizado);
+                modalCervejaBloqueada.showModal();
+            });
+        });
+        document.getElementById("fechar-cerveja-bloqueada").addEventListener("click", () => modalCervejaBloqueada.close());
+    </script>
+</body>
+
+</html>

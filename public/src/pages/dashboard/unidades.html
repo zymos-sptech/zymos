@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Unidades - Zymos</title>
+  <link rel="shortcut icon" href="../../../assets/branding/simbolo.png" type="image/x-icon" />
   <link rel="stylesheet" href="../../css/tokens.css">
   <link rel="stylesheet" href="../../css/tabelas.css">
   <link rel="stylesheet" href="../../css/modais.css">
-  <link rel="stylesheet" href="../../css/dashboard/unidades/unidade.css">
+  <link rel="stylesheet" href="../../css/dashboard/unidade.css">
   <link rel="stylesheet" href="../../css/components/sidebar.css">
   <script src="../../js/sidebar/sidebar.js" defer type="module"></script>
   <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
   <div id="sidebar"></div>
   <main class="dashboard">
 
     <section class="container-barra-superior">
       <h1 class="cabecalho-nome">Unidades</h1>
-      
+
       <div class="busca-campo">
         <i class="fa-solid fa-magnifying-glass busca-icone" aria-hidden="true"></i>
-        <input class="busca-entrada" type="search" placeholder="Pesquisar por nome, cidade ou endereço..." aria-label="Pesquisar unidades">
+        <input class="busca-entrada" type="search" placeholder="Pesquisar por nome, cidade ou endereço...">
       </div>
-      
-      <select class="filtro-select" aria-label="Filtrar por status">
+
+      <select class="filtro-select">
         <option value="">Status: Todos</option>
         <option value="ativa">Ativa</option>
         <option value="analise">Em Análise</option>
@@ -59,7 +62,8 @@
           <div class="tabela-celula">
             <div style="display: flex; gap: 8px;">
               <button class="botao botao-editar js-editar-ativa" type="button">Editar</button>
-              <button class="botao botao-excluir js-excluir-bloqueado" data-nome="Matriz Ribeirão Preto" data-tanques="4" data-lotes="3" type="button">Excluir</button>
+              <button class="botao botao-excluir js-excluir-bloqueado" data-nome="Matriz Ribeirão Preto"
+                data-tanques="4" data-lotes="3" type="button">Excluir</button>
             </div>
           </div>
         </div>
@@ -77,7 +81,8 @@
           <div class="tabela-celula">
             <div style="display: flex; gap: 8px;">
               <button class="botao botao-editar js-editar-ativa" type="button">Editar</button>
-              <button class="botao botao-excluir js-excluir-unidade" data-nome="Campinas" data-tanques="0" data-lotes="0" type="button">Excluir</button>
+              <button class="botao botao-excluir js-excluir-unidade" data-nome="Campinas" data-tanques="0"
+                data-lotes="0" type="button">Excluir</button>
             </div>
           </div>
         </div>
@@ -95,7 +100,8 @@
           <div class="tabela-celula">
             <div style="display: flex; gap: 8px;">
               <button class="botao botao-editar js-editar-ativa" type="button">Editar</button>
-              <button class="botao botao-excluir js-excluir-unidade" data-nome="Sorocaba" data-tanques="0" data-lotes="0" type="button">Excluir</button>
+              <button class="botao botao-excluir js-excluir-unidade" data-nome="Sorocaba" data-tanques="0"
+                data-lotes="0" type="button">Excluir</button>
             </div>
           </div>
         </div>
@@ -113,7 +119,8 @@
           <div class="tabela-celula">
             <div style="display: flex; gap: 8px;">
               <button class="botao botao-editar js-editar-solicitada" type="button">Editar</button>
-              <button class="botao botao-excluir js-cancelar-solicitacao" data-nome="Jacareí" data-tanques="4" type="button">Cancelar</button>
+              <button class="botao botao-excluir js-cancelar-solicitacao" data-nome="Jacareí" data-tanques="4"
+                type="button">Cancelar</button>
             </div>
           </div>
         </div>
@@ -130,7 +137,7 @@
           <h2 class="modal-titulo">Solicitar nova unidade</h2>
           <p class="modal-subtitulo">A equipe Zymos dimensiona os sensores e agenda o setup.</p>
         </div>
-        <button type="button" class="modal-fechar" id="fechar-modal-solicitar" aria-label="Fechar modal">
+        <button type="button" class="modal-fechar" id="fechar-modal-solicitar">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </header>
@@ -161,7 +168,8 @@
           <label class="campo-rotulo" for="unidade-logradouro">
             Logradouro <span class="campo-obrigatorio">*</span>
           </label>
-          <input class="campo-entrada" type="text" id="unidade-logradouro" placeholder="Ex: Rodovia Presidente Dutra" required>
+          <input class="campo-entrada" type="text" id="unidade-logradouro" placeholder="Ex: Rodovia Presidente Dutra"
+            required>
         </div>
 
         <div class="grid-numero-complemento">
@@ -214,7 +222,8 @@
         <div class="modal-aviso">
           <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
           <p>
-            A unidade fica <strong>Solicitada / Em análise</strong> até a Zymos concluir o setup. Você não salva: você <strong>pede</strong>.
+            A unidade fica <strong>Solicitada / Em análise</strong> até a Zymos concluir o setup. Você não salva: você
+            <strong>pede</strong>.
           </p>
         </div>
       </div>
@@ -237,7 +246,7 @@
           </div>
           <p class="modal-subtitulo">Matriz Ribeirão Preto</p>
         </div>
-        <button type="button" class="modal-fechar" id="fechar-modal-editar-ativa" aria-label="Fechar modal">
+        <button type="button" class="modal-fechar" id="fechar-modal-editar-ativa">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </header>
@@ -346,7 +355,7 @@
           </div>
           <p class="modal-subtitulo">Jacareí</p>
         </div>
-        <button type="button" class="modal-fechar" id="fechar-modal-editar-solicitada" aria-label="Fechar modal">
+        <button type="button" class="modal-fechar" id="fechar-modal-editar-solicitada">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </header>
@@ -450,7 +459,7 @@
           <h2 class="modal-titulo">Solicitar ampliação</h2>
           <p class="modal-subtitulo">Matriz Ribeirão Preto · hoje 4 tanques</p>
         </div>
-        <button type="button" class="modal-fechar" id="fechar-modal-ampliacao" aria-label="Fechar modal">
+        <button type="button" class="modal-fechar" id="fechar-modal-ampliacao">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </header>
@@ -478,13 +487,15 @@
             <label class="campo-rotulo" for="ampliacao-mensagem">Mensagem para a Zymos</label>
             <span class="campo-opcional">Opcional</span>
           </div>
-          <input class="campo-entrada" type="text" id="ampliacao-mensagem" placeholder="Ex: Instalação prevista para o próximo mês...">
+          <input class="campo-entrada" type="text" id="ampliacao-mensagem"
+            placeholder="Ex: Instalação prevista para o próximo mês...">
         </div>
 
         <div class="modal-aviso modal-aviso--info">
           <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
           <p>
-            A Zymos analisa o pedido, envia os sensores e atualiza a capacidade da unidade. O pedido não altera nada na hora.
+            A Zymos analisa o pedido, envia os sensores e atualiza a capacidade da unidade. O pedido não altera nada na
+            hora.
           </p>
         </div>
       </div>
@@ -504,7 +515,8 @@
       </div>
 
       <div>
-        <h2 class="modal-titulo">Cancelar solicitação da unidade <span id="cancelar-solicitacao-nome">Jacareí</span>?</h2>
+        <h2 class="modal-titulo">Cancelar solicitação da unidade <span id="cancelar-solicitacao-nome">Jacareí</span>?
+        </h2>
         <p class="modal-alerta-texto">
           A solicitação será cancelada e a equipe Zymos será avisada. Você poderá solicitar a unidade de novo depois.
         </p>
@@ -538,7 +550,8 @@
       <div>
         <h2 class="modal-titulo">Excluir a unidade <span id="excluir-unidade-nome">Campinas</span>?</h2>
         <p class="modal-alerta-texto">
-          A unidade deixa de aparecer nas listas e no Panorama. Tanques, lotes e leituras ficam guardados. Não é apagada: vira Inativa.
+          A unidade deixa de aparecer nas listas e no Panorama. Tanques, lotes e leituras ficam guardados. Não é
+          apagada: vira Inativa.
         </p>
       </div>
 
@@ -557,7 +570,8 @@
         <label class="campo-rotulo" for="confirmar-nome-exclusao">
           Para confirmar, digite o nome da unidade <span class="campo-obrigatorio">*</span>
         </label>
-        <input class="campo-entrada" type="text" id="confirmar-nome-exclusao" placeholder="Digite o nome exatamente como acima" required>
+        <input class="campo-entrada" type="text" id="confirmar-nome-exclusao"
+          placeholder="Digite o nome exatamente como acima" required>
       </div>
 
       <footer class="modal-alerta-rodape">
@@ -575,9 +589,11 @@
       </div>
 
       <div>
-        <h2 class="modal-titulo">Não é possível excluir <span id="bloqueada-unidade-nome">Matriz Ribeirão Preto</span></h2>
+        <h2 class="modal-titulo">Não é possível excluir <span id="bloqueada-unidade-nome">Matriz Ribeirão Preto</span>
+        </h2>
         <p class="modal-alerta-texto">
-          Essa unidade tem <strong>3 tanques ativos</strong> com lotes em andamento. Finalize ou cancele os lotes antes de excluir.
+          Essa unidade tem <strong>3 tanques ativos</strong> com lotes em andamento. Finalize ou cancele os lotes antes
+          de excluir.
         </p>
       </div>
 
@@ -689,4 +705,5 @@
     document.getElementById("fechar-modal-bloqueado").addEventListener("click", () => modalExclusaoBloqueada.close());
   </script>
 </body>
+
 </html>

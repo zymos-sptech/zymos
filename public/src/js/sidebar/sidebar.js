@@ -1,12 +1,12 @@
 const ROUTES = {
   panorama: '/src/pages/dashboard/panorama.html',
-  macro: '/src/pages/dashboard/dashboard-macro.html',
+  macro: '/src/pages/dashboard/monitor-tanques.html',
   micro: '/src/pages/dashboard/dashboard-micro.html',
   unidades: '/src/pages/dashboard/unidades.html',
   tanques: '/src/pages/dashboard/tanques.html',
   lotes: '/src/pages/dashboard/lotes.html',
   cervejas: '/src/pages/dashboard/cervejas.html',
-  perfil: '/src/pages/dashboard/perfil.html',
+  usuarios: '/src/pages/dashboard/usuarios.html',
   login: '/src/pages/login.html'
 };
 
@@ -26,7 +26,7 @@ const NAV_SECTIONS = [
       { key: 'tanques', label: 'Tanques', icon: 'fa-solid fa-jar' },
       { key: 'cervejas', label: 'Cervejas', icon: 'fa-solid fa-beer-mug-empty' },
       { key: 'lotes', label: 'Lotes', icon: 'fa-solid fa-flask' },
-      { key: 'perfil', label: 'Perfil', icon: 'fa-regular fa-user' },
+      { key: 'usuarios', label: 'Usuários', icon: 'fa-regular fa-user' },
     ],
   },
 ];
@@ -63,7 +63,7 @@ function montarSidebarAberta(user) {
         <li class="sidebar-link ${isActive(item.key) ? 'sidebar-link-active' : ''}">
           <a href="${ROUTES[item.key]}">
             <i class="${item.icon}"></i>
-            ${item.label}
+            <span>${item.label}</span>
           </a>
         </li>
       `).join('')}
@@ -72,14 +72,16 @@ function montarSidebarAberta(user) {
 
   return `
     <aside id="sidebar-open" class="sidebar-container">
-      <button type="button" class="sidebar-btn-toggle" data-action="close" aria-label="Recolher sidebar">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
+      <div class="sidebar-top">
+        <img class="sidebar-logo-open"
+             src="/assets/branding/logo-branca.svg"
+             alt="Zymos Qualidade na fermentação"
+             draggable="false" />
 
-      <img class="sidebar-logo-open"
-           src="/assets/branding/logo-branca.svg"
-           alt="Zymos Qualidade na fermentação"
-           draggable="false" />
+        <button type="button" class="sidebar-btn-toggle" data-action="close" aria-label="Recolher sidebar">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+      </div>
 
       <nav>${sections}</nav>
 
@@ -91,7 +93,7 @@ function montarSidebarAberta(user) {
             <span class="sidebar-user-name">${user.nome}</span>
             <span class="sidebar-user-role">${user.cargo}</span>
           </div>
-          <button class="btn-logout" data-action="logout" aria-label="Sair">
+          <button type="button" class="btn-logout" data-action="logout" aria-label="Sair">
             <i class="fa-solid fa-arrow-right-from-bracket"></i>
           </button>
         </div>
@@ -111,14 +113,16 @@ function montarSidebarFechada(user) {
 
   return `
     <aside id="sidebar-close" class="sidebar-container-close" style="display:none">
-      <button type="button" class="sidebar-btn-toggle btn-close" data-action="open" aria-label="Expandir sidebar">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
+      <div class="sidebar-top sidebar-top--close">
+        <button type="button" class="sidebar-btn-toggle btn-close" data-action="open" aria-label="Expandir sidebar">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
 
-      <img class="sidebar-logo-open"
-           src="/assets/branding/mini-logo-branca.png"
-           alt="Zymos"
-           draggable="false" />
+        <img class="sidebar-logo-closed"
+             src="/assets/branding/mini-logo-branca.png"
+             alt="Zymos"
+             draggable="false" />
+      </div>
 
       <nav>
         <span class="sidebar-line"></span>
