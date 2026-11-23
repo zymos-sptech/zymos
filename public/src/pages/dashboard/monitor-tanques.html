@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zymos - Monitor de Tanques</title>
+  <link rel="shortcut icon" href="../../../assets/branding/simbolo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="../../css/tokens.css" />
+  <link rel="stylesheet" href="../../css/components/dashboard.css" />
+  <link rel="stylesheet" href="../../css/dashboard/monitor-tanques/monitor-tanques.css" />
+  <link rel="stylesheet" href="../../css/components/sidebar.css" />
+  <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
+  <script src="../../js/sidebar/sidebar.js" type="module" defer></script>
+  <script src="../../js/dashboard/monitor-tanques/monitor-tanques.js" type="module" defer></script>
+</head>
+
+<body class="pagina-fixa">
+  <div id="sidebar"></div>
+  <main class="monitor-tanques">
+
+    <!-- Barra de filtros -->
+    <section class="painel painel--filtros">
+      <form class="filtros-form" id="form-filtros-macro">
+        <div class="filtro-grupo filtro-grupo--unidade">
+          <div class="filtro-select-wrapper">
+            <select class="filtro-select" id="select-unidade"></select>
+            <i class="fa-solid fa-angle-down filtro-seta" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="filtro-grupo filtro-grupo--busca">
+          <input type="text" class="filtro-input" id="input-busca-tanque" name="busca"
+            placeholder="Ex.: TQ-01, Lote 201, IPA" />
+        </div>
+        <button type="submit" class="btn-aplicar-filtro" id="btn-aplicar-filtro">
+          <i class="fa-solid fa-filter" aria-hidden="true"></i>
+          Aplicar Filtro
+        </button>
+      </form>
+    </section>
+
+    <!-- Indicadores principais -->
+    <section class="kpis-macro">
+      <article class="kpi-card" id="card-lotes-andamento">
+        <p class="kpi-card__rotulo">Tanques em uso</p>
+        <p class="kpi-card__valor">
+          <strong id="kpi-lotes-qtd"></strong>
+          <span id="kpi-ocupacao-total"></span>
+        </p>
+        <div class="kpi-card__tags">
+          <span class="tag" id="tag-lotes-ale"></span>
+          <span class="tag" id="tag-lotes-lager"></span>
+        </div>
+        <p class="kpi-card__rodape" id="kpi-ocupacao-taxa"></p>
+      </article>
+      <article class="kpi-card" id="card-alerta-mais-antigo">
+        <p class="kpi-card__rotulo">Alerta mais antigo</p>
+        <p class="kpi-card__valor">
+          <strong id="kpi-antigo-tanque">—</strong>
+          <span id="kpi-antigo-tempo"></span>
+        </p>
+        <div class="kpi-card__tags">
+          <span class="tag" id="kpi-antigo-tag"></span>
+        </div>
+        <p class="kpi-card__rodape" id="kpi-antigo-rodape"></p>
+      </article>
+      <article class="kpi-card" id="card-desvios-periodo">
+        <p class="kpi-card__rotulo">Fora da faixa ideal</p>
+        <p class="kpi-card__valor">
+          <strong id="kpi-desvios-qtd">0</strong>
+          <span>ocorrências</span>
+        </p>
+        <div class="kpi-card__tags">
+          <span class="tag">
+            <span class="tag__ponto"></span>
+            <span id="kpi-desvios-resolvidos">0 resolvidos</span>
+          </span>
+          <span class="tag">
+            <span class="tag__ponto tag__ponto--alerta"></span>
+            <span id="kpi-desvios-abertos">0 em aberto</span>
+          </span>
+        </div>
+        <p class="kpi-card__rodape" id="kpi-desvios-unidade"></p>
+      </article>
+      <article class="kpi-card kpi-card--alerta" id="card-alertas-pendentes">
+        <p class="kpi-card__rotulo">Alertas pendentes</p>
+        <p class="kpi-card__valor">
+          <strong id="kpi-alertas-qtd">0</strong>
+          <span>alertas</span>
+        </p>
+        <div class="kpi-card__tags">
+          <span class="tag" id="kpi-alerta-tag-acima"></span>
+          <span class="tag" id="kpi-alerta-tag-abaixo"></span>
+        </div>
+        <p class="kpi-card__rodape" id="kpi-alerta-tempo"></p>
+      </article>
+    </section>
+
+
+    <!-- Conteúdo principal -->
+    <div class="conteudo-macro">
+      <section class="painel painel--tanques">
+        <header class="painel__cabecalho">
+          <div class="painel__titulos painel__titulos--linha">
+            <h2 class="painel__titulo" id="card-title">
+              Tanques e lotes da unidade
+            </h2>
+            <p class="painel__subtitulo">
+              Acompanhamento por tanque · status em tempo real
+            </p>
+          </div>
+          <span class="botao-contador" id="contador-tanques-desvio"></span>
+        </header>
+
+        <!-- Tabela de tanques -->
+        <div class="tabela-tanques-wrapper">
+          <table class="tabela-tanques">
+            <thead>
+              <tr>
+                <th scope="col">Tanque</th>
+                <th scope="col">Lote</th>
+                <th scope="col">Temperatura atual</th>
+                <th scope="col">Faixa ideal</th>
+                <th scope="col">Status</th>
+                <th scope="col">
+                  <span class="sr-only">Detalhes</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="tabela-tanques-body"></tbody>
+          </table>
+        </div>
+        <footer class="painel__rodape">
+          <p id="tabela-tanques-rodape"></p>
+          <p>Ao vivo · 2s</p>
+        </footer>
+      </section>
+
+      <!-- Painel lateral -->
+      <aside class="lateral-macro">
+        <section class="painel painel--desvios-tanque" id="card-desvios-tanque">
+          <header class="painel__titulos">
+            <h2 class="painel__titulo">
+              Desvios por tanque
+            </h2>
+            <p class="painel__subtitulo" id="desvio-tanque-unidade"></p>
+          </header>
+          <div class="desvios-lista-tanques" id="lista-desvios-tanques"></div>
+          <p class="desvios-demais" id="desvios-demais-tanques"></p>
+          <div class="metrica-rodape">
+            <span>Tempo médio de resposta</span>
+            <strong id="valor-tempo-resposta">18 min</strong>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+
+</html>

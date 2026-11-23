@@ -7,17 +7,6 @@ body {
   overflow: hidden;
 }
 
-#sidebar,
-.sidebar-simulada {
-  flex-shrink: 0;
-  width: var(--sidebar-largura);
-  background: var(--color-primary);
-}
-
-.sidebar-simulada--fechada {
-  width: var(--sidebar-largura-fechada);
-}
-
 .dashboard {
   --panorama-largura: 102.25rem;
   width: min(
@@ -232,7 +221,7 @@ body {
 .status {
   display: inline-block;
   padding: 4px 12px;
-  border-radius: var(--radius-full);
+  border-radius: 8px;
   font-size: var(--text-12);
   font-weight: var(--weight-medium);
 }
