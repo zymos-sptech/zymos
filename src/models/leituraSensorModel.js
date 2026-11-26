@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 function buscarSensor(idSensor) {
   var instrucaoSql = `
-        SELECT id, fk_tanque, status_sensor FROM sensor WHERE id = ${idSensor};
+        SELECT id, fk_unidade, fk_status_sensor FROM sensor WHERE id = ${idSensor};
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -19,22 +19,24 @@ function buscarLote(idLote) {
 function buscarLoteAtivo(idSensor, temperatura) {
   var instrucaoSql = `
         SELECT
+            l.id AS idLote,
             l.codigo AS lote,
+            t.id AS idTanque,
             t.nome AS tanque,
-            c.temperatura_min,
-            c.temperatura_max,
+            CAST(c.temperatura_min AS DOUBLE) AS temperatura_min,
+            CAST(c.temperatura_max AS DOUBLE) AS temperatura_max,
             CASE
-                WHEN ROUND(${temperatura}, 1) > c.temperatura_max THEN 1
-                WHEN ROUND(${temperatura}, 1) < c.temperatura_min THEN 2
+                WHEN ROUND(${temperatura}, 1) < c.temperatura_min THEN 1
+                WHEN ROUND(${temperatura}, 1) > c.temperatura_max THEN 2
                 ELSE 0
-            END AS tipo_alerta
+            END AS fk_tipo_alerta
         FROM sensor s
-            INNER JOIN tanque t
-                ON t.id = s.fk_tanque
             INNER JOIN producao p
-                ON p.fk_tanque = t.id
+                ON p.fk_sensor = s.id
             INNER JOIN lote l
                 ON l.id = p.fk_lote
+            INNER JOIN tanque t
+                ON t.id = p.fk_tanque
             INNER JOIN cerveja c
                 ON c.id = l.fk_cerveja
         WHERE s.id = ${idSensor}
@@ -49,9 +51,27 @@ function buscarLoteAtivo(idSensor, temperatura) {
 
 function listar(limite_linhas) {
   var instrucaoSql = `
-        SELECT id, fk_sensor, temperatura, dt_medicao
-        FROM leitura_sensor
-        ORDER BY dt_medicao DESC LIMIT ${limite_linhas};
+        SELECT
+            ls.id,
+            ls.fk_lote,
+            ls.fk_tanque,
+            l.codigo AS lote,
+            c.nome AS cerveja,
+            t.nome AS tanque,
+            CAST(ls.temperatura AS DOUBLE) AS temperatura,
+            CAST(c.temperatura_min AS DOUBLE) AS temperatura_min,
+            CAST(c.temperatura_max AS DOUBLE) AS temperatura_max,
+            ls.dt_medicao
+        FROM leitura_sensor ls
+            INNER JOIN producao p
+                ON p.fk_lote = ls.fk_lote AND p.fk_tanque = ls.fk_tanque
+            INNER JOIN lote l
+                ON l.id = ls.fk_lote
+            INNER JOIN cerveja c
+                ON c.id = l.fk_cerveja
+            INNER JOIN tanque t
+                ON t.id = ls.fk_tanque
+        ORDER BY ls.dt_medicao DESC LIMIT ${limite_linhas};
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -60,24 +80,25 @@ function listar(limite_linhas) {
 function listarPorLote(idLote, limite_linhas) {
   var instrucaoSql = `
         SELECT
+            ls.id,
+            ls.fk_lote,
+            ls.fk_tanque,
             l.codigo AS lote,
             c.nome AS cerveja,
             t.nome AS tanque,
-            ls.id,
-            ls.fk_sensor,
-            ls.temperatura,
+            CAST(ls.temperatura AS DOUBLE) AS temperatura,
+            CAST(c.temperatura_min AS DOUBLE) AS temperatura_min,
+            CAST(c.temperatura_max AS DOUBLE) AS temperatura_max,
             ls.dt_medicao
-        FROM lote l
+        FROM leitura_sensor ls
+            INNER JOIN producao p
+                ON p.fk_lote = ls.fk_lote AND p.fk_tanque = ls.fk_tanque
+            INNER JOIN lote l
+                ON l.id = ls.fk_lote
             INNER JOIN cerveja c
                 ON c.id = l.fk_cerveja
-            INNER JOIN producao p
-                ON p.fk_lote = l.id
             INNER JOIN tanque t
-                ON t.id = p.fk_tanque
-            INNER JOIN sensor s
-                ON s.fk_tanque = t.id
-            INNER JOIN leitura_sensor ls
-                ON ls.fk_sensor = s.id
+                ON t.id = ls.fk_tanque
         WHERE l.id = ${idLote}
             AND ls.dt_medicao >= p.dt_entrada
             AND (p.dt_saida IS NULL OR ls.dt_medicao <= p.dt_saida)
