@@ -1,7 +1,7 @@
 var database = require("../database/config");
 
 function buscarUnidade(idUnidade) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         SELECT
             u.id,
             u.fk_status_unidade,
@@ -20,12 +20,12 @@ function buscarUnidade(idUnidade) {
                 ON p.id = e.fk_plano
         WHERE u.id = ${idUnidade};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function buscarPorId(idTanque) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         SELECT
             t.id,
             t.fk_unidade,
@@ -41,29 +41,29 @@ function buscarPorId(idTanque) {
         FROM tanque t
         WHERE t.id = ${idTanque};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function buscarPorNome(idUnidade, nome, idTanqueIgnorado) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         SELECT id FROM tanque
         WHERE fk_unidade = ${idUnidade} AND nome = '${nome}' AND id <> ${idTanqueIgnorado};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function cadastrar(idUnidade, nome, capacidade) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         INSERT INTO tanque (fk_unidade, nome, capacidade) VALUES (${idUnidade}, '${nome}', ${capacidade});
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function listarPorUnidade(idUnidade) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         SELECT
             t.id AS idTanque,
             t.nome,
@@ -84,12 +84,12 @@ function listarPorUnidade(idUnidade) {
         WHERE t.fk_unidade = ${idUnidade}
         ORDER BY t.nome;
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function listarPorTanque(idUnidade, idTanque) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         SELECT
             t.id AS idTanque,
             t.nome,
@@ -109,35 +109,49 @@ function listarPorTanque(idUnidade, idTanque) {
                 ON c.id = l.fk_cerveja
         WHERE t.fk_unidade = ${idUnidade} AND t.id = ${idTanque};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function listarTanqueEmpresa(empresaId) {
+  var sql = `
+        SELECT 
+            t.id, t.fk_unidade, t.fk_usuario_criador, t.fk_status_tanque,
+            t.nome, t.capacidade
+        FROM tanque t
+            JOIN usuario u ON u.id = t.fk_usuario_criador
+        WHERE u.fk_empresa = ${empresaId};
+    `;
+
+  return database.executar(sql);
 }
 
 function editar(idTanque, nome, capacidade, idStatusTanque) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         UPDATE tanque
         SET nome = '${nome}', capacidade = ${capacidade}, fk_status_tanque = ${idStatusTanque}
         WHERE id = ${idTanque};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function deletar(idTanque) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         DELETE FROM tanque WHERE id = ${idTanque};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 module.exports = {
-    buscarUnidade,
-    buscarPorId,
-    buscarPorNome,
-    cadastrar,
-    listarPorUnidade,
-    listarPorTanque,
-    editar,
-    deletar
-}
+  buscarUnidade,
+  buscarPorId,
+  buscarPorNome,
+  cadastrar,
+  listarPorUnidade,
+  listarPorTanque,
+  listarTanqueEmpresa,
+  editar,
+  deletar,
+};

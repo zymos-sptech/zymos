@@ -119,6 +119,24 @@ collection:
         send: true
         store: true
       rebuildPath: true
+  - url: "{{ _.base_url }}/tanques/empresa/1"
+    name: LISTAR_TANQUE_EMPRESA
+    meta:
+      id: req_bcc33858ffd94e3bab89215cd9d1cf9b
+      created: 1795727310953
+      modified: 1795727371732
+      isPrivate: false
+      description: ""
+      sortKey: -1795727310953
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
