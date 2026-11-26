@@ -47,6 +47,7 @@ const iptEmail = document.getElementById("iptEmail");
 const iptPassword = document.getElementById("iptPassword");
 const iptConfirmPasword = document.getElementById("iptConfirmPassword");
 
+const toastSucesso = document.getElementById("toastSucesso");
 const erroCodigo = document.getElementById("erroCodigo");
 const erroNome = document.getElementById("erroNome");
 const erroEmail = document.getElementById("erroEmail");
@@ -218,6 +219,8 @@ window.handleFormCadastro = async () => {
     console.log(response);
 
     if (response.ok) {
+      toastSucesso.classList.add("ativo");
+
       setTimeout(() => {
         window.location = "../pages/login.html";
       }, 5000);

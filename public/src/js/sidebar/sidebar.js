@@ -42,8 +42,9 @@ function definirIniciais(nomeCompleto) {
 }
 
 function buscarUsuario() {
-  const nome = sessionStorage.getItem('NOME_COMPLETO') || 'Usuário';
+  const nome = sessionStorage.getItem('NOME') || 'Usuário';
   const cargo = sessionStorage.getItem('CARGO') || '';
+
   return { nome, cargo, initials: definirIniciais(nome) };
 }
 

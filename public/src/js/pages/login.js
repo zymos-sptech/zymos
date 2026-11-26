@@ -21,6 +21,8 @@ window.passwordInvisible = function () {
 const iptEmail = document.getElementById("iptEmail");
 const iptPassword = document.getElementById("iptPassword");
 
+const toastSucesso = document.getElementById("toastSucesso");
+
 const erroEmail = document.getElementById("erroEmail");
 const erroSenha = document.getElementById("erroSenha");
 
@@ -53,7 +55,7 @@ window.handleFormLogin = async () => {
   }
 
   if (!tudoCerto) {
-    const primeiroInvalido = document.querySelector("login-input.invalido.");
+    const primeiroInvalido = document.querySelector(".login-input.invalido.");
     if (primeiroInvalido) {
       primeiroInvalido.focus();
     }
@@ -80,6 +82,8 @@ window.handleFormLogin = async () => {
         sessionStorage.NOME_EMPRESA = data.empresa;
         sessionStorage.QTD_UNIDADE = data.qtd_unidade;
         sessionStorage.PLANO = data.plano;
+
+        toastSucesso.classList.add("ativo");
 
         setTimeout(() => {
           window.location = "../pages/dashboard/panorama.html";
