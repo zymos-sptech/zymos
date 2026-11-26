@@ -2,7 +2,7 @@ var database = require("../database/config");
 
 async function criarCargo(nome, permissao) {
   var sql = `
-    INSERT INTO cargo (nome, permisionamento) VALUES
+    INSERT INTO cargo (nome, permissionamento) VALUES
     ('${nome}', ${permissao});
     `;
 
