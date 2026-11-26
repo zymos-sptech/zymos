@@ -17,11 +17,16 @@ function buscarPorId(idSensor) {
     var instrucaoSql = `
         SELECT
             s.id,
+            s.fk_unidade,
+            s.fk_status_sensor,
             (SELECT COUNT(*)
-                FROM sensor
-                WHERE fk_tanque = s.fk_tanque AND status_sensor = 1 AND id <> s.id) AS outros_ativos,
-            (SELECT COUNT(*) FROM leitura_sensor WHERE fk_sensor = s.id) AS leituras,
-            (SELECT COUNT(*) FROM tanque WHERE fk_sensor = s.id) AS tanques_vinculados
+                FROM leitura_sensor ls
+                INNER JOIN producao p
+                    ON p.fk_lote = ls.fk_lote AND p.fk_tanque = ls.fk_tanque
+                WHERE p.fk_sensor = s.id) AS leituras,
+            (SELECT COUNT(*)
+                FROM producao p
+                WHERE p.fk_sensor = s.id) AS tanques_vinculados
         FROM sensor s
         WHERE s.id = ${idSensor};
     `;

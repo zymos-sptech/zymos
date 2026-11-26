@@ -1,17 +1,10 @@
 var database = require("../database/config");
 
-function criarProducao(loteId, tanqueId, dtEntrada) {
+function criarProducao(loteId, tanqueId, sensorId) {
   var sql = `
-        INSERT INTO producao (fk_lote, fk_tanque) VALUES
-        (${loteId}, ${tanqueId});
+        INSERT INTO producao (fk_lote, fk_tanque, fk_sensor) VALUES
+        (${loteId}, ${tanqueId}, ${sensorId});
     `;
-
-  if (dtEntrada != undefined) {
-    sql = `
-        INSERT INTO producao (fk_lote, fk_tanque, dt_entrada) VALUES
-        (${loteId}, ${tanqueId}, "${dtEntrada}");
-    `;
-  }
 
   return database.executar(sql);
 }
@@ -20,6 +13,7 @@ async function listarProducoes() {
   var sql = `
         SELECT
             p.fk_lote,
+            p.fk_sensor,
             l.codigo AS lote,
             p.fk_tanque,
             t.nome AS tanque,
@@ -31,6 +25,8 @@ async function listarProducoes() {
             ON l.id = p.fk_lote
         JOIN tanque AS t
             ON t.id = p.fk_tanque
+        JOIN sensor s 
+            ON s.id = p.fk_sensor
         JOIN cerveja AS c
             ON c.id = l.fk_cerveja
         ORDER BY p.dt_entrada DESC;
@@ -43,6 +39,7 @@ async function listarProducoesPorLote(loteId) {
   var sql = `
         SELECT
             p.fk_lote,
+            p.fk_sensor,
             l.codigo AS lote,
             p.fk_tanque,
             t.nome AS tanque,
@@ -53,6 +50,8 @@ async function listarProducoesPorLote(loteId) {
             ON l.id = p.fk_lote
         JOIN tanque AS t
             ON t.id = p.fk_tanque
+        JOIN sensor s
+            ON s.id = p.fk_sensor
         WHERE p.fk_lote = ${loteId}
         ORDER BY p.dt_entrada DESC;
     `;
