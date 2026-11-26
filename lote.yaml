@@ -4,15 +4,33 @@ name: lote
 meta:
   id: wrk_54ee507c7b69419699e5965e28cb2083
   created: 1794972863414
-  modified: 1794972863414
+  modified: 1795735000000
   description: ""
 collection:
-  - url: "{{ _.URL_LOCAL }}lotes/abc"
-    name: New Request
+  - url: "{{ _.URL_LOCAL }}lotes"
+    name: LISTAR
+    meta:
+      id: req_7a111081f77240eb9171efe5a54127aa
+      created: 1794972881600
+      modified: 1795735000000
+      isPrivate: false
+      description: ""
+      sortKey: -1794972881600
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}lotes/100"
+    name: BUSCAR_LOTE
     meta:
       id: req_1c221081f77240eb9171efe5a54127eb
       created: 1794972881635
-      modified: 1794975407630
+      modified: 1795735000000
       isPrivate: false
       description: ""
       sortKey: -1794972881636
@@ -26,18 +44,25 @@ collection:
         store: true
       rebuildPath: true
   - url: "{{ _.URL_LOCAL }}lotes/100"
-    name: New Request
+    name: ATUALIZAR
     meta:
       id: req_b38b6c73fd424e74b131607664f7a28f
       created: 1794974383447
-      modified: 1794974830263
+      modified: 1795735000000
       isPrivate: false
       description: ""
       sortKey: -1794974383447
     method: PUT
     body:
       mimeType: application/json
-      text: '{"codigo":"101-A","volumeLitros":40,"fkCerveja":9999,"fkStatusLote":999}'
+      text: |-
+        {
+          "codigo": "101-A",
+          "volumeLitros": 8000,
+          "fkCerveja": 1,
+          "fkUnidade": 1,
+          "fkStatusLote": 1
+        }
     headers:
       - name: Content-Type
         value: application/json
@@ -50,18 +75,25 @@ collection:
         store: true
       rebuildPath: true
   - url: "{{ _.URL_LOCAL }}lotes"
-    name: New Request
+    name: CRIAR
     meta:
       id: req_222e051beef8468098ad7c8571845ff5
       created: 1794974846945
-      modified: 1794975203790
+      modified: 1795735000000
       isPrivate: false
       description: ""
       sortKey: -1794974846945
     method: POST
     body:
       mimeType: application/json
-      text: '{"codigo":"LT-TESTEDWAIINDWIAODNIAWNIODNAWIODNWOIWIDAODONAIWNDIO","volumeLitros":500,"fkCerveja":1,"fkUsuarioCriador":1}'
+      text: |-
+        {
+          "codigo": "202",
+          "volumeLitros": 8000,
+          "fkCerveja": 1,
+          "fkUnidade": 1,
+          "fkUsuarioCriador": 1
+        }
     headers:
       - name: Content-Type
         value: application/json
@@ -73,12 +105,12 @@ collection:
         send: true
         store: true
       rebuildPath: true
-  - url: "{{ _.URL_LOCAL }}lotes/104/finalizar"
-    name: New Request
+  - url: "{{ _.URL_LOCAL }}lotes/100/finalizar"
+    name: FINALIZAR
     meta:
       id: req_97ae91802f564807849b757abf5b37dc
       created: 1794975215780
-      modified: 1794975317067
+      modified: 1795735000000
       isPrivate: false
       description: ""
       sortKey: -1794975215780
@@ -92,15 +124,69 @@ collection:
         store: true
       rebuildPath: true
   - url: "{{ _.URL_LOCAL }}lotes/104"
-    name: New Request
+    name: DELETAR
     meta:
       id: req_3f52aa1711754f3e8c6898154540facd
       created: 1794975337142
-      modified: 1794975384949
+      modified: 1795735000000
       isPrivate: false
       description: ""
       sortKey: -1794975337142
     method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}lotes/empresa/1"
+    name: LISTAR_POR_EMPRESA
+    meta:
+      id: req_8b221081f77240eb9171efe5a54127bb
+      created: 1795735000000
+      modified: 1795735000000
+      isPrivate: false
+      description: ""
+      sortKey: -1795735000000
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}lotes/unidade/1"
+    name: LISTAR_POR_UNIDADE
+    meta:
+      id: req_9c331081f77240eb9171efe5a54127cc
+      created: 1795735000001
+      modified: 1795735000001
+      isPrivate: false
+      description: ""
+      sortKey: -1795735000001
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.URL_LOCAL }}lotes/100/cancelar"
+    name: CANCELAR
+    meta:
+      id: req_4d551081f77240eb9171efe5a54127dd
+      created: 1795735000002
+      modified: 1795735000002
+      isPrivate: false
+      description: ""
+      sortKey: -1795735000002
+    method: PATCH
     settings:
       renderRequestBody: true
       encodeUrl: true
