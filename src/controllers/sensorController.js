@@ -1,7 +1,10 @@
 var sensorModel = require("../models/sensorModel");
 
-const STATUS_SENSOR_INATIVO = 0;
+//  1 = Ativo, 2 = Inativo, 3 = Manutencao
+const STATUS_SENSOR_MINIMO = 1;
+const STATUS_SENSOR_MAXIMO = 3;
 const STATUS_SENSOR_ATIVO = 1;
+const STATUS_UNIDADE_INATIVA = 4;
 
 function naoEInteiro(valor) {
     return valor === "" || valor * 1 != valor || valor % 1 != 0;
@@ -16,22 +19,23 @@ function tratarErro(res, acao) {
 }
 
 function cadastrar(req, res) {
-    var idTanque = req.body.idTanque;
+    var idUnidade = req.body.idUnidade || req.body.fkUnidade;
+    var modelo = req.body.modelo || "LM35";
 
-    if (idTanque == undefined || naoEInteiro(idTanque)) {
-        return res.status(400).send("O id do tanque é inválido!");
+    if (idUnidade == undefined || naoEInteiro(idUnidade)) {
+        return res.status(400).send("O id da unidade é inválido!");
     }
 
-    sensorModel.buscarTanque(idTanque).then(function (tanque) {
-        if (tanque.length == 0) {
-            return res.status(404).send("Tanque não encontrado!");
+    sensorModel.buscarUnidade(idUnidade).then(function (unidade) {
+        if (unidade.length == 0) {
+            return res.status(404).send("Unidade não encontrada!");
         }
 
-        if (tanque[0].sensores_ativos > 0) {
-            return res.status(409).send("O tanque já possui um sensor ativo!");
+        if (unidade[0].fk_status_unidade == STATUS_UNIDADE_INATIVA) {
+            return res.status(409).send("Unidade inativa! Sensor não cadastrado.");
         }
 
-        return sensorModel.cadastrar(tanque[0].fk_unidade, idTanque).then(function (resultado) {
+        return sensorModel.cadastrar(idUnidade, modelo).then(function (resultado) {
             return res.status(201).json({ idSensor: resultado.insertId });
         });
     }).catch(tratarErro(res, "cadastrar o sensor"));
@@ -53,29 +57,53 @@ function listarPorUnidade(req, res) {
     }).catch(tratarErro(res, "buscar os sensores"));
 }
 
+function listarPorEmpresa(req, res) {
+    var idEmpresa = req.params.idEmpresa;
+
+    if (naoEInteiro(idEmpresa)) {
+        return res.status(400).send("O id da empresa é inválido!");
+    }
+
+    sensorModel.listarPorEmpresa(idEmpresa).then(function (resultado) {
+        if (resultado.length == 0) {
+            return res.status(204).send();
+        }
+
+        return res.status(200).json(resultado);
+    }).catch(tratarErro(res, "buscar os sensores da empresa"));
+}
+
 function alterarStatus(req, res) {
     var idSensor = req.params.idSensor;
-    var statusSensor = req.body.statusSensor;
+    var statusSensor = req.body.fkStatusSensor;
 
     if (naoEInteiro(idSensor)) {
         return res.status(400).send("O id do sensor é inválido!");
     }
 
-    if (statusSensor == undefined || naoEInteiro(statusSensor) || statusSensor < STATUS_SENSOR_INATIVO || statusSensor > STATUS_SENSOR_ATIVO) {
-        return res.status(400).send("O status do sensor deve ser " + STATUS_SENSOR_INATIVO + " (inativo) ou " + STATUS_SENSOR_ATIVO + " (ativo)!");
+    if (statusSensor == undefined || naoEInteiro(statusSensor)) {
+        return res.status(400).send("O status do sensor é inválido!");
     }
 
-    sensorModel.buscarPorId(idSensor).then(function (sensor) {
-        if (sensor.length == 0) {
-            return res.status(404).send("Sensor não encontrado!");
+    sensorModel.buscarStatusSensor(statusSensor).then(function (statusExiste) {
+        if (statusExiste.length == 0) {
+            return res.status(404).send("Status do sensor não encontrado!");
         }
 
-        if (statusSensor == STATUS_SENSOR_ATIVO && sensor[0].outros_ativos > 0) {
-            return res.status(409).send("O tanque já possui outro sensor ativo!");
-        }
+        return sensorModel.buscarPorId(idSensor).then(function (sensor) {
+            if (sensor.length == 0) {
+                return res.status(404).send("Sensor não encontrado!");
+            }
 
-        return sensorModel.alterarStatus(idSensor, statusSensor).then(function () {
-            return res.status(200).send("Status do sensor atualizado com sucesso!");
+            if (statusSensor != STATUS_SENSOR_ATIVO && sensor[0].producoes_ativas > 0) {
+                return res.status(409).send(
+                    "O sensor está vinculado a uma produção em andamento e precisa continuar Ativo!"
+                );
+            }
+
+            return sensorModel.alterarStatus(idSensor, statusSensor).then(function () {
+                return res.status(200).send("Status do sensor atualizado com sucesso!");
+            });
         });
     }).catch(tratarErro(res, "alterar o status do sensor"));
 }
@@ -96,8 +124,8 @@ function deletar(req, res) {
             return res.status(409).send("O sensor possui leituras registradas e não pode ser deletado! Inative-o.");
         }
 
-        if (sensor[0].tanques_vinculados > 0) {
-            return res.status(409).send("O sensor está vinculado a um tanque e não pode ser deletado!");
+        if (sensor[0].producoes_historico > 0) {
+            return res.status(409).send("O sensor possui histórico de produção e não pode ser deletado!");
         }
 
         return sensorModel.deletar(idSensor).then(function () {
@@ -109,6 +137,7 @@ function deletar(req, res) {
 module.exports = {
     cadastrar,
     listarPorUnidade,
+    listarPorEmpresa,
     alterarStatus,
     deletar
 }
