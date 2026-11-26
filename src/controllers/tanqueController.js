@@ -43,12 +43,17 @@ function tratarErro(res, acao) {
 
 function cadastrar(req, res) {
   var idUnidade = req.body.idUnidade;
+  var fkUsuarioCriador = req.body.fkUsuarioCriador || req.body.idUsuario || 1;
   var nome = req.body.nome;
   var capacidade = req.body.capacidade;
   var erroDados = erroNosDados(nome, capacidade);
 
   if (idUnidade == undefined || naoEInteiro(idUnidade)) {
     return res.status(400).send("O id da unidade é inválido!");
+  }
+
+  if (naoEInteiro(fkUsuarioCriador)) {
+    return res.status(400).send("O id do usuário criador é inválido!");
   }
 
   if (erroDados) {
@@ -91,7 +96,7 @@ function cadastrar(req, res) {
           }
 
           return tanqueModel
-            .cadastrar(idUnidade, nome, capacidade)
+            .cadastrar(idUnidade, fkUsuarioCriador, nome, capacidade)
             .then(function (resultado) {
               return res.status(201).json({ idTanque: resultado.insertId });
             });
@@ -147,6 +152,10 @@ function listarPorTanque(req, res) {
 
 function listarTanqueEmpresa(req, res) {
   const empresaId = req.params.empresaId;
+
+  if (naoEInteiro(empresaId)) {
+    return res.status(400).send("O id da empresa é inválido!");
+  }
 
   tanqueModel
     .listarTanqueEmpresa(empresaId)
@@ -245,12 +254,6 @@ function deletar(req, res) {
           .send(
             "O tanque possui histórico de produção e não pode ser deletado!",
           );
-      }
-
-      if (tanque[0].sensores > 0) {
-        return res
-          .status(409)
-          .send("O tanque possui sensor vinculado e não pode ser deletado!");
       }
 
       return tanqueModel.deletar(idTanque).then(function () {

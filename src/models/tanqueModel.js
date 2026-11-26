@@ -36,8 +36,7 @@ function buscarPorId(idTanque) {
                 WHERE p.fk_tanque = t.id
                     AND p.dt_saida IS NULL
                     AND l.fk_status_lote = 1) AS lotes_ativos,
-            (SELECT COUNT(*) FROM producao WHERE fk_tanque = t.id) AS producoes,
-            (SELECT COUNT(*) FROM sensor WHERE fk_tanque = t.id) AS sensores
+            (SELECT COUNT(*) FROM producao WHERE fk_tanque = t.id) AS producoes
         FROM tanque t
         WHERE t.id = ${idTanque};
     `;
@@ -54,9 +53,10 @@ function buscarPorNome(idUnidade, nome, idTanqueIgnorado) {
   return database.executar(instrucaoSql);
 }
 
-function cadastrar(idUnidade, nome, capacidade) {
+function cadastrar(idUnidade, fkUsuarioCriador, nome, capacidade) {
   var instrucaoSql = `
-        INSERT INTO tanque (fk_unidade, nome, capacidade) VALUES (${idUnidade}, '${nome}', ${capacidade});
+        INSERT INTO tanque (fk_unidade, fk_usuario_criador, nome, capacidade)
+        VALUES (${idUnidade}, ${fkUsuarioCriador}, '${nome}', ${capacidade});
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -65,12 +65,17 @@ function cadastrar(idUnidade, nome, capacidade) {
 function listarPorUnidade(idUnidade) {
   var instrucaoSql = `
         SELECT
+            t.id,
             t.id AS idTanque,
+            t.fk_unidade,
+            t.fk_usuario_criador,
             t.nome,
             t.capacidade,
             t.fk_status_tanque,
             st.nome AS status_tanque,
+            l.id AS fk_lote,
             l.codigo AS lote,
+            c.id AS fk_cerveja,
             c.nome AS cerveja
         FROM tanque t
             INNER JOIN status_tanque st
@@ -91,12 +96,17 @@ function listarPorUnidade(idUnidade) {
 function listarPorTanque(idUnidade, idTanque) {
   var instrucaoSql = `
         SELECT
+            t.id,
             t.id AS idTanque,
+            t.fk_unidade,
+            t.fk_usuario_criador,
             t.nome,
             t.capacidade,
             t.fk_status_tanque,
             st.nome AS status_tanque,
+            l.id AS fk_lote,
             l.codigo AS lote,
+            c.id AS fk_cerveja,
             c.nome AS cerveja
         FROM tanque t
             INNER JOIN status_tanque st
@@ -116,11 +126,21 @@ function listarPorTanque(idUnidade, idTanque) {
 function listarTanqueEmpresa(empresaId) {
   var sql = `
         SELECT 
-            t.id, t.fk_unidade, t.fk_usuario_criador, t.fk_status_tanque,
-            t.nome, t.capacidade
+            t.id,
+            t.id AS idTanque,
+            t.fk_unidade,
+            t.fk_usuario_criador,
+            t.fk_status_tanque,
+            st.nome AS status_tanque,
+            t.nome,
+            t.capacidade
         FROM tanque t
-            JOIN usuario u ON u.id = t.fk_usuario_criador
-        WHERE u.fk_empresa = ${empresaId};
+            INNER JOIN unidade un
+                ON un.id = t.fk_unidade
+            INNER JOIN status_tanque st
+                ON st.id = t.fk_status_tanque
+        WHERE un.fk_empresa = ${empresaId}
+        ORDER BY t.fk_unidade, t.nome;
     `;
 
   return database.executar(sql);

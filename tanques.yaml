@@ -40,6 +40,7 @@ collection:
       text: |-
         {
           "idUnidade": 1,
+          "fkUsuarioCriador": 1,
           "nome": "TQ-11",
           "capacidade": 10000
         }
