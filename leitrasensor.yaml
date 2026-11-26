@@ -89,6 +89,24 @@ collection:
         send: true
         store: true
       rebuildPath: true
+  - url: "{{ _.base_url }}/leiturasSensor/lote/100/historico"
+    name: HISTORICO
+    meta:
+      id: req_99489680d7e1414c85204d02e8297a71
+      created: 1795730762177
+      modified: 1795731115570
+      isPrivate: false
+      description: ""
+      sortKey: -1795730762177
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:

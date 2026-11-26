@@ -16,7 +16,6 @@ function buscarLote(idLote) {
   return database.executar(instrucaoSql);
 }
 
-
 function buscarLoteAtivo(idSensor, temperatura) {
   var instrucaoSql = `
         SELECT
@@ -43,22 +42,6 @@ function buscarLoteAtivo(idSensor, temperatura) {
             AND p.dt_entrada <= NOW()
             AND (p.dt_saida IS NULL OR p.dt_saida >= NOW())
         ORDER BY p.dt_entrada DESC LIMIT 1;
-    `;
-  console.log("Executando a instrução SQL: \n" + instrucaoSql);
-  return database.executar(instrucaoSql);
-}
-
-function cadastrar(idSensor, temperatura) {
-  var instrucaoSql = `
-        INSERT INTO leitura_sensor (fk_sensor, temperatura) VALUES (${idSensor}, ${temperatura});
-    `;
-  console.log("Executando a instrução SQL: \n" + instrucaoSql);
-  return database.executar(instrucaoSql);
-}
-
-function cadastrarAlerta(idLeitura, tipoAlerta, descricao) {
-  var instrucaoSql = `
-        INSERT INTO alerta (fk_leitura, tipo_alerta, descricao) VALUES (${idLeitura}, ${tipoAlerta}, '${descricao}');
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -104,12 +87,62 @@ function listarPorLote(idLote, limite_linhas) {
   return database.executar(instrucaoSql);
 }
 
+function historico(loteId) {
+  var sql = `
+    SELECT 
+        l.id,
+        CONCAT('Lote ', l.codigo) AS nome,
+        c.nome AS tipo,
+        tc.tipo AS estilo,
+        CAST(c.temperatura_min AS DOUBLE) AS faixa_min,
+        CAST(c.temperatura_max AS DOUBLE) AS faixa_max,
+        c.tempo_fermentacao_dias AS duracao,
+        COALESCE(
+            (
+                SELECT JSON_ARRAYAGG(d.temp_media)
+                FROM (
+                    SELECT ROUND(AVG(ls.temperatura), 1) AS temp_media
+                    FROM leitura_sensor ls
+                    WHERE ls.fk_lote = l.id
+                    GROUP BY DATEDIFF(ls.dt_medicao, l.dt_inicio)
+                    ORDER BY DATEDIFF(ls.dt_medicao, l.dt_inicio) ASC
+                ) AS d
+            ),
+            JSON_ARRAY()
+        ) AS data,
+        COALESCE(
+            (
+                SELECT JSON_ARRAYAGG(h.temp_media)
+                FROM (
+                    SELECT ROUND(AVG(ls2.temperatura), 1) AS temp_media
+                    FROM leitura_sensor ls2
+                    WHERE ls2.fk_lote = l.id
+                      AND ls2.dt_medicao >= DATE_SUB(
+                          (SELECT MAX(ls3.dt_medicao) FROM leitura_sensor ls3 WHERE ls3.fk_lote = l.id),
+                          INTERVAL 24 HOUR
+                      )
+                    GROUP BY DATE_FORMAT(ls2.dt_medicao, '%Y-%m-%d %H:00:00')
+                    ORDER BY DATE_FORMAT(ls2.dt_medicao, '%Y-%m-%d %H:00:00') ASC
+                ) AS h
+            ),
+            JSON_ARRAY()
+        ) AS data_24h
+    FROM lote l
+        INNER JOIN cerveja c
+            ON c.id = l.fk_cerveja
+        INNER JOIN tipo_cerveja tc
+            ON tc.id = c.fk_tipo_cerveja
+    WHERE l.id = ${loteId};
+  `;
+
+  return database.executar(sql);
+}
+
 module.exports = {
   buscarSensor,
   buscarLote,
   buscarLoteAtivo,
-  cadastrar,
-  cadastrarAlerta,
   listar,
-  listarPorLote
-}
+  listarPorLote,
+  historico,
+};
