@@ -26,6 +26,7 @@ var contatoRouter = require("./src/routes/contatoRoute");
 var sensorRouter = require("./src/routes/sensorRoute");
 var tanqueRouter = require("./src/routes/tanqueRoute");
 var unidadeRouter = require("./src/routes/unidadeRoute");
+var cervejaRouter = require("./src/routes/cervejaRoute");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -44,6 +45,7 @@ app.use("/sensores", sensorRouter);
 app.use("/leiturasSensor", leituraSensorRouter);
 app.use("/tanques", tanqueRouter);
 app.use("/unidades", unidadeRouter);
+app.use("/cervejas", cervejaRouter);
 
 app.listen(PORTA_APP, function () {
   console.log(`
