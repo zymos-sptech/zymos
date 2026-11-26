@@ -25,12 +25,11 @@ var loteRouter = require("./src/routes/loteRoute");
 var contatoRouter = require("./src/routes/contatoRoute");
 var sensorRouter = require("./src/routes/sensorRoute");
 var tanqueRouter = require("./src/routes/tanqueRoute");
+var unidadeRouter = require("./src/routes/unidadeRoute");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/sensores", sensorRouter);
-
 
 app.use(cors());
 
@@ -44,7 +43,7 @@ app.use("/contato", contatoRouter);
 app.use("/sensores", sensorRouter);
 app.use("/leiturasSensor", leituraSensorRouter);
 app.use("/tanques", tanqueRouter);
-
+app.use("/unidades", unidadeRouter);
 
 app.listen(PORTA_APP, function () {
   console.log(`
