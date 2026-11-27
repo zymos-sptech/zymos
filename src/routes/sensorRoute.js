@@ -11,7 +11,11 @@ router.get("/listar/:idUnidade", function (req, res) {
     sensorController.listarPorUnidade(req, res);
 });
 
-router.put("/status/:idSensor", function (req, res) {
+router.get("/empresa/:idEmpresa", function (req, res) {
+    sensorController.listarPorEmpresa(req, res);
+});
+
+router.patch("/status/:idSensor", function (req, res) {
     sensorController.alterarStatus(req, res);
 });
 

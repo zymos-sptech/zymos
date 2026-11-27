@@ -21,7 +21,8 @@ collection:
       mimeType: application/json
       text: |-
         {
-          "idTanque": 1
+          "idUnidade": 1,
+          "modelo": "LM35"
         }
     headers:
       - name: Content-Type
@@ -66,7 +67,7 @@ collection:
       mimeType: application/json
       text: |-
         {
-          "statusSensor": 0
+          "fkStatusSensor": 2
         }
     headers:
       - name: Content-Type

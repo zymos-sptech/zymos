@@ -1,13 +1,14 @@
 var producaoModel = require("../models/producaoModel");
+var sensorModel = require("../models/sensorModel");
 
 async function criarProducao(req, res) {
   const data = req.body;
 
   const loteId = data.loteId;
+  const sensorId = data.sensorId;
   const tanqueId = data.tanqueId;
-  const dtEntrada = data.dtEntrada;
 
-  if (loteId == undefined || tanqueId == undefined) {
+  if (loteId == undefined || tanqueId == undefined || sensorId == undefined) {
     return res.status(400).send("Valores undefined.");
   }
 
@@ -17,6 +18,12 @@ async function criarProducao(req, res) {
     return res.status(404).send("Lote não encontrado.");
   }
 
+  const sensorExiste = await sensorModel.buscarPorId(sensorId);
+
+  if (sensorExiste.length <= 0) {
+    return res.status(404).send("Sensor não encontrado.");
+  }
+
   const tanqueExiste = await producaoModel.buscarTanque(tanqueId);
 
   if (tanqueExiste.length <= 0) {
@@ -24,7 +31,7 @@ async function criarProducao(req, res) {
   }
 
   await producaoModel
-    .criarProducao(loteId, tanqueId, dtEntrada)
+    .criarProducao(loteId, tanqueId, sensorId)
     .then(function (response) {
       res.status(201).send("Produção registrada com sucesso.");
     })

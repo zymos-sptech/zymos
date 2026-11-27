@@ -2,112 +2,25 @@ var leituraSensorModel = require("../models/leituraSensorModel");
 
 const limite_linhas = 100;
 
-
 function naoENumero(valor) {
   return valor === "" || valor * 1 != valor;
 }
 
-function cadastrar(req, res) {
-  var idSensor = req.body.idSensor;
-  var temperatura = req.body.temperatura;
-
-  if (idSensor == undefined) {
-    res.status(400).send("O id do sensor está undefined!");
-  } else if (temperatura == undefined) {
-    res.status(400).send("A temperatura está undefined!");
-  } else if (naoENumero(idSensor)) {
-    res.status(400).send("O id do sensor é inválido!");
-  } else if (naoENumero(temperatura) || temperatura < -55 || temperatura > 150) {
-    res.status(400).send("A temperatura deve ser um número entre -55 e 150!");
-  } else {
-    leituraSensorModel.buscarSensor(idSensor)
-      .then(
-        function (sensor) {
-          if (sensor.length == 0) {
-            res.status(404).send("Sensor não encontrado!");
-          } else if (sensor[0].status_sensor != 1) {
-            res.status(403).send("Sensor inativo! Leitura não registrada.");
-          } else {
-            return registrarLeitura(res, idSensor, temperatura);
-          }
-        }
-      ).catch(
-        function (erro) {
-          console.log(erro);
-          console.log("Houve um erro ao registrar a leitura: ", erro.sqlMessage);
-          res.status(500).json(erro.sqlMessage);
-        }
-      );
-  }
-}
-
-function registrarLeitura(res, idSensor, temperatura) {
-  return leituraSensorModel.cadastrar(idSensor, temperatura)
-    .then(
-      function (resultado) {
-        var idLeitura = resultado.insertId;
-
-        return leituraSensorModel.buscarLoteAtivo(idSensor, temperatura)
-          .then(
-            function (lotes) {
-              if (lotes.length == 0 || lotes[0].tipo_alerta == 0) {
-                res.status(201).json({ idLeitura: idLeitura, alerta: null });
-              } else {
-                var lote = lotes[0];
-                var descricao = "Temperatura abaixo do limite mínimo (" + lote.temperatura_min + "°C)";
-
-                if (lote.tipo_alerta == 1) {
-                  descricao = "Temperatura acima do limite máximo (" + lote.temperatura_max + "°C)";
-                }
-
-                return leituraSensorModel.cadastrarAlerta(idLeitura, lote.tipo_alerta, descricao)
-                  .then(
-                    function () {
-                      res.status(201).json({
-                        idLeitura: idLeitura,
-                        alerta: {
-                          tipoAlerta: lote.tipo_alerta,
-                          descricao: descricao,
-                          lote: lote.lote,
-                          tanque: lote.tanque
-                        }
-                      });
-                    }
-                  );
-              }
-            }
-          ).catch(
-            function (erro) {
-              console.log(erro);
-              console.log("Houve um erro ao gerar o alerta: ", erro.sqlMessage);
-              res.status(201).json({
-                idLeitura: idLeitura,
-                alerta: null,
-                aviso: "Leitura registrada, mas houve erro ao avaliar/gerar o alerta."
-              });
-            }
-          );
-      }
-    );
-}
-
 function listar(req, res) {
-  leituraSensorModel.listar(limite_linhas)
-    .then(
-      function (resultado) {
-        if (resultado.length > 0) {
-          res.status(200).json(resultado);
-        } else {
-          res.status(204).send("Nenhum resultado encontrado!");
-        }
+  leituraSensorModel
+    .listar(limite_linhas)
+    .then(function (resultado) {
+      if (resultado.length > 0) {
+        res.status(200).json(resultado);
+      } else {
+        res.status(204).send("Nenhum resultado encontrado!");
       }
-    ).catch(
-      function (erro) {
-        console.log(erro);
-        console.log("Houve um erro ao buscar as leituras: ", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-      }
-    );
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      console.log("Houve um erro ao buscar as leituras: ", erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
 }
 
 function listarPorLote(req, res) {
@@ -116,36 +29,55 @@ function listarPorLote(req, res) {
   if (naoENumero(idLote)) {
     res.status(400).send("O id do lote é inválido!");
   } else {
-    leituraSensorModel.buscarLote(idLote)
-      .then(
-        function (lote) {
-          if (lote.length == 0) {
-            res.status(404).send("Lote não encontrado!");
-          } else {
-            return leituraSensorModel.listarPorLote(idLote, limite_linhas)
-              .then(
-                function (resultado) {
-                  if (resultado.length > 0) {
-                    res.status(200).json(resultado);
-                  } else {
-                    res.status(204).send("Nenhum resultado encontrado!");
-                  }
-                }
-              );
-          }
+    leituraSensorModel
+      .buscarLote(idLote)
+      .then(function (lote) {
+        if (lote.length == 0) {
+          res.status(404).send("Lote não encontrado!");
+        } else {
+          return leituraSensorModel
+            .listarPorLote(idLote, limite_linhas)
+            .then(function (resultado) {
+              if (resultado.length > 0) {
+                res.status(200).json(resultado);
+              } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+              }
+            });
         }
-      ).catch(
-        function (erro) {
-          console.log(erro);
-          console.log("Houve um erro ao buscar as leituras do lote: ", erro.sqlMessage);
-          res.status(500).json(erro.sqlMessage);
-        }
-      );
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "Houve um erro ao buscar as leituras do lote: ",
+          erro.sqlMessage,
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
   }
 }
 
-module.exports = {
-  cadastrar,
-  listar,
-  listarPorLote
+async function historico(req, res) {
+  const idLote = req.params.idLote;
+
+  const loteExiste = await leituraSensorModel.buscarLote(idLote);
+  console.log(loteExiste, "lote existe");
+  if (loteExiste.length == 0)
+    return res.status(404).send("Lote não encontrado");
+
+  leituraSensorModel
+    .historico(idLote)
+    .then(function (response) {
+      res.status(200).json(response[0]);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      res.status(500).send("Erro no servidor");
+    });
 }
+
+module.exports = {
+  listar,
+  listarPorLote,
+  historico,
+};

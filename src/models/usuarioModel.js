@@ -26,7 +26,7 @@ async function buscarUsuario(usuarioId, email, nome) {
 
   var sql = `
       SELECT 
-        u.id, u.nome, u.email, c.nome cargo, p.nome plano, u.nome empresa,
+        u.id, u.nome, u.email, c.nome cargo, e.id id_empresa, e.nome empresa, p.nome plano,
         COUNT(un.id) qtd_unidade
       FROM usuario u
         LEFT JOIN cargo c
@@ -38,7 +38,7 @@ async function buscarUsuario(usuarioId, email, nome) {
         LEFT JOIN unidade un
       ON e.id = un.fk_empresa   
       WHERE ${valores}
-      GROUP BY u.id, u.nome, u.email, c.nome, e.nome;`;
+      GROUP BY u.id, u.nome, u.email, c.nome, e.id, e.nome, p.nome;`;
 
   return database.executar(sql);
 }

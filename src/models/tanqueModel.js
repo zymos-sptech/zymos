@@ -1,7 +1,7 @@
 var database = require("../database/config");
 
 function buscarUnidade(idUnidade) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         SELECT
             u.id,
             u.fk_status_unidade,
@@ -20,12 +20,12 @@ function buscarUnidade(idUnidade) {
                 ON p.id = e.fk_plano
         WHERE u.id = ${idUnidade};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function buscarPorId(idTanque) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         SELECT
             t.id,
             t.fk_unidade,
@@ -36,41 +36,46 @@ function buscarPorId(idTanque) {
                 WHERE p.fk_tanque = t.id
                     AND p.dt_saida IS NULL
                     AND l.fk_status_lote = 1) AS lotes_ativos,
-            (SELECT COUNT(*) FROM producao WHERE fk_tanque = t.id) AS producoes,
-            (SELECT COUNT(*) FROM sensor WHERE fk_tanque = t.id) AS sensores
+            (SELECT COUNT(*) FROM producao WHERE fk_tanque = t.id) AS producoes
         FROM tanque t
         WHERE t.id = ${idTanque};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function buscarPorNome(idUnidade, nome, idTanqueIgnorado) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         SELECT id FROM tanque
         WHERE fk_unidade = ${idUnidade} AND nome = '${nome}' AND id <> ${idTanqueIgnorado};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
-function cadastrar(idUnidade, nome, capacidade) {
-    var instrucaoSql = `
-        INSERT INTO tanque (fk_unidade, nome, capacidade) VALUES (${idUnidade}, '${nome}', ${capacidade});
+function cadastrar(idUnidade, fkUsuarioCriador, nome, capacidade) {
+  var instrucaoSql = `
+        INSERT INTO tanque (fk_unidade, fk_usuario_criador, nome, capacidade)
+        VALUES (${idUnidade}, ${fkUsuarioCriador}, '${nome}', ${capacidade});
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function listarPorUnidade(idUnidade) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         SELECT
+            t.id,
             t.id AS idTanque,
+            t.fk_unidade,
+            t.fk_usuario_criador,
             t.nome,
             t.capacidade,
             t.fk_status_tanque,
             st.nome AS status_tanque,
+            l.id AS fk_lote,
             l.codigo AS lote,
+            c.id AS fk_cerveja,
             c.nome AS cerveja
         FROM tanque t
             INNER JOIN status_tanque st
@@ -84,19 +89,24 @@ function listarPorUnidade(idUnidade) {
         WHERE t.fk_unidade = ${idUnidade}
         ORDER BY t.nome;
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function listarPorTanque(idUnidade, idTanque) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         SELECT
+            t.id,
             t.id AS idTanque,
+            t.fk_unidade,
+            t.fk_usuario_criador,
             t.nome,
             t.capacidade,
             t.fk_status_tanque,
             st.nome AS status_tanque,
+            l.id AS fk_lote,
             l.codigo AS lote,
+            c.id AS fk_cerveja,
             c.nome AS cerveja
         FROM tanque t
             INNER JOIN status_tanque st
@@ -109,35 +119,59 @@ function listarPorTanque(idUnidade, idTanque) {
                 ON c.id = l.fk_cerveja
         WHERE t.fk_unidade = ${idUnidade} AND t.id = ${idTanque};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
+function listarTanqueEmpresa(empresaId) {
+  var sql = `
+        SELECT 
+            t.id,
+            t.id AS idTanque,
+            t.fk_unidade,
+            t.fk_usuario_criador,
+            t.fk_status_tanque,
+            st.nome AS status_tanque,
+            t.nome,
+            t.capacidade
+        FROM tanque t
+            INNER JOIN unidade un
+                ON un.id = t.fk_unidade
+            INNER JOIN status_tanque st
+                ON st.id = t.fk_status_tanque
+        WHERE un.fk_empresa = ${empresaId}
+        ORDER BY t.fk_unidade, t.nome;
+    `;
+
+  return database.executar(sql);
 }
 
 function editar(idTanque, nome, capacidade, idStatusTanque) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         UPDATE tanque
         SET nome = '${nome}', capacidade = ${capacidade}, fk_status_tanque = ${idStatusTanque}
         WHERE id = ${idTanque};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 function deletar(idTanque) {
-    var instrucaoSql = `
+  var instrucaoSql = `
         DELETE FROM tanque WHERE id = ${idTanque};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+  console.log("Executando a instrução SQL: \n" + instrucaoSql);
+  return database.executar(instrucaoSql);
 }
 
 module.exports = {
-    buscarUnidade,
-    buscarPorId,
-    buscarPorNome,
-    cadastrar,
-    listarPorUnidade,
-    listarPorTanque,
-    editar,
-    deletar
-}
+  buscarUnidade,
+  buscarPorId,
+  buscarPorNome,
+  cadastrar,
+  listarPorUnidade,
+  listarPorTanque,
+  listarTanqueEmpresa,
+  editar,
+  deletar,
+};
