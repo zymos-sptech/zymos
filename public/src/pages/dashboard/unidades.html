@@ -1,86 +1,709 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Unidades</title>
-  <link rel="stylesheet" href="../../css/global.css">
-  <link rel="stylesheet" href="../../css/dashboard/macro/unidades.css">
+  <title>Unidades - Zymos</title>
+  <link rel="shortcut icon" href="../../../assets/branding/simbolo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="../../css/tabelas.css">
+  <link rel="stylesheet" href="../../css/modais.css">
+  <link rel="stylesheet" href="../../css/dashboard/unidade.css">
+  <link rel="stylesheet" href="../../css/components/sidebar.css">
+  <script src="../../js/sidebar/sidebar.js" defer type="module"></script>
   <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
 </head>
-<body>
-  <nav class="caminho">
-    Zymos / <span class="caminho-atual">Unidades</span>
-  </nav>
 
+<body>
+  <div id="sidebar"></div>
   <main class="dashboard">
 
-    <header class="container-cabecalho">
-      <div class="cabecalho-textos">
-        <h1 class="cabecalho-nome">Unidades</h1>
-        <p class="cabecalho-descricao">Unidades da Cervejaria Horizonte - Unidade SP</p>
-      </div>
+    <section class="container-barra-superior">
+      <h1 class="cabecalho-nome">Unidades</h1>
 
-      <button class="botao botao-solicitar" type="button">
-        <i class="fa-solid fa-plus" aria-hidden="true"></i>
-        Solicitar Nova Unidade
-      </button>
-    </header>
-
-    <section class="container-busca">
       <div class="busca-campo">
         <i class="fa-solid fa-magnifying-glass busca-icone" aria-hidden="true"></i>
-        <input class="busca-entrada" type="search" placeholder="Pesquisar por nome, cidade ou endereço..." aria-label="Pesquisar unidades">
+        <input class="busca-entrada" type="search" placeholder="Pesquisar por nome, cidade ou endereço...">
       </div>
+
+      <select class="filtro-select">
+        <option value="">Status: Todos</option>
+        <option value="ativa">Ativa</option>
+        <option value="analise">Em Análise</option>
+      </select>
+
+      <button class="botao botao-principal" id="btn-abrir-solicitar" type="button">
+        <i class="fa-solid fa-plus" aria-hidden="true"></i>
+        Solicitar nova unidade
+      </button>
     </section>
 
-    <section class="container-tabela">
-      <div class="tabela-linha tabela-cabecalho">
-        <span class="tabela-titulo">Unidade</span>
-        <span class="tabela-titulo">Cidade / UF</span>
-        <span class="tabela-titulo">Total de tanques</span>
-        <span class="tabela-titulo">Tanques ativos</span>
-        <span class="tabela-titulo">Status da implantação</span>
-        <span class="tabela-titulo">Ações</span>
-      </div>
-
-      <div class="tabela-linha">
-        <div class="tabela-celula">
-          <span class="unidade-nome">Fábrica Matriz</span>
-          <span class="unidade-endereco">Rodovia Anhanguera, 5000 · Distrito Industrial</span>
+    <section class="card-tabela">
+      <div class="container-tabela">
+        <div class="tabela-linha tabela-cabecalho">
+          <span>Unidade</span>
+          <span>Cidade / UF</span>
+          <span>Total de tanques</span>
+          <span>Tanques em Uso</span>
+          <span>Status da implantação</span>
+          <span>Ações</span>
         </div>
-        <div class="tabela-celula">Ribeirão Preto / SP</div>
-        <div class="tabela-celula">4 tanques</div>
-        <div class="tabela-celula tabela-destaque">3 tanques</div>
-        <div class="tabela-celula"><span class="status">Ativa</span></div>
-        <div class="tabela-celula">
-          <div class="container-acoes">
-            <button class="botao botao-editar" type="button">Editar</button>
-            <button class="botao botao-excluir" type="button">Excluir</button>
+
+        <div class="tabela-linha">
+          <div class="tabela-celula">
+            <span class="unidade-nome">Matriz Ribeirão Preto</span>
+            <span class="unidade-endereco">Rodovia Anhanguera, 5000 · Distrito Industrial</span>
+          </div>
+          <div class="tabela-celula">Ribeirão Preto / SP</div>
+          <div class="tabela-celula">4 tanques</div>
+          <div class="tabela-celula">3 tanques</div>
+          <div class="tabela-celula"><span class="status status-ativa">Ativa</span></div>
+          <div class="tabela-celula">
+            <div style="display: flex; gap: 8px;">
+              <button class="botao botao-editar js-editar-ativa" type="button">Editar</button>
+              <button class="botao botao-excluir js-excluir-bloqueado" data-nome="Matriz Ribeirão Preto"
+                data-tanques="4" data-lotes="3" type="button">Excluir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Linha 2: Fábrica Campinas (Exclusão Permitida) -->
+        <div class="tabela-linha">
+          <div class="tabela-celula">
+            <span class="unidade-nome">Campinas</span>
+            <span class="unidade-endereco">Rodovia Dom Pedro I, 1200 – Galpão 2</span>
+          </div>
+          <div class="tabela-celula">Campinas / SP</div>
+          <div class="tabela-celula">6 tanques</div>
+          <div class="tabela-celula">4 tanques</div>
+          <div class="tabela-celula"><span class="status status-ativa">Ativa</span></div>
+          <div class="tabela-celula">
+            <div style="display: flex; gap: 8px;">
+              <button class="botao botao-editar js-editar-ativa" type="button">Editar</button>
+              <button class="botao botao-excluir js-excluir-unidade" data-nome="Campinas" data-tanques="0"
+                data-lotes="0" type="button">Excluir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Linha 3: Fábrica Sorocaba (Exclusão Permitida) -->
+        <div class="tabela-linha">
+          <div class="tabela-celula">
+            <span class="unidade-nome">Sorocaba</span>
+            <span class="unidade-endereco">Avenida Itavuvu, 800 · Distrito Industrial</span>
+          </div>
+          <div class="tabela-celula">Sorocaba / SP</div>
+          <div class="tabela-celula">2 tanques</div>
+          <div class="tabela-celula">0 tanques</div>
+          <div class="tabela-celula"><span class="status status-ativa">Ativa</span></div>
+          <div class="tabela-celula">
+            <div style="display: flex; gap: 8px;">
+              <button class="botao botao-editar js-editar-ativa" type="button">Editar</button>
+              <button class="botao botao-excluir js-excluir-unidade" data-nome="Sorocaba" data-tanques="0"
+                data-lotes="0" type="button">Excluir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Linha 4: Fábrica Jacareí (Cancelar Solicitação) -->
+        <div class="tabela-linha">
+          <div class="tabela-celula">
+            <span class="unidade-nome">Jacareí</span>
+            <span class="unidade-endereco">Rodovia Presidente Dutra, km 160 · Jacareí / SP</span>
+          </div>
+          <div class="tabela-celula">Jacareí / SP</div>
+          <div class="tabela-celula">4 tanques</div>
+          <div class="tabela-celula">0 tanques</div>
+          <div class="tabela-celula"><span class="status status-analise">Solicitada / Em Análise</span></div>
+          <div class="tabela-celula">
+            <div style="display: flex; gap: 8px;">
+              <button class="botao botao-editar js-editar-solicitada" type="button">Editar</button>
+              <button class="botao botao-excluir js-cancelar-solicitacao" data-nome="Jacareí" data-tanques="4"
+                type="button">Cancelar</button>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="tabela-linha">
-        <div class="tabela-celula">
-          <span class="unidade-nome">Fábrica Campinas</span>
-          <span class="unidade-endereco">Rodovia Dom Pedro I, 1200 – Galpão 2 · Distrito Industrial</span>
-        </div>
-        <div class="tabela-celula">Campinas / SP</div>
-        <div class="tabela-celula">6 tanques</div>
-        <div class="tabela-celula tabela-destaque">4 tanques</div>
-        <div class="tabela-celula"><span class="status">Ativa</span></div>
-        <div class="tabela-celula">
-          <div class="container-acoes">
-            <button class="botao botao-editar" type="button">Editar</button>
-            <button class="botao botao-excluir" type="button">Excluir</button>
-          </div>
-        </div>
-      </div>
+      <p class="tabela-rodape">Mostrando 4 de 4 registros.</p>
     </section>
-
-    <p class="tabela-rodape">Mostrando 2 de 2 registros.</p>
-
   </main>
+
+  <!-- MODAL 1: SOLICITAR NOVA UNIDADE -->
+  <dialog id="modal-solicitar" class="modal modal-solicitar-unidade">
+    <form method="dialog" class="modal-estrutura">
+      <header class="modal-cabecalho">
+        <div>
+          <h2 class="modal-titulo">Solicitar nova unidade</h2>
+          <p class="modal-subtitulo">A equipe Zymos dimensiona os sensores e agenda o setup.</p>
+        </div>
+        <button type="button" class="modal-fechar" id="fechar-modal-solicitar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+
+      <div class="modal-corpo">
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="unidade-nome">
+            Nome da unidade <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="text" id="unidade-nome" placeholder="Ex: Jacareí" required>
+        </div>
+
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="unidade-cnpj">
+            CNPJ <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="text" id="unidade-cnpj" placeholder="00.000.000/0000-00" required>
+        </div>
+
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="unidade-tanques">
+            Quantidade de tanques nesta planta <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="number" id="unidade-tanques" placeholder="Ex: 4" min="1" required>
+        </div>
+
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="unidade-logradouro">
+            Logradouro <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="text" id="unidade-logradouro" placeholder="Ex: Rodovia Presidente Dutra"
+            required>
+        </div>
+
+        <div class="grid-numero-complemento">
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="unidade-numero">
+              Número <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="text" id="unidade-numero" placeholder="Ex: km 160" required>
+          </div>
+
+          <div class="campo-grupo">
+            <div class="campo-rotulo-linha">
+              <label class="campo-rotulo" for="unidade-complemento">Complemento</label>
+              <span class="campo-opcional">Opcional</span>
+            </div>
+            <input class="campo-entrada" type="text" id="unidade-complemento" placeholder="Ex: Setor B - Galpão 2">
+          </div>
+        </div>
+
+        <div class="grid-bairro-cidade-uf">
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="unidade-bairro">
+              Bairro <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="text" id="unidade-bairro" placeholder="Ex: Distrito Industrial" required>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="unidade-cidade">
+              Cidade <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="text" id="unidade-cidade" placeholder="Ex: Jacareí" required>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="unidade-uf">
+              UF <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="text" id="unidade-uf" placeholder="SP" maxlength="2" required>
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="unidade-cep">
+            CEP <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="text" id="unidade-cep" placeholder="00000-000" required>
+        </div>
+
+        <div class="modal-aviso">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+          <p>
+            A unidade fica <strong>Solicitada / Em análise</strong> até a Zymos concluir o setup. Você não salva: você
+            <strong>pede</strong>.
+          </p>
+        </div>
+      </div>
+
+      <footer class="modal-rodape">
+        <button type="button" class="botao-modal-cancelar" id="cancelar-modal-solicitar">Cancelar</button>
+        <button type="submit" class="botao-modal-confirmar">Solicitar implantação</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- MODAL 2: EDITAR UNIDADE (STATUS ATIVA) -->
+  <dialog id="modal-editar-ativa" class="modal modal-editar-unidade">
+    <form method="dialog" class="modal-estrutura">
+      <header class="modal-cabecalho">
+        <div class="modal-cabecalho-info">
+          <div class="modal-titulo-linha">
+            <h2 class="modal-titulo">Editar unidade</h2>
+            <span class="modal-status-badge modal-status-badge--ativa">Ativa</span>
+          </div>
+          <p class="modal-subtitulo">Matriz Ribeirão Preto</p>
+        </div>
+        <button type="button" class="modal-fechar" id="fechar-modal-editar-ativa">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+
+      <div class="modal-corpo">
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="ativa-nome">
+            Nome da unidade <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="text" id="ativa-nome" value="Matriz Ribeirão Preto" required>
+        </div>
+
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="ativa-cnpj">
+            CNPJ <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="text" id="ativa-cnpj" placeholder="00.000.000/0000-00" required>
+        </div>
+
+        <div class="campo-grupo">
+          <div class="campo-rotulo-linha">
+            <label class="campo-rotulo" for="ativa-tanques">Quantidade de tanques nesta planta</label>
+            <span class="campo-opcional">Somente leitura</span>
+          </div>
+          <input class="campo-entrada campo-entrada--bloqueado" type="number" id="ativa-tanques" value="4" readonly>
+
+          <div class="modal-aviso modal-aviso--info">
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            <p>
+              A quantidade foi definida na implantação e não pode ser digitada. Para ter mais tanques, peça a ampliação.
+              <a href="#" class="modal-aviso-link" id="link-abrir-ampliacao">Solicitar ampliação de sensores →</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="ativa-logradouro">
+            Logradouro <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="text" id="ativa-logradouro" value="Rodovia Anhanguera" required>
+        </div>
+
+        <div class="grid-numero-complemento">
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="ativa-numero">
+              Número <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="text" id="ativa-numero" value="5000" required>
+          </div>
+
+          <div class="campo-grupo">
+            <div class="campo-rotulo-linha">
+              <label class="campo-rotulo" for="ativa-complemento">Complemento</label>
+              <span class="campo-opcional">Opcional</span>
+            </div>
+            <input class="campo-entrada" type="text" id="ativa-complemento" placeholder="Ex: Galpão 1">
+          </div>
+        </div>
+
+        <div class="grid-bairro-cidade-uf">
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="ativa-bairro">
+              Bairro <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="text" id="ativa-bairro" value="Distrito Industrial" required>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="ativa-cidade">
+              Cidade <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="text" id="ativa-cidade" value="Ribeirão Preto" required>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="ativa-uf">
+              UF <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="text" id="ativa-uf" value="SP" maxlength="2" required>
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="ativa-cep">
+            CEP <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="text" id="ativa-cep" value="14096-000" required>
+        </div>
+      </div>
+
+      <footer class="modal-rodape">
+        <button type="button" class="botao-modal-cancelar" id="cancelar-modal-editar-ativa">Cancelar</button>
+        <button type="submit" class="botao-modal-confirmar">Salvar alterações</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- MODAL 3: EDITAR UNIDADE (STATUS SOLICITADA / EM ANÁLISE) -->
+  <dialog id="modal-editar-solicitada" class="modal modal-editar-unidade">
+    <form method="dialog" class="modal-estrutura">
+      <header class="modal-cabecalho">
+        <div class="modal-cabecalho-info">
+          <div class="modal-titulo-linha">
+            <h2 class="modal-titulo">Editar unidade</h2>
+            <span class="modal-status-badge modal-status-badge--analise">Solicitada / Em análise</span>
+          </div>
+          <p class="modal-subtitulo">Jacareí</p>
+        </div>
+        <button type="button" class="modal-fechar" id="fechar-modal-editar-solicitada">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+
+      <div class="modal-corpo">
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="solicitada-nome">
+            Nome da unidade <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="text" id="solicitada-nome" value="Jacareí" required>
+        </div>
+
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="solicitada-cnpj">
+            CNPJ <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="text" id="solicitada-cnpj" placeholder="00.000.000/0000-00" required>
+        </div>
+
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="solicitada-tanques">
+            Quantidade de tanques nesta planta <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="number" id="solicitada-tanques" value="4" min="1" required>
+
+          <div class="modal-aviso modal-aviso--info">
+            <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+            <p>
+              Enquanto a unidade <strong>não está ativa</strong>, você ainda pode ajustar a quantidade de tanques.
+            </p>
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="solicitada-logradouro">
+            Logradouro <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="text" id="solicitada-logradouro" value="Rodovia Presidente Dutra" required>
+        </div>
+
+        <div class="grid-numero-complemento">
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="solicitada-numero">
+              Número <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="text" id="solicitada-numero" value="km 160" required>
+          </div>
+
+          <div class="campo-grupo">
+            <div class="campo-rotulo-linha">
+              <label class="campo-rotulo" for="solicitada-complemento">Complemento</label>
+              <span class="campo-opcional">Opcional</span>
+            </div>
+            <input class="campo-entrada" type="text" id="solicitada-complemento" value="Setor B - Galpão 2">
+          </div>
+        </div>
+
+        <div class="grid-bairro-cidade-uf">
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="solicitada-bairro">
+              Bairro <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="text" id="solicitada-bairro" value="Distrito Industrial" required>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="solicitada-cidade">
+              Cidade <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="text" id="solicitada-cidade" value="Jacareí" required>
+          </div>
+
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="solicitada-uf">
+              UF <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="text" id="solicitada-uf" value="SP" maxlength="2" required>
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <label class="campo-rotulo" for="solicitada-cep">
+            CEP <span class="campo-obrigatorio">*</span>
+          </label>
+          <input class="campo-entrada" type="text" id="solicitada-cep" value="12300-000" required>
+        </div>
+      </div>
+
+      <footer class="modal-rodape">
+        <button type="button" class="botao-modal-cancelar" id="cancelar-modal-editar-solicitada">Cancelar</button>
+        <button type="submit" class="botao-modal-confirmar">Salvar alterações</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- MODAL 4: SOLICITAR AMPLIAÇÃO (Linkado dentro de Editar Unidade Ativa) -->
+  <dialog id="modal-ampliacao" class="modal modal-ampliacao">
+    <form method="dialog" class="modal-estrutura">
+      <header class="modal-cabecalho">
+        <div>
+          <h2 class="modal-titulo">Solicitar ampliação</h2>
+          <p class="modal-subtitulo">Matriz Ribeirão Preto · hoje 4 tanques</p>
+        </div>
+        <button type="button" class="modal-fechar" id="fechar-modal-ampliacao">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+
+      <div class="modal-corpo">
+        <div class="grid-ampliacao-tanques">
+          <div class="campo-grupo">
+            <label class="campo-rotulo" for="ampliacao-adicionar">
+              Tanques a adicionar <span class="campo-obrigatorio">*</span>
+            </label>
+            <input class="campo-entrada" type="number" id="ampliacao-adicionar" value="2" min="1" required>
+          </div>
+
+          <div class="campo-grupo">
+            <div class="campo-rotulo-linha">
+              <label class="campo-rotulo" for="ampliacao-total">Total após a ampliação</label>
+              <span class="campo-opcional">Somente leitura</span>
+            </div>
+            <input class="campo-entrada campo-entrada--bloqueado" type="number" id="ampliacao-total" value="6" readonly>
+          </div>
+        </div>
+
+        <div class="campo-grupo">
+          <div class="campo-rotulo-linha">
+            <label class="campo-rotulo" for="ampliacao-mensagem">Mensagem para a Zymos</label>
+            <span class="campo-opcional">Opcional</span>
+          </div>
+          <input class="campo-entrada" type="text" id="ampliacao-mensagem"
+            placeholder="Ex: Instalação prevista para o próximo mês...">
+        </div>
+
+        <div class="modal-aviso modal-aviso--info">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+          <p>
+            A Zymos analisa o pedido, envia os sensores e atualiza a capacidade da unidade. O pedido não altera nada na
+            hora.
+          </p>
+        </div>
+      </div>
+
+      <footer class="modal-rodape">
+        <button type="button" class="botao-modal-cancelar" id="cancelar-modal-ampliacao">Cancelar</button>
+        <button type="submit" class="botao-modal-confirmar">Enviar Pedido</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- MODAL 5: CANCELAR SOLICITAÇÃO DE UNIDADE (Jacareí) -->
+  <dialog id="modal-cancelar-solicitacao" class="modal modal-alerta">
+    <form method="dialog" class="modal-alerta-corpo">
+      <div class="modal-icone-circulo modal-icone-circulo--perigo">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </div>
+
+      <div>
+        <h2 class="modal-titulo">Cancelar solicitação da unidade <span id="cancelar-solicitacao-nome">Jacareí</span>?
+        </h2>
+        <p class="modal-alerta-texto">
+          A solicitação será cancelada e a equipe Zymos será avisada. Você poderá solicitar a unidade de novo depois.
+        </p>
+      </div>
+
+      <div class="modal-metricas-grid">
+        <div class="modal-metrica-card">
+          <span class="modal-metrica-valor" id="cancelar-solicitacao-tanques">4</span>
+          <span class="modal-metrica-label">tanques solicitados</span>
+        </div>
+        <div class="modal-metrica-card">
+          <span class="modal-metrica-valor">0</span>
+          <span class="modal-metrica-label">lotes ou leituras</span>
+        </div>
+      </div>
+
+      <footer class="modal-alerta-rodape">
+        <button type="button" class="botao-modal-cancelar" id="voltar-cancelar-solicitacao">Voltar</button>
+        <button type="submit" class="botao-modal-perigo">Cancelar Solicitação</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- MODAL 6: EXCLUIR UNIDADE PERMITIDO (Ex: Campinas / Sorocaba) -->
+  <dialog id="modal-excluir-unidade" class="modal modal-alerta">
+    <form method="dialog" class="modal-alerta-corpo">
+      <div class="modal-icone-circulo modal-icone-circulo--perigo">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </div>
+
+      <div>
+        <h2 class="modal-titulo">Excluir a unidade <span id="excluir-unidade-nome">Campinas</span>?</h2>
+        <p class="modal-alerta-texto">
+          A unidade deixa de aparecer nas listas e no Panorama. Tanques, lotes e leituras ficam guardados. Não é
+          apagada: vira Inativa.
+        </p>
+      </div>
+
+      <div class="modal-metricas-grid">
+        <div class="modal-metrica-card">
+          <span class="modal-metrica-valor">0</span>
+          <span class="modal-metrica-label">tanques ativos</span>
+        </div>
+        <div class="modal-metrica-card">
+          <span class="modal-metrica-valor">0</span>
+          <span class="modal-metrica-label">lotes em andamento</span>
+        </div>
+      </div>
+
+      <div class="campo-grupo">
+        <label class="campo-rotulo" for="confirmar-nome-exclusao">
+          Para confirmar, digite o nome da unidade <span class="campo-obrigatorio">*</span>
+        </label>
+        <input class="campo-entrada" type="text" id="confirmar-nome-exclusao"
+          placeholder="Digite o nome exatamente como acima" required>
+      </div>
+
+      <footer class="modal-alerta-rodape">
+        <button type="button" class="botao-modal-cancelar" id="voltar-excluir-unidade">Voltar</button>
+        <button type="submit" class="botao-modal-perigo" id="btn-confirmar-exclusao" disabled>Excluir unidade</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- MODAL 7: EXCLUSÃO BLOQUEADA (Matriz Ribeirão Preto) -->
+  <dialog id="modal-exclusao-bloqueada" class="modal modal-alerta">
+    <div class="modal-alerta-corpo">
+      <div class="modal-icone-circulo modal-icone-circulo--aviso">
+        <i class="fa-solid fa-exclamation" aria-hidden="true"></i>
+      </div>
+
+      <div>
+        <h2 class="modal-titulo">Não é possível excluir <span id="bloqueada-unidade-nome">Matriz Ribeirão Preto</span>
+        </h2>
+        <p class="modal-alerta-texto">
+          Essa unidade tem <strong>3 tanques ativos</strong> com lotes em andamento. Finalize ou cancele os lotes antes
+          de excluir.
+        </p>
+      </div>
+
+      <div class="modal-metricas-grid">
+        <div class="modal-metrica-card">
+          <span class="modal-metrica-valor" id="bloqueada-tanques">4</span>
+          <span class="modal-metrica-label">tanques ativos</span>
+        </div>
+        <div class="modal-metrica-card">
+          <span class="modal-metrica-valor" id="bloqueada-lotes">3</span>
+          <span class="modal-metrica-label">lotes em andamento</span>
+        </div>
+      </div>
+
+      <footer class="modal-alerta-rodape">
+        <button type="button" class="botao-modal-cancelar" id="fechar-modal-bloqueado">Entendi</button>
+        <a href="../tanques/tanques.html" class="botao botao-principal" style="text-decoration: none;">
+          Ver tanques <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </footer>
+    </div>
+  </dialog>
+
+  <script>
+    // 1. Modal Solicitar Nova Unidade
+    const modalSolicitar = document.getElementById("modal-solicitar");
+    document.getElementById("btn-abrir-solicitar").addEventListener("click", () => modalSolicitar.showModal());
+    document.getElementById("fechar-modal-solicitar").addEventListener("click", () => modalSolicitar.close());
+    document.getElementById("cancelar-modal-solicitar").addEventListener("click", () => modalSolicitar.close());
+
+    // 2. Modal Editar Unidade Ativa
+    const modalEditarAtiva = document.getElementById("modal-editar-ativa");
+    document.querySelectorAll(".js-editar-ativa").forEach((btn) => {
+      btn.addEventListener("click", () => modalEditarAtiva.showModal());
+    });
+    document.getElementById("fechar-modal-editar-ativa").addEventListener("click", () => modalEditarAtiva.close());
+    document.getElementById("cancelar-modal-editar-ativa").addEventListener("click", () => modalEditarAtiva.close());
+
+    // 3. Modal Editar Unidade Solicitada
+    const modalEditarSolicitada = document.getElementById("modal-editar-solicitada");
+    document.querySelectorAll(".js-editar-solicitada").forEach((btn) => {
+      btn.addEventListener("click", () => modalEditarSolicitada.showModal());
+    });
+    document.getElementById("fechar-modal-editar-solicitada").addEventListener("click", () => modalEditarSolicitada.close());
+    document.getElementById("cancelar-modal-editar-solicitada").addEventListener("click", () => modalEditarSolicitada.close());
+
+    // 4. Link dentro de Editar Unidade Ativa -> Abre Modal de Solicitar Ampliação
+    const modalAmpliacao = document.getElementById("modal-ampliacao");
+    document.getElementById("link-abrir-ampliacao").addEventListener("click", (e) => {
+      e.preventDefault();
+      modalEditarAtiva.close();
+      modalAmpliacao.showModal();
+    });
+    document.getElementById("fechar-modal-ampliacao").addEventListener("click", () => modalAmpliacao.close());
+    document.getElementById("cancelar-modal-ampliacao").addEventListener("click", () => modalAmpliacao.close());
+
+    // Cálculo automático de tanques após ampliação (4 atuais + tanques a adicionar)
+    const inputAdicionar = document.getElementById("ampliacao-adicionar");
+    const inputTotalAmpliacao = document.getElementById("ampliacao-total");
+    inputAdicionar.addEventListener("input", () => {
+      const qtdAtual = 4;
+      const adicionar = parseInt(inputAdicionar.value, 10) || 0;
+      inputTotalAmpliacao.value = qtdAtual + adicionar;
+    });
+
+    // 5. Modal Cancelar Solicitação (Jacareí)
+    const modalCancelarSolicitacao = document.getElementById("modal-cancelar-solicitacao");
+    document.querySelectorAll(".js-cancelar-solicitacao").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.getElementById("cancelar-solicitacao-nome").textContent = btn.dataset.nome;
+        document.getElementById("cancelar-solicitacao-tanques").textContent = btn.dataset.tanques;
+        modalCancelarSolicitacao.showModal();
+      });
+    });
+    document.getElementById("voltar-cancelar-solicitacao").addEventListener("click", () => modalCancelarSolicitacao.close());
+
+    // 6. Modal Excluir Unidade Permitido (Campinas / Sorocaba) + Validação do nome
+    const modalExcluirUnidade = document.getElementById("modal-excluir-unidade");
+    const inputConfirmarExclusao = document.getElementById("confirmar-nome-exclusao");
+    const btnConfirmarExclusao = document.getElementById("btn-confirmar-exclusao");
+    let nomeUnidadeParaExcluir = "";
+
+    document.querySelectorAll(".js-excluir-unidade").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        nomeUnidadeParaExcluir = btn.dataset.nome;
+        document.getElementById("excluir-unidade-nome").textContent = nomeUnidadeParaExcluir;
+        inputConfirmarExclusao.value = "";
+        inputConfirmarExclusao.placeholder = nomeUnidadeParaExcluir;
+        btnConfirmarExclusao.disabled = true;
+        modalExcluirUnidade.showModal();
+      });
+    });
+
+    inputConfirmarExclusao.addEventListener("input", () => {
+      btnConfirmarExclusao.disabled = inputConfirmarExclusao.value.trim() !== nomeUnidadeParaExcluir;
+    });
+    document.getElementById("voltar-excluir-unidade").addEventListener("click", () => modalExcluirUnidade.close());
+
+    // 7. Modal Exclusão Bloqueada (Matriz Ribeirão Preto)
+    const modalExclusaoBloqueada = document.getElementById("modal-exclusao-bloqueada");
+    document.querySelectorAll(".js-excluir-bloqueado").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.getElementById("bloqueada-unidade-nome").textContent = btn.dataset.nome;
+        document.getElementById("bloqueada-tanques").textContent = btn.dataset.tanques;
+        document.getElementById("bloqueada-lotes").textContent = btn.dataset.lotes;
+        modalExclusaoBloqueada.showModal();
+      });
+    });
+    document.getElementById("fechar-modal-bloqueado").addEventListener("click", () => modalExclusaoBloqueada.close());
+  </script>
 </body>
+
 </html>

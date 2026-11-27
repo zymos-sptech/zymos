@@ -1,8 +1,6 @@
 // Seleção dos botões de quantidade de tanques
 document.addEventListener("DOMContentLoaded", () => {
-  const botoesTanque = document.querySelectorAll(
-    ".contato-botao-opcao-tanque"
-  );
+const botoesTanque = document.querySelectorAll(".contato-botao-opcao-tanque");
 
   botoesTanque.forEach((botao) => {
     botao.addEventListener("click", () => {

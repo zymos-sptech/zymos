@@ -21,6 +21,8 @@ window.passwordInvisible = function () {
 const iptEmail = document.getElementById("iptEmail");
 const iptPassword = document.getElementById("iptPassword");
 
+const toastSucesso = document.getElementById("toastSucesso");
+
 const erroEmail = document.getElementById("erroEmail");
 const erroSenha = document.getElementById("erroSenha");
 
@@ -32,9 +34,9 @@ iptEmail.addEventListener("input", () => {
 iptPassword.addEventListener("input", () => {
   let msg = iptPassword.value.trim() === "" ? "" : "";
   mostrarErro(iptPassword, erroSenha, msg);
-})
+});
 
-window.handleFormLogin = () => {
+window.handleFormLogin = async () => {
   let emailVal = iptEmail.value.trim();
   let senhaVal = iptPassword.value;
 
@@ -42,35 +44,58 @@ window.handleFormLogin = () => {
 
   let msgEmail = validarEmail(emailVal);
   mostrarErro(iptEmail, erroEmail, msgEmail);
-  if(msgEmail !== ""){tudoCerto = false;}
+  if (msgEmail !== "") {
+    tudoCerto = false;
+  }
 
-  let msgSenha = senhaVal === "" ? "Digite sua senha.":"";
+  let msgSenha = senhaVal === "" ? "Digite sua senha." : "";
   mostrarErro(iptPassword, erroSenha, msgSenha);
-  if(msgSenha !== ""){tudoCerto = false;}
+  if (msgSenha !== "") {
+    tudoCerto = false;
+  }
 
-  if(!tudoCerto){
-    const primeiroInvalido = document.querySelector("login-input.invalido.");
-    if(primeiroInvalido){
+  if (!tudoCerto) {
+    const primeiroInvalido = document.querySelector(".login-input.invalido.");
+    if (primeiroInvalido) {
       primeiroInvalido.focus();
     }
     return;
   }
 
-  const SESSION_EMAIL = sessionStorage.getItem("EMAIL");
-  const SESSION_PASSWORD = sessionStorage.getItem("PASSWORD");
+  await fetch("/usuarios/autenticar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: emailVal,
+      senha: senhaVal,
+    }),
+  })
+    .then(async function (response) {
+      if (response.ok) {
+        const data = await response.json();
+        sessionStorage.ID_USUARIO = data.id;
+        ((sessionStorage.NOME = data.nome),
+          (sessionStorage.EMAIL = data.email));
+        sessionStorage.CARGO = data.cargo;
+        sessionStorage.NOME_EMPRESA = data.empresa;
+        sessionStorage.QTD_UNIDADE = data.qtd_unidade;
+        sessionStorage.PLANO = data.plano;
 
-  if(!SESSION_EMAIL || !SESSION_PASSWORD){
-    mostrarErro(iptEmail, erroEmail, "Email ou senha incorretos.");
-    iptEmail.focus();
-    return;
-  }
+        toastSucesso.classList.add("ativo");
 
-  if(emailVal !== SESSION_EMAIL || senhaVal !== SESSION_PASSWORD){
-    mostrarErro(iptEmail, erroEmail, "E-mail ou senha incorretos.");
-    mostrarErro(iptPassword, erroSenha, "E-mail ou senha incorretos.");
-    iptEmail.focus();
-    return;
-  }
-
-  window.location = "../pages/dashboard/visao-geral.html";
+        setTimeout(() => {
+          window.location = "../pages/dashboard/panorama.html";
+        }, 3000);
+      } else {
+        mostrarErro(iptEmail, erroEmail, "Email ou senha incorretos.");
+        iptEmail.focus();
+      }
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      mostrarErro(iptEmail, erroEmail, "Email ou senha incorretos.");
+      iptEmail.focus();
+    });
 };

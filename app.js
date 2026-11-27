@@ -18,8 +18,17 @@ var app = express();
 var indexRouter = require("./src/routes/indexRoute");
 var usuarioRouter = require("./src/routes/usuarioRoute");
 var planoRouter = require("./src/routes/planoRoute");
+var leituraSensorRouter = require("./src/routes/leituraSensorRoute");
 var cargoRouter = require("./src/routes/cargoRoute");
 var leveduraRouter = require("./src/routes/leveduraRoute");
+var producaoRouter = require("./src/routes/producaoRoute");
+var loteRouter = require("./src/routes/loteRoute");
+var contatoRouter = require("./src/routes/contatoRoute");
+var sensorRouter = require("./src/routes/sensorRoute");
+var tanqueRouter = require("./src/routes/tanqueRoute");
+var unidadeRouter = require("./src/routes/unidadeRoute");
+var cervejaRouter = require("./src/routes/cervejaRoute");
+var alertaRouter = require("./src/routes/alertaRoute");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,6 +41,15 @@ app.use("/usuarios", usuarioRouter);
 app.use("/planos", planoRouter);
 app.use("/cargos", cargoRouter);
 app.use("/leveduras", leveduraRouter);
+app.use("/producoes", producaoRouter);
+app.use("/lotes", loteRouter);
+app.use("/contato", contatoRouter);
+app.use("/sensores", sensorRouter);
+app.use("/leiturasSensor", leituraSensorRouter);
+app.use("/tanques", tanqueRouter);
+app.use("/unidades", unidadeRouter);
+app.use("/cervejas", cervejaRouter);
+app.use("/alertas", alertaRouter);
 
 app.listen(PORTA_APP, function () {
   console.log(`

@@ -1,0 +1,40 @@
+/* Sobrescreve as colunas definidas na base .tabela-linha de listas.css */
+.tabela-linha {
+  grid-template-columns: 1.8fr 1.1fr 1.2fr 1.5fr 1fr 1.1fr;
+}
+
+.filtro-unidade {
+  padding: 10px 38px 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  font-family: var(--font-primary);
+  font-size: var(--text-14);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23556c80' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px;
+}
+
+.filtro-unidade:focus {
+  border-color: var(--color-primary);
+}
+
+/* Grid de 3 colunas para os cards de vagas de tanques */
+.grid-metricas-tanque {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+
+/* Card único centralizado ou em largura total quando há só 1 métrica */
+.modal-metrica-card--unica {
+  grid-column: 1 / -1;
+}

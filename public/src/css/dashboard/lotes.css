@@ -1,0 +1,217 @@
+/* Sobrescreve as colunas definidas na base .tabela-linha de listas.css */
+.tabela-linha {
+  grid-template-columns:
+    minmax(65px, 0.7fr) minmax(80px, 0.85fr) minmax(75px, 0.8fr) minmax(75px, 0.8fr) minmax(85px, 0.9fr) minmax(110px, 1.05fr) minmax(105px, 0.95fr) minmax(185px, 1.55fr);
+  gap: 8px;
+}
+
+.tabela-celula {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.tabela-acoes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+}
+
+.filtro-unidade {
+  padding: 10px 38px 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  font-family: var(--font-primary);
+  font-size: var(--text-14);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23556c80' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px;
+}
+
+.filtro-unidade:focus {
+  border-color: var(--color-primary);
+}
+
+.status-em-andamento {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-dark);
+}
+
+.status-finalizado {
+  background-color: #5A6B5A;
+  color: var(--color-text-on-dark);
+}
+
+.botao-finalizar {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  padding: 6px 10px;
+  font-size: var(--text-13);
+}
+
+.botao-ver {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  padding: 6px 14px;
+  font-size: var(--text-13);
+}
+
+/* Grid de 2 colunas para campos lado a lado no modal de lote */
+.grid-campos-lote {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-sm);
+}
+
+/* Linha de Tanque + Volume (L) + ação opcional de remover tanque extra */
+.grid-tanque-volume {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr auto;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.lote-remover-tanque {
+  width: 2.25rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: var(--text-14);
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.lote-remover-tanque:hover {
+  border-color: #b8562b;
+  color: #b8562b;
+  background-color: rgba(184, 86, 43, 0.06);
+}
+
+.lote-tanque-lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.lote-rodape-tanques {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-top: 0.125rem;
+}
+
+.lote-adicionar-tanque {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font-primary);
+  font-size: var(--text-13);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+}
+
+.lote-adicionar-tanque:hover {
+  text-decoration: underline;
+}
+
+.lote-volume-total {
+  font-size: var(--text-13);
+  color: var(--color-text-muted);
+}
+
+.lote-volume-total strong {
+  font-family: var(--font-numeric);
+  color: var(--color-text);
+  font-weight: var(--weight-bold);
+}
+
+/* Seletor de modo no modal Movimentar lote (Transferir / Dividir) */
+.lote-modo-switch {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-xs);
+  padding: 0.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+}
+
+.lote-modo-btn {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: calc(var(--radius-md) - 0.125rem);
+  background: transparent;
+  font-family: var(--font-primary);
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-muted);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.lote-modo-btn.is-ativo {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-dark);
+}
+
+/* Mini-tabela interna de tanques dentro do modal Editar lote */
+.lote-subtabela {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-surface);
+}
+
+.lote-subtabela-linha {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1.2fr 0.9fr;
+  gap: var(--space-xs);
+  padding: 0.625rem 0.875rem;
+  align-items: center;
+  font-size: var(--text-13);
+}
+
+.lote-subtabela-cabecalho {
+  background-color: var(--color-bg);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-muted);
+  font-size: var(--text-11);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.lote-subtabela-corpo {
+  color: var(--color-text);
+  font-family: var(--font-numeric);
+}
+
+.lote-acao-secundaria-bloco {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 0.125rem;
+}
+
+/* Garante ocultação real mesmo em elementos com display: grid ou flex */
+.is-oculto {
+  display: none !important;
+}
+
+.modal-status-badge--finalizado {
+  background-color: #5a6b5a;
+}

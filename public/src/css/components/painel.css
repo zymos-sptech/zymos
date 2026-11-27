@@ -1,4 +1,4 @@
-/* Painel branco (Figma: padding 15, gap 10, raio 16) */
+/* Painel branco (padding 15, gap 10, raio 16) */
 .painel {
   display: flex;
   flex-direction: column;
