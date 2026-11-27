@@ -2,8 +2,8 @@ var database = require("../database/config");
 
 async function criarUsuario(nome, email, senha, cargoId, empresaId) {
   var sql = `
-    INSERT INTO usuario (nome, email, senha, fk_cargo, fk_empresa, status) VALUES
-    ("${nome}", "${email}", "${senha}", ${cargoId}, ${empresaId}, 1)
+    INSERT INTO usuario (nome, email, senha, fk_cargo, fk_empresa, statuss) VALUES
+    ("${nome}", "${email}", SHA2("${senha}", 256), ${cargoId}, ${empresaId}, 1)
     `;
 
   return database.executar(sql);
@@ -25,11 +25,20 @@ async function buscarUsuario(usuarioId, email, nome) {
   }
 
   var sql = `
-      SELECT u.id, u.nome, u.email, c.nome cargo
+      SELECT 
+        u.id, u.nome, u.email, c.nome cargo, e.id id_empresa, e.nome empresa, p.nome plano,
+        COUNT(un.id) qtd_unidade
       FROM usuario u
-        JOIN cargo c
-      ON c.id = u.fk_cargo 
-      WHERE ${valores};`;
+        LEFT JOIN cargo c
+      ON c.id = u.fk_cargo
+        LEFT JOIN empresa e
+      ON e.id = u.fk_empresa
+        LEFT JOIN plano p
+      ON p.id = e.fk_plano
+        LEFT JOIN unidade un
+      ON e.id = un.fk_empresa   
+      WHERE ${valores}
+      GROUP BY u.id, u.nome, u.email, c.nome, e.id, e.nome, p.nome;`;
 
   return database.executar(sql);
 }
@@ -37,13 +46,15 @@ async function buscarUsuario(usuarioId, email, nome) {
 async function autenticar(email, senha) {
   console.log(email, senha, "ema senh");
   var sqlAutenticar = `
-      SELECT id FROM usuario WHERE email = "${email}" AND senha = "${senha}";
+      SELECT id FROM usuario WHERE email = "${email}" AND senha = SHA2("${senha}", 256);
       `;
 
   const validarUsuario = await database.executar(sqlAutenticar);
-  console.log(validarUsuario, "validar usuario");
+  console.log()
   if (validarUsuario.length > 0) {
-    return buscarUsuario(validarUsuario[0].id, null, null);
+    const dados = await buscarUsuario(validarUsuario[0].id, null, null);
+    console.log(dados, "dados do usuario.");
+    return dados[0];
   }
 
   return false;

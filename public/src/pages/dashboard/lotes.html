@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lotes - Zymos</title>
+    <link rel="shortcut icon" href="../../../assets/branding/simbolo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="../../css/tabelas.css">
+    <link rel="stylesheet" href="../../css/modais.css">
+    <link rel="stylesheet" href="../../css/dashboard/lotes.css">
+    <link rel="stylesheet" href="../../css/components/sidebar.css">
+    <script src="../../js/sidebar/sidebar.js" defer type="module"></script>
+    <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="sidebar"></div>
+
+    <main class="dashboard">
+
+        <!-- Barra Superior -->
+        <section class="container-barra-superior">
+            <h1 class="cabecalho-nome">Lotes</h1>
+
+            <select class="filtro-unidade">
+                <option value="matriz">Unidade: Fábrica Matriz</option>
+                <option value="campinas">Unidade: Fábrica Campinas</option>
+                <option value="sorocaba">Unidade: Fábrica Sorocaba</option>
+            </select>
+
+            <div class="busca-campo">
+                <i class="fa-solid fa-magnifying-glass busca-icone" aria-hidden="true"></i>
+                <input class="busca-entrada" type="search" placeholder="Pesquisar lote ou cerveja...">
+            </div>
+
+            <select class="filtro-select">
+                <option value="">Status: Todos</option>
+                <option value="em-andamento">Em andamento</option>
+                <option value="finalizado">Finalizado</option>
+            </select>
+
+            <button class="botao botao-principal" id="btn-abrir-novo-lote" type="button">
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                Novo lote
+            </button>
+        </section>
+
+        <!-- Card Externo com Rolagem Interna -->
+        <section class="card-tabela">
+            <div class="container-tabela">
+                <div class="tabela-linha tabela-cabecalho">
+                    <span>Lote</span>
+                    <span>Cerveja</span>
+                    <span>Tanque(s)</span>
+                    <span>Volume</span>
+                    <span>Início</span>
+                    <span>Término previsto</span>
+                    <span>Status</span>
+                    <span>Ações</span>
+                </div>
+
+                <!-- Linha 1: Lote 101-A -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">101-A</span>
+                    </div>
+                    <div class="tabela-celula">IPA</div>
+                    <div class="tabela-celula">TQ-01</div>
+                    <div class="tabela-celula">8.000 L</div>
+                    <div class="tabela-celula">21/09/2026</div>
+                    <div class="tabela-celula">04/10/2026</div>
+                    <div class="tabela-celula"><span class="status status-em-andamento">Em andamento</span></div>
+                    <div class="tabela-celula">
+                        <div class="tabela-acoes">
+                            <button class="botao botao-editar" type="button">Editar</button>
+                            <button class="botao botao-finalizar" type="button">Finalizar</button>
+                            <button class="botao botao-excluir" type="button">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linha 2: Lote 096 -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">096</span>
+                    </div>
+                    <div class="tabela-celula">Red Ale</div>
+                    <div class="tabela-celula">TQ-02</div>
+                    <div class="tabela-celula">7.000 L</div>
+                    <div class="tabela-celula">23/09/2026</div>
+                    <div class="tabela-celula">07/10/2026</div>
+                    <div class="tabela-celula"><span class="status status-em-andamento">Em andamento</span></div>
+                    <div class="tabela-celula">
+                        <div class="tabela-acoes">
+                            <button class="botao botao-editar" type="button">Editar</button>
+                            <button class="botao botao-finalizar" type="button">Finalizar</button>
+                            <button class="botao botao-excluir" type="button">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linha 3: Lote 095 -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">095</span>
+                    </div>
+                    <div class="tabela-celula">Pilsen</div>
+                    <div class="tabela-celula">TQ-04</div>
+                    <div class="tabela-celula">6.000 L</div>
+                    <div class="tabela-celula">25/09/2026</div>
+                    <div class="tabela-celula">16/10/2026</div>
+                    <div class="tabela-celula"><span class="status status-em-andamento">Em andamento</span></div>
+                    <div class="tabela-celula">
+                        <div class="tabela-acoes">
+                            <button class="botao botao-editar" type="button">Editar</button>
+                            <button class="botao botao-finalizar" type="button">Finalizar</button>
+                            <button class="botao botao-excluir" type="button">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linha 4: Lote 087 -->
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">087</span>
+                    </div>
+                    <div class="tabela-celula">IPA</div>
+                    <div class="tabela-celula">TQ-01</div>
+                    <div class="tabela-celula">7.500 L</div>
+                    <div class="tabela-celula">01/09/2026</div>
+                    <div class="tabela-celula">15/09/2026</div>
+                    <div class="tabela-celula"><span class="status status-finalizado">Finalizado</span></div>
+                    <div class="tabela-celula">
+                        <div class="tabela-acoes">
+                            <button class="botao botao-ver" type="button">Ver</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="tabela-rodape">Mostrando 4 de 4 lotes · lotes finalizados não podem ser editados nem excluídos.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- MODAL: NOVO LOTE (VISÃO ADMINISTRADOR COM SELETOR DE UNIDADE) -->
+    <dialog id="modal-novo-lote" class="modal modal-formulario">
+        <form method="dialog" class="modal-estrutura">
+            <header class="modal-cabecalho">
+                <div>
+                    <h2 class="modal-titulo">Novo lote</h2>
+                    <p class="modal-subtitulo" id="novo-lote-subtitulo">Campinas</p>
+                </div>
+                <button type="button" class="modal-fechar" id="fechar-modal-novo-lote">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </header>
+
+            <div class="modal-corpo">
+                <!-- Unidade (Administrador) -->
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="lote-unidade">
+                        Unidade <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <select class="campo-select" id="lote-unidade" required>
+                        <option value="" selected disabled>Selecione uma opção</option>
+                        <option value="Campinas">Campinas</option>
+                        <option value="Matriz Ribeirão Preto">Matriz Ribeirão Preto</option>
+                        <option value="Sorocaba">Sorocaba</option>
+                    </select>
+                </div>
+
+                <!-- Nome do lote + Início -->
+                <div class="grid-campos-lote">
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="lote-nome">
+                            Nome do lote <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <input class="campo-entrada" type="text" id="lote-nome" value="202" required>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="lote-inicio">
+                            Início <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <input class="campo-entrada" type="text" id="lote-inicio" value="29/10/2026 08:00" required>
+                    </div>
+                </div>
+
+                <!-- Cerveja -->
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="lote-cerveja">
+                        Cerveja <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <select class="campo-select" id="lote-cerveja" required>
+                        <option value="ipa" selected>IPA · faixa 18–24°C · 14 dias</option>
+                        <option value="red-ale">Red Ale · faixa 18–24°C · 14 dias</option>
+                        <option value="pilsen">Pilsen · faixa 8–14°C · 21 dias</option>
+                        <option value="weiss">Weiss · faixa 18–24°C · 10 dias</option>
+                    </select>
+                </div>
+
+                <!-- Tanque(s) e Volume (L) -->
+                <div class="campo-grupo">
+                    <div class="grid-tanque-volume">
+                        <label class="campo-rotulo">
+                            Tanque <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <label class="campo-rotulo">
+                            Volume (L) <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <span aria-hidden="true"></span>
+                    </div>
+
+                    <div class="lote-tanque-lista" id="lista-tanques-lote">
+                        <!-- Linha 1: obrigatória (sem botão de remover) -->
+                        <div class="grid-tanque-volume">
+                            <select class="campo-select">
+                                <option value="TQ-05" selected>TQ-05 · Disponível</option>
+                                <option value="TQ-07">TQ-07 · Disponível</option>
+                                <option value="TQ-08">TQ-08 · Disponível</option>
+                            </select>
+                            <input class="campo-entrada js-volume-tanque" type="text" value="6.000" required>
+                            <span aria-hidden="true"></span>
+                        </div>
+
+                        <!-- Linha 2: tanque extra (pode ser removido) -->
+                        <div class="grid-tanque-volume">
+                            <select class="campo-select">
+                                <option value="TQ-05">TQ-05 · Disponível</option>
+                                <option value="TQ-07" selected>TQ-07 · Disponível</option>
+                                <option value="TQ-08">TQ-08 · Disponível</option>
+                            </select>
+                            <input class="campo-entrada js-volume-tanque" type="text" value="5.000" required>
+                            <button type="button" class="lote-remover-tanque js-remover-tanque">
+                                <i class="fa-solid fa-minus" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="lote-rodape-tanques">
+                        <button type="button" class="lote-adicionar-tanque" id="btn-adicionar-outro-tanque">
+                            + Adicionar Outro Tanque
+                        </button>
+                        <span class="lote-volume-total">
+                            Volume total <strong id="lote-volume-total-valor">11.000 L</strong>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="modal-aviso modal-aviso--info">
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    <p>
+                        Só aparecem tanques <strong>ativos e disponíveis</strong> da unidade. O término previsto
+                        (<strong>12/11/2026</strong>) é calculado pela cerveja.
+                    </p>
+                </div>
+            </div>
+
+            <footer class="modal-rodape">
+                <button type="button" class="botao-modal-cancelar" id="cancelar-modal-novo-lote">Cancelar</button>
+                <button type="submit" class="botao-modal-confirmar">Iniciar lote</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <script>
+        const modalNovoLote = document.getElementById("modal-novo-lote");
+        const selectUnidadeLote = document.getElementById("lote-unidade");
+        const subtituloNovoLote = document.getElementById("novo-lote-subtitulo");
+        const listaTanquesLote = document.getElementById("lista-tanques-lote");
+        const volumeTotalEl = document.getElementById("lote-volume-total-valor");
+
+        function atualizarVolumeTotal() {
+            let total = 0;
+            listaTanquesLote.querySelectorAll(".js-volume-tanque").forEach((input) => {
+                const limpo = input.value.replace(/\./g, "").replace(",", ".").trim();
+                const numero = parseFloat(limpo);
+                if (!Number.isNaN(numero)) {
+                    total += numero;
+                }
+            });
+            volumeTotalEl.textContent = `${total.toLocaleString("pt-BR")} L`;
+        }
+
+        document.getElementById("btn-abrir-novo-lote").addEventListener("click", () => {
+            atualizarVolumeTotal();
+            modalNovoLote.showModal();
+        });
+
+        selectUnidadeLote.addEventListener("change", (e) => {
+            subtituloNovoLote.textContent = e.target.value;
+        });
+
+        document.getElementById("btn-adicionar-outro-tanque").addEventListener("click", () => {
+            const linha = document.createElement("div");
+            linha.className = "grid-tanque-volume";
+            linha.innerHTML = `
+        <select class="campo-select">
+          <option value="TQ-05">TQ-05 · Disponível</option>
+          <option value="TQ-07">TQ-07 · Disponível</option>
+          <option value="TQ-08" selected>TQ-08 · Disponível</option>
+        </select>
+        <input class="campo-entrada js-volume-tanque" type="text" value="0" required>
+        <button type="button" class="lote-remover-tanque js-remover-tanque">
+          <i class="fa-solid fa-minus" aria-hidden="true"></i>
+        </button>
+      `;
+            listaTanquesLote.appendChild(linha);
+            atualizarVolumeTotal();
+        });
+
+        listaTanquesLote.addEventListener("click", (e) => {
+            const btnRemover = e.target.closest(".js-remover-tanque");
+            if (!btnRemover) return;
+
+            const linha = btnRemover.closest(".grid-tanque-volume");
+            if (linha && listaTanquesLote.children.length > 1) {
+                linha.remove();
+                atualizarVolumeTotal();
+            }
+        });
+
+        listaTanquesLote.addEventListener("input", (e) => {
+            if (e.target.classList.contains("js-volume-tanque")) {
+                atualizarVolumeTotal();
+            }
+        });
+
+        document.getElementById("fechar-modal-novo-lote").addEventListener("click", () => modalNovoLote.close());
+        document.getElementById("cancelar-modal-novo-lote").addEventListener("click", () => modalNovoLote.close());
+    </script>
+    <!-- MODAL: EDITAR LOTE -->
+    <dialog id="modal-editar-lote" class="modal modal-formulario">
+        <form method="dialog" class="modal-estrutura">
+            <header class="modal-cabecalho">
+                <div>
+                    <h2 class="modal-titulo">Editar lote</h2>
+                    <p class="modal-subtitulo" id="editar-lote-subtitulo">Lote 096 · Matriz Ribeirão Preto</p>
+                </div>
+                <button type="button" class="modal-fechar" id="fechar-modal-editar-lote">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </header>
+
+            <div class="modal-corpo">
+                <!-- Linha 1: Nome do lote + Cerveja (Somente leitura) -->
+                <div class="grid-campos-lote">
+                    <div class="campo-grupo">
+                        <div class="campo-rotulo-linha">
+                            <label class="campo-rotulo" for="editar-lote-nome">Nome do lote</label>
+                            <span class="campo-opcional">Somente leitura</span>
+                        </div>
+                        <input class="campo-entrada campo-entrada--bloqueado" type="text" id="editar-lote-nome"
+                            value="202" readonly>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <div class="campo-rotulo-linha">
+                            <label class="campo-rotulo" for="editar-lote-cerveja">Cerveja</label>
+                            <span class="campo-opcional">Somente leitura</span>
+                        </div>
+                        <input class="campo-entrada campo-entrada--bloqueado" type="text" id="editar-lote-cerveja"
+                            value="Red Ale · faixa 18–24°C" readonly>
+                    </div>
+                </div>
+
+                <!-- Linha 2: Início + Término previsto (Somente leitura) -->
+                <div class="grid-campos-lote">
+                    <div class="campo-grupo">
+                        <div class="campo-rotulo-linha">
+                            <label class="campo-rotulo" for="editar-lote-inicio">Início</label>
+                            <span class="campo-opcional">Somente leitura</span>
+                        </div>
+                        <input class="campo-entrada campo-entrada--bloqueado" type="text" id="editar-lote-inicio"
+                            value="23/10/2026 08:00" readonly>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <div class="campo-rotulo-linha">
+                            <label class="campo-rotulo" for="editar-lote-termino">Término previsto</label>
+                            <span class="campo-opcional">Somente leitura</span>
+                        </div>
+                        <input class="campo-entrada campo-entrada--bloqueado" type="text" id="editar-lote-termino"
+                            value="07/10/2026" readonly>
+                    </div>
+                </div>
+
+                <!-- Observações (Opcional) -->
+                <div class="campo-grupo">
+                    <div class="campo-rotulo-linha">
+                        <label class="campo-rotulo" for="editar-lote-observacoes">Observações</label>
+                        <span class="campo-opcional">Opcional</span>
+                    </div>
+                    <input class="campo-entrada" type="text" id="editar-lote-observacoes" placeholder="Opcional">
+                </div>
+
+                <!-- Tanque do lote -->
+                <div class="campo-grupo">
+                    <label class="campo-rotulo">Tanque do lote</label>
+
+                    <div class="lote-subtabela">
+                        <div class="lote-subtabela-linha lote-subtabela-cabecalho">
+                            <span>Tanque</span>
+                            <span>Volume</span>
+                            <span>Entrada</span>
+                            <span>Saída</span>
+                        </div>
+                        <div class="lote-subtabela-linha lote-subtabela-corpo">
+                            <span id="editar-lote-tanque-nome">TQ-02</span>
+                            <span id="editar-lote-tanque-volume">7.000 L</span>
+                            <span id="editar-lote-tanque-entrada">23/09 08:00</span>
+                            <span>Atual</span>
+                        </div>
+                    </div>
+
+                    <div class="lote-acao-secundaria-bloco">
+                        <button type="button" class="botao botao-editar" id="btn-abrir-movimentar-lote">
+                            Transferir ou dividir para outro tanque
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="modal-rodape">
+                <button type="button" class="botao-modal-cancelar" id="cancelar-modal-editar-lote">Cancelar</button>
+                <button type="submit" class="botao-modal-confirmar">Salvar alterações</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- MODAL: MOVIMENTAR LOTE (TRANSFERIR / DIVIDIR SEPARADOS) -->
+    <dialog id="modal-movimentar-lote" class="modal modal-formulario">
+        <form method="dialog" class="modal-estrutura">
+            <header class="modal-cabecalho">
+                <div>
+                    <h2 class="modal-titulo">Movimentar lote</h2>
+                    <p class="modal-subtitulo" id="movimentar-lote-subtitulo">Lote 096 · hoje no TQ-02 (7.000 L)</p>
+                </div>
+                <button type="button" class="modal-fechar" id="fechar-modal-movimentar-lote">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </header>
+
+            <div class="modal-corpo">
+                <!-- Seletor de Modo: Transferir / Dividir -->
+                <div class="lote-modo-switch" role="tablist">
+                    <button type="button" class="lote-modo-btn is-ativo" data-modo="transferir">Transferir</button>
+                    <button type="button" class="lote-modo-btn" data-modo="dividir">Dividir</button>
+                </div>
+
+                <!-- Tanque de destino (comum aos dois modos) -->
+                <div class="campo-grupo">
+                    <label class="campo-rotulo" for="movimentar-tanque-destino">
+                        Tanque de destino <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <select class="campo-select" id="movimentar-tanque-destino" required>
+                        <option value="TQ-03" selected>TQ-03 · Disponível</option>
+                        <option value="TQ-05">TQ-05 · Disponível</option>
+                        <option value="TQ-07">TQ-07 · Disponível</option>
+                    </select>
+                </div>
+
+                <!-- MODO TRANSFERIR: Volume a mover (somente leitura) + Data e hora -->
+                <div class="grid-campos-lote" id="bloco-modo-transferir">
+                    <div class="campo-grupo">
+                        <div class="campo-rotulo-linha">
+                            <label class="campo-rotulo" for="transferir-volume">Volume a mover</label>
+                            <span class="campo-opcional">Somente leitura</span>
+                        </div>
+                        <input class="campo-entrada campo-entrada--bloqueado" type="text" id="transferir-volume"
+                            value="7.000 L (todo o lote)" readonly>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="transferir-data-hora">
+                            Data e hora <span class="campo-obrigatorio">*</span>
+                        </label>
+                        <input class="campo-entrada" type="text" id="transferir-data-hora" value="29/10/2026 14:50"
+                            required>
+                    </div>
+                </div>
+
+                <!-- MODO DIVIDIR: Volume para destino + Fica no tanque atual -->
+                <div class="grid-campos-lote is-oculto" id="bloco-modo-dividir">
+                    <div class="campo-grupo">
+                        <label class="campo-rotulo" for="dividir-volume-destino">
+                            Volume para <span id="rotulo-tanque-destino">TQ-03</span> (L) <span
+                                class="campo-obrigatorio">*</span>
+                        </label>
+                        <input class="campo-entrada" type="text" id="dividir-volume-destino" value="3.000">
+                    </div>
+
+                    <div class="campo-grupo">
+                        <div class="campo-rotulo-linha">
+                            <label class="campo-rotulo" for="dividir-volume-restante">
+                                Fica no <span id="rotulo-tanque-origem">TQ-02</span> (L)
+                            </label>
+                            <span class="campo-opcional">Somente leitura</span>
+                        </div>
+                        <input class="campo-entrada campo-entrada--bloqueado" type="text" id="dividir-volume-restante"
+                            value="4.000" readonly>
+                    </div>
+                </div>
+
+                <!-- MODO DIVIDIR: Data e hora -->
+                <div class="campo-grupo is-oculto" id="bloco-data-dividir">
+                    <label class="campo-rotulo" for="dividir-data-hora">
+                        Data e hora <span class="campo-obrigatorio">*</span>
+                    </label>
+                    <input class="campo-entrada" type="text" id="dividir-data-hora" value="29/10/2026 14:50">
+                </div>
+
+                <!-- Aviso dinâmico -->
+                <div class="modal-aviso modal-aviso--info">
+                    <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+                    <p id="movimentar-aviso-texto">
+                        O lote inteiro vai para o <strong>TQ-03</strong>, que passa para <strong>Em uso</strong>. O
+                        <strong>TQ-02</strong> fica <strong>Em limpeza</strong>. As leituras de cada período continuam
+                        ligadas ao lote.
+                    </p>
+                </div>
+            </div>
+
+            <footer class="modal-rodape">
+                <button type="button" class="botao-modal-cancelar" id="cancelar-modal-movimentar-lote">Cancelar</button>
+                <button type="submit" class="botao-modal-confirmar" id="btn-confirmar-movimentar-lote">Transferir
+                    lote</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <script>
+        const modalEditarLote = document.getElementById("modal-editar-lote");
+        const modalMovimentarLote = document.getElementById("modal-movimentar-lote");
+        const botoesModo = modalMovimentarLote.querySelectorAll(".lote-modo-btn");
+        const blocoTransferir = document.getElementById("bloco-modo-transferir");
+        const blocoDividir = document.getElementById("bloco-modo-dividir");
+        const blocoDataDividir = document.getElementById("bloco-data-dividir");
+        const avisoMovimentar = document.getElementById("movimentar-aviso-texto");
+        const btnConfirmarMovimentar = document.getElementById("btn-confirmar-movimentar-lote");
+        const selectDestino = document.getElementById("movimentar-tanque-destino");
+        const inputVolumeDestino = document.getElementById("dividir-volume-destino");
+        const inputVolumeRestante = document.getElementById("dividir-volume-restante");
+        const rotuloTanqueDestino = document.getElementById("rotulo-tanque-destino");
+
+        const volumeTotalLoteAtual = 7000;
+        const tanqueOrigemAtual = "TQ-02";
+        let modoAtual = "transferir";
+
+        function formatarNumeroBR(valor) {
+            return Math.max(0, Math.round(valor)).toLocaleString("pt-BR");
+        }
+
+        function parseNumeroBR(texto) {
+            const limpo = String(texto).replace(/\./g, "").replace(",", ".").trim();
+            const num = parseFloat(limpo);
+            return Number.isNaN(num) ? 0 : num;
+        }
+
+        function atualizarVolumesDividir() {
+            const destino = selectDestino.value;
+            rotuloTanqueDestino.textContent = destino;
+            const paraDestino = Math.min(volumeTotalLoteAtual, parseNumeroBR(inputVolumeDestino.value));
+            const restante = Math.max(0, volumeTotalLoteAtual - paraDestino);
+            inputVolumeRestante.value = formatarNumeroBR(restante);
+
+            if (modoAtual === "dividir") {
+                avisoMovimentar.innerHTML = `O lote passa a ocupar <strong>dois tanques</strong>, e os dois ficam <strong>Em uso</strong>. A soma dos volumes tem que bater com <strong>${formatarNumeroBR(volumeTotalLoteAtual)} L</strong>.`;
+            }
+        }
+
+        function aplicarModoMovimentacao(modo) {
+            modoAtual = modo;
+            botoesModo.forEach((btn) => {
+                btn.classList.toggle("is-ativo", btn.dataset.modo === modo);
+            });
+
+            const destino = selectDestino.value;
+            if (modo === "transferir") {
+                blocoTransferir.classList.remove("is-oculto");
+                blocoDividir.classList.add("is-oculto");
+                blocoDataDividir.classList.add("is-oculto");
+                btnConfirmarMovimentar.textContent = "Transferir lote";
+                avisoMovimentar.innerHTML = `O lote inteiro vai para o <strong>${destino}</strong>, que passa para <strong>Em uso</strong>. O <strong>${tanqueOrigemAtual}</strong> fica <strong>Em limpeza</strong>. As leituras de cada período continuam ligadas ao lote.`;
+            } else {
+                blocoTransferir.classList.add("is-oculto");
+                blocoDividir.classList.remove("is-oculto");
+                blocoDataDividir.classList.remove("is-oculto");
+                btnConfirmarMovimentar.textContent = "Dividir lote";
+                atualizarVolumesDividir();
+            }
+        }
+
+        document.querySelectorAll(".botao-editar").forEach((btn) => {
+            btn.addEventListener("click", () => modalEditarLote.showModal());
+        });
+
+        document.getElementById("btn-abrir-movimentar-lote").addEventListener("click", () => {
+            modalEditarLote.close();
+            aplicarModoMovimentacao("transferir");
+            modalMovimentarLote.showModal();
+        });
+
+        botoesModo.forEach((btn) => {
+            btn.addEventListener("click", () => aplicarModoMovimentacao(btn.dataset.modo));
+        });
+
+        selectDestino.addEventListener("change", () => aplicarModoMovimentacao(modoAtual));
+        inputVolumeDestino.addEventListener("input", atualizarVolumesDividir);
+
+        document.getElementById("fechar-modal-editar-lote").addEventListener("click", () => modalEditarLote.close());
+        document.getElementById("cancelar-modal-editar-lote").addEventListener("click", () => modalEditarLote.close());
+
+        document.getElementById("fechar-modal-movimentar-lote").addEventListener("click", () => modalMovimentarLote.close());
+        document.getElementById("cancelar-modal-movimentar-lote").addEventListener("click", () => modalMovimentarLote.close());
+    </script>
+    <!-- MODAL: CANCELAR LOTE -->
+    <dialog id="modal-cancelar-lote" class="modal modal-alerta">
+        <form method="dialog" class="modal-alerta-corpo">
+            <div class="modal-icone-circulo modal-icone-circulo--perigo">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <h2 class="modal-titulo">Cancelar o lote <span id="cancelar-lote-codigo">096</span>?</h2>
+                <p class="modal-alerta-texto">
+                    O lote ficará como <strong>Cancelado</strong> no histórico, com leituras e relatórios preservados, e
+                    o tanque <strong id="cancelar-lote-tanque">TQ-02</strong> vai para <strong>Em limpeza</strong>.
+                    Lotes não são apagados.
+                </p>
+            </div>
+
+            <div class="modal-metricas-grid">
+                <div class="modal-metrica-card">
+                    <span class="modal-metrica-valor" id="cancelar-lote-volume">7.000 L</span>
+                    <span class="modal-metrica-label">volume do lote</span>
+                </div>
+                <div class="modal-metrica-card">
+                    <span class="modal-metrica-valor">Em limpeza</span>
+                    <span class="modal-metrica-label">novo status do <span
+                            id="cancelar-lote-tanque-label">TQ-02</span></span>
+                </div>
+            </div>
+
+            <div class="campo-grupo">
+                <label class="campo-rotulo" for="cancelar-lote-motivo">Motivo (opcional)</label>
+                <input class="campo-entrada" type="text" id="cancelar-lote-motivo" placeholder="Escreva ....">
+            </div>
+
+            <footer class="modal-alerta-rodape">
+                <button type="button" class="botao-modal-cancelar" id="voltar-cancelar-lote">Voltar</button>
+                <button type="submit" class="botao-modal-perigo">Cancelar lote</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- MODAL: FINALIZAR LOTE -->
+    <dialog id="modal-finalizar-lote" class="modal modal-alerta">
+        <form method="dialog" class="modal-alerta-corpo">
+            <div class="modal-icone-circulo modal-icone-circulo--info">
+                <i class="fa-solid fa-check" aria-hidden="true"></i>
+            </div>
+
+            <div>
+                <h2 class="modal-titulo">Finalizar o lote <span id="finalizar-lote-codigo">096</span>?</h2>
+                <p class="modal-alerta-texto">
+                    O lote passa para <strong>Finalizado</strong> e não pode ser mais editado. O tanque <strong
+                        id="finalizar-lote-tanque">TQ-02</strong> vai para <strong>Em limpeza</strong>.
+                </p>
+            </div>
+
+            <div class="modal-metricas-grid">
+                <div class="modal-metrica-card">
+                    <span class="modal-metrica-valor">Finalizado</span>
+                    <span class="modal-metrica-label">novo status do lote</span>
+                </div>
+                <div class="modal-metrica-card">
+                    <span class="modal-metrica-valor">Em limpeza</span>
+                    <span class="modal-metrica-label">novo status do <span
+                            id="finalizar-lote-tanque-label">TQ-02</span></span>
+                </div>
+            </div>
+
+            <footer class="modal-alerta-rodape">
+                <button type="button" class="botao-modal-cancelar" id="entendi-finalizar-lote">Entendi</button>
+                <button type="submit" class="botao-modal-confirmar">Finalizar lote</button>
+            </footer>
+        </form>
+    </dialog>
+
+    <!-- MODAL: VER LOTE FINALIZADO (PADRONIZADO) -->
+    <dialog id="modal-ver-lote-finalizado" class="modal modal-formulario">
+        <form method="dialog" class="modal-estrutura">
+            <header class="modal-cabecalho">
+                <div class="modal-cabecalho-info">
+                    <div class="modal-titulo-linha">
+                        <h2 class="modal-titulo" id="ver-lote-titulo">Lote 087</h2>
+                        <span class="modal-status-badge modal-status-badge--finalizado">Finalizado</span>
+                    </div>
+                    <p class="modal-subtitulo" id="ver-lote-subtitulo">IPA · Fábrica Matriz</p>
+                </div>
+                <button type="button" class="modal-fechar" id="fechar-modal-ver-lote">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </header>
+
+            <div class="modal-corpo">
+                <div class="grid-campos-lote">
+                    <div class="campo-grupo">
+                        <div class="campo-rotulo-linha">
+                            <label class="campo-rotulo" for="ver-lote-inicio">Início</label>
+                            <span class="campo-opcional">Somente leitura</span>
+                        </div>
+                        <input class="campo-entrada campo-entrada--bloqueado" type="text" id="ver-lote-inicio"
+                            value="01/09/2026 08:00" readonly>
+                    </div>
+
+                    <div class="campo-grupo">
+                        <div class="campo-rotulo-linha">
+                            <label class="campo-rotulo" for="ver-lote-termino">Término</label>
+                            <span class="campo-opcional">Somente leitura</span>
+                        </div>
+                        <input class="campo-entrada campo-entrada--bloqueado" type="text" id="ver-lote-termino"
+                            value="15/09/2026" readonly>
+                    </div>
+                </div>
+
+                <div class="campo-grupo">
+                    <div class="campo-rotulo-linha">
+                        <label class="campo-rotulo" for="ver-lote-volume">Volume</label>
+                        <span class="campo-opcional">Somente leitura</span>
+                    </div>
+                    <input class="campo-entrada campo-entrada--bloqueado" type="text" id="ver-lote-volume"
+                        value="7.500 L · TQ-01" readonly>
+                </div>
+
+                <div class="modal-aviso modal-aviso--info">
+                    <p>
+                        Lote finalizado: não pode ser editado nem excluído.
+                    </p>
+                </div>
+            </div>
+
+            <footer class="modal-rodape">
+                <button type="button" class="botao-modal-cancelar" id="fechar-ver-lote-rodape">Fechar</button>
+                <a href="../dashboard-lote/dashboard-lote.html" class="botao botao-principal">
+                    Dashboard do lote <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </a>
+            </footer>
+        </form>
+    </dialog>
+
+    <script>
+        const modalCancelarLote = document.getElementById("modal-cancelar-lote");
+        const modalFinalizarLote = document.getElementById("modal-finalizar-lote");
+        const modalVerLoteFinalizado = document.getElementById("modal-ver-lote-finalizado");
+
+        // Abre Cancelar lote
+        document.querySelectorAll(".botao-excluir").forEach((btn) => {
+            btn.addEventListener("click", () => modalCancelarLote.showModal());
+        });
+        document.getElementById("voltar-cancelar-lote").addEventListener("click", () => modalCancelarLote.close());
+
+        // Abre Finalizar lote
+        document.querySelectorAll(".botao-finalizar").forEach((btn) => {
+            btn.addEventListener("click", () => modalFinalizarLote.showModal());
+        });
+        document.getElementById("entendi-finalizar-lote").addEventListener("click", () => modalFinalizarLote.close());
+
+        // Abre Ver lote finalizado
+        document.querySelectorAll(".botao-ver").forEach((btn) => {
+            btn.addEventListener("click", () => modalVerLoteFinalizado.showModal());
+        });
+        document.getElementById("fechar-modal-ver-lote").addEventListener("click", () => modalVerLoteFinalizado.close());
+        document.getElementById("fechar-ver-lote-rodape").addEventListener("click", () => modalVerLoteFinalizado.close());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,395 @@
+/* ================================================= */
+/* CSS GLOBAL DE MODAIS - ZYMOS                      */
+/* ================================================= */
+
+/* Caixa base de qualquer modal (<dialog>) */
+.modal {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 10px 25px rgba(26, 51, 70, 0.15);
+  padding: 0;
+  margin: auto;
+  width: 95%;
+  max-height: 90vh;
+  overflow: hidden;
+  font-family: var(--font-primary);
+}
+
+.modal::backdrop {
+  background-color: rgba(15, 23, 42, 0.65);
+}
+
+/* Larguras padrão reutilizáveis entre modais */
+.modal-formulario {
+  max-width: 600px;
+}
+
+.modal-alerta {
+  max-width: 540px;
+}
+
+.modal-estrutura {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+}
+
+/* Cabeçalho do modal */
+.modal-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.modal-cabecalho-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.modal-titulo-linha {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.modal-titulo {
+  font-size: var(--text-18);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+  margin-bottom: 2px;
+}
+
+.modal-subtitulo {
+  font-size: var(--text-13);
+  color: var(--color-text-muted);
+}
+
+.modal-fechar {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: var(--text-18);
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.modal-fechar:hover {
+  color: var(--color-primary);
+}
+
+/* Badges de status no cabeçalho dos modais de edição */
+.modal-status-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: var(--text-11);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-on-dark);
+}
+
+.modal-status-badge--ativa {
+  background-color: #5A6B5A;
+}
+
+.modal-status-badge--analise {
+  background-color: var(--color-accent);
+}
+
+/* Corpo rolável dos modais de formulário */
+.modal-corpo {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  overflow-y: auto;
+}
+
+/* Padrão de campos (Label + Input) */
+.campo-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.campo-rotulo-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.campo-rotulo {
+  font-size: var(--text-11);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.campo-obrigatorio {
+  color: var(--color-accent);
+}
+
+.campo-opcional {
+  font-size: var(--text-11);
+  color: var(--color-text-muted);
+  font-weight: var(--weight-regular);
+}
+
+.campo-entrada {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  font-family: var(--font-primary);
+  font-size: var(--text-14);
+  color: var(--color-text);
+  transition: border-color 0.2s;
+}
+
+.campo-entrada:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.campo-entrada[readonly],
+.campo-entrada--bloqueado {
+  background-color: #f8fafc;
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.campo-entrada[readonly]:focus,
+.campo-entrada--bloqueado:focus {
+  border-color: var(--color-border);
+}
+
+/* Caixas de aviso dentro dos modais */
+.modal-aviso {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background-color: #fbf6f0;
+  border: 1px solid #f0e1d0;
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-top: var(--space-xs);
+  font-size: var(--text-13);
+  color: var(--color-accent-dark);
+  line-height: 1.4;
+}
+
+.modal-aviso i {
+  font-size: var(--text-16);
+  color: var(--color-accent-dark);
+  flex-shrink: 0;
+}
+
+.modal-aviso--info {
+  background-color: #f4f8fc;
+  border-color: #dce8f5;
+  color: var(--color-primary);
+}
+
+.modal-aviso--info i {
+  color: var(--color-text-muted);
+}
+
+.modal-aviso-link {
+  color: #c27838;
+  font-weight: var(--weight-semibold);
+  margin-left: 2px;
+}
+
+.modal-aviso-link:hover {
+  text-decoration: underline;
+}
+
+/* Rodapé dos modais de formulário */
+.modal-rodape {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  background-color: #f8fafc;
+  border-top: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+/* Corpo e elementos exclusivos de modais de alerta/confirmação */
+.modal-alerta-corpo {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.modal-icone-circulo {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-16);
+  flex-shrink: 0;
+}
+
+.modal-icone-circulo--perigo {
+  background-color: #fdf0ec;
+  color: #b8562b;
+}
+
+.modal-icone-circulo--aviso {
+  background-color: #fbf4ea;
+  color: #c27838;
+}
+
+.modal-alerta-texto {
+  font-size: var(--text-14);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+.modal-metricas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+}
+
+.modal-metrica-card {
+  background-color: var(--color-surface-muted);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.modal-metrica-valor {
+  font-size: var(--text-16);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+}
+
+.modal-metrica-label {
+  font-size: var(--text-12);
+  color: var(--color-text-muted);
+}
+
+.modal-alerta-rodape {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+
+/* Botões globais de ação dos modais */
+.botao-modal-cancelar {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+}
+
+.botao-modal-cancelar:hover {
+  background-color: var(--color-surface-muted);
+}
+
+.botao-modal-confirmar {
+  background-color: var(--color-primary);
+  color: var(--color-text-on-dark);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+}
+
+.botao-modal-confirmar:hover {
+  opacity: 0.92;
+}
+
+.botao-modal-perigo {
+  background-color: #b8562b;
+  color: var(--color-text-on-dark);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+  transition: opacity 0.2s;
+}
+
+.botao-modal-perigo:hover:not(:disabled) {
+  opacity: 0.92;
+}
+
+.botao-modal-perigo:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Select padrão dentro dos formulários de modal */
+.campo-select {
+  width: 100%;
+  padding: 0.625rem 2.375rem 0.625rem 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  font-family: var(--font-primary);
+  font-size: var(--text-14);
+  color: var(--color-text);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23556c80' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.875rem center;
+  background-size: 0.875rem;
+  transition: border-color 0.2s;
+}
+
+.campo-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* Destaque numérico terracota nos cards de resumo */
+.modal-metrica-valor--destaque {
+  color: #b8562b;
+}
+
+.modal-aviso-conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.modal-aviso-titulo {
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+}
+
+.modal-status-badge--em-uso {
+  background-color: var(--color-primary);
+}
+
+.modal-icone-circulo--info {
+  background-color: rgba(31, 61, 89, 0.12);
+  color: var(--color-primary);
+}

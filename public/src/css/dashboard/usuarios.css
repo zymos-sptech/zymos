@@ -1,0 +1,26 @@
+.tabela-linha {
+  grid-template-columns:
+    minmax(13.75rem, 1.8fr)
+    minmax(9.375rem, 1.1fr)
+    minmax(9.375rem, 1.1fr)
+    minmax(8.75rem, 1fr)
+    minmax(10rem, 1.1fr);
+  gap: 0.625rem;
+}
+
+.tabela-celula {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.tabela-acoes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.status-desativado {
+  background-color: #e4e8ec;
+  color: #556c80;
+}

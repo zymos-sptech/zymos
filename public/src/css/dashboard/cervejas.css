@@ -1,0 +1,36 @@
+/* Sobrescreve as colunas definidas na base .tabela-linha de listas.css */
+.tabela-linha {
+    grid-template-columns:
+        minmax(120px, 1.3fr) minmax(85px, 0.9fr) minmax(130px, 1.3fr) minmax(100px, 1fr) minmax(105px, 1fr) minmax(125px, 1.2fr) minmax(145px, 1.1fr);
+    gap: 0.625rem;
+}
+
+.tabela-celula {
+    min-width: 0;
+    white-space: nowrap;
+}
+
+.tabela-acoes {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.lote-apoio {
+    font-size: var(--text-13);
+    color: var(--color-text-muted);
+}
+
+/* Grades internas dos modais de Cervejas */
+.grid-cerveja-dupla {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-sm);
+}
+
+.grid-cerveja-tripla {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-sm);
+}

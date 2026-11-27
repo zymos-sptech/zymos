@@ -41,6 +41,23 @@ async function listarCargo(req, res) {
   });
 }
 
+async function buscarCargo(req, res) {
+  const cargoId = req.params.cargoId;
+
+  if (cargoId == null || cargoId == undefined)
+    return res.status(400).send("cargoId inválido.");
+
+  cargoModel
+    .buscarCargo(cargoId)
+    .then(function (response) {
+      res.status(200).json(response);
+    })
+    .catch(function (erro) {
+      console.log(erro);
+      res.status(404).send("Cargo não encontrado.");
+    });
+}
+
 async function atualizarCargo(req, res) {
   const data = req.body;
   const cargoId = req.params.cargoId;

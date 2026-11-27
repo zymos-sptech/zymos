@@ -20,7 +20,9 @@
       src="https://kit.fontawesome.com/79924d81b1.js"
       crossorigin="anonymous"
     ></script>
+    <script src="../js/validations/validacoes.js" defer></script>
     <script src="../js/pages/contato.js" defer></script>
+    <script src="../js/services/lead.js" defer></script>
     <title>Zymos - Contato</title>
   </head>
 
@@ -99,62 +101,74 @@
             <form class="contato-formulario" onsubmit="event.preventDefault()">
               <div class="contato-formulario-linha-dupla">
                 <div class="contato-campo-grupo">
-                  <label class="contato-campo-rotulo" for="nome"
+                  <label class="contato-campo-rotulo" for="iptNome"
                     >Nome completo *</label
                   >
                   <input
                     class="campo-input"
                     type="text"
-                    id="nome"
+                    id="iptNome"
                     name="nome"
                     placeholder="Ex: Carlos Albuquerque"
                     required
                   />
+                  <p class="contato-erro" id="erroNome" aria-live="polite"></p>
                 </div>
                 <div class="contato-campo-grupo">
-                  <label class="contato-campo-rotulo" for="email"
+                  <label class="contato-campo-rotulo" for="iptEmail"
                     >E-mail corporativo *</label
                   >
                   <input
                     class="campo-input"
                     type="email"
-                    id="email"
+                    id="iptEmail"
                     name="email"
                     placeholder="carlos@cervejaria.com.br"
                     required
                   />
+                  <p class="contato-erro" id="erroEmail"></p>
                 </div>
               </div>
 
               <div class="contato-formulario-linha-dupla">
                 <div class="contato-campo-grupo">
-                  <label class="contato-campo-rotulo" for="empresa"
+                  <label class="contato-campo-rotulo" for="iptEmpresa"
                     >Cervejaria / Empresa *</label
                   >
                   <input
                     class="campo-input"
                     type="text"
-                    id="empresa"
+                    id="iptEmpresa"
                     name="empresa"
                     placeholder="Nome da sua fábrica, brewpub ou marca"
                     required
                   />
+                  <p class="contato-erro" id="erroEmpresa"></p>
                 </div>
                 <div class="contato-campo-grupo">
                   <span class="contato-campo-rotulo"
                     >Quantidade de tanques</span
                   >
                   <div class="contato-grupo-botoes-opcao">
-                    <button type="button" class="contato-botao-opcao-tanque">
+                    <button
+                      type="button"
+                      onclick="opcaoTanque('1 a 4')"
+                      class="contato-botao-opcao-tanque"
+                    >
                       1 a 4
                     </button>
                     <button
                       type="button"
+                      onclick="opcaoTanque('5 a 14')"
                       class="contato-botao-opcao-tanque selecionado"
                     >
                       5 a 14
                     </button>
-                    <button type="button" class="contato-botao-opcao-tanque">
+                    <button
+                      type="button"
+                      onclick="opcaoTanque('15 ou mais')"
+                      class="contato-botao-opcao-tanque"
+                    >
                       15 ou mais tanques
                     </button>
                   </div>
@@ -165,25 +179,37 @@
                 <div
                   class="contato-campo-rotulo contato-campo-rotulo-com-opcional"
                 >
-                  <label for="mensagem">Mensagem / Perfil da Operação</label>
+                  <label for="iptMensagem">Mensagem / Perfil da Operação</label>
                   <span class="contato-texto-opcional">Opcional</span>
                 </div>
                 <textarea
                   class="contato-campo-texto-area"
-                  id="mensagem"
+                  id="iptMensagem"
                   name="mensagem"
                   rows="4"
                   placeholder="Conte um pouco sobre sua produção: quantos litros costuma fazer, principais desafios com controle de frio ou dúvidas sobre a instalação..."
                 ></textarea>
               </div>
 
-              <label class="contato-consentimento">
-                <input type="checkbox" name="consentimento" required />
-                Concordo em receber diagnóstico térmico personalizado e contato
-                consultivo da equipe Zymos.
-              </label>
+              <div class="contato-campo-grupo">
+                <label class="contato-consentimento">
+                  <input
+                    type="checkbox"
+                    id="chkConsentimento"
+                    name="consentimento"
+                    required
+                  />
+                  Concordo em receber diagnóstico térmico personalizado e
+                  contato consultivo da equipe Zymos.
+                </label>
+                <p class="contato-erro" id="erroConsentimento"></p>
+              </div>
 
-              <button type="submit" class="contato-botao-enviar-formulario">
+              <button
+                type="button"
+                onclick="criarLead()"
+                class="contato-botao-enviar-formulario"
+              >
                 Enviar mensagem <i class="fa-solid fa-arrow-right"></i>
               </button>
             </form>

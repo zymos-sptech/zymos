@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Usuários - Zymos</title>
+    <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="../../css/tabelas.css">
+    <link rel="stylesheet" href="../../css/modais.css">
+    <link rel="stylesheet" href="../../css/dashboard/usuarios.css">
+    <link rel="stylesheet" href="../../css/components/sidebar.css">
+    <script src="../../js/sidebar/sidebar.js" defer type="module"></script>
+    <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="sidebar"></div>
+    <main class="dashboard">
+        <section class="container-barra-superior">
+            <h1 class="cabecalho-nome">Usuários</h1>
+
+            <div class="busca-campo">
+                <i class="fa-solid fa-magnifying-glass busca-icone" aria-hidden="true"></i>
+                <input class="busca-entrada" type="search" placeholder="Pesquisar por nome ou e-mail..."
+                    aria-label="Pesquisar usuários">
+            </div>
+
+            <select class="filtro-select" aria-label="Filtrar por cargo">
+                <option value="">Cargo: Todos</option>
+                <option value="administrador">Administrador</option>
+                <option value="mestre-cervejeiro">Mestre Cervejeiro</option>
+                <option value="operador">Operador</option>
+                <option value="qualidade">Qualidade</option>
+            </select>
+
+            <button class="botao botao-principal" id="btn-abrir-convidar-usuario" type="button">
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                Convidar usuário
+            </button>
+        </section>
+        <section class="card-tabela">
+            <div class="container-tabela">
+                <div class="tabela-linha tabela-cabecalho">
+                    <span>Usuário</span>
+                    <span>Cargo</span>
+                    <span>Unidade</span>
+                    <span>Status</span>
+                    <span>Ações</span>
+                </div>
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">Fernanda Caramico</span>
+                        <span class="item-subtitulo">fernanda@cervejariahorizonte.com</span>
+                    </div>
+                    <div class="tabela-celula">Administrador</div>
+                    <div class="tabela-celula">Todas as unidades</div>
+                    <div class="tabela-celula"><span class="status status-ativa">Ativo</span></div>
+                    <div class="tabela-celula">
+                        <div class="tabela-acoes">
+                            <button class="botao botao-editar" type="button">Editar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">Carlos Silva</span>
+                        <span class="item-subtitulo">carlos.silva@cervejariahorizonte.com</span>
+                    </div>
+                    <div class="tabela-celula">Mestre Cervejeiro</div>
+                    <div class="tabela-celula">Fábrica Matriz</div>
+                    <div class="tabela-celula"><span class="status status-ativa">Ativo</span></div>
+                    <div class="tabela-celula">
+                        <div class="tabela-acoes">
+                            <button class="botao botao-editar" type="button">Editar</button>
+                            <button class="botao botao-excluir" type="button">Desativar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">Marina Alves</span>
+                        <span class="item-subtitulo">marina@cervejariahorizonte.com</span>
+                    </div>
+                    <div class="tabela-celula">Operador</div>
+                    <div class="tabela-celula">Fábrica Campinas</div>
+                    <div class="tabela-celula"><span class="status status-analise">Convite pendente</span></div>
+                    <div class="tabela-celula">
+                        <div class="tabela-acoes">
+                            <button class="botao botao-editar" type="button">Editar</button>
+                            <button class="botao botao-excluir" type="button">Desativar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tabela-linha">
+                    <div class="tabela-celula">
+                        <span class="item-titulo">João Pedro</span>
+                        <span class="item-subtitulo">joao@cervejariahorizonte.com</span>
+                    </div>
+                    <div class="tabela-celula">Qualidade</div>
+                    <div class="tabela-celula">Fábrica Matriz</div>
+                    <div class="tabela-celula"><span class="status status-desativado">Desativado</span></div>
+                    <div class="tabela-celula">
+                        <div class="tabela-acoes">
+                            <button class="botao botao-editar" type="button">Editar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="tabela-rodape">Mostrando 4 de 4 usuários · usuários não são apagados, são desativados.</p>
+        </section>
+
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: unidade
+meta:
+  id: wrk_bcb0881f3db04e16bee8ebadbadb291b
+  created: 1795725212286
+  modified: 1795725212286
+  description: ""
+collection:
+  - url: "{{ _.LOCAL_URL }}/unidades/empresa/1"
+    name: listarUnidadeEmpresa
+    meta:
+      id: req_7956f9eee2e6480089c61a1e1f7f748d
+      created: 1795725215176
+      modified: 1795725253380
+      isPrivate: false
+      description: ""
+      sortKey: -1795725215176
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_b6ab7376f560abe579b61e689aead97d3d18c1f7
+    created: 1795725212314
+    modified: 1795725212314
+environments:
+  name: Base Environment
+  meta:
+    id: env_b6ab7376f560abe579b61e689aead97d3d18c1f7
+    created: 1795725212312
+    modified: 1795725239608
+    isPrivate: false
+  data:
+    LOCAL_URL: http://localhost:3333

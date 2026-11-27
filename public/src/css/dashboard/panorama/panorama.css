@@ -1,8 +1,4 @@
-/* LAYOUT DA PÁGINA PANORAMA
-   Aqui só tem grid. A aparência de cada peça está em css/components/.
-   Página fixa: nada rola; só as listas internas rolam. */
-
-/* tokens.css já vem antes; as regras abaixo vencem o global.css antigo do grupo */
+/* Layout base da página do Panorama */
 .pagina-fixa {
   display: flex;
   height: 100vh;
@@ -13,34 +9,8 @@
   font-family: var(--font-primary);
 }
 
-#sidebar {
-  flex-shrink: 0;
-}
-
-/* PROVISÓRIO: simula a sidebar enquanto a real não chega.
-   Quando a sidebar real entrar, apague estas duas regras e a classe
-   sidebar-simulada do <div id="sidebar"> no HTML.
-   Para testar a sidebar fechada, troque no HTML para:
-   class="sidebar-simulada sidebar-simulada--fechada" */
-.sidebar-simulada {
-  width: var(--sidebar-largura);
-  background: var(--color-primary);
-}
-
-.sidebar-simulada--fechada {
-  width: var(--sidebar-largura-fechada);
-}
-
-/* Largura única do conteúdo (Figma: 1636px).
-   A largura sai da TELA e da sidebar ABERTA, nunca da sidebar atual:
-   tela - 254 - 15 - 15, com teto de 1636.
-   Por isso abrir ou fechar a sidebar não muda o tamanho da página.
-   O conteúdo fica centralizado no espaço que sobra:
-   sidebar aberta  -> 15px de cada lado
-   sidebar fechada -> 105,5px de cada lado (tela 1920) */
-
 .panorama {
-  --panorama-largura: 102.25rem; /* 1636px */
+  --panorama-largura: 102.25rem;
   width: min(
     var(--panorama-largura),
     calc(100vw - var(--sidebar-largura) - 2 * var(--space-md))
@@ -51,40 +21,265 @@
   height: 100%;
   padding: var(--space-md) 0;
   display: grid;
-  grid-template-rows: auto auto minmax(0, 1fr); /* topo, KPIs, o que sobrar */
-  gap: var(--space-md); /* Espaço padrão vertical entre os blocos */
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: var(--space-md);
   overflow: hidden;
 }
 
-/* ---------- KPIs (Figma: 4 cards, 130px de altura) ---------- */
 .kpis {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-md); /* Espaço horizontal padrão entre os 4 cards */
+  gap: var(--space-md);
   height: 7.4rem;
 }
 
-/* ---------- Tabela (esquerda) + lateral (direita) ---------- */
 .conteudo {
   display: grid;
-  grid-template-columns: minmax(0, 1082fr) minmax(0, 539fr); /* Proporção exata do Figma */
-  gap: var(--space-md); /* Garante que o espaçamento entre a tabela e a lateral use o padrão --space-md */
-  min-height: 0;
-}
-
-/* Alertas pega o espaço que sobrar; Desvios tem a altura do próprio conteúdo */
-.lateral {
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1082fr) minmax(0, 539fr);
   gap: var(--space-md);
   min-height: 0;
 }
 
-/* ---------- MODO COMPACTO ----------
-   Telas menores que 1700px (ex.: notebook Full HD com zoom 125%, que o
-   navegador enxerga com ~1536px). Os cards e o tamanho da página ficam
-   iguais; só encolhem letras, paddings e alturas das peças apertadas.
-   Em telas de 1700px ou mais vale o tamanho exato do Figma. */
+/* Coluna lateral: Desvios por unidade ocupa toda a altura */
+.lateral {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr);
+  min-height: 0;
+}
+
+.painel--desvios {
+  height: 100%;
+}
+
+.lista-desvios {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  overflow-y: auto;
+  padding-right: var(--space-2xs);
+}
+
+.desvio-barra {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.desvio-barra__nome {
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.desvio-barra__linha {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.desvio-barra__linha .barra {
+  flex: 1;
+}
+
+.desvio-barra__contagem {
+  min-width: 1.5rem;
+  text-align: right;
+  font-size: var(--text-14);
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
+}
+
+.desvios-mais {
+  font-size: var(--text-14);
+  color: var(--color-text-muted);
+}
+
+.desvios-mais[hidden] {
+  display: none;
+}
+
+.desvios-mais a {
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+}
+
+.desvios-demais,
+.metrica-rodape {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  padding: 0 var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: var(--text-14);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.desvios-demais {
+  border: 1px solid var(--color-border);
+}
+
+.metrica-rodape {
+  justify-content: space-between;
+  background: var(--color-surface-muted);
+}
+
+.metrica-rodape strong {
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
+}
+
+/* Tabela de unidades em desvio */
+.tabela-unidades {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.tabela-unidades__tabela {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tabela-unidades__tabela thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 2.375rem;
+  padding: 0 var(--space-md);
+  background: var(--color-surface-muted);
+  color: var(--color-text-muted);
+  font-family: var(--font-numeric);
+  font-size: var(--text-11);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.tabela-unidades__tabela th:nth-child(1) { width: 26%; }
+.tabela-unidades__tabela th:nth-child(2) { width: 17%; }
+.tabela-unidades__tabela th:nth-child(3) { width: 26%; }
+.tabela-unidades__tabela th:nth-child(4) { width: 14%; }
+.tabela-unidades__tabela th:nth-child(5) { width: 17%; }
+
+.tabela__linha td {
+  height: 3rem;
+  padding: var(--space-sm) var(--space-md) var(--space-xs);
+  font-size: var(--text-14);
+  color: var(--color-text);
+  vertical-align: middle;
+}
+
+.tabela__linha td:first-child {
+  font-weight: var(--weight-semibold);
+}
+
+.tabela__linha td:nth-child(2) {
+  font-family: var(--font-numeric);
+  white-space: nowrap;
+}
+
+.tabela__tanques td {
+  padding: 0 var(--space-md) var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tabela__tanques:last-child td {
+  border-bottom: none;
+}
+
+.tabela__tanques-conteudo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-sm);
+}
+
+.tabela__tanques-rotulo {
+  font-family: var(--font-numeric);
+  font-size: var(--text-11);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-right: var(--space-2xs);
+}
+
+.tag-tanque {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  height: 1.625rem;
+  padding: 0 var(--space-sm);
+  background: var(--color-surface);
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  font-size: var(--text-12);
+  font-weight: var(--weight-medium);
+  color: #5e6a7b;
+  white-space: nowrap;
+}
+
+.tag-tanque strong {
+  color: var(--color-primary);
+  font-weight: var(--weight-semibold);
+}
+
+.tag-tanque--acima .fa-arrow-up {
+  color: #D0A06F !important;
+}
+
+.tag-tanque--abaixo i {
+  color: var(--color-primary);
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  height: 1.625rem;
+  padding: 0 0.875rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-12);
+  font-weight: var(--weight-semibold);
+  white-space: nowrap;
+}
+
+.status--desvio {
+  background: var(--color-accent);
+  color: var(--color-text-on-dark);
+}
+
+.tabela__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: var(--text-14);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.tabela__link:hover {
+  text-decoration: underline;
+}
+
+.tabela__vazio td {
+  padding: var(--space-lg);
+  text-align: center;
+  font-size: var(--text-14);
+  color: var(--color-text-muted);
+}
+
+/* Ajustes apenas do modo compacto (sem repetir o que não muda) */
 @media (max-width: 1700px) {
   .painel__titulo { font-size: var(--text-16); }
   .painel__subtitulo,
@@ -96,19 +291,11 @@
     font-size: var(--text-12);
   }
 
-  /* Tabela */
-  .tabela-unidades__tabela th:nth-child(1) { width: 26%; }
-  .tabela-unidades__tabela th:nth-child(2) { width: 17%; }
-  .tabela-unidades__tabela th:nth-child(3) { width: 26%; }
-  .tabela-unidades__tabela th:nth-child(4) { width: 14%; }
-  .tabela-unidades__tabela th:nth-child(5) { width: 17%; }
-
   .tabela-unidades__tabela thead th {
     height: 2.125rem;
     padding: 0 var(--space-sm);
     font-size: var(--text-10);
-    font-weight: var(--weight-medium);
-    letter-spacing: 0.05em;
+    font-weight: 510;
   }
 
   .tabela__linha td {
@@ -134,13 +321,7 @@
 
   .tabela__link { font-size: var(--text-13); }
 
-  /* Alertas em aberto */
-  .alerta-item { padding: 0.5rem 0.75rem; }
-  .alerta-item__titulo { font-size: var(--text-12); }
-  .alerta-item__legenda { font-size: var(--text-11); }
-
-  /* Desvios por unidade */
-  .lista-desvios { gap: var(--space-xs); }
+  .lista-desvios { gap: var(--space-sm); }
   .desvio-barra__nome,
   .desvio-barra__contagem,
   .desvios-mais { font-size: var(--text-12); }
@@ -152,3 +333,4 @@
     font-size: var(--text-12);
   }
 }
+
