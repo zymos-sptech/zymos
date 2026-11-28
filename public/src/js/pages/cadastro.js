@@ -104,7 +104,6 @@ if (iptConfirmPasword) {
 
 function mostrarForca() {
   let r = avaliarSenha(iptPassword.value);
-  console.log(r);
   if (r.tamanho) {
     reqTamanho.classList.add("ok");
   } else {

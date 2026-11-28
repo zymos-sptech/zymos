@@ -77,12 +77,14 @@ window.handleFormLogin = async () => {
         const data = await response.json();
         sessionStorage.ID_USUARIO = data.id;
         ((sessionStorage.NOME = data.nome),
-          (sessionStorage.EMAIL = data.email));
+        (sessionStorage.EMAIL = data.email));
         sessionStorage.CARGO = data.cargo;
         sessionStorage.NOME_EMPRESA = data.empresa;
+        sessionStorage.ID_EMPRESA = data.id_empresa;
         sessionStorage.QTD_UNIDADE = data.qtd_unidade;
         sessionStorage.PLANO = data.plano;
-
+        console.log(data)
+        
         toastSucesso.classList.add("ativo");
 
         setTimeout(() => {
