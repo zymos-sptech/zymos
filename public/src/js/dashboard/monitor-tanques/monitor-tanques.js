@@ -337,7 +337,7 @@ function montarDetalhesTanque(tanque, producao, lote, cerveja, leitura) {
                     <span>${tanque.nome} · ${cerveja.nome}</span>
                 </div>
 
-                <a href="./dashboard-micro.html?lote=${lote.id}" class="link-dashboard-lote">
+                <a href="./dashboard-lote.html?lote=${lote.id}" class="link-dashboard-lote">
                     Abrir no dashboard por lote →
                 </a>
             </div>

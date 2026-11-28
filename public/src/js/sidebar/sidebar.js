@@ -1,7 +1,7 @@
 const ROUTES = {
   panorama: '/src/pages/dashboard/panorama.html',
   macro: '/src/pages/dashboard/monitor-tanques.html',
-  micro: '/src/pages/dashboard/dashboard-micro.html',
+  micro: '/src/pages/dashboard/dashboard-lote.html',
   unidades: '/src/pages/dashboard/unidades.html',
   tanques: '/src/pages/dashboard/tanques.html',
   lotes: '/src/pages/dashboard/lotes.html',

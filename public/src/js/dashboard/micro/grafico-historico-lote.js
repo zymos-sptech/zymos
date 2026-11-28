@@ -1,253 +1,603 @@
-// DEFINIÇÂO DOS ELEMENTOS HTML
-const ctx = document.getElementById("canvas_grafico_historico");
-const select_lotes = document.getElementById("grafico_historico_lote1");
-const select_lotes_comparativos = document.getElementById("grafico_historico_lote2");
-const div_legendas = document.getElementById("legenda_grafico_historico");
-const div_filtros_dia = document.getElementById("filtros_dia");
+import {
+  DATA_REFERENCIA,
+  lotesData,
+  leiturasSensoresData
+} from "../../MOCK_DATA/mock_data.js";
+import { formatarNumeroPtBr } from "../funcoes-globais.js";
 
-// DEFINIÇÃO DOS DADOS MOCADOS
-// definindo lotes principais (lotes disponíveis do cliente)
-const exemplo_lotes = [
-  {
-    nome: "Lote 101-A",
-    data: [22.2, 21.5, 21.9, 22.5, 23.6, 22.6, 22.5, 24.2],
-    data_24h: [
-      21.1, 21.5, 21.4, 21.7, 21.6, 21.9, 21.8, 22.1, 22.2, 22.3, 22.2, 22.0, 22.1, 24.2
-    ],
-    faixa_min: 18, // de acordo com o tipo de fermentação e receita
-    faixa_max: 23,
-    tipo: "IPA", // mudar para estilo
-    estilo: "Ale",
-    duracao: 14,
-  }
-];
-// definindo lotes para comparação
-const lotes_comparativos = [
-  {
-    nome: "Lote 099",
-    data: [
-      19.1, 19.6, 19.9, 20.3, 20.7, 21.3, 21.6, 21.5, 21.3, 21.2, 21, 20.7,
-      20.6, 20.8,
-    ],
-    data_24h: [
-      21.1, 21.2, 21.3, 21.3, 21.4, 21.4,
-      21.5, 21.5, 21.5, 21.6, 21.6, 21.7,
-      21.7, 21.6, 21.6, 21.5, 21.5, 21.4,
-      21.4, 21.3, 21.3, 21.2, 21.1, 21.2
-    ],
-    faixa_min: 18,
-    faixa_max: 23,
-    tipo: "IPA",
-    estilo: "Ale",
-    duracao: 14,
-  },
-  {
-    nome: "Lote 098",
-    data: [
-      22.5, 22, 21, 20.5, 20, 19.7, 19.6, 19.1, 18.7, 18.2, 18.3, 18.9, 19,
-      19.9,
-    ],
-    data_24h: [
-      18.7, 18.8, 18.9, 18.9, 19.0, 19.0,
-      19.1, 19.1, 19.1, 19.2, 19.2, 19.3,
-      19.3, 19.2, 19.2, 19.1, 19.1, 19.0,
-      19.0, 18.9, 18.9, 18.8, 18.7, 18.8
-    ],
-    faixa_min: 18,
-    faixa_max: 23,
-    tipo: "IPA",
-    estilo: "Ale",
-    duracao: 14,
-  }
-];
-// carregar opções dos selects
-function carregarLotes() {
-  select_lotes.innerHTML = "";
-  select_lotes.innerHTML += `<p>${exemplo_lotes[0].nome}</p>`;
+const COR_LOTE_ATUAL = "#426084";
+const COR_LOTE_REFERENCIA = "#c88a4b";
+const COR_FAIXA_IDEAL = "#e8efe6A5";
 
-}
-function carregarLotesComparativos() {
-  let lote_principal = exemplo_lotes[0];
-  select_lotes_comparativos.innerHTML = "";
-  for (let i = 0; i < lotes_comparativos.length; i++) {
-    if (lote_principal.tipo == lotes_comparativos[i].tipo) {
-      select_lotes_comparativos.innerHTML += `<option value='${lotes_comparativos[i].nome}'>${lotes_comparativos[i].nome}</option>`;
+let instanciaGraficoHistorico = null;
+let loteComparativoSelecionadoPorReceita = {};
+
+function obterPainelHistorico() {
+  let canvas = document.getElementById("canvas_grafico_historico");
+  if(canvas){
+    if(canvas.closest(".painel")){
+      return canvas.closest(".painel");
     }
+    return canvas.parentElement;
   }
+
+  let container = document.getElementById("grafico-historico-lote-container");
+  if(container){
+    if(container.closest(".painel")){
+      return container.closest(".painel");
+    }
+    return container;
+  }
+  return document.querySelector(".lote-comparativo");
 }
 
-// Definindo configuração (data, options) para criação do new Chart
-function setupConfig(lote1, lote2, n_dias) {
-  const labels = []; // rotulos do eixo x => dias/horas
-  const faixa = { min: [], max: [] }; // definir quantidade de registros para exibição em relação aos dias/horas
-  let data1 = lote1.data
-  let data2 = lote2.data
-  if (n_dias == 1) {
-    data1 = lote1.data_24h
-    data2 = lote2.data_24h
-    for (let hora = 1; hora <= 24; hora++) {
-      labels.push(hora + ":00");
-      faixa.min.push(lote1.faixa_min);
-      faixa.max.push(lote1.faixa_max);
-    }
-  } else {
-    for (let dia = 1; dia <= n_dias; dia++) {
-      labels.push("Dia " + dia);
-      faixa.min.push(lote1.faixa_min);
-      faixa.max.push(lote1.faixa_max);
+function obterOuCriarElementosHistorico() {
+  let painel = obterPainelHistorico();
+
+  let controlesEl = document.getElementById("comparativo-filtros");
+  if(!controlesEl && painel){
+    controlesEl = document.createElement("div");
+    controlesEl.id = "comparativo-filtros";
+    let cabecalho = painel.querySelector(".painel__cabecalho");
+    if(cabecalho){
+      cabecalho.appendChild(controlesEl);
+    }else{
+      painel.prepend(controlesEl);
     }
   }
-  const config = {
+
+  let wrapperGrafico = document.getElementById("wrapper-canvas-historico");
+  let canvas = document.getElementById("canvas_grafico_historico");
+
+  if(!wrapperGrafico && painel){
+    let areaGrafico = document.getElementById("grafico-historico-lote-container");
+    if(!areaGrafico){
+      areaGrafico = painel;
+    }
+
+    wrapperGrafico = document.createElement("div");
+    wrapperGrafico.id = "wrapper-canvas-historico";
+
+    if(canvas && canvas.parentElement){
+      canvas.parentElement.replaceChild(wrapperGrafico, canvas);
+      wrapperGrafico.appendChild(canvas);
+    }else{
+      wrapperGrafico.innerHTML = '<canvas id="canvas_grafico_historico"></canvas>';
+      areaGrafico.appendChild(wrapperGrafico);
+      canvas = document.getElementById("canvas_grafico_historico");
+    }
+  }else if(wrapperGrafico){
+    canvas = document.getElementById("canvas_grafico_historico");
+  }
+
+  let rodapeEl = document.getElementById("comparativo-rodape");
+  if(!rodapeEl && painel){
+    rodapeEl = document.createElement("div");
+    rodapeEl.id = "comparativo-rodape";
+    rodapeEl.className = "painel__rodape";
+    painel.appendChild(rodapeEl);
+  }
+
+  return{canvas: canvas, controlesEl: controlesEl, rodapeEl: rodapeEl};
+}
+
+function buscarLotesMesmaReceita(loteAtual) {
+  let candidatos = [];
+
+  for(let i = 0; i < lotesData.length; i++){
+    let candidato = lotesData[i];
+    if(candidato.id !== loteAtual.id && candidato.fk_cerveja === loteAtual.fk_cerveja){
+      candidatos.push(candidato);
+    }
+  }
+
+  candidatos.sort(function (a, b) {
+    let aFinalizado = 1;
+    if(a.fk_status_lote === 2){
+      aFinalizado = 0;
+    }
+
+    let bFinalizado = 1;
+    if(b.fk_status_lote === 2){
+      bFinalizado = 0;
+    }
+
+    if(aFinalizado !== bFinalizado){
+      return aFinalizado - bFinalizado;
+    }
+    return a.id - b.id;
+  });
+  return candidatos;
+}
+
+function calcularDiaRelativo(dtInicio, dtAlvo) {
+  let inicio = new Date(dtInicio);
+  let alvo = new Date(dtAlvo);
+
+  if(isNaN(inicio.getTime()) || isNaN(alvo.getTime())){
+    return 1;
+  }
+
+  let diffDias = Math.floor((alvo - inicio) / (1000 * 60 * 60 * 24)) + 1;
+  if(diffDias < 1){
+    return 1;
+  }
+  return diffDias;
+}
+
+function construirSeriePorDia(lote, totalDias, ateDiaMaximo) {
+  let somaPorDia = {};
+  let contagemPorDia = {};
+  let ultimoValorConhecido = null;
+
+  for(let i = 0; i < leiturasSensoresData.length; i++){
+    let leitura = leiturasSensoresData[i];
+    let temp = Number(leitura.temperatura);
+
+    if(leitura.fk_lote === lote.id && !isNaN(temp)){
+      let dia = calcularDiaRelativo(lote.dt_inicio, leitura.dt_medicao);
+      if (dia >= 1 && dia <= totalDias) {
+        if(!somaPorDia[dia]){
+          somaPorDia[dia] = 0;
+          contagemPorDia[dia] = 0;
+        }
+        somaPorDia[dia] = somaPorDia[dia] + temp;
+        contagemPorDia[dia] = contagemPorDia[dia] + 1;
+      }
+      ultimoValorConhecido = temp;
+    }
+  }
+
+  if(ultimoValorConhecido === null){
+    ultimoValorConhecido = 20.0;
+  }
+
+  let mediaPorDia = {};
+  let primeiroValorConhecido = null;
+
+  for(let dia = 1; dia <= totalDias; dia++){
+    if(somaPorDia[dia] !== undefined && contagemPorDia[dia] > 0){
+      let media = Math.round((somaPorDia[dia] / contagemPorDia[dia]) * 10) / 10;
+      mediaPorDia[dia] = media;
+      if(primeiroValorConhecido === null){
+        primeiroValorConhecido = media;
+      }
+    }
+  }
+
+  let serie = [];
+  let valorCorrente = ultimoValorConhecido;
+  if(primeiroValorConhecido !== null){
+    valorCorrente = primeiroValorConhecido;
+  }
+
+  for(let dia = 1; dia <= totalDias; dia++){
+    if(dia > ateDiaMaximo && lote.fk_status_lote !== 2){
+      serie.push(null);
+      continue;
+    }
+
+    if(mediaPorDia[dia] !== undefined){
+      valorCorrente = mediaPorDia[dia];
+    }
+    serie.push(valorCorrente);
+  }
+  return serie;
+}
+
+function calcularCorrelacaoPercentual(serieA, serieB, faixaAmplitude) {
+  let somaDiferenca = 0;
+  let comparacoes = 0;
+  let tamanho = Math.min(serieA.length, serieB.length);
+
+  let amplitude = 6;
+  if(faixaAmplitude && faixaAmplitude > 0){
+    amplitude = faixaAmplitude;
+  }
+
+  for(let i = 0; i < tamanho; i++){
+    if(serieA[i] !== null && serieB[i] !== null){
+      let diff = Math.abs(serieA[i] - serieB[i]);
+      let similaridadeDia = Math.max(0, 1 - diff / (amplitude * 1.5));
+      somaDiferenca = somaDiferenca + similaridadeDia;
+      comparacoes = comparacoes + 1;
+    }
+  }
+
+  if(comparacoes === 0){
+    return null;
+  }
+
+  let percentual = (somaDiferenca / comparacoes) * 100;
+  let limitado = Math.max(0, Math.min(100, percentual));
+  return Math.round(limitado * 10) / 10;
+}
+
+function obterFitFinal(loteRef, serieAtual, serieRef, intervalo) {
+  if (loteRef && loteRef.fit_percentual !== null && loteRef.fit_percentual !== undefined){
+    let valorBackend = Number(loteRef.fit_percentual);
+    if(!isNaN(valorBackend)){
+      return valorBackend;
+    }
+  }
+
+  if(loteRef){
+    return calcularCorrelacaoPercentual(serieAtual, serieRef, intervalo);
+  }
+  return null;
+}
+
+function atualizarExtremosSerie(serie, extremos) {
+  for(let i = 0; i < serie.length; i++){
+    if(serie[i] !== null) {
+      if(serie[i] < extremos.menor){
+        extremos.menor = serie[i];
+      }
+      if(serie[i] > extremos.maior){
+        extremos.maior = serie[i];
+      }
+    }
+  }
+}
+
+function calcularLimitesEixoY(tempMin, tempMax, serieAtual, serieRef) {
+  let extremos = {
+    menor: tempMin,
+    maior: tempMax
+  };
+
+  atualizarExtremosSerie(serieAtual, extremos);
+  atualizarExtremosSerie(serieRef, extremos);
+
+  let minY = Math.floor(extremos.menor - 2);
+  let maxY = Math.ceil(extremos.maior + 2);
+
+  if(maxY - minY < 6){
+    minY = Math.floor(tempMin - 2);
+    maxY = Math.ceil(tempMax + 2);
+  }
+
+  let passo = Math.max(2, Math.round((maxY - minY) / 4));
+  return {min: minY, max: maxY, stepSize: passo};
+}
+
+function atualizarCabecalhoEControles(controlesEl, loteAtual, cerveja, candidatos, loteRef) {
+  let painel = obterPainelHistorico();
+  let subtituloEl = null;
+  if(painel){
+    subtituloEl = painel.querySelector(".painel__subtitulo");
+  }
+
+  let nomeReceita = "Receita";
+  if(cerveja && cerveja.nome){
+    nomeReceita = cerveja.nome;
+  }
+
+  if(subtituloEl){
+    subtituloEl.textContent = "Mesma receita (" + nomeReceita + ") · alinhado por dia de fermentação";
+  }
+
+  if(!controlesEl){
+    return;
+  }
+
+  let optionsHTML = "";
+  for(let i = 0; i < candidatos.length; i++){
+    let c = candidatos[i];
+    let selected = "";
+    if(loteRef && c.id === loteRef.id){
+      selected = " selected";
+    }
+    optionsHTML =
+    optionsHTML + '<option value="' +
+    c.id + '"' +
+    selected + ">Lote " +
+    c.codigo + "</option>";
+  }
+
+  if(candidatos.length === 0){
+    optionsHTML = '<option value="">Sem outro lote</option>';
+  }
+
+  controlesEl.innerHTML =
+    '<div class="historico-controles">' +
+    "<span>Comparando:</span>" +
+    '<span id="nome-lote-atual-historico" class="historico-pill-atual">' +
+    '<span class="historico-pill-ponto"></span>' +
+    "Lote " +
+    loteAtual.codigo +
+    "</span>" +
+    '<select id="grafico_historico_lote2" class="historico-select-ref" aria-label="Selecionar lote para comparação">' +
+    optionsHTML +
+    "</select>" +
+    "</div>";
+
+  let selectRef = document.getElementById("grafico_historico_lote2");
+  if(selectRef){
+    selectRef.onchange = function () {
+      let receitaKey = loteAtual.fk_cerveja;
+      loteComparativoSelecionadoPorReceita[receitaKey] = Number(selectRef.value);
+      renderizarGraficoHistoricoLote(loteAtual, cerveja);
+    };
+  }
+}
+
+function atualizarRodapeComparativo(rodapeEl, loteAtual, loteRef, fitValor) {
+  if(!rodapeEl){
+    return;
+  }
+
+  let fitTexto = "—";
+  if(fitValor !== null && fitValor !== undefined){
+    fitTexto = formatarNumeroPtBr(fitValor, 1) + "%";
+  }
+
+  let nomeRef = "Sem referência";
+  if(loteRef){
+    nomeRef = "Lote " + loteRef.codigo + " (referência)";
+  }
+
+  rodapeEl.innerHTML =
+    '<div id="legenda_grafico_historico" class="historico-rodape-linha">' +
+    "<div>Correlação (fit) entre os lotes: <strong>" +
+    fitTexto +
+    "</strong></div>" +
+    '<div class="historico-rodape-legendas">' +
+    '<span class="grafico-legenda-item">' +
+    '<span class="grafico-legenda-traco"></span>' +
+    "Lote " +
+    loteAtual.codigo +
+    " (atual)" +
+    "</span>" +
+    '<span class="grafico-legenda-item">' +
+    '<span class="grafico-legenda-traco grafico-legenda-traco--tracejado"></span>' +
+    nomeRef +
+    "</span>" +
+    "</div>" +
+    "</div>";
+}
+
+function buscarLoteReferencia(loteAtual, candidatos) {
+  let receitaKey = loteAtual.fk_cerveja;
+  let salvoId = loteComparativoSelecionadoPorReceita[receitaKey];
+
+  if(salvoId){
+    for(let i = 0; i < candidatos.length; i++){
+      if(candidatos[i].id === salvoId){
+        return candidatos[i];
+      }
+    }
+  }
+
+  if(candidatos.length > 0){
+    return candidatos[0];
+  }
+
+  return null;
+}
+
+export function renderizarGraficoHistoricoLote(loteAtual, cerveja) {
+  if(!loteAtual){
+    return;
+  }
+
+  let candidatos = buscarLotesMesmaReceita(loteAtual);
+  let loteRef = buscarLoteReferencia(loteAtual, candidatos);
+
+  let elementos = obterOuCriarElementosHistorico();
+  atualizarCabecalhoEControles(elementos.controlesEl, loteAtual, cerveja, candidatos, loteRef);
+
+  let canvas = elementos.canvas;
+  if(!canvas || typeof Chart === "undefined"){
+    return;
+  }
+
+  if(instanciaGraficoHistorico){
+    instanciaGraficoHistorico.destroy();
+    instanciaGraficoHistorico = null;
+  }
+
+  let totalDias = 14;
+  if(cerveja && cerveja.tempo_fermentacao_dias){
+    totalDias = Number(cerveja.tempo_fermentacao_dias);
+  }
+
+  let diaAtualLote = calcularDiaRelativo(loteAtual.dt_inicio, DATA_REFERENCIA);
+  if(diaAtualLote > totalDias){
+    diaAtualLote = totalDias;
+  }
+
+  let labels = [];
+  let faixaMaxArr = [];
+  let faixaMinArr = [];
+
+  let tempMin = 15;
+  if(cerveja && cerveja.temperatura_min !== null && cerveja.temperatura_min !== undefined){
+    tempMin = Number(cerveja.temperatura_min);
+  }
+
+  let tempMax = 24;
+  if(cerveja && cerveja.temperatura_max !== null && cerveja.temperatura_max !== undefined){
+    tempMax = Number(cerveja.temperatura_max);
+  }
+
+  for(let dia = 1; dia <= totalDias; dia++){
+    labels.push("Dia " + dia);
+    faixaMaxArr.push(tempMax);
+    faixaMinArr.push(tempMin);
+  }
+
+  let serieAtual = construirSeriePorDia(loteAtual, totalDias, diaAtualLote);
+
+  let serieRef = [];
+  if(loteRef){
+    serieRef = construirSeriePorDia(loteRef, totalDias, totalDias);
+  }
+
+  let intervalo = Math.abs(tempMax - tempMin);
+  if(intervalo === 0){
+    intervalo = 6;
+  }
+
+  let fitValor = obterFitFinal(loteRef, serieAtual, serieRef, intervalo);
+  atualizarRodapeComparativo(elementos.rodapeEl, loteAtual, loteRef, fitValor);
+
+  let limitesY = calcularLimitesEixoY(tempMin, tempMax, serieAtual, serieRef);
+
+  let pluginHoje = {
+    id: "linhaHojeHistorico",
+    afterDatasetsDraw: function (chartInstance) {
+      if (loteAtual.fk_status_lote === 2) {
+        return;
+      }
+
+      let xScale = chartInstance.scales.x;
+      let yScale = chartInstance.scales.y;
+      if(!xScale || !yScale){
+        return;
+      }
+
+      let indiceHoje = Math.max(0, Math.min(totalDias - 1, diaAtualLote - 1));
+      let xPos = xScale.getPixelForValue(indiceHoje);
+
+      let c = chartInstance.ctx;
+      c.save();
+      c.beginPath();
+      c.setLineDash([4, 4]);
+      c.strokeStyle = "#8a99a8";
+      c.lineWidth = 1.2;
+      c.moveTo(xPos, yScale.top);
+      c.lineTo(xPos, yScale.bottom);
+      c.stroke();
+
+      c.setLineDash([]);
+      c.fillStyle = "#556c80";
+      c.font = "11px sans-serif";
+      c.textAlign = "left";
+      c.fillText("Hoje", xPos + 6, yScale.top + 11);
+      c.restore();
+    }
+  };
+
+  let datasets = [
+    {
+      type: "line",
+      label: "Lote " + loteAtual.codigo + " (atual)",
+      data: serieAtual,
+      borderColor: COR_LOTE_ATUAL,
+      backgroundColor: COR_LOTE_ATUAL,
+      borderWidth: 2,
+      pointRadius: function (context) {
+        let idx = context.dataIndex;
+        let isUltimoAtivo = idx === diaAtualLote - 1 && loteAtual.fk_status_lote !== 2;
+        if(isUltimoAtivo){
+          return 5;
+        }
+        return 2.5;
+      },
+      tension: 0.25,
+      spanGaps: false
+    }
+  ];
+
+  if(loteRef){
+    datasets.push({
+      type: "line",
+      label: "Lote " + loteRef.codigo + " (referência)",
+      data: serieRef,
+      borderColor: COR_LOTE_REFERENCIA,
+      backgroundColor: COR_LOTE_REFERENCIA,
+      borderWidth: 1.8,
+      borderDash: [4, 4],
+      pointRadius: 2.5,
+      tension: 0.25
+    });
+  }
+
+  datasets.push(
+    {
+      type: "line",
+      label: "Faixa máx.",
+      data: faixaMaxArr,
+      backgroundColor: COR_FAIXA_IDEAL,
+      borderWidth: 0,
+      pointRadius: 0,
+      fill: "+1"
+    },
+    {
+      type: "line",
+      label: "Faixa mín.",
+      data: faixaMinArr,
+      borderWidth: 0,
+      pointRadius: 0,
+      fill: false
+    }
+  );
+
+  let tamanhoFonteX = 9.5;
+  if(totalDias > 14){
+    tamanhoFonteX = 8.5;
+  }
+
+  instanciaGraficoHistorico = new Chart(canvas, {
+    type: "line",
     data: {
       labels: labels,
-      datasets: [
-        {
-          type: "line",
-          label: lote1.nome,
-          data: data1,
-          backgroundColor: "#426084",
-          borderWidth: 2,
-          borderColor: "#426084",
-          tension: 0.4,
-          cubicInterpolationMode: "monotone",
-        },
-        {
-          type: "line",
-          label: lote2.nome,
-          data: data2,
-          backgroundColor: "#C73",
-          borderWidth: 2,
-          borderColor: "#C73",
-          borderDash: [4],
-          tension: 0.4,
-          cubicInterpolationMode: "monotone",
-        },
-        {
-          type: "line",
-          label: "Faixa Ideal",
-          data: faixa.max,
-          fill: 3,
-          backgroundColor: "#e8efe6A5",
-          pointStyle: false,
-          borderWidth: 0,
-        },
-        {
-          type: "line",
-          label: "",
-          data: faixa.min,
-          fill: false,
-          pointStyle: false,
-          borderWidth: 0,
-        },
-      ],
+      datasets: datasets
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      layout: {
+        padding: { top: 8, right: 14, bottom: 4 }
+      },
       scales: {
         y: {
-          min: faixa.min[0] - 3,
-          max: faixa.max[0] + 3,
-          step: 5,
-          grid: { display: true },
+          min: limitesY.min,
+          max: limitesY.max,
+          ticks: {
+            stepSize: limitesY.stepSize,
+            callback: function (value) {
+              return Math.round(Number(value)) + "°";
+            }
+          },
+          grid: {
+            color: "rgba(0, 0, 0, 0.05)"
+          }
         },
         x: {
           grid: { display: false },
-        },
+          ticks: {
+            autoSkip: false,
+            maxRotation: 0,
+            minRotation: 0,
+            padding: 4,
+            font: {
+              size: tamanhoFonteX
+            }
+          }
+        }
       },
       plugins: {
-        legend: {
-          labels: {
-            filter: (item) => Boolean(item.text),
-          },
-          display: false,
-        },
-      },
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              if (
+                context.parsed &&
+                context.parsed.y !== null &&
+                context.parsed.y !== undefined
+              ) {
+                return(context.dataset.label + ": " + formatarNumeroPtBr(context.parsed.y, 1) + "°C");
+              }
+              return null;
+            }
+          }
+        }
+      }
     },
-  };
-  return config;
+    plugins: [pluginHoje]
+  });
 }
 
-// CRIANDO O GRÁFICO
-function newChart(lote1, lote2) {
-  return new Chart(ctx, setupConfig(lote1, lote2, lote1.duracao));
-}
-
-// EXIBIR LEGENDAS EM OUTRA DIV
-function exibirLegendas() {
-  let legendas = [];
-  let html = "";
-  for (let i = 0; i < chart.legend.legendItems.length; i++) {
-    let legenda = {
-      titulo: chart.legend.legendItems[i].text,
-      cor: chart.legend.legendItems[i].fillStyle,
-      estiloLinha:
-        chart.legend.legendItems[i].lineDash[0] > 0 ? "dashed" : "solid",
-    };
-    legendas.push(legenda);
-  }
-  for (let j = 0; j < legendas.length; j++) {
-    html += `
-                <div style="width: 3em; height: 0.1em; border: 0.15em ${legendas[j].estiloLinha} ${legendas[j].cor};" class="${legendas[j].titulo.replace(" ", "_").toLowerCase()}"></div>
-                <p class="legenda_titulo">${legendas[j].titulo}</p>
-                `;
-  }
-
-  div_legendas.innerHTML = html;
-}
-// Aplicar os valores dos lotes e tempo para exibição no chart.js (update)
-function atualizarConfig() {
-  const lote1 = exemplo_lotes[0];
-  const lote2 = lotes_comparativos.find(
-    (l) => l.nome === select_lotes_comparativos.value,
-  );
-  // filtros por dia/hora
-  let filtro_escolhido = document.getElementsByClassName("active");
-  let id = filtro_escolhido[0].id;
-  let n_dias = 0;
-
-  if (id == "tempo_real") n_dias = lote1.data.length;
-  else if (id == "ultimas_24h") n_dias = 1;
-  else if (id == "lote_completo")
-    n_dias = lote1.duracao > lote2.duracao ? lote1.duracao : lote2.duracao;
-
-  let nova_config = setupConfig(lote1, lote2, n_dias);
-  chart.data = nova_config.data;
-  chart.options = nova_config.options;
-  chart.update("none");
-  exibirLegendas();
-}
-
-// DEFINIÇÃO DE EVENTOS & LISTENERS
-// carregando lotes nos selects, de acordo com os lotes disponíveis e lotes comparativos do mesmo tipo
-carregarLotes();
-carregarLotesComparativos();
-// criando um novo chart
-const chart = newChart(
-  exemplo_lotes[0],
-  lotes_comparativos[0],
-  exemplo_lotes[0].duracao,
-);
-// evento ONCHANGE dos SELECTs
-select_lotes.addEventListener("change", () => {
-  carregarLotesComparativos();
-  atualizarConfig();
-});
-select_lotes_comparativos.addEventListener("change", () => {
-  atualizarConfig();
-});
-// evento ONCLICK no filtro de período
-div_filtros_dia.addEventListener("click", (event) => {
-  const id = event.target.id;
-
-  if (id != div_filtros_dia.id) {
-    for (let i = 0; i < div_filtros_dia.childElementCount; i++) {
-      if (div_filtros_dia.children[i].id == id) {
-        div_filtros_dia.children[i].classList.add("active");
-      } else div_filtros_dia.children[i].classList.remove("active");
-    }
-  }
-  atualizarConfig();
-});
-// exibir legendas de acordo com os lotes selecionados nos SELECTs
-exibirLegendas();
+window.renderizarGraficoHistoricoLote = renderizarGraficoHistoricoLote;

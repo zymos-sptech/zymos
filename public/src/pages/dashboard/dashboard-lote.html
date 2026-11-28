@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="../../../assets/branding/simbolo.png" type="image/x-icon" />
+  <link rel="stylesheet" href="../../css/tokens.css" />
+  <link rel="stylesheet" href="../../css/components/sidebar.css" />
+  <link rel="stylesheet" href="../../css/components/dashboard.css" />
+  <link rel="stylesheet" href="../../css/dashboard/micro/dashboard-lote.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://kit.fontawesome.com/79924d81b1.js" crossorigin="anonymous"></script>
+  <script type="module" src="../../js/sidebar/sidebar.js" defer></script>
+  <script type="module" src="../../js/dashboard/micro/dashboard-lote.js" defer></script>
+  <title>Zymos - Dashboard do Lote</title>
+</head>
+
+<body class="pagina-fixa">
+  <div id="sidebar"></div>
+
+  <main class="dashboard-lote">
+    <header class="topo">
+      <div class="topo__esquerda">
+        <div class="topo__saudacao">
+          <h1 class="topo__titulo" id="lote-titulo"></h1>
+          <span class="topo__divisor" aria-hidden="true">|</span>
+          <p class="topo__subtitulo" id="lote-subtitulo"></p>
+        </div>
+        <div class="topo__badges" id="lote-badges"></div>
+        <button type="button" id="btn-detalhes-lote" class="topo__detalhes btn-detalhes-lote">
+          Detalhes do lote <span aria-hidden="true">▸</span>
+        </button>
+      </div>
+
+      <div class="filtro-select-wrapper topo__seletor">
+        <select class="filtro-select" id="lote" name="lote"></select>
+        <i class="fa-solid fa-angle-down filtro-seta" aria-hidden="true"></i>
+      </div>
+    </header>
+
+    <!-- ÁREA SUPERIOR: GRÁFICO PRINCIPAL (ESQUERDA) + COLUNA DE KPIs (DIREITA) -->
+    <section class="lote-superior">
+      <article class="painel lote-grafico-principal">
+        <div class="painel__cabecalho">
+          <div class="painel__titulos">
+            <h2 class="painel__titulo">Temperatura real × Faixa ideal</h2>
+            <p class="painel__subtitulo" id="grafico-real-subtitulo"></p>
+          </div>
+          <div id="grafico-real-controles"></div>
+        </div>
+        <div id="grafico-temperatura-real-container"></div>
+      </article>
+
+      <aside class="lote-kpis-coluna">
+        <article class="kpi-card kpi-card--alerta">
+          <p class="kpi-card__rotulo">Alerta em aberto</p>
+          <div class="kpi-card__valor" id="kpi-alerta-valor"></div>
+          <div class="kpi-card__tags" id="kpi-alerta-tags"></div>
+          <p class="kpi-card__rodape" id="kpi-alerta-rodape"></p>
+        </article>
+
+        <article class="kpi-card">
+          <p class="kpi-card__rotulo">Aderência à faixa ideal</p>
+          <div class="kpi-card__valor" id="kpi-aderencia-valor"></div>
+          <div class="barra barra--no-kpi">
+            <div class="barra__preenchimento barra__preenchimento--destaque" id="kpi-aderencia-barra"></div>
+          </div>
+          <p class="kpi-card__rodape" id="kpi-aderencia-rodape"></p>
+        </article>
+
+        <article class="kpi-card">
+          <p class="kpi-card__rotulo">Progresso da fermentação</p>
+          <div class="kpi-card__valor" id="kpi-progresso-valor"></div>
+          <div class="barra barra--no-kpi">
+            <div class="barra__preenchimento" id="kpi-progresso-barra"></div>
+          </div>
+          <p class="kpi-card__rodape" id="kpi-progresso-rodape"></p>
+        </article>
+      </aside>
+    </section>
+
+    <!-- ÁREA INFERIOR: COMPARATIVO (ESQUERDA) + HISTÓRICO DE DESVIOS (DIREITA) -->
+    <section class="lote-inferior">
+      <article class="painel lote-comparativo">
+        <div class="painel__cabecalho">
+          <div class="painel__titulos">
+            <h2 class="painel__titulo">Comparativo histórico entre lotes</h2>
+            <p class="painel__subtitulo">Mesma receita · alinhado por dia de fermentação</p>
+          </div>
+          <div id="comparativo-filtros"></div>
+        </div>
+        <div id="grafico-historico-lote-container"></div>
+        <div class="painel__rodape" id="comparativo-rodape"></div>
+      </article>
+
+      <aside class="painel lote-desvios">
+        <div class="painel__cabecalho">
+          <div class="painel__titulos">
+            <h2 class="painel__titulo">Histórico de desvios</h2>
+            <p class="painel__subtitulo">Últimos eventos de desvio na temperatura</p>
+          </div>
+        </div>
+
+        <div id="historico-desvios-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Início</th>
+                <th>Tipo</th>
+                <th>Pico</th>
+                <th>Duração</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="historico-desvios-corpo"></tbody>
+          </table>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- Pop-up de detalhes do lote -->
+  <div id="modal-detalhes-lote" class="modal-lote-overlay" hidden>
+    <div class="modal-lote-caixa" role="dialog" aria-modal="true" aria-labelledby="modal-lote-titulo">
+      <div class="modal-lote-cabecalho">
+        <h3 id="modal-lote-titulo" class="modal-lote-titulo">Detalhes do lote</h3>
+        <button type="button" id="btn-fechar-detalhes-lote" class="modal-lote-fechar">
+          Fechar
+        </button>
+      </div>
+
+      <div class="modal-lote-grid">
+        <div class="modal-lote-campo">
+          <span class="modal-lote-rotulo">TIPO</span>
+          <strong id="detalhe-lote-tipo" class="modal-lote-valor">—</strong>
+        </div>
+
+        <div class="modal-lote-campo">
+          <span class="modal-lote-rotulo">LEVEDURA</span>
+          <strong id="detalhe-lote-levedura" class="modal-lote-valor">—</strong>
+        </div>
+
+        <div class="modal-lote-campo">
+          <span class="modal-lote-rotulo">TANQUE</span>
+          <strong id="detalhe-lote-tanque" class="modal-lote-valor">—</strong>
+        </div>
+
+        <div class="modal-lote-campo">
+          <span class="modal-lote-rotulo">UNIDADE</span>
+          <strong id="detalhe-lote-unidade" class="modal-lote-valor">—</strong>
+        </div>
+
+        <div class="modal-lote-campo">
+          <span class="modal-lote-rotulo">VOLUME DO LOTE</span>
+          <strong id="detalhe-lote-volume" class="modal-lote-valor">—</strong>
+        </div>
+
+        <div class="modal-lote-campo">
+          <span class="modal-lote-rotulo">INÍCIO</span>
+          <strong id="detalhe-lote-inicio" class="modal-lote-valor">—</strong>
+        </div>
+
+        <div class="modal-lote-campo">
+          <span class="modal-lote-rotulo">TÉRMINO PREVISTO</span>
+          <strong id="detalhe-lote-termino" class="modal-lote-valor">—</strong>
+        </div>
+
+        <div class="modal-lote-campo">
+          <span class="modal-lote-rotulo">FAIXA ALVO</span>
+          <strong id="detalhe-lote-faixa" class="modal-lote-valor">—</strong>
+        </div>
+      </div>
+
+      <div class="modal-lote-rodape">
+        <span id="detalhe-lote-resumo" class="modal-lote-resumo">—</span>
+        <span id="detalhe-lote-status" class="modal-lote-status">Em andamento</span>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
