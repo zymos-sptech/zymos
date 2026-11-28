@@ -38,20 +38,20 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 
 app.use("/", indexRouter);
-app.use("/usuarios", usuarioRouter);
-app.use("/planos", planoRouter);
-app.use("/cargos", cargoRouter);
-app.use("/tipos-cerveja", tipoCervejaRouter);
-app.use("/leveduras", leveduraRouter);
-app.use("/producoes", producaoRouter);
-app.use("/lotes", loteRouter);
-app.use("/contato", contatoRouter);
-app.use("/sensores", sensorRouter);
-app.use("/leiturasSensor", leituraSensorRouter);
-app.use("/tanques", tanqueRouter);
-app.use("/unidades", unidadeRouter);
-app.use("/cervejas", cervejaRouter);
 app.use("/alertas", alertaRouter);
+app.use("/cargos", cargoRouter);
+app.use("/cervejas", cervejaRouter);
+app.use("/contato", contatoRouter);
+app.use("/leiturasSensor", leituraSensorRouter);
+app.use("/leveduras", leveduraRouter);
+app.use("/lotes", loteRouter);
+app.use("/planos", planoRouter);
+app.use("/producoes", producaoRouter);
+app.use("/sensores", sensorRouter);
+app.use("/tanques", tanqueRouter);
+app.use("/tipos-cerveja", tipoCervejaRouter);
+app.use("/unidades", unidadeRouter);
+app.use("/usuarios", usuarioRouter);
 
 app.listen(PORTA_APP, function () {
   console.log(`
